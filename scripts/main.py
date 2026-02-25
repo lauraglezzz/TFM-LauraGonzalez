@@ -68,22 +68,22 @@ def run_full_pipeline():
 
     print("\n========== FULL PIPELINE START ==========\n")
 
-    print("Step 1️⃣  Building datasets...")
+    print("Step   Building datasets...")
     build_all_datasets()
 
-    print("\nStep 2️⃣  Running sanity checks...")
+    print("\nStep  Running sanity checks...")
     run_all_sanity_checks()
 
-    print("\nStep 3️⃣  Reproducing Table 1...")
+    print("\nStep  Reproducing Table 1...")
     reproduce_table1()
 
-    print("\nStep 4️⃣  Training LightGBM models...")
+    print("\nStep  Training LightGBM models...")
     run_training_pipeline()
 
-    print("\nStep 5️⃣  Running SHAP analysis...")
+    print("\nStep  Running SHAP analysis...")
     run_all_shap()
 
-    print("\nStep 6️⃣  Running SHAP post-analysis...")
+    print("\nStep  Running SHAP post-analysis...")
     run_full_analysis()
 
     print("\n========== PIPELINE COMPLETE ==========\n")
