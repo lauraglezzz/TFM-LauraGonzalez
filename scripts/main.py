@@ -15,6 +15,7 @@ from src.analysis.reproduce_table1 import reproduce_table1
 from src.analysis.shap_postprocessing import run_full_analysis
 from src.modeling.train_lightgbm import train_and_evaluate
 from src.modeling.shap_analysis import run_all_shap
+from src.llm.explanation_generator import run_llm_explanations
 
 
 # ==============================
@@ -68,23 +69,26 @@ def run_full_pipeline():
 
     print("\n========== FULL PIPELINE START ==========\n")
 
-    print("Step   Building datasets...")
+    print("Step 1  Building datasets...")
     build_all_datasets()
 
-    print("\nStep  Running sanity checks...")
+    print("\nStep 2  Running sanity checks...")
     run_all_sanity_checks()
 
-    print("\nStep  Reproducing Table 1...")
+    print("\nStep 3  Reproducing Table 1...")
     reproduce_table1()
 
-    print("\nStep  Training LightGBM models...")
+    print("\nStep 4  Training LightGBM models...")
     run_training_pipeline()
 
-    print("\nStep  Running SHAP analysis...")
+    print("\nStep 5  Running SHAP analysis...")
     run_all_shap()
 
-    print("\nStep  Running SHAP post-analysis...")
+    print("\nStep 6  Running SHAP post-analysis...")
     run_full_analysis()
+
+    print("\nStep 7  Generating LLM explanations...")
+    run_llm_explanations()
 
     print("\n========== PIPELINE COMPLETE ==========\n")
 
@@ -103,6 +107,7 @@ def main():
     parser.add_argument("--train", action="store_true", help="Train models")
     parser.add_argument("--shap", action="store_true", help="Run SHAP analysis")
     parser.add_argument("--analysis", action="store_true", help="Run SHAP post-analysis (Table3 + correlations)")
+    parser.add_argument("--llm", action="store_true", help="Generate LLM explanations")
     parser.add_argument("--all", action="store_true", help="Run full pipeline")
 
     args = parser.parse_args()
@@ -128,6 +133,9 @@ def main():
 
     if args.analysis:
         run_full_analysis()
+
+    if args.llm:
+        run_llm_explanations()
 
 
 if __name__ == "__main__":
