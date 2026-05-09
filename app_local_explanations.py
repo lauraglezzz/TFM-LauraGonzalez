@@ -8,10 +8,22 @@ import io
 import zipfile
 
 # ==============================
-# PATHS
+# PATHS (AUTO V1/V2 DETECTION)
 # ==============================
-BASE_PATH = Path("reports/shap_local")
-LLM_PATH = Path("reports/llm_local/local_llm_explanations.csv")
+BASE_PATH_V2 = Path("reports/shap_local_v2")
+LLM_PATH_V2 = Path("reports/llm_local_v2/local_llm_explanations_v2.csv")
+
+BASE_PATH_V1 = Path("reports/shap_local")
+LLM_PATH_V1 = Path("reports/llm_local/local_llm_explanations.csv")
+
+if LLM_PATH_V2.exists():
+    BASE_PATH = BASE_PATH_V2
+    LLM_PATH = LLM_PATH_V2
+    VERSION = "v2"
+else:
+    BASE_PATH = BASE_PATH_V1
+    LLM_PATH = LLM_PATH_V1
+    VERSION = "v1"
 
 # ==============================
 # CLEAN TEXT
@@ -26,7 +38,7 @@ def clean_explanation(text):
     return text
 
 # ==============================
-# DISCRETIZATION (for filters)
+# DISCRETIZATION
 # ==============================
 def discretize(endpoint, value):
 
@@ -68,7 +80,7 @@ def discretize(endpoint, value):
     return "Unknown"
 
 # ==============================
-# PDF GENERATOR (IN MEMORY)
+# PDF GENERATOR
 # ==============================
 def generate_pdf_bytes(endpoint, sample, explanation, mol_img_path, shap_img_path):
 
@@ -96,10 +108,10 @@ def generate_pdf_bytes(endpoint, sample, explanation, mol_img_path, shap_img_pat
     return buffer
 
 # ==============================
-# STREAMLIT CONFIG
+# STREAMLIT
 # ==============================
 st.set_page_config(layout="wide")
-st.title("ADME Local Explanations Explorer")
+st.title(f"ADME Local Explanations Explorer ({VERSION})")
 
 # ==============================
 # LOAD DATA
@@ -125,7 +137,7 @@ endpoint = st.selectbox("Endpoint", endpoints)
 df_ep = df[df["endpoint"] == endpoint].copy()
 
 # ==============================
-# ADD CATEGORY
+# CATEGORY
 # ==============================
 df_ep["category"] = df_ep["prediction"].apply(lambda x: discretize(endpoint, x))
 
@@ -140,13 +152,11 @@ with colf1:
 with colf2:
     category_filter = st.selectbox("Filter category", ["All"] + sorted(df_ep["category"].unique()))
 
-# Apply sorting
 if sort_option == "High → Low":
     df_ep = df_ep.sort_values(by="prediction", ascending=False)
 elif sort_option == "Low → High":
     df_ep = df_ep.sort_values(by="prediction", ascending=True)
 
-# Apply filter
 if category_filter != "All":
     df_ep = df_ep[df_ep["category"] == category_filter]
 
@@ -165,7 +175,7 @@ if len(samples) == 0:
     st.stop()
 
 # ==============================
-# SAFE SESSION STATE
+# SESSION STATE
 # ==============================
 if "selected_sample" not in st.session_state:
     st.session_state.selected_sample = samples[0]
@@ -192,16 +202,14 @@ idx = samples.index(selected_sample)
 col_nav1, col_nav2 = st.columns(2)
 
 with col_nav1:
-    if idx > 0:
-        if st.button("Previous"):
-            st.session_state.selected_sample = samples[idx - 1]
-            st.rerun()
+    if idx > 0 and st.button("Previous"):
+        st.session_state.selected_sample = samples[idx - 1]
+        st.rerun()
 
 with col_nav2:
-    if idx < len(samples) - 1:
-        if st.button("Next"):
-            st.session_state.selected_sample = samples[idx + 1]
-            st.rerun()
+    if idx < len(samples) - 1 and st.button("Next"):
+        st.session_state.selected_sample = samples[idx + 1]
+        st.rerun()
 
 # ==============================
 # GET ROW
@@ -239,9 +247,6 @@ with col3:
     explanation = clean_explanation(row["explanation"])
     st.write(explanation)
 
-    # ==========================
-    # DOWNLOAD SINGLE PDF
-    # ==========================
     pdf_bytes = generate_pdf_bytes(endpoint, selected_sample, explanation, mol_img, shap_img)
 
     st.download_button(
@@ -252,10 +257,9 @@ with col3:
     )
 
 # ==============================
-# EXPORT TOP 20
+# EXPORT ZIP
 # ==============================
 st.markdown("---")
-
 st.subheader("Export Top Molecules")
 
 top_n = st.slider("Number of molecules", 5, 50, 20)
@@ -278,7 +282,6 @@ if st.button("Export TOP as ZIP"):
             shap_img = sample_path / "waterfall.png"
 
             pdf_bytes = generate_pdf_bytes(endpoint, sample, explanation, mol_img, shap_img)
-
             z.writestr(f"{sample}.pdf", pdf_bytes.read())
 
     zip_buffer.seek(0)

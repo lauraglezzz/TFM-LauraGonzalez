@@ -1,0 +1,1237 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_MDR1_ER,0,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'SMR_VSA5', 'BCUT2D_LOGPHI', 'PEOE_VSA12', 'PEOE_VSA10']","[-0.12806494503597712, 0.1055932463490953, -0.06715051653358725, -0.05547183986375536, -0.05241280033622477]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.128
+- SMR_VSA5: 0.106
+- BCUT2D_LOGPHI: -0.067
+- PEOE_VSA12: -0.055
+- PEOE_VSA10: -0.052
+
+","The prediction is influenced by the combined effect of the given feature contributions. Here's an explanation of how each feature contributes:
+
+1. **HallKierAlpha (-0.128)**  
+   This feature has the largest negative contribution among the listed features. A negative value indicates that higher values of HallKierAlpha decrease the predicted outcome. In other words, as HallKierAlpha increases, the model predicts a lower value for the target variable.
+
+2. **SMR_VSA5 (0.106)**  
+   This is the only feature with a positive contribution in the list, suggesting that higher values of SMR_VSA5 increase the predicted outcome. It partially offsets the negative contribution of HallKierAlpha.
+
+3. **BCUT2D_LOGPHI (-0.067)**  
+   This feature also contributes negatively, but to a lesser extent than HallKierAlpha. Higher values of BCUT2D_LOGPHI decrease the predicted value, but less strongly.
+
+4. **PEOE_VSA12 (-0.055)**  
+   This feature slightly reduces the prediction. Its negative contribution is small but still moves the predicted value downward.
+
+5. **PEOE_VSA10 (-0.052)**  
+   Similar to PEOE_VSA12, this feature has a minor negative effect, slightly lowering the prediction.
+
+### Overall Interpretation:
+- The prediction is mostly pulled down by the features HallKierAlpha, BCUT2D_LOGPHI, PEOE_VSA12, and PEOE_VSA10.
+- The increase in prediction is driven primarily by SMR_VSA5.
+- Since the magnitude of the negative contributions (-0.128, -0.067, -0.055, -0.052) sums to approximately -0.302, while the positive contribution (0.106) is smaller, the net effect is likely a decrease in the predicted value.
+
+In summary, this combination of feature contributions leads to a prediction that is lower than the baseline (or average prediction), primarily due to the strong negative influence of HallKierAlpha and partially supported by the other negatively contributing features."
+ADME_MDR1_ER,1,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'HallKierAlpha', 'BCUT2D_MWLOW', 'VSA_EState4', 'EState_VSA1']","[0.09111848276035052, 0.08546482628479646, 0.0847640068853643, -0.06384895162737951, -0.06191625120425516]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.091
+- HallKierAlpha: 0.085
+- BCUT2D_MWLOW: 0.085
+- VSA_EState4: -0.064
+- EState_VSA1: -0.062
+
+","The prediction is influenced by the following feature contributions, which represent how each feature pushes the prediction higher or lower relative to a baseline:
+
+- **PEOE_VSA9 (0.091):** This feature has a positive contribution of 0.091, meaning that a higher or favorable value of PEOE_VSA9 pushes the prediction upward. PEOE_VSA9 typically encodes partial charge surface area information, so molecular regions with certain charge distributions are increasing the predicted value.
+
+- **HallKierAlpha (0.085):** This descriptor relates to molecular shape and flexibility. Its positive contribution (0.085) suggests that the shape or flexibility characteristics quantified by HallKierAlpha are increasing the prediction.
+
+- **BCUT2D_MWLOW (0.085):** This descriptor generally encodes information related to the low end of molecular weight distribution or related spectral properties. The positive contribution indicates molecular weight or related structural features quantified by this feature have a positive effect on the predicted outcome.
+
+- **VSA_EState4 (-0.064):** This feature has a negative contribution, reducing the prediction by 0.064. VSA_EState descriptors combine surface area and electronic state indices. This suggests that the specific electronic/steric properties captured by VSA_EState4 push the prediction down.
+
+- **EState_VSA1 (-0.062):** Similarly, this feature also decreases the prediction (by 0.062). Like VSA_EState4, it combines electronic state and surface area information, and its particular values are reducing the predicted value.
+
+### Summary:
+The overall prediction is the net effect of these contributions. Here, PEOE_VSA9, HallKierAlpha, and BCUT2D_MWLOW increase the predicted value, indicating that charge distribution, molecular flexibility, and certain MW-related properties push the prediction higher. Conversely, VSA_EState4 and EState_VSA1 contribute negative effects, meaning the electronic state-surface area aspects they capture reduce the prediction. Thus, the prediction emerges from the balance between molecular charge, shape, weight, and electronic structure characteristics encoded by these features."
+ADME_MDR1_ER,2,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'Chi0', 'PEOE_VSA10', 'VSA_EState10', 'fr_Ar_N']","[0.07336527162466029, -0.06125153785021537, -0.059788978768582024, -0.05649012321773155, 0.054939770182582746]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.073
+- Chi0: -0.061
+- PEOE_VSA10: -0.060
+- VSA_EState10: -0.056
+- fr_Ar_N: 0.055
+
+","The prediction of your model is influenced by several molecular features, each contributing positively or negatively to the final prediction score. Here's the explanation of the feature contributions you provided:
+
+- **PEOE_VSA9 (0.073)**: This feature has the largest positive contribution. PEOE_VSA9 represents the sum of solvent-accessible surface areas (SASA) of atoms with specific partial charges (in a given bin number 9). A positive contribution means that higher values of PEOE_VSA9 increase the predicted output.
+
+- **Chi0 (-0.061)**: Chi0 is the zero-order molecular connectivity index, reflecting the molecule's topology with no bonds considered. Its negative contribution indicates that molecules with higher Chi0 values tend to decrease the predicted outcome.
+
+- **PEOE_VSA10 (-0.060)**: Similar to PEOE_VSA9, but for atoms with partial charges in bin 10. A negative contribution suggests that higher values of PEOE_VSA10 decrease the predicted value.
+
+- **VSA_EState10 (-0.056)**: This feature combines electrostatic state indices and solvent-accessible surface areas for a certain group of atoms. The negative contribution tells us that higher VSA_EState10 values push the prediction down.
+
+- **fr_Ar_N (0.055)**: This is a count of aromatic nitrogen atoms in the molecule. Its positive value shows that the presence of aromatic nitrogens increases the prediction score.
+
+### Summary:
+
+The model predicts higher values when molecules have higher surface areas corresponding to certain partial charges (PEOE_VSA9), and when aromatic nitrogen atoms are present (fr_Ar_N). Conversely, higher molecular connectivity (Chi0), and larger surface areas associated with different partial charges or states (PEOE_VSA10 and VSA_EState10) decrease the prediction.
+
+Understanding these contributions can help in molecular design or interpretation: for example, adding aromatic nitrogen atoms might increase the property being predicted, while increasing certain topological aspects or particular charged surface areas might reduce it."
+ADME_MDR1_ER,3,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'VSA_EState2', 'SMR_VSA5', 'BCUT2D_MWLOW', 'VSA_EState10']","[0.14812049982465475, -0.08165729223203841, -0.07549290086708384, -0.0660869073325942, 0.06269985722784083]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.148
+- VSA_EState2: -0.082
+- SMR_VSA5: -0.075
+- BCUT2D_MWLOW: -0.066
+- VSA_EState10: 0.063
+
+","The prediction is influenced by the following features and their contributions:
+
+- **PEOE_VSA9 (0.148):** This feature has the largest positive contribution, meaning it increases the predicted value. It suggests that higher values of PEOE_VSA9 lead to an increase in the prediction.
+  
+- **VSA_EState2 (-0.082):** This feature negatively contributes to the prediction, indicating that higher values of VSA_EState2 decrease the predicted outcome.
+  
+- **SMR_VSA5 (-0.075):** Similarly, this feature also reduces the prediction when its value is higher.
+  
+- **BCUT2D_MWLOW (-0.066):** This feature has a negative effect on the prediction, albeit smaller than the previous two, decreasing the predicted value with higher values.
+  
+- **VSA_EState10 (0.063):** This feature positively contributes, increasing the predicted outcome.
+
+### Summary:
+Overall, the prediction is a balance between positive and negative contributions:
+
+- Positive contributions: PEOE_VSA9 and VSA_EState10 push the prediction higher.
+- Negative contributions: VSA_EState2, SMR_VSA5, and BCUT2D_MWLOW lower the prediction.
+
+Since the largest contribution is positive, the net effect of these features likely leads to an increased prediction value, but it is moderated by the negative contributions."
+ADME_MDR1_ER,4,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'Chi0', 'BCUT2D_MWLOW', 'fr_Ar_N', 'PEOE_VSA10']","[-0.08785826143530817, -0.057849711475893774, -0.05045516876807733, 0.04595947776810772, -0.04347786425264463]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.088
+- Chi0: -0.058
+- BCUT2D_MWLOW: -0.050
+- fr_Ar_N: 0.046
+- PEOE_VSA10: -0.043
+
+","The prediction is influenced by the following feature contributions:
+
+- **HallKierAlpha (-0.088):** This feature significantly decreases the prediction. A negative contribution means that higher values of HallKierAlpha push the model output lower.
+- **Chi0 (-0.058):** This also reduces the predicted value, though less strongly than HallKierAlpha.
+- **BCUT2D_MWLOW (-0.050):** Another negative contributor, further lowering the prediction.
+- **fr_Ar_N (0.046):** This is the only positive contributor among these features, slightly increasing the prediction.
+- **PEOE_VSA10 (-0.043):** This feature reduces the prediction value as well.
+
+Overall, the negative contributions dominate, so these features collectively push the prediction downward. The slight positive effect from fr_Ar_N only partially offsets the negative impacts from the other features."
+ADME_MDR1_ER,5,gpt-4.1-mini,basic,5,"['BCUT2D_MWLOW', 'AvgIpc', 'Chi4v', 'VSA_EState10', 'fr_Ar_NH']","[0.07074951439269299, 0.06990266126816322, 0.06985659550202179, -0.06510219437914286, 0.06162290769287462]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_MWLOW: 0.071
+- AvgIpc: 0.070
+- Chi4v: 0.070
+- VSA_EState10: -0.065
+- fr_Ar_NH: 0.062
+
+","The feature contributions you provided indicate how each feature influences the model's prediction, with positive values pushing the prediction higher (more positive effect) and negative values pushing it lower.
+
+Here is the interpretation of the contributions:
+
+- **BCUT2D_MWLOW: 0.071**  
+  This feature has a positive contribution of 0.071, meaning that higher values of BCUT2D_MWLOW increase the predicted outcome. BCUT2D_MWLOW is typically related to molecular weight patterns in 2D chemical structures, suggesting that molecules with certain molecular weight characteristics tend to lead to higher predictions.
+
+- **AvgIpc: 0.070**  
+  AvgIpc has a positive contribution of 0.070, indicating that higher AvgIpc values raise the prediction. AvgIpc (Average Information Content) is often related to molecular complexity or diversity, so molecules with higher complexity might be predicted to have higher target values.
+
+- **Chi4v: 0.070**  
+  Chi4v also contributes positively (0.070). It is a topological descriptor linked to molecular connectivity; higher Chi4v values may correlate with structural features that increase the predicted property.
+
+- **VSA_EState10: -0.065**  
+  This descriptor has a negative contribution (-0.065), which means that higher values of VSA_EState10 decrease the predicted value. VSA_EState descriptors combine surface area and electronic state information, so particular electronic or steric properties captured by VSA_EState10 reduce the predicted outcome.
+
+- **fr_Ar_NH: 0.062**  
+  This is a fragment count feature counting aromatic amine groups (Ar-NH). A positive contribution (0.062) implies that the presence or higher frequency of aromatic amines in the molecule increases the predicted value.
+
+### Summary:
+Overall, the prediction is driven upward mainly by molecular weight patterns, molecular complexity, connectivity, and the presence of aromatic amines, whereas certain electronic or steric properties represented by VSA_EState10 push the prediction downward. These balanced effects together determine the final prediction score."
+ADME_MDR1_ER,6,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'Chi0', 'HallKierAlpha', 'PEOE_VSA10', 'fr_C_S']","[-0.12818547600183738, -0.09322996246390255, -0.07157835711059153, 0.057720089129465184, -0.0548932469196986]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.128
+- Chi0: -0.093
+- HallKierAlpha: -0.072
+- PEOE_VSA10: 0.058
+- fr_C_S: -0.055
+
+","The prediction explanation based on the given feature contributions can be interpreted as follows:
+
+- **PEOE_VSA9 (-0.128):** This feature has the largest negative contribution, meaning higher values of PEOE_VSA9 decrease the predicted outcome. PEOE_VSA9 typically relates to the surface area of atoms with partial charges in a certain range, so this suggests that the chemical characteristic captured by PEOE_VSA9 negatively influences the prediction.
+
+- **Chi0 (-0.093):** Chi0 is a molecular connectivity index representing the overall branching of the molecule. Its negative contribution indicates that greater molecular branching or the associated structural property reduces the predicted value.
+
+- **HallKierAlpha (-0.072):** Hall-Kier alpha is a shape or flexibility descriptor. A negative contribution implies that molecular flexibility or shape features represented by this descriptor lower the prediction.
+
+- **PEOE_VSA10 (0.058):** This feature has a positive contribution, meaning higher values of PEOE_VSA10 increase the predicted outcome. Like PEOE_VSA9, it relates to the surface area of atoms in a specific partial charge range, but here it has an opposite effect, slightly raising the prediction.
+
+- **fr_C_S (-0.055):** This feature indicates the count of C-S (carbon-sulfur) bonds or fragments. Its negative contribution suggests that the presence of C-S bonds decreases the predicted value.
+
+### Overall interpretation:
+Most of the significant features are negatively contributing, so the combined effect is to lower the predicted outcome. The only feature pushing the prediction upwards is PEOE_VSA10, but its influence is smaller than the dominant negative terms. Therefore, from the chemical perspective, the predicted result is mostly driven down by molecular properties related to certain surface charge areas, molecular branching, shape/flexibility, and presence of C-S bonds."
+ADME_MDR1_ER,7,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'NumAromaticRings', 'PEOE_VSA9', 'BCUT2D_MWLOW', 'qed']","[0.11976785829147013, 0.0862364582362436, -0.06321494270300695, -0.053103552430445546, 0.04841333785923942]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.120
+- NumAromaticRings: 0.086
+- PEOE_VSA9: -0.063
+- BCUT2D_MWLOW: -0.053
+- qed: 0.048
+
+","The prediction is influenced by several features, each contributing either positively or negatively to the final outcome. Here’s an explanation based on the given feature contributions:
+
+1. **HallKierAlpha (0.120)**: This feature has the largest positive contribution. HallKier Alpha is a molecular shape and flexibility descriptor, which often correlates with molecular complexity and solubility characteristics. A higher HallKierAlpha value is pushing the prediction upward, indicating that molecules with higher flexibility or certain structural properties are more favored by the model.
+
+2. **NumAromaticRings (0.086)**: This positive contribution means that the presence of aromatic rings in the molecule increases the predicted value. Aromatic rings often relate to chemical stability and specific interactions, which may be important for the target property or activity the model is predicting.
+
+3. **PEOE_VSA9 (-0.063)**: This is a negatively contributing descriptor related to the sum of van der Waals surface areas of atoms with a certain partial charge range (from PEOE charge calculation). Its negative value means that molecules with higher PEOE_VSA9 tend to reduce the predicted value, possibly indicating that atoms with this particular charge surface area range relate negatively to the target.
+
+4. **BCUT2D_MWLOW (-0.053)**: Also a negative contribution; BCUT descriptors relate to molecular properties calculated from the weighted adjacency matrix of the molecule, often capturing aspects of molecular size and electronic distribution. MWLOW likely refers to low molecular weight contributions, and a negative impact suggests that lower values here decrease the prediction.
+
+5. **qed (0.048)**: The quantitative estimate of drug-likeness (qed) has a positive effect, albeit smaller than the top two features, indicating that molecules rated as more drug-like slightly increase the predicted value.
+
+---
+
+### Summary:
+The prediction increases mainly due to molecular flexibility/shape (HallKierAlpha) and the number of aromatic rings, both encouraging a higher predicted outcome. Meanwhile, certain electronic surface area features (PEOE_VSA9) and molecular size-related features (BCUT2D_MWLOW) detract from the prediction. Drug-likeness (qed) also contributes positively but to a lesser extent. The model seems to favor flexible, aromatic, and drug-like molecules while penalizing certain charged surface area and size properties."
+ADME_MDR1_ER,8,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'BCUT2D_MWLOW', 'Chi1n', 'PEOE_VSA9', 'VSA_EState2']","[0.07862189010152837, -0.07787109079285731, -0.06083672695222112, -0.05942536086581738, -0.057348276833437524]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.079
+- BCUT2D_MWLOW: -0.078
+- Chi1n: -0.061
+- PEOE_VSA9: -0.059
+- VSA_EState2: -0.057
+
+","The prediction is influenced by multiple features, each contributing positively or negatively to the final output. Here’s the explanation based on the given feature contributions:
+
+- **HallKierAlpha (+0.079):** This feature has a positive contribution, increasing the prediction. HallKierAlpha typically relates to molecular size and flexibility, so a higher value here is pushing the prediction upward.
+
+- **BCUT2D_MWLOW (-0.078):** This feature contributes negatively, decreasing the prediction. BCUT2D_MWLOW often corresponds to descriptors describing low molecular weight atom contributions; lower values here are pulling the prediction down.
+
+- **Chi1n (-0.061):** Another negative contributor, Chi1n is a connectivity/chirality index, reflecting molecular topology. Its negative value suggests that certain topological aspects reduce the predicted value.
+
+- **PEOE_VSA9 (-0.059):** This feature captures partial charge and molecular surface area characteristics, and it reduces the prediction, indicating that atoms with certain charge-surface area profiles contribute to a lower prediction.
+
+- **VSA_EState2 (-0.057):** Related to the electronic state and surface area of atoms, this feature also negatively impacts the prediction, lowering the final value.
+
+**Summary:** The single positive contribution from HallKierAlpha is nearly offset by the combined negative contributions from the other four features. Thus, the overall prediction might be slightly increased or close to neutral depending on other factors, but there is a net balance between positive molecular flexibility effects and multiple negative structural and electronic features pushing the prediction down."
+ADME_MDR1_ER,9,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'SMR_VSA1', 'NumAromaticRings', 'PEOE_VSA10', 'Chi0']","[0.09371121709226893, 0.07317552456192312, 0.07204041007531521, 0.05046463691059085, 0.048546586217961894]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.094
+- SMR_VSA1: 0.073
+- NumAromaticRings: 0.072
+- PEOE_VSA10: 0.050
+- Chi0: 0.049
+
+","The prediction is being influenced by several molecular features, each contributing positively to the output. Here's a breakdown of the feature contributions:
+
+1. **PEOE_VSA9 (0.094)**  
+   This feature represents the sum of the van der Waals surface areas of atoms with partial charges in a specific charge range, calculated using Partial Equalization of Orbital Electronegativities (PEOE). A positive contribution of 0.094 suggests that the presence of atoms with this particular charge environment and their associated surface area tends to increase the predicted property (e.g., activity, solubility, toxicity).
+
+2. **SMR_VSA1 (0.073)**  
+   Similar to PEOE_VSA, SMR_VSA1 sums the van der Waals surface areas but weighted by the atomic molar refractivity values in a specific range. A positive value indicates that atoms with particular refractivity characteristics and their exposed surface areas are positively correlated with the prediction.
+
+3. **NumAromaticRings (0.072)**  
+   This integer feature counts the number of aromatic rings in the molecule. A positive contribution here means that molecules with more aromatic rings are predicted to have a higher value of the target property. Aromatic rings often influence molecular stability, hydrophobicity, and binding interactions, which could explain their positive effect.
+
+4. **PEOE_VSA10 (0.050)**  
+   Like PEOE_VSA9, this represents another charge range's van der Waals surface area sum, but for a slightly different charge range. Its positive contribution further highlights the importance of partial charges and surface area in this molecule's predicted property.
+
+5. **Chi0 (0.049)**  
+   Chi0 is a zero-order connectivity index reflecting the molecule's size and branching. A positive contribution suggests that molecular branching or size encoded by Chi0 positively impacts the prediction.
+
+### Overall Interpretation:
+The prediction increases when the molecule exhibits specific charge surface area features (PEOE_VSA9 and PEOE_VSA10), has regions of particular refractivity (SMR_VSA1), contains aromatic rings, and demonstrates certain branching or connectivity patterns (Chi0). These features collectively contribute to the model's output, indicating that both electronic properties and structural features are important for determining the target property in this prediction."
+ADME_MDR1_ER,10,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'PEOE_VSA9', 'SlogP_VSA4', 'fr_Ar_NH', 'qed']","[0.16566687417947687, -0.11117178452998198, -0.06292380119429235, 0.060211747120247114, 0.0574467654928322]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.166
+- PEOE_VSA9: -0.111
+- SlogP_VSA4: -0.063
+- fr_Ar_NH: 0.060
+- qed: 0.057
+
+","The prediction is influenced by the following feature contributions as detailed:
+
+- **HallKierAlpha (0.166):** This feature has the largest positive contribution, indicating that higher values of HallKierAlpha increase the predicted value. HallKierAlpha is often related to molecular shape or flexibility; thus, molecules with certain structural characteristics captured by this descriptor tend to push the prediction higher.
+
+- **PEOE_VSA9 (-0.111):** This feature contributes negatively, reducing the predicted value. PEOE_VSA descriptors relate to partial charges and van der Waals surface areas; specifically, PEOE_VSA9 likely captures surface area associated with a specific charge range. The negative contribution suggests that a higher value of this descriptor lowers the prediction.
+
+- **SlogP_VSA4 (-0.063):** Also a negative contributor, indicating that increased values of SlogP_VSA4 decrease the prediction. This descriptor reflects a portion of the molecule's surface area associated with a certain range of logP values, often linked to hydrophobicity or lipophilicity.
+
+- **fr_Ar_NH (0.060):** This is a positive contribution, meaning the presence or count of aromatic amine groups (Ar-NH) increases the predicted value.
+
+- **qed (0.057):** The QED (quantitative estimate of drug-likeness) score also positively influences the prediction, suggesting that more drug-like molecules, according to this metric, tend to lead to higher predicted values.
+
+### Summary:
+The prediction is primarily driven up by molecular shape/flexibility (HallKierAlpha), aromatic amines (fr_Ar_NH), and drug-likeness (qed), while being pulled down by certain charged surface area characteristics (PEOE_VSA9) and hydrophobic-related surface area (SlogP_VSA4). The combined effect of these features determines the final prediction score."
+ADME_MDR1_ER,11,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'PEOE_VSA7', 'PEOE_VSA9', 'NumAromaticRings', 'SMR_VSA1']","[0.12015507170416538, 0.08075073183726811, 0.07934017900568027, 0.06887526533734112, 0.06789042746648345]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.120
+- PEOE_VSA7: 0.081
+- PEOE_VSA9: 0.079
+- NumAromaticRings: 0.069
+- SMR_VSA1: 0.068
+
+","The prediction is influenced by the following key features and their contributions:
+
+1. **HallKierAlpha (0.120)**  
+   This feature has the largest positive contribution to the prediction. It typically measures molecular shape and flexibility, indicating that molecules with higher HallKierAlpha values are more strongly associated with the predicted property or outcome.
+
+2. **PEOE_VSA7 (0.081) and PEOE_VSA9 (0.079)**  
+   Both these features are related to Partial Equalization of Orbital Electronegativities (PEOE) and represent specific volume surface areas (VSA) associated with particular partial charge ranges. Their positive contributions suggest that the distribution of partial charges on the molecular surface in the ranges covered by VSA7 and VSA9 significantly supports the prediction.
+
+3. **NumAromaticRings (0.069)**  
+   The number of aromatic rings contributes positively, indicating that molecules with more aromatic rings tend to have higher predicted values for the target property. Aromaticity might be linked to the chemical behavior relevant to the prediction.
+
+4. **SMR_VSA1 (0.068)**  
+   This feature relates to molecular refractivity contributions over a specific VSA range, associated with the molecule’s size, polarizability, and electronic environment. Its positive contribution suggests these characteristics enhance the prediction.
+
+**Summary:**  
+All listed features contribute positively, meaning higher values of these descriptors increase the predicted outcome. The strongest influence comes from molecular shape/flexibility (HallKierAlpha) and specific charged surface area regions (PEOE_VSA7 and VSA9), followed by the extent of aromaticity and molecular refractivity characteristics. The prediction favors molecules that are flexible, have certain charge distributions, aromatic rings, and particular polarizability profiles."
+ADME_MDR1_ER,12,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'BCUT2D_MWLOW', 'NumAromaticRings', 'Chi3v', 'SlogP_VSA10']","[-0.07702041867655161, 0.07054443660318958, 0.06464023938779904, 0.05777638168046959, 0.03820196149409874]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.077
+- BCUT2D_MWLOW: 0.071
+- NumAromaticRings: 0.065
+- Chi3v: 0.058
+- SlogP_VSA10: 0.038
+
+","The prediction is influenced by several molecular features, each contributing positively or negatively to the final prediction score.
+
+- **HallKierAlpha (-0.077):** This feature has a negative contribution, decreasing the predicted value. It suggests that higher values of HallKierAlpha reduce the likelihood or level of the predicted property.
+
+- **BCUT2D_MWLOW (0.071):** This feature contributes positively, indicating that higher values increase the predicted score. BCUT2D_MWLOW often relates to molecular weight or electronic properties.
+
+- **NumAromaticRings (0.065):** The number of aromatic rings positively influences the prediction, meaning molecules with more aromatic rings are associated with higher predicted values.
+
+- **Chi3v (0.058):** This topological descriptor also has a positive contribution, so greater Chi3v values increase the prediction.
+
+- **SlogP_VSA10 (0.038):** This feature contributes positively but to a lesser extent, indicating that surface area related to lipophilicity has a mild increasing effect on the prediction.
+
+**Overall interpretation:**
+The prediction leans towards an increased value based on molecular complexity and aromaticity (NumAromaticRings, Chi3v), molecular weight or electronic distribution (BCUT2D_MWLOW), and lipophilicity-related surface area (SlogP_VSA10). However, a higher HallKierAlpha index slightly counteracts this increase. The final prediction is a balance of these factors."
+ADME_MDR1_ER,13,gpt-4.1-mini,basic,5,"['SlogP_VSA4', 'HallKierAlpha', 'qed', 'Chi3n', 'PEOE_VSA9']","[-0.09784460709586192, 0.09308522566203506, -0.0808793423969885, -0.07566619759214445, -0.0690783684544696]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA4: -0.098
+- HallKierAlpha: 0.093
+- qed: -0.081
+- Chi3n: -0.076
+- PEOE_VSA9: -0.069
+
+","The prediction explanation based on the feature contributions is as follows:
+
+- **SlogP_VSA4 (-0.098)**: This feature has a negative contribution, meaning higher values of SlogP_VSA4 are associated with a decrease in the predicted outcome. This feature likely captures a certain aspect of molecular hydrophobicity or surface area related to lipophilicity, where increasing this property reduces the predicted value.
+
+- **HallKierAlpha (0.093)**: This feature contributes positively to the prediction. Higher HallKierAlpha values increase the predicted outcome. HallKierAlpha typically relates to molecular shape or flexibility, so molecules with greater shape descriptors or flexibility as measured here tend to have higher predicted values.
+
+- **qed (-0.081)**: QED (Quantitative Estimate of Drug-likeness) shows a negative contribution, suggesting that molecules with higher drug-likeness scores tend to lower the predicted endpoint in this model.
+
+- **Chi3n (-0.076)**: This molecular connectivity index feature negatively affects the prediction. The Chi3n index reflects certain aspects of molecular branching or topology, so higher connectivity as measured decreases the predicted value.
+
+- **PEOE_VSA9 (-0.069)**: This feature also negatively impacts the prediction. PEOE_VSA9 likely relates to partial charge surface area, indicating that areas of certain partial charges on the molecule reduce the prediction when increased.
+
+### Summary
+The prediction outcome is primarily driven down by four features (SlogP_VSA4, qed, Chi3n, PEOE_VSA9) representing molecular polarity, topology, partial charges, and drug-likeness, while the shape/flexibility descriptor HallKierAlpha pushes the prediction up. The net effect depends on the balance of these positive and negative contributions."
+ADME_MDR1_ER,14,gpt-4.1-mini,basic,5,"['BCUT2D_LOGPHI', 'PEOE_VSA9', 'BCUT2D_CHGHI', 'PEOE_VSA10', 'SMR_VSA5']","[-0.08085144390337046, 0.070571727737188, 0.06138914032631455, -0.05679584339045612, -0.054169531634686886]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_LOGPHI: -0.081
+- PEOE_VSA9: 0.071
+- BCUT2D_CHGHI: 0.061
+- PEOE_VSA10: -0.057
+- SMR_VSA5: -0.054
+
+","The prediction is influenced by the contributions of the specified features as follows:
+
+- **BCUT2D_LOGPHI (-0.081)**: This feature decreases the predicted value. A negative contribution means that as BCUT2D_LOGPHI increases, the model's output moves lower.
+
+- **PEOE_VSA9 (0.071)**: This feature positively contributes to the prediction. It pushes the predicted value higher.
+
+- **BCUT2D_CHGHI (0.061)**: This also adds positively to the predicted value, increasing it.
+
+- **PEOE_VSA10 (-0.057)**: This feature decreases the prediction, contributing negatively.
+
+- **SMR_VSA5 (-0.054)**: This feature also reduces the predicted value slightly.
+
+### Summary:
+Overall, the prediction balances between features that increase the output (PEOE_VSA9 and BCUT2D_CHGHI) and those that decrease it (BCUT2D_LOGPHI, PEOE_VSA10, SMR_VSA5). The negative contributions slightly outweigh the positives, so the prediction is likely lowered somewhat due to the stronger influence of negative contributors."
+ADME_MDR1_ER,15,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'Chi0', 'VSA_EState10', 'HallKierAlpha', 'BCUT2D_MWLOW']","[0.1293497593395981, -0.1119756513461158, -0.08515446385878801, 0.06392446046957397, -0.04728167642705894]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.129
+- Chi0: -0.112
+- VSA_EState10: -0.085
+- HallKierAlpha: 0.064
+- BCUT2D_MWLOW: -0.047
+
+","The feature contributions you've provided indicate how each feature influences the prediction, with positive values pushing the prediction higher and negative values pushing it lower. Here's the explanation for each contribution:
+
+1. **PEOE_VSA9: 0.129**  
+   This feature has a positive contribution of 0.129, meaning it increases the predicted value. PEOE_VSA9 is related to the sum of van der Waals surface areas of atoms with a specific partial charge range, so molecules with higher values in this feature tend to increase the prediction.
+
+2. **Chi0: -0.112**  
+   Chi0 has a negative contribution, decreasing the prediction by 0.112. Chi0 is a molecular connectivity index representing the size and branching of the molecule. A negative contribution implies that greater molecular branching or complexity reduces the prediction.
+
+3. **VSA_EState10: -0.085**  
+   This feature also negatively impacts the prediction. VSA_EState10 combines electronic state indices with van der Waals surface areas for particular atom types. A decrease suggests these attributes lower the predicted outcome.
+
+4. **HallKierAlpha: 0.064**  
+   HallKierAlpha contributes positively by 0.064. It's a molecular shape and flexibility descriptor; higher values indicate more flexible molecules, which tend to increase the predicted value here.
+
+5. **BCUT2D_MWLOW: -0.047**  
+   This feature has a small negative contribution. BCUT2D_MWLOW is related to eigenvalue-based descriptors focusing on molecular weight-related properties. The negative value means molecules with this characteristic tend to slightly decrease the prediction.
+
+### Overall interpretation:
+The prediction results from a balance between features increasing and decreasing it. Here, PEOE_VSA9 and HallKierAlpha push the prediction higher, possibly reflecting certain molecular surface charge and flexibility effects. Meanwhile, Chi0, VSA_EState10, and BCUT2D_MWLOW reduce the prediction, tied to molecular branching, electronic environment, and weight-related properties. The net effect depends on the sum of these contributions."
+ADME_MDR1_ER,16,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'PEOE_VSA9', 'BCUT2D_MWLOW', 'MolLogP', 'PEOE_VSA12']","[-0.08658893015540557, -0.0704580246182697, -0.059699225359122136, 0.03896466634884143, -0.033522837570302784]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.087
+- PEOE_VSA9: -0.070
+- BCUT2D_MWLOW: -0.060
+- MolLogP: 0.039
+- PEOE_VSA12: -0.034
+
+","The prediction is influenced by various features, each contributing positively or negatively to the final outcome. Here's the explanation based on the given feature contributions:
+
+- **HallKierAlpha (-0.087):** This feature has the largest negative contribution, meaning an increase in HallKierAlpha is associated with a decrease in the predicted value. It likely relates to molecular shape or flexibility affecting the prediction negatively.
+
+- **PEOE_VSA9 (-0.070):** This descriptor contributes negatively as well, indicating that whatever molecular properties PEOE_VSA9 measures (typically related to partial charges and surface area) tend to reduce the predicted value.
+
+- **BCUT2D_MWLOW (-0.060):** Another negative contributor. BCUT descriptors are related to weighted eigenvalues of molecular graphs, often capturing aspects of molecular size or electronic distribution. This suggests low molecular weight or related properties decrease the prediction.
+
+- **MolLogP (0.039):** This is a positive contributor, meaning higher lipophilicity (octanol-water partition coefficient) increases the predicted value. Molecules with higher MolLogP tend to push the prediction upward.
+
+- **PEOE_VSA12 (-0.034):** This feature also contributes negatively, though less strongly, again relating to charge and surface area descriptors reducing the prediction.
+
+**Summary:**  
+Overall, the prediction is pulled down mainly by HallKierAlpha, PEOE_VSA9, BCUT2D_MWLOW, and PEOE_VSA12, while MolLogP acts to increase it. The final predicted value likely reflects a balance where molecular shape flexibility, charge distribution, and molecular size reduce the predicted property, whereas lipophilicity has a positive influence."
+ADME_MDR1_ER,17,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'PEOE_VSA9', 'NumAliphaticRings', 'NumHeteroatoms', 'NumSaturatedRings']","[0.13366256153659065, 0.10813634515743097, 0.07859606648214218, 0.06515351338480262, 0.061426027863902645]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.134
+- PEOE_VSA9: 0.108
+- NumAliphaticRings: 0.079
+- NumHeteroatoms: 0.065
+- NumSaturatedRings: 0.061
+
+","The prediction is explained by the contributions of several features, each adding a positive influence to the predicted outcome. Here's a breakdown of how each feature contributes:
+
+- **HallKierAlpha (0.134):** This feature has the largest contribution among those listed. It typically relates to molecular shape or flexibility; a higher value here increases the prediction, suggesting that molecules with certain structural flexibility or shape characteristics positively impact the predicted property.
+
+- **PEOE_VSA9 (0.108):** This feature often represents a surface area descriptor tied to partial charges on the molecule. A positive contribution indicates that the electrostatic surface area measured by PEOE_VSA9 enhances the predicted result.
+
+- **NumAliphaticRings (0.079):** The number of aliphatic rings contributes positively, implying that compounds with more aliphatic rings tend to raise the prediction value.
+
+- **NumHeteroatoms (0.065):** This counts atoms other than carbon and hydrogen (like N, O, S). Its positive contribution means that molecules containing more heteroatoms increase the prediction.
+
+- **NumSaturatedRings (0.061):** The count of saturated rings also boosts the prediction, suggesting that saturation in ring structures is a favorable factor.
+
+**Summary:**  
+Each listed feature pushes the prediction higher, with structural and electronic descriptors playing key roles. The model likely associates certain molecular shapes, charge distributions, and ring characteristics with an increased predicted value in the context of your specific prediction task."
+ADME_MDR1_ER,18,gpt-4.1-mini,basic,5,"['NumAromaticRings', 'PEOE_VSA9', 'HallKierAlpha', 'BCUT2D_MWLOW', 'BCUT2D_LOGPHI']","[0.08737939939742222, -0.06967225855664534, -0.057829691374833805, -0.05406233620775435, -0.05129219941678761]","
+Explain the prediction using the following feature contributions.
+
+- NumAromaticRings: 0.087
+- PEOE_VSA9: -0.070
+- HallKierAlpha: -0.058
+- BCUT2D_MWLOW: -0.054
+- BCUT2D_LOGPHI: -0.051
+
+","The feature contributions indicate how each feature influenced the model's prediction, with positive values pushing the prediction higher and negative values pushing it lower. Here's the interpretation of your feature contributions:
+
+- **NumAromaticRings (0.087):** This feature has a positive contribution of 0.087, meaning that a higher number of aromatic rings in the molecule increased the predicted value. Aromatic rings often contribute to certain chemical properties (e.g., stability, reactivity), so their presence is driving the prediction upward.
+
+- **PEOE_VSA9 (-0.070):** This feature has a negative contribution of -0.070, indicating that higher values or characteristics captured by PEOE_VSA9 decrease the prediction. PEOE_VSA9 relates to the sum of van der Waals surface areas for atoms with a particular partial charge range, so certain charge distributions reduce the predicted outcome.
+
+- **HallKierAlpha (-0.058):** A negative contribution of -0.058 suggests that increasing HallKierAlpha lowers the prediction. HallKierAlpha is a measure related to molecular flexibility or shape, so more flexible or differently shaped molecules may be associated with lower predicted values.
+
+- **BCUT2D_MWLOW (-0.054):** This descriptor negatively impacts the prediction by -0.054. BCUT2D_MWLOW is related to molecular weight properties captured by eigenvalue-based descriptors, and lower or particular molecular weight characteristics reduce the predicted value.
+
+- **BCUT2D_LOGPHI (-0.051):** Similarly, BCUT2D_LOGPHI has a negative contribution, which means its higher values decrease the prediction. This descriptor combines atomic properties and molecular topology, influencing the prediction downward.
+
+### Overall Explanation:
+The prediction is a balance of these features. The presence of aromatic rings strongly increases the predicted value, while aspects related to charge distribution (PEOE_VSA9), molecular flexibility (HallKierAlpha), and molecular weight/topology (BCUT2D_MWLOW and BCUT2D_LOGPHI) act to reduce it. The positive influence of aromatic rings slightly outweighs the combined negative effects, resulting in a moderate net increase in the prediction."
+ADME_MDR1_ER,19,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'NumAromaticRings', 'BCUT2D_MWLOW', 'Chi1n', 'PEOE_VSA12']","[-0.1064149163028764, -0.07294578290752088, -0.06151957685637263, -0.04979178321053151, -0.03903656268603857]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.106
+- NumAromaticRings: -0.073
+- BCUT2D_MWLOW: -0.062
+- Chi1n: -0.050
+- PEOE_VSA12: -0.039
+
+","The prediction is influenced by several features, each contributing a negative amount to the final prediction. Here's what each feature's contribution means in this context:
+
+- **HallKierAlpha (-0.106):** This is the largest negative contributor. HallKierAlpha is a molecular shape and flexibility descriptor. A negative contribution suggests that higher values or certain characteristics captured by this descriptor reduce the predicted outcome.
+
+- **NumAromaticRings (-0.073):** The number of aromatic rings contributes negatively, indicating that molecules with more aromatic rings lower the predicted value.
+
+- **BCUT2D_MWLOW (-0.062):** This descriptor relates to molecular weight distribution and atomic properties. A negative contribution suggests that molecular weight characteristics (specifically lower molecular weight related properties) decrease the prediction.
+
+- **Chi1n (-0.050):** Chi1n is a connectivity index that captures the molecular branching and topology. A negative value indicates that particular branching patterns reduce the predicted outcome.
+
+- **PEOE_VSA12 (-0.039):** This is a partial charge-related surface area descriptor. Its negative contribution implies that certain charge distributions or surface areas are associated with a decrease in prediction.
+
+### Summary:
+All listed features are pushing the model's prediction downward. The overall prediction is lowered due to the combined effect of molecular shape, aromaticity, molecular weight distribution, connectivity, and charge-related surface area properties. This helps understand which molecular characteristics most strongly decrease the predicted property."
+ADME_MDR1_ER,20,gpt-4.1-mini,basic,5,"['PEOE_VSA10', 'PEOE_VSA9', 'BCUT2D_MWLOW', 'PEOE_VSA12', 'BCUT2D_MWHI']","[0.09978515157629726, -0.08953252238644695, -0.05788651188509207, -0.04232495176085477, -0.040288196419221295]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA10: 0.100
+- PEOE_VSA9: -0.090
+- BCUT2D_MWLOW: -0.058
+- PEOE_VSA12: -0.042
+- BCUT2D_MWHI: -0.040
+
+","The prediction is influenced by several features with varying contributions. Here's an explanation based on the given feature contributions:
+
+- **PEOE_VSA10 (0.100):** This feature has the highest positive contribution, indicating that higher values of PEOE_VSA10 push the prediction in the positive direction. PEOE_VSA descriptors typically relate to the sum of van der Waals surface areas with specific partial charge ranges, so regions of the molecule corresponding to this descriptor strongly favor the predicted outcome.
+
+- **PEOE_VSA9 (-0.090):** This feature contributes negatively to the prediction, partially offsetting the positive effect of PEOE_VSA10. It implies that higher values of PEOE_VSA9 decrease the predicted value. Since PEOE_VSA9 and 10 are adjacent descriptors related to charge distribution, a balance between these charge ranges affects the prediction.
+
+- **BCUT2D_MWLOW (-0.058):** This BCUT descriptor captures molecular properties related to weighted eigenvalues of adjacency matrices considering atomic mass. A negative contribution suggests that lower MWLOW values (molecular weight in certain regions or modes) reduce the prediction, perhaps indicating less influence from lighter atoms or substructures.
+
+- **PEOE_VSA12 (-0.042):** Another charge-related surface area descriptor with a small negative contribution, indicating that specific partial charge ranges corresponding to PEOE_VSA12 slightly lower the prediction.
+
+- **BCUT2D_MWHI (-0.040):** This descriptor is similar to BCUT2D_MWLOW but captures higher molecular weight contributions. Its negative contribution indicates that higher values in these weighted eigenvalues decrease the prediction.
+
+### Summary:
+The overall prediction is a balance between positive effects from regions described by PEOE_VSA10 and negative effects from PEOE_VSA9, BCUT2D, and other PEOE_VSA descriptors. The interplay of molecular charge distribution surface areas and weighted atomic mass properties shapes the output, with charge-related area features having the most significant push toward positive or negative predictions."
+ADME_MDR1_ER,21,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'SMR_VSA5', 'Chi0', 'VSA_EState10', 'BCUT2D_MWLOW']","[-0.1296866124812701, 0.07278089124920847, -0.06469592855926405, -0.05981750642642139, -0.058921381429408545]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.130
+- SMR_VSA5: 0.073
+- Chi0: -0.065
+- VSA_EState10: -0.060
+- BCUT2D_MWLOW: -0.059
+
+","The prediction explanation using these feature contributions can be interpreted as follows:
+
+- **HallKierAlpha (-0.130)**: This feature has the largest negative contribution. A negative value means that a higher value of HallKierAlpha decreases the predicted output. HallKierAlpha is often related to molecular shape or complexity, so higher complexity might reduce the prediction score.
+  
+- **SMR_VSA5 (0.073)**: This is the only feature with a positive contribution. It means that higher values of SMR_VSA5 increase the prediction. SMR_VSA5 is related to the sum of van der Waals surface areas of atoms in a specific partial charge range, thus certain atomic environments increase the predicted outcome.
+  
+- **Chi0 (-0.065)**: This feature also negatively affects the prediction but to a lesser extent than HallKierAlpha. Chi0 often relates to molecular connectivity or the number of paths of length 0, so more branching or connectivity here reduces the predicted value.
+  
+- **VSA_EState10 (-0.060)**: Another small negative contributor related to an atom’s electro-topological state combined with surface area. Larger values reduce the prediction, which might indicate that certain electronic or topological properties negatively impact the predicted outcome.
+  
+- **BCUT2D_MWLOW (-0.059)**: This feature contributes negatively as well. BCUT descriptors often relate to molecular weight or other weighted properties, so lower molecular weight-related values reduce the prediction.
+
+### Summary:
+The overall prediction is decreased mainly because of large negative contributions from HallKierAlpha, Chi0, VSA_EState10, and BCUT2D_MWLOW. Only SMR_VSA5 provides a positive push toward increasing the prediction, but it is smaller than the sum of the negative contributions. 
+
+Thus, the molecular features primarily indicate structural or electronic properties that lower the predicted value, with only one partial atomic environment contributing positively."
+ADME_MDR1_ER,22,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'NumAromaticRings', 'SMR_VSA5', 'MolWt', 'MolLogP']","[0.1091468028741963, 0.09135532501879023, 0.0608422239611972, -0.04532216221509333, 0.039562731273585436]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.109
+- NumAromaticRings: 0.091
+- SMR_VSA5: 0.061
+- MolWt: -0.045
+- MolLogP: 0.040
+
+","The prediction is influenced by the following features with their respective contributions to the output:
+
+- **HallKierAlpha (0.109):** This feature has the largest positive contribution. HallKierAlpha is related to molecular flexibility or shape; a higher value increases the predicted outcome.
+- **NumAromaticRings (0.091):** The number of aromatic rings contributes positively, meaning more aromatic rings increase the prediction.
+- **SMR_VSA5 (0.061):** This feature describes the sum of van der Waals surface areas of atoms with certain values of the SMR (molar refractivity); it also positively influences the prediction.
+- **MolWt (-0.045):** Molecular weight slightly decreases the predicted value, indicating that larger molecules might reduce the outcome.
+- **MolLogP (0.040):** The logarithm of the partition coefficient between octanol and water reflects hydrophobicity; its positive contribution increases the prediction somewhat.
+
+**Summary:**
+The prediction is mainly driven up by molecular flexibility (HallKierAlpha), the number of aromatic rings, and molecular surface properties (SMR_VSA5), while higher molecular weight pulls it down slightly. Hydrophobicity (MolLogP) adds a modest positive influence."
+ADME_MDR1_ER,23,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'AvgIpc', 'fr_diazo', 'Chi0v', 'Chi0']","[0.09337877837130425, 0.050452998271259125, 0.04360132214599913, 0.04239074035210915, -0.04137217575703615]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.093
+- AvgIpc: 0.050
+- fr_diazo: 0.044
+- Chi0v: 0.042
+- Chi0: -0.041
+
+","The prediction is influenced by the contributions of the listed features, where positive values push the predicted outcome higher, and negative values push it lower. Here's what the provided feature contributions mean:
+
+- **HallKierAlpha (0.093)**: This feature has the largest positive contribution, meaning it strongly increases the predicted value. Hall-Kier Alpha is often related to molecular shape or flexibility, so a higher value of this feature positively impacts the prediction.
+
+- **AvgIpc (0.050)**: This feature also adds positively to the prediction, though less than HallKierAlpha. AvgIpc usually relates to information content or molecular complexity, so an increase here slightly raises the prediction.
+
+- **fr_diazo (0.044)**: This is a fragment-based feature indicating the presence of diazo groups. Its positive contribution suggests that molecules with diazo groups increase the predicted value.
+
+- **Chi0v (0.042)**: Chi0v is a connectivity index variant; its positive contribution means that certain topological aspects modeled by this index positively affect the prediction.
+
+- **Chi0 (-0.041)**: Chi0 is another connectivity index but here it contributes negatively, slightly lowering the predicted value.
+
+### Overall explanation:
+The prediction is mostly driven upward by molecular shape/flexibility, complexity, and the presence of diazo groups, with some balancing downward effect from specific topological connectivity (Chi0). The net effect is a moderate increase in the prediction due to the sum of these contributions."
+ADME_MDR1_ER,24,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'BCUT2D_MWLOW', 'VSA_EState10', 'TPSA', 'BCUT2D_CHGHI']","[0.0881945264277617, -0.05765906305203431, -0.043541552286603585, -0.038904992361756936, -0.037532727979522756]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.088
+- BCUT2D_MWLOW: -0.058
+- VSA_EState10: -0.044
+- TPSA: -0.039
+- BCUT2D_CHGHI: -0.038
+
+","The prediction explanation using the given feature contributions can be interpreted as follows:
+
+- **PEOE_VSA9: +0.088**  
+  This feature has the largest positive contribution to the prediction. A positive value for PEOE_VSA9 increases the predicted outcome. This suggests that the aspect of the molecule or data captured by the PEOE_VSA9 descriptor positively influences the predicted property or class.
+
+- **BCUT2D_MWLOW: -0.058**  
+  This feature negatively impacts the prediction. The presence of this attribute lowers the predicted value by a moderate amount, indicating that whatever property or pattern BCUT2D_MWLOW encodes is reducing the likelihood of the predicted outcome or decreasing the predicted value.
+
+- **VSA_EState10: -0.044**  
+  Similarly, this feature contributes negatively to the prediction, but with a smaller magnitude than BCUT2D_MWLOW. It slightly diminishes the predicted score or class likelihood.
+
+- **TPSA: -0.039**  
+  Topological Polar Surface Area (TPSA) also reduces the prediction, albeit modestly, suggesting that higher or certain values of TPSA lower the predicted value.
+
+- **BCUT2D_CHGHI: -0.038**  
+  This feature acts in the same direction as the others besides PEOE_VSA9, providing a subtle negative pull on the prediction.
+
+### Overall interpretation:
+The prediction value is primarily driven **upwards by PEOE_VSA9**, while the other features collectively bring it down. The net impact is determined by the sum of these contributions. If the absolute positive contribution (0.088) outweighs the combined negative contributions (-0.179 total of others), the prediction will lean positive. Otherwise, it will lean negative or lower.
+
+### In summary:
+- **PEOE_VSA9 is the strongest positive driver.**
+- **BCUT2D_MWLOW, VSA_EState10, TPSA, and BCUT2D_CHGHI decrease the prediction.**
+- The model prediction balances these competing influences to arrive at its final value.
+
+If you'd like, I can help further by explaining what these features represent chemically or in terms of data characteristics!"
+ADME_MDR1_ER,25,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'BCUT2D_MWLOW', 'PEOE_VSA12', 'PEOE_VSA10', 'PEOE_VSA9']","[-0.08667124841257812, -0.07207865663738665, -0.05616562771128921, -0.048622684625637826, -0.04767638541826495]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.087
+- BCUT2D_MWLOW: -0.072
+- PEOE_VSA12: -0.056
+- PEOE_VSA10: -0.049
+- PEOE_VSA9: -0.048
+
+","The prediction is influenced by several features with their respective contributions to the model output. Here's an explanation of each feature's contribution:
+
+- **HallKierAlpha (-0.087):** This feature contributes a negative impact to the prediction, decreasing the predicted value or likelihood. HallKierAlpha often relates to molecular shape or flexibility properties, so a lower or specific value in this feature reduces the predicted outcome.
+
+- **BCUT2D_MWLOW (-0.072):** This attribute also has a negative contribution, further lowering the prediction. BCUT2D_MWLOW is commonly associated with molecular weight-related descriptors emphasizing low molecular weight components, suggesting that those characteristics reduce the predicted target.
+
+- **PEOE_VSA12 (-0.056):** This descriptor measures the surface area of atoms with specific partial charges. Its negative contribution indicates that features corresponding to PEOE_VSA12 reduce the prediction score.
+
+- **PEOE_VSA10 (-0.049):** Similar to PEOE_VSA12, this also reflects surface areas of atoms within a certain partial charge range, negatively impacting the prediction but to a slightly lesser extent.
+
+- **PEOE_VSA9 (-0.048):** This is another partial charge-related surface area descriptor with a negative contribution, slightly lowering the prediction.
+
+**Summary:**
+
+All listed features contribute negatively to the predicted outcome, meaning that their presence or values decrease the predicted score. The largest negative effect is from HallKierAlpha, followed by BCUT2D_MWLOW, then the PEOE_VSA descriptors. If this is a prediction like toxicity, activity, or some other molecular property, these features' values push the prediction lower, suggesting less likelihood or intensity of the predicted property."
+ADME_MDR1_ER,26,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'SMR_VSA5', 'NumAromaticRings', 'BCUT2D_MWLOW', 'qed']","[-0.12684630456993792, 0.08823493090073384, -0.0637224707193728, -0.057590741578364336, -0.052583249263434106]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.127
+- SMR_VSA5: 0.088
+- NumAromaticRings: -0.064
+- BCUT2D_MWLOW: -0.058
+- qed: -0.053
+
+","The prediction explanation using the given feature contributions can be interpreted as follows:
+
+- **PEOE_VSA9: -0.127**  
+  This feature has the largest negative contribution, indicating that a higher value of PEOE_VSA9 reduces the predicted outcome. PEOE_VSA9 typically relates to partial charge surface area and electronegativity, so regions with certain charge distributions might be decreasing the model’s prediction.
+
+- **SMR_VSA5: 0.088**  
+  This feature contributes positively, suggesting that higher values of SMR_VSA5 (which often encodes surface area contributions related to molar refractivity) increase the prediction. This means that increasing this property makes the predicted value go up.
+
+- **NumAromaticRings: -0.064**  
+  The number of aromatic rings negatively influences the prediction. More aromatic rings reduce the predicted value, though its effect is moderate compared to PEOE_VSA9.
+
+- **BCUT2D_MWLOW: -0.058**  
+  This descriptor relates to molecular weight distribution among atoms. Its negative contribution indicates that certain MW-related features decrease the prediction outcome.
+
+- **qed: -0.053**  
+  The quantitative estimate of drug-likeness (qed) slightly lowers the prediction, suggesting that higher drug-likeness scores have a minor negative impact on the predicted value.
+
+**Overall Interpretation:**  
+The prediction is being pulled down mainly by the PEOE_VSA9 feature, with several others also contributing negatively, while SMR_VSA5 is pushing the prediction upwards. The combined effect of these features results in the final predicted value. Understanding this can help in guiding how changes in molecular properties might influence the prediction."
+ADME_MDR1_ER,27,gpt-4.1-mini,basic,5,"['fr_azide', 'PEOE_VSA9', 'SMR_VSA5', 'Chi1n', 'Chi0']","[0.14991890682204284, 0.13181141044445396, 0.10878729548730999, 0.0993804397314733, -0.0722808246475222]","
+Explain the prediction using the following feature contributions.
+
+- fr_azide: 0.150
+- PEOE_VSA9: 0.132
+- SMR_VSA5: 0.109
+- Chi1n: 0.099
+- Chi0: -0.072
+
+","The prediction is explained by the contributions of the listed features to the model's output, where positive values push the prediction higher, and negative values push it lower.
+
+- **fr_azide (0.150):** This feature has the largest positive contribution. Its presence or higher value strongly increases the predicted outcome.
+- **PEOE_VSA9 (0.132):** This also has a strong positive impact, further raising the prediction.
+- **SMR_VSA5 (0.109):** Adds a moderate positive contribution, moving the prediction upwards.
+- **Chi1n (0.099):** Another positive factor, though smaller, that pushes the prediction slightly higher.
+- **Chi0 (-0.072):** This is the only feature with a negative contribution and thus slightly reduces the predicted value.
+
+Overall, the prediction is influenced primarily by the first four features positively, with the last feature having a mitigating effect. The final prediction results from the sum of these contributions, weighted by their magnitudes and signs."
+ADME_MDR1_ER,28,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'SMR_VSA5', 'NumAromaticRings', 'BCUT2D_MWLOW', 'Chi1n']","[0.12545531504700003, 0.10427832914419814, 0.10216651956736944, 0.09437267936429819, 0.07602133038782628]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.125
+- SMR_VSA5: 0.104
+- NumAromaticRings: 0.102
+- BCUT2D_MWLOW: 0.094
+- Chi1n: 0.076
+
+","The prediction for your model is influenced by the contributions of the various features as follows:
+
+- **HallKierAlpha (0.125)**: This feature contributes the most to the prediction. HallKierAlpha is often related to the molecular flexibility or shape of a compound. A positive contribution of 0.125 suggests that higher values of this feature push the model towards the predicted outcome (e.g., higher activity, toxicity, or other predicted property depending on your model context).
+
+- **SMR_VSA5 (0.104)**: This descriptor relates to the sum of van der Waals surface areas of atoms with a specific range of molar refractivity. Its positive contribution indicates that molecules with certain surface area characteristics (captured by SMR_VSA5) are influential in increasing the predicted response.
+
+- **NumAromaticRings (0.102)**: The number of aromatic rings contributes positively as well, implying that molecules with more aromatic rings are associated with higher predicted values in the model.
+
+- **BCUT2D_MWLOW (0.094)**: BCUT descriptors capture properties related to atomic weights and connectivity. MWLOW specifically targets low molecular weight atoms in the connectivity matrix. Its positive contribution means that aspects of the molecule's atomic weight distribution increase the predicted value.
+
+- **Chi1n (0.076)**: This is a topological descriptor related to the molecule's connectivity and branching. A positive contribution suggests that certain connectivity patterns favor the predicted outcome.
+
+**Summary:**  
+All listed features contribute positively to the prediction, with HallKierAlpha having the largest impact. The model prediction is driven mostly by molecular shape and flexibility, specific surface area properties, aromaticity, atomic weight distribution, and molecular connectivity. These combined molecular characteristics increase the predicted output according to your model."
+ADME_MDR1_ER,29,gpt-4.1-mini,basic,5,"['BCUT2D_MWLOW', 'HallKierAlpha', 'PEOE_VSA10', 'Chi1n', 'BCUT2D_LOGPLOW']","[-0.07239525165375968, -0.059917189737449396, -0.05348853305296175, -0.05286518848775828, -0.05271569011356937]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_MWLOW: -0.072
+- HallKierAlpha: -0.060
+- PEOE_VSA10: -0.053
+- Chi1n: -0.053
+- BCUT2D_LOGPLOW: -0.053
+
+","The prediction is being influenced by the following features, all contributing negatively towards the predicted outcome:
+
+- **BCUT2D_MWLOW: -0.072**  
+  This feature’s negative contribution suggests that molecules with lower BCUT2D_MWLOW values push the prediction downward. BCUT2D_MWLOW relates to molecular weight and electronic properties; lower values may indicate less favorable properties for the target outcome.
+
+- **HallKierAlpha: -0.060**  
+  A negative effect implies that higher Hall-Kier Alpha values (which describe molecular shape and flexibility) reduce the predicted response, possibly indicating that more flexible or less compact molecules are less favorable.
+
+- **PEOE_VSA10: -0.053**  
+  This descriptor reflects partial charges on the molecular surface; a negative contribution here suggests that certain charge distributions reduce the likelihood of the positive prediction outcome.
+
+- **Chi1n: -0.053**  
+  Chi indices describe molecular connectivity and complexity. A negative impact from Chi1n means that specific topological arrangements or lower molecular branching might decrease the prediction score.
+
+- **BCUT2D_LOGPLOW: -0.053**  
+  This descriptor combines hydrophobicity (logP) and electronic properties at the lower end of the spectrum. Negative contribution implies that molecules with low hydrophobicity and certain electronic characteristics lessen the predicted value.
+
+**Overall interpretation:**  
+All these feature contributions reduce the predicted score, indicating that the molecular properties captured by these descriptors are less favorable for the target property or outcome being predicted. The model’s decision is being pulled downward primarily by these factors related to molecular weight, shape, charge distribution, topological complexity, and hydrophobicity."
+ADME_MDR1_ER,30,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'HallKierAlpha', 'PEOE_VSA12', 'qed', 'BCUT2D_MWLOW']","[-0.09349726967475622, -0.0763081451719399, -0.050788345191689226, 0.050451095244672214, -0.046513325348606034]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.093
+- HallKierAlpha: -0.076
+- PEOE_VSA12: -0.051
+- qed: 0.050
+- BCUT2D_MWLOW: -0.047
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+- **PEOE_VSA9 (-0.093):** This feature has the largest negative contribution, indicating that higher values of PEOE_VSA9 reduce the predicted outcome. PEOE_VSA9 typically relates to certain partial charge surface areas in the molecule, so these characteristics are negatively influencing the prediction.
+
+- **HallKierAlpha (-0.076):** This feature also decreases the prediction. HallKierAlpha is a topological descriptor related to molecular shape or flexibility, suggesting that certain structural aspects are pushing the prediction downward.
+
+- **PEOE_VSA12 (-0.051):** Another partial charge surface area descriptor contributing negatively, further lowering the predicted value.
+
+- **qed (0.050):** The Quantitative Estimate of Drug-likeness (qed) has a positive contribution, meaning drug-likeness properties increase the predicted outcome moderately.
+
+- **BCUT2D_MWLOW (-0.047):** This BCUT descriptor related to molecular weight (possibly low-end MW-related eigenvalue) contributes negatively, slightly lowering the prediction.
+
+**Summary:**  
+The overall prediction is being pulled down mainly due to the combined negative effects of the surface area charge descriptors (PEOE_VSA9 and PEOE_VSA12), molecular shape/flexibility (HallKierAlpha), and a molecular weight-related descriptor (BCUT2D_MWLOW). The only positive push comes from the drug-likeness measure (qed), suggesting that while the molecule does have some drug-like features increasing the prediction, structural and electronic features are having a stronger negative impact."
+ADME_MDR1_ER,31,gpt-4.1-mini,basic,5,"['NumAromaticRings', 'HallKierAlpha', 'PEOE_VSA9', 'Chi3v', 'SMR_VSA1']","[0.14875502724016762, 0.1165292835265887, 0.11485295773689871, 0.07672155933515835, 0.07557641185496329]","
+Explain the prediction using the following feature contributions.
+
+- NumAromaticRings: 0.149
+- HallKierAlpha: 0.117
+- PEOE_VSA9: 0.115
+- Chi3v: 0.077
+- SMR_VSA1: 0.076
+
+","The prediction is influenced by the following features with their respective contributions:
+
+- **NumAromaticRings (0.149):** The number of aromatic rings has the largest positive contribution, indicating that molecules with more aromatic rings strongly increase the predicted value.
+- **HallKierAlpha (0.117):** This feature, related to molecular flexibility or shape, also positively impacts the prediction, suggesting that higher Hall-Kier alpha values push the prediction upward.
+- **PEOE_VSA9 (0.115):** This descriptor, related to partial charges and accessible surface area, contributes positively, meaning regions with certain charge distributions and surface areas increase the predicted output.
+- **Chi3v (0.077):** A molecular connectivity index influencing the prediction moderately, indicating certain connectivity patterns enhance the predicted value.
+- **SMR_VSA1 (0.076):** Related to polarizability surface area, it has a modest positive effect on the prediction, implying that increases in this surface area slightly raise the predicted result.
+
+**Summary:** The prediction is primarily driven by structural features associated with aromaticity, molecular shape, partial charge distributions, connectivity, and polarizability surface area. Each feature contributes positively, meaning their presence or higher values increase the predicted outcome."
+ADME_MDR1_ER,32,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'qed', 'PEOE_VSA9', 'BCUT2D_LOGPHI', 'Chi1n']","[0.15437213101657832, -0.1427283797050868, 0.07994700220532942, 0.07515239454357509, 0.0673093899429613]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.154
+- qed: -0.143
+- PEOE_VSA9: 0.080
+- BCUT2D_LOGPHI: 0.075
+- Chi1n: 0.067
+
+","The prediction explanation based on the given feature contributions can be summarized as follows:
+
+- **HallKierAlpha: +0.154**  
+  This feature has the largest positive contribution, meaning that a higher value of HallKierAlpha increases the predicted outcome. HallKierAlpha often relates to molecular shape or flexibility, so this characteristic drives the prediction upward.
+
+- **qed: -0.143**  
+  The Quantum-Mechanical/Drug-likeness score (qed) contributes negatively to the prediction. A higher qed value reduces the predicted outcome, indicating that molecules with better drug-likeness slightly lower the prediction.
+
+- **PEOE_VSA9: +0.080**  
+  This feature positively influences the prediction moderately. PEOE_VSA9 relates to partial charge surface area descriptors, so increased values tend to increase the prediction.
+
+- **BCUT2D_LOGPHI: +0.075**  
+  Another positive contributor, reflecting a topological or spectral molecular descriptor, boosting the prediction moderately.
+
+- **Chi1n: +0.067**  
+  This descriptor (a molecular connectivity index) provides a smaller but still positive contribution, indicating that certain structural branching properties increase the predicted value.
+
+### Summary:
+The overall prediction is pushed upward primarily because of the positive contributions from HallKierAlpha, PEOE_VSA9, BCUT2D_LOGPHI, and Chi1n, while the qed feature serves as a counteracting factor, slightly lowering the prediction. The net effect is a modest increase driven mainly by molecular shape, surface charge properties, and connectivity features."
+ADME_MDR1_ER,33,gpt-4.1-mini,basic,5,"['fr_azide', 'PEOE_VSA10', 'NumAromaticRings', 'HallKierAlpha', 'qed']","[0.0840827446876055, 0.07500138304244088, -0.06537879954728534, -0.06428697375587877, -0.06360719305994418]","
+Explain the prediction using the following feature contributions.
+
+- fr_azide: 0.084
+- PEOE_VSA10: 0.075
+- NumAromaticRings: -0.065
+- HallKierAlpha: -0.064
+- qed: -0.064
+
+","The prediction is influenced by the given features as follows:
+
+- **fr_azide (0.084):** This positive contribution means the presence of the azide functional group increases the predicted value. The model considers azide groups as a factor that raises the prediction metric (e.g., activity, toxicity, or some property).
+
+- **PEOE_VSA10 (0.075):** A positive contribution from this molecular descriptor (related to partial charges and molecular surface area) suggests that higher values of PEOE_VSA10 increase the prediction. This descriptor likely captures electronic or steric properties relevant to the prediction.
+
+- **NumAromaticRings (-0.065):** The negative value shows that molecules with more aromatic rings tend to decrease the predicted value. Aromatic rings may reduce the property or activity the model is predicting.
+
+- **HallKierAlpha (-0.064):** This topological descriptor related to molecular shape or flexibility negatively affects the prediction, indicating that molecules with higher HallKierAlpha values decrease the predicted property.
+
+- **qed (-0.064):** The quantitative estimate of drug-likeness (qed) also negatively contributes here. This suggests that more ""drug-like"" molecules as per the qed metric lower the prediction in this context.
+
+**Summary:** The prediction increases mainly due to the presence of the azide group and certain electronic/steric features (PEOE_VSA10), but decreases with an increasing number of aromatic rings, molecular flexibility/shape (HallKierAlpha), and overall drug-likeness (qed). The net effect will depend on the balance of these contributions."
+ADME_MDR1_ER,34,gpt-4.1-mini,basic,5,"['PEOE_VSA10', 'PEOE_VSA9', 'BCUT2D_MWLOW', 'SMR_VSA1', 'Chi1n']","[0.09426058859224544, 0.07502899660947182, 0.07366064613503252, 0.061337916928154226, 0.05527743259284978]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA10: 0.094
+- PEOE_VSA9: 0.075
+- BCUT2D_MWLOW: 0.074
+- SMR_VSA1: 0.061
+- Chi1n: 0.055
+
+","The prediction explanation using the provided feature contributions can be interpreted as follows:
+
+- **PEOE_VSA10 (0.094)**: This feature has the largest positive contribution. PEOE_VSA descriptors relate to the sum of partial charges (using the PEOE method) on van der Waals surface areas falling within a certain charge range. A positive contribution here means that the portion of the molecule's surface with this specific partial charge range strongly pushes the prediction higher (e.g., increasing affinity, activity, or the target variable).
+
+- **PEOE_VSA9 (0.075)**: This feature also positively influences the prediction but to a slightly lesser extent than PEOE_VSA10. It similarly accounts for areas on the molecular surface with a different partial charge range. Its positive contribution supports the overall trend driven by PEOE_VSA10.
+
+- **BCUT2D_MWLOW (0.074)**: BCUT descriptors are eigenvalues derived from a modified adjacency matrix weighted by atomic properties. BCUT2D_MWLOW corresponds to a low eigenvalue related to molecular weight. Its positive contribution suggests that molecules with certain atomic connectivities and lower molecular weight aspects are more likely to exhibit the predicted outcome.
+
+- **SMR_VSA1 (0.061)**: This descriptor sums the van der Waals surface areas of atoms with specific contributions to the molar refractivity (related to polarizability). A positive contribution indicates that polarizability-related surface areas help increase the prediction.
+
+- **Chi1n (0.055)**: Chi1n is a topological connectivity index representing molecular branching. A positive contribution means that certain branching patterns in the molecule positively impact the prediction.
+
+### Overall interpretation:
+Each of the listed molecular features is positively influencing the prediction, with PEOE_VSA10 having the strongest effect. The model is likely predicting a chemical property or activity that is enhanced by certain charged surface areas of the molecule, specific connectivity and branching patterns, and molecular features related to molecular weight and polarizability. The positive contributions indicate these features push the prediction value upward, meaning they are important decision drivers for the model's output."
+ADME_MDR1_ER,35,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'NumAromaticRings', 'HallKierAlpha', 'BCUT2D_MWLOW', 'Chi4n']","[-0.1023968642686829, -0.07173307098623471, -0.06839889706848204, -0.05562448305616598, -0.046686865248163636]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.102
+- NumAromaticRings: -0.072
+- HallKierAlpha: -0.068
+- BCUT2D_MWLOW: -0.056
+- Chi4n: -0.047
+
+","The prediction is influenced by the following features, each contributing negatively to the output:
+
+- **PEOE_VSA9 (-0.102):** This feature has the largest negative impact on the prediction. PEOE_VSA9 typically represents the sum of van der Waals surface areas of atoms in a particular partial charge range. A negative contribution suggests that higher values of this feature decrease the predicted value.
+
+- **NumAromaticRings (-0.072):** The number of aromatic rings in the molecule also reduces the prediction. More aromatic rings lead to a lower predicted value.
+
+- **HallKierAlpha (-0.068):** This molecular descriptor relates to molecular branching and shape. Its negative contribution means that configurations with higher HallKierAlpha scores lower the predicted value.
+
+- **BCUT2D_MWLOW (-0.056):** This is a BCUT descriptor related to molecular weight and atomic properties. Its negative impact suggests that molecules with characteristics raising this descriptor reduce the prediction.
+
+- **Chi4n (-0.047):** This is a molecular connectivity index accounting for the 4th order neighborhood of atoms. Its negative value indicates that more complex or certain connectivity types reduce the predicted output.
+
+**Summary:** All these features contribute to lowering the prediction. Therefore, the molecule's characteristics such as having higher PEOE_VSA9 values, more aromatic rings, greater molecular branching, specific BCUT2D_MWLOW values, and certain complex connectivity patterns work together to decrease the predicted value in the model."
+ADME_MDR1_ER,36,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'Chi0', 'PEOE_VSA10', 'NumAromaticRings', 'BCUT2D_LOGPHI']","[-0.09141005793786076, -0.06675294841954925, -0.06010384330218112, -0.04832101668479352, -0.04694757493260837]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.091
+- Chi0: -0.067
+- PEOE_VSA10: -0.060
+- NumAromaticRings: -0.048
+- BCUT2D_LOGPHI: -0.047
+
+","The prediction explanation based on the given feature contributions can be interpreted as follows:
+
+Each feature listed has a negative contribution to the prediction, meaning that these features are pushing the predicted value lower.
+
+- **HallKierAlpha: -0.091**  
+  This feature has the largest negative impact among the ones listed, reducing the prediction by about 0.091 units. HallKierAlpha is a molecular descriptor related to the shape and electronic nature of the molecule, so its particular value is associated with decreasing the predicted property, such as activity, toxicity, or some other endpoint.
+
+- **Chi0: -0.067**  
+  A topological descriptor reflecting molecular branching; a negative contribution here indicates that the molecular branching (or connectivity pattern represented by Chi0) is associated with a lower predicted score.
+
+- **PEOE_VSA10: -0.060**  
+  This descriptor relates to the partial charges and van der Waals surface area contribution in a specific range; its negative impact suggests that having certain charge-surface area features decreases the predicted value.
+
+- **NumAromaticRings: -0.048**  
+  The number of aromatic rings decreases the prediction, which may imply that adding aromatic rings lowers the predicted activity/property being modeled.
+
+- **BCUT2D_LOGPHI: -0.047**  
+  BCUT descriptors are eigenvalue-based molecular descriptors summarizing electronic and topological information; a negative contribution from this one means the molecule's electronic or topological features as captured here are also pushing the prediction down.
+
+### Summary
+
+Overall, the model indicates that the structural and electronic features summarized by these descriptors each contribute moderately to lowering the predicted value. Their combined negative contributions suggest the molecule's shape, branching, charge distribution, aromaticity, and electronic topology all work together to reduce the prediction outcome relative to a baseline or reference point."
+ADME_MDR1_ER,37,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'PEOE_VSA9', 'NumAromaticRings', 'PEOE_VSA12', 'SMR_VSA5']","[-0.19035143547143105, -0.09209565317722958, -0.08652638769835574, -0.07669763334899228, 0.06921008198400563]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.190
+- PEOE_VSA9: -0.092
+- NumAromaticRings: -0.087
+- PEOE_VSA12: -0.077
+- SMR_VSA5: 0.069
+
+","The prediction explanation based on the given feature contributions can be summarized as follows:
+
+- **HallKierAlpha (-0.190)**: This feature has the largest negative contribution, indicating that a higher (or specific) value of HallKierAlpha strongly decreases the predicted output. HallKierAlpha generally relates to molecular shape or flexibility, so its value likely reduces the prediction in this case.
+
+- **PEOE_VSA9 (-0.092)**: This also negatively contributes, meaning that the value associated with this surface area descriptor (related to partial charges on molecular surface) lowers the prediction score moderately.
+
+- **NumAromaticRings (-0.087)**: The count of aromatic rings is negatively affecting the prediction. More aromatic rings or certain counts bring the predicted value down.
+
+- **PEOE_VSA12 (-0.077)**: Another charge- and surface area-related descriptor, also pushing the prediction downward, though less strongly than the others.
+
+- **SMR_VSA5 (0.069)**: This is the only feature pushing the prediction upward. It relates to surface area weighted by molar refractivity, so higher values here slightly increase the predicted outcome.
+
+### Overall Interpretation:
+Most of the important molecular descriptors here are lowering the predicted value, suggesting that the combination of molecular shape (HallKierAlpha), charge surface areas (PEOE_VSA9, PEOE_VSA12), and aromatic ring count are factors reducing the target prediction. Only one feature, SMR_VSA5, offsets this trend with a modest positive effect.
+
+This insight can help understand which molecular properties drive the prediction higher or lower, guiding interpretation or further molecular design."
+ADME_MDR1_ER,38,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'BCUT2D_MWLOW', 'SMR_VSA5', 'PEOE_VSA12', 'PEOE_VSA9']","[-0.08032686960437752, -0.07999830400041472, -0.046027425990225336, -0.038980571264008626, -0.03730542923425192]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.080
+- BCUT2D_MWLOW: -0.080
+- SMR_VSA5: -0.046
+- PEOE_VSA12: -0.039
+- PEOE_VSA9: -0.037
+
+","The prediction is influenced by the combined contributions of the listed features. Each feature's contribution represents how much it pushes the prediction in a positive or negative direction relative to a baseline.
+
+Here are the feature contributions given:
+
+- **HallKierAlpha: -0.080**  
+- **BCUT2D_MWLOW: -0.080**  
+- **SMR_VSA5: -0.046**  
+- **PEOE_VSA12: -0.039**  
+- **PEOE_VSA9: -0.037**  
+
+### Explanation:
+
+1. **Negative Contributions:**  
+   All the feature contributions listed are negative values. This means each of these features is pushing the model's prediction downward (reducing the predicted value or likelihood, depending on the model and task).
+
+2. **Magnitude Differences:**  
+   - **HallKierAlpha and BCUT2D_MWLOW** have the largest negative impacts (-0.080 each), indicating these two features are the most influential among those listed in lowering the prediction.
+   - **SMR_VSA5 (-0.046), PEOE_VSA12 (-0.039), and PEOE_VSA9 (-0.037)** contribute moderately, each decreasing the prediction but to a lesser extent.
+
+3. **Aggregate Effect:**  
+   Summing the contributions:  
+   -0.080 + (-0.080) + (-0.046) + (-0.039) + (-0.037) = **-0.282**  
+
+   The combined effect is to reduce the prediction by approximately 0.282 units (in the prediction space used by the model).
+
+### Summary:
+The model's prediction is being pulled downward overall by these five features. Notably, **HallKierAlpha** and **BCUT2D_MWLOW** have the strongest impact in decreasing the predicted value, while the others also nudge the prediction lower but less dramatically. The final prediction will be lower than the baseline because of the combined negative contributions from these features."
+ADME_MDR1_ER,39,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'SMR_VSA1', 'SlogP_VSA10', 'BCUT2D_MWLOW', 'HallKierAlpha']","[-0.13396022975954167, 0.12025242715845937, 0.06436450917343221, -0.055851801804143696, -0.05363729469116005]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.134
+- SMR_VSA1: 0.120
+- SlogP_VSA10: 0.064
+- BCUT2D_MWLOW: -0.056
+- HallKierAlpha: -0.054
+
+","The prediction is explained by the combined effects of the individual feature contributions listed. Each feature either increases or decreases the predicted output based on its contribution value:
+
+- **PEOE_VSA9 (-0.134)**: This feature has the largest negative contribution, meaning it reduces the predicted value. It likely represents certain electronic or surface area properties related to partial charges that negatively impact the prediction.
+
+- **SMR_VSA1 (0.120)**: This positive contribution indicates that this feature, related to molar refractivity and surface area, increases the predicted value. It suggests that the molecular refractivity in this surface area range positively affects the prediction.
+
+- **SlogP_VSA10 (0.064)**: Another positive contributor, associated with the sum of logP atomic contributions over a specific surface area bin. This means that hydrophobic surface areas positively influence the prediction but to a lesser extent than SMR_VSA1.
+
+- **BCUT2D_MWLOW (-0.056)**: This negative contribution, related to a BCUT descriptor weighted by molecular weight focusing on lower eigenvalues, slightly decreases the predicted value, indicating certain molecular weight and connectivity patterns reduce the prediction.
+
+- **HallKierAlpha (-0.054)**: This descriptor, related to molecular shape or flexibility, has a small negative effect, slightly lowering the predicted value.
+
+**Summary**: The prediction is driven up by features related to molar refractivity and hydrophobic surface areas (SMR_VSA1 and SlogP_VSA10), while it is pulled down mainly by electronic surface area characteristics (PEOE_VSA9) and molecular shape and weight descriptors (BCUT2D_MWLOW and HallKierAlpha). The net prediction results from the balance of these positive and negative contributions."
+ADME_MDR1_ER,40,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'HallKierAlpha', 'NumAromaticRings', 'SMR_VSA5', 'BCUT2D_MWLOW']","[-0.10448763273689102, 0.0961097176095538, 0.07227544580847402, -0.06027726036934528, -0.05284150935639158]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.104
+- HallKierAlpha: 0.096
+- NumAromaticRings: 0.072
+- SMR_VSA5: -0.060
+- BCUT2D_MWLOW: -0.053
+
+","The prediction is explained by the combined effects of the listed feature contributions, which indicate how much each feature pushes the prediction up or down relative to the baseline.
+
+- **PEOE_VSA9 (-0.104):** This feature has the largest negative contribution, decreasing the predicted value. It indicates that whatever property PEOE_VSA9 captures (likely related to the partial charge surface area in a certain range) tends to lower the prediction in this case.
+
+- **HallKierAlpha (0.096):** This feature has a strong positive contribution, increasing the prediction. HallKierAlpha is a molecular shape or flexibility descriptor, so a higher value likely favors an increase in the predicted outcome.
+
+- **NumAromaticRings (0.072):** The number of aromatic rings also positively contributes to the prediction, suggesting that more aromatic rings raise the predicted value somewhat.
+
+- **SMR_VSA5 (-0.060):** This feature negatively affects the prediction. SMR_VSA features relate to molecular refractivity within certain surface area bins. Here, SMR_VSA5 reduces the prediction moderately.
+
+- **BCUT2D_MWLOW (-0.053):** This feature also negatively contributes, but to a lesser extent. BCUT descriptors often relate to molecular weight distribution or electronic properties, so a lower BCUT2D_MWLOW value decreases the prediction.
+
+### Summary:
+Overall, the prediction is influenced by a few positive factors (HallKierAlpha, NumAromaticRings) pushing the predicted value up, and some negative factors (PEOE_VSA9, SMR_VSA5, BCUT2D_MWLOW) pulling it down. The net prediction results from balancing these opposing contributions, with PEOE_VSA9 having the strongest individual negative influence and HallKierAlpha the strongest positive influence."
+ADME_MDR1_ER,41,gpt-4.1-mini,basic,5,"['Chi1n', 'HallKierAlpha', 'BCUT2D_MWLOW', 'Chi0', 'qed']","[0.09644526600471051, -0.07169415026775794, 0.06168000928352954, -0.06066502024384753, 0.0547295080451716]","
+Explain the prediction using the following feature contributions.
+
+- Chi1n: 0.096
+- HallKierAlpha: -0.072
+- BCUT2D_MWLOW: 0.062
+- Chi0: -0.061
+- qed: 0.055
+
+","The prediction is influenced by the contributions of several features, each adding either positively or negatively to the final outcome. Here's an explanation based on the given feature contributions:
+
+- **Chi1n (0.096):** This feature has the largest positive contribution. It increases the predicted value, indicating that higher values of Chi1n are associated with an increase in the prediction.
+
+- **HallKierAlpha (-0.072):** This feature contributes negatively, reducing the predicted value. This suggests that higher values of HallKierAlpha are linked with a decrease in the prediction.
+
+- **BCUT2D_MWLOW (0.062):** This feature has a moderate positive contribution, pushing the prediction higher. 
+
+- **Chi0 (-0.061):** This feature also negatively impacts the prediction, slightly lowering the predicted outcome.
+
+- **qed (0.055):** This feature positively influences the prediction, contributing to an increase.
+
+### Summary:
+The prediction is a balance of positive and negative contributions from these features. The largest positive impact comes from **Chi1n**, followed by **BCUT2D_MWLOW** and **qed**, which also increase the prediction but to a lesser extent. Negative contributions from **HallKierAlpha** and **Chi0** pull the prediction downward, partially offsetting the positive effects. Overall, since the sum of positive contributions (0.096 + 0.062 + 0.055 = 0.213) exceeds the sum of negative contributions (-0.072 - 0.061 = -0.133), the net effect is an increase in the predicted value."
+ADME_MDR1_ER,42,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'BCUT2D_MWLOW', 'NumAromaticRings', 'SMR_VSA5', 'VSA_EState10']","[0.1131642992720776, -0.07728864412289714, 0.06087840149018546, -0.05527767927600744, -0.053903535915040116]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: 0.113
+- BCUT2D_MWLOW: -0.077
+- NumAromaticRings: 0.061
+- SMR_VSA5: -0.055
+- VSA_EState10: -0.054
+
+","The prediction is influenced by the following feature contributions:
+
+- **HallKierAlpha (0.113):** This feature has the largest positive contribution, meaning it increases the prediction value. Hall-Kier alpha often relates to molecular shape or flexibility; a higher value likely promotes the predicted outcome.
+
+- **BCUT2D_MWLOW (-0.077):** This feature contributes negatively, decreasing the prediction. BCUT descriptors are related to electronic and molecular topology properties, so a lower or certain MW-related BCUT value reduces the predicted measure.
+
+- **NumAromaticRings (0.061):** Having more aromatic rings increases the prediction, which suggests that the presence of aromaticity or related ring structures favors the predicted property.
+
+- **SMR_VSA5 (-0.055):** This descriptor combines molecular refractivity and surface area contributions in a specific range. Its negative contribution means that higher values in this region lower the prediction.
+
+- **VSA_EState10 (-0.054):** This feature relates to the electronic state and solvent-accessible surface area; a negative contribution indicates higher values here reduce the prediction.
+
+**Summary:** The prediction is driven up mostly by molecular shape/flexibility (HallKierAlpha) and presence of aromatic rings, while specific electronic/topological properties reflected in BCUT2D_MWLOW, SMR_VSA5, and VSA_EState10 descriptors act to lower the predicted value."
+ADME_MDR1_ER,43,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'HallKierAlpha', 'PEOE_VSA10', 'NumAromaticRings', 'BCUT2D_MWLOW']","[-0.15174567816616355, -0.07727978168129966, 0.06742203633751134, -0.05516612544395456, -0.05243888239750251]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.152
+- HallKierAlpha: -0.077
+- PEOE_VSA10: 0.067
+- NumAromaticRings: -0.055
+- BCUT2D_MWLOW: -0.052
+
+","The prediction is influenced by the listed features with varying positive and negative contributions. Here's how each feature impacts the model's prediction:
+
+- **PEOE_VSA9 (-0.152):** This feature has the largest negative contribution. It likely represents a specific range of partial charges on the molecular surface area. A negative contribution means that higher values of PEOE_VSA9 decrease the predicted value, pushing the prediction downward.
+
+- **HallKierAlpha (-0.077):** This descriptor is related to molecular shape or flexibility. Its negative contribution means that as HallKierAlpha increases, the prediction decreases.
+
+- **PEOE_VSA10 (0.067):** Another surface area descriptor but with positive contribution. Higher values of PEOE_VSA10 increase the prediction, partially offsetting the negative impacts from PEOE_VSA9 and HallKierAlpha.
+
+- **NumAromaticRings (-0.055):** This counts the number of aromatic rings in the molecule. Its negative contribution suggests molecules with more aromatic rings tend to lower the predicted outcome.
+
+- **BCUT2D_MWLOW (-0.052):** This descriptor relates to molecular weight and distribution of atomic properties. A negative contribution implies that higher BCUT2D_MWLOW values also reduce the prediction.
+
+---
+
+**Overall interpretation:**  
+The prediction is primarily driven downward due to several negative contributors, particularly PEOE_VSA9. However, PEOE_VSA10 partially offsets some of this negative influence with a positive effect. The model predicts a lower output value when molecules have high PEOE_VSA9, higher HallKierAlpha, more aromatic rings, and a higher BCUT2D_MWLOW, while it slightly increases when PEOE_VSA10 is higher."
+ADME_MDR1_ER,44,gpt-4.1-mini,basic,5,"['HallKierAlpha', 'BCUT2D_MWLOW', 'PEOE_VSA12', 'qed', 'PEOE_VSA9']","[-0.08449908106510452, -0.08193982942130161, -0.0637102362957833, 0.05017074661811793, -0.048888325868409035]","
+Explain the prediction using the following feature contributions.
+
+- HallKierAlpha: -0.084
+- BCUT2D_MWLOW: -0.082
+- PEOE_VSA12: -0.064
+- qed: 0.050
+- PEOE_VSA9: -0.049
+
+","The prediction is influenced by multiple features, each contributing either positively or negatively. Here's an explanation based on the given feature contributions:
+
+- **HallKierAlpha (-0.084):** This feature has a negative contribution, indicating that higher values of HallKierAlpha reduce the prediction score. HallKierAlpha typically relates to molecular shape or flexibility, so increased values might be associated with lower predicted activity or property.
+
+- **BCUT2D_MWLOW (-0.082):** Another negative contributor, suggesting that molecules with higher values of BCUT2D_MWLOW decrease the prediction. This descriptor often captures aspects of molecular size or electronic properties related to molecular weight, so higher values might be unfavorable.
+
+- **PEOE_VSA12 (-0.064):** This negatively impacts the prediction as well. PEOE_VSA descriptors are related to partial charges and van der Waals surface areas; specifically, PEOE_VSA12 refers to a surface area with certain charge characteristics that, when high, reduce the predicted outcome.
+
+- **qed (+0.050):** This is the sole positive contributor here, meaning higher qed (quantitative estimate of drug-likeness) values increase the prediction score. This makes sense since higher drug-likeness often positively influences predictive models in chemistry or biology.
+
+- **PEOE_VSA9 (-0.049):** Slight negative impact, similar to PEOE_VSA12, indicating some charge-related surface area features decrease the predicted value.
+
+**Overall interpretation:**
+The prediction is being pulled down mainly by molecular shape/flexibility (HallKierAlpha) and certain electronic or size-related features (BCUT2D_MWLOW, PEOE_VSA12, PEOE_VSA9), while the drug-likeness score (qed) is the only factor pushing the prediction upward. This suggests that, although the molecule may have some favorable drug-like properties, its shape and electronic features are leading to a lower predicted output in this model."
+ADME_MDR1_ER,45,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'HallKierAlpha', 'PEOE_VSA12', 'SMR_VSA5', 'BCUT2D_MWLOW']","[-0.11228246430622447, -0.07024815763237689, -0.05250841831866992, -0.04580972738262772, -0.041722195679061234]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.112
+- HallKierAlpha: -0.070
+- PEOE_VSA12: -0.053
+- SMR_VSA5: -0.046
+- BCUT2D_MWLOW: -0.042
+
+","The prediction is influenced by multiple features, each contributing negatively to the output in this case. Here's an explanation of the feature contributions you provided:
+
+- **PEOE_VSA9: -0.112**  
+  This feature has the largest negative impact on the prediction. PEOE_VSA9 typically relates to the sum of van der Waals surface areas of atoms with a certain range of partial charges (using the PEOE method). A negative contribution here suggests that the presence of atoms with this specific charge environment reduces the predicted value (e.g., lowers the target property).
+
+- **HallKierAlpha: -0.070**  
+  HallKierAlpha measures molecular flexibility or shape related to the alpha value derived from Kier shape indices. A negative contribution indicates that higher values of this flexibility or shape metric push the prediction downwards.
+
+- **PEOE_VSA12: -0.053**  
+  Similar to PEOE_VSA9 but for a different partial charge range, this feature also negatively impacts the prediction, implying that atoms with partial charges in this range reduce the target.
+
+- **SMR_VSA5: -0.046**  
+  SMR_VSA5 corresponds to the sum of van der Waals surface areas of atoms with a specific range of molar refractivity contributions. Its negative contribution means that this chemical environment lowers the prediction score.
+
+- **BCUT2D_MWLOW: -0.042**  
+  BCUT2D descriptors are eigenvalues derived from molecular graphs, often related to molecular weight or electronegativity properties. BCUT2D_MWLOW is linked with lower-weight atoms or lower molecular weight substructures. The negative value means these features contribute to decreasing the predicted output.
+
+### Summary:
+
+All these features contribute to decreasing the predicted value. Together, they indicate that the presence or concentration of atoms with certain charge distributions (PEOE_VSA features), particular molecular flexibility or shape (HallKierAlpha), certain molar refractivity environments (SMR_VSA5), and lower-weight substructures (BCUT2D_MWLOW) negatively affect the predicted property. In practical terms, molecules exhibiting these characteristics tend to have lower predicted values for whatever property or activity the model is estimating."
+ADME_MDR1_ER,46,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'NumAromaticRings', 'SPS', 'PEOE_VSA10', 'Chi3v']","[0.060885304229219755, -0.057633270649610435, -0.050507584164706604, -0.05008752961492975, -0.044876517323459826]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: 0.061
+- NumAromaticRings: -0.058
+- SPS: -0.051
+- PEOE_VSA10: -0.050
+- Chi3v: -0.045
+
+","The feature contributions you provided explain how each feature influenced the model's final prediction, with positive numbers increasing the prediction value and negative numbers decreasing it. Here's the detailed interpretation:
+
+- **PEOE_VSA9: +0.061**  
+  This feature has a positive contribution, meaning that higher values of PEOE_VSA9 pushed the prediction upward. PEOE_VSA9 typically represents the sum of van der Waals surface areas of atoms with a particular partial charge range, so this indicates that molecules with larger PEOE_VSA9 values are associated with a higher predicted outcome.
+
+- **NumAromaticRings: -0.058**  
+  The number of aromatic rings decreases the prediction. More aromatic rings in the molecule tend to reduce the model's predicted value, suggesting that aromaticity negatively correlates with the target in this case.
+
+- **SPS: -0.051**  
+  SPS (which could stand for Structural Property Score or another composite descriptor) negatively impacts the prediction. An increase in SPS lowers the predicted output.
+
+- **PEOE_VSA10: -0.050**  
+  Similar to PEOE_VSA9 but with a slightly different charge bin or atom subset, this feature's increase lowers the prediction, counteracting the effect of PEOE_VSA9 to some extent.
+
+- **Chi3v: -0.045**  
+  Chi3v is a topological molecular descriptor related to third-order valence connectivity index. Its negative contribution means higher Chi3v values reduce the model’s prediction.
+
+### Summary:
+The prediction is influenced most positively by PEOE_VSA9, while NumAromaticRings, SPS, PEOE_VSA10, and Chi3v all contribute to lowering the predicted value. Overall, the model predicts higher when atoms with specific partial charges (captured by PEOE_VSA9) are more prevalent, but fewer aromatic rings, lower SPS, lower values in a related VSA charge bin (PEOE_VSA10), and lower Chi3v indices favor a higher prediction.
+
+If you want, I can help you interpret this in the context of a particular molecular property or application."
+ADME_MDR1_ER,47,gpt-4.1-mini,basic,5,"['PEOE_VSA9', 'HallKierAlpha', 'EState_VSA7', 'Chi0', 'SlogP_VSA10']","[-0.14945602240286865, -0.09148987662403928, 0.07236039188334678, -0.05586809291145091, 0.05008966757620908]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA9: -0.149
+- HallKierAlpha: -0.091
+- EState_VSA7: 0.072
+- Chi0: -0.056
+- SlogP_VSA10: 0.050
+
+","The prediction is explained by the combined influence of the listed features and their contributions to the predicted value. Here's the interpretation of each feature's contribution:
+
+- **PEOE_VSA9 (-0.149):** This feature has the largest negative contribution, decreasing the predicted value significantly. It suggests that higher values or certain characteristics captured by PEOE_VSA9 are associated with a lower prediction outcome.
+
+- **HallKierAlpha (-0.091):** This also negatively impacts the prediction, though less strongly than PEOE_VSA9. It indicates that higher or particular HallKierAlpha values correlate with reduced predicted values.
+
+- **EState_VSA7 (0.072):** This feature increases the prediction, partially offsetting the negative contributions. It implies that higher EState_VSA7 values are associated with a higher predicted outcome.
+
+- **Chi0 (-0.056):** Another negative contributor, but smaller in magnitude, slightly lowering the prediction.
+
+- **SlogP_VSA10 (0.050):** This positively affects the prediction, boosting the predicted value.
+
+**Summary:** Overall, the prediction is lowered mainly due to strong negative contributions from PEOE_VSA9 and HallKierAlpha, with moderate negative impacts from Chi0. These negative effects are partially counterbalanced by positive contributions from EState_VSA7 and SlogP_VSA10. The resulting prediction reflects the net effect of these opposing influences from the molecular or structural descriptors represented by these features."
+ADME_MDR1_ER,48,gpt-4.1-mini,basic,5,"['fr_azide', 'PEOE_VSA10', 'PEOE_VSA9', 'Chi1n', 'qed']","[0.10114071621436627, 0.09530516065613369, -0.07305946890175671, -0.05451540740244462, 0.04542589186490146]","
+Explain the prediction using the following feature contributions.
+
+- fr_azide: 0.101
+- PEOE_VSA10: 0.095
+- PEOE_VSA9: -0.073
+- Chi1n: -0.055
+- qed: 0.045
+
+","The prediction is influenced by the specific contributions of each feature as follows:
+
+- **fr_azide (0.101):** This feature has the largest positive contribution, indicating that the presence or value related to the azide functional group strongly increases the predicted outcome.
+
+- **PEOE_VSA10 (0.095):** This property also has a substantial positive effect, suggesting that molecular surface area contributions (possibly related to van der Waals surface area with specific partial charges) in this category support a higher prediction value.
+
+- **PEOE_VSA9 (-0.073):** This feature decreases the prediction. Its negative contribution means that molecular surface area in this particular range or environment reduces the predicted outcome.
+
+- **Chi1n (-0.055):** This topological descriptor negatively impacts the prediction, indicating that particular molecular connectivity or shape aspects encoded by Chi1n lead to a lower predicted value.
+
+- **qed (0.045):** As a drug-likeness score, this positive contribution shows that higher drug-likeness slightly boosts the predicted property.
+
+**Summary:**  
+The overall prediction is driven upward primarily by the presence of an azide group and certain molecular surface area features (PEOE_VSA10), while specific molecular surface characteristics (PEOE_VSA9) and topological features (Chi1n) push the prediction downward. The moderate positive influence of the qed score suggests better drug-likeness supports the predicted outcome."
+ADME_MDR1_ER,49,gpt-4.1-mini,basic,5,"['BCUT2D_MWLOW', 'PEOE_VSA7', 'PEOE_VSA10', 'SlogP_VSA6', 'Chi1n']","[-0.06695001081296788, 0.05918662213648061, -0.04803574921365596, -0.04252238472949807, -0.042171809808069255]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_MWLOW: -0.067
+- PEOE_VSA7: 0.059
+- PEOE_VSA10: -0.048
+- SlogP_VSA6: -0.043
+- Chi1n: -0.042
+
+","The prediction is influenced by the following feature contributions, which indicate how each feature affects the overall predicted value:
+
+- **BCUT2D_MWLOW: -0.067**  
+  This feature has a negative contribution, decreasing the predicted value. A lower value in this descriptor (related to molecular weight distribution in the lower range) pushes the prediction downward.
+
+- **PEOE_VSA7: 0.059**  
+  This feature positively contributes, increasing the predicted value. It represents the partial charge surface area in a certain range, so a higher value here tends to raise the prediction.
+
+- **PEOE_VSA10: -0.048**  
+  This feature negatively impacts the prediction. It is another partial charge surface area descriptor but in a different range, lowering the output when it takes higher values.
+
+- **SlogP_VSA6: -0.043**  
+  This feature also decreases the prediction. It relates to the van der Waals surface area associated with certain logP ranges; in this case, it reduces the predicted value.
+
+- **Chi1n: -0.042**  
+  This descriptor (a molecular connectivity index) reduces the prediction as well, indicating that molecular branching or connectivity in the structure negatively influences the predicted target.
+
+**Summary:**  
+Most features contribute negatively, pulling the prediction downward, except for PEOE_VSA7, which pushes the prediction up. The net effect is a balance between these opposing influences, with a tendency toward a lower predicted value due to the stronger cumulative negative contributions."

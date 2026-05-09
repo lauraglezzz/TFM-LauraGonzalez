@@ -1,0 +1,1263 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_HLM,0,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA8', 'BCUT2D_MRHI', 'PEOE_VSA9', 'PEOE_VSA13']","[-0.3305095847683578, -0.06716348986214322, -0.04866273261420479, -0.043084027047168016, -0.03419631993263359]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.331
+- EState_VSA8: -0.067
+- BCUT2D_MRHI: -0.049
+- PEOE_VSA9: -0.043
+- PEOE_VSA13: -0.034
+
+","The prediction is explained by the combined contributions of the listed features, each negatively impacting the predicted value:
+
+- **SMR_VSA2 (-0.331):** This feature has the largest negative contribution, suggesting that higher values or certain characteristics captured by SMR_VSA2 strongly decrease the prediction.
+- **EState_VSA8 (-0.067):** This feature also lowers the prediction, but to a much smaller extent than SMR_VSA2.
+- **BCUT2D_MRHI (-0.049):** It contributes a moderate negative effect on the prediction.
+- **PEOE_VSA9 (-0.043):** This feature slightly reduces the prediction.
+- **PEOE_VSA13 (-0.034):** This feature has the smallest negative impact among these, but still contributes to lowering the predicted output.
+
+Overall, all these features push the prediction downward, with SMR_VSA2 having the most significant influence. This indicates that the molecular properties or descriptors measured by these features collectively reduce the predicted value according to the model."
+ADME_HLM,1,gpt-4.1-mini,basic,5,"['fr_nitrile', 'fr_piperdine', 'fr_phos_ester', 'EState_VSA6', 'PEOE_VSA11']","[-0.07777022553003281, 0.07466310395542747, -0.06439389128023316, 0.05122331496630312, -0.04856073172933928]","
+Explain the prediction using the following feature contributions.
+
+- fr_nitrile: -0.078
+- fr_piperdine: 0.075
+- fr_phos_ester: -0.064
+- EState_VSA6: 0.051
+- PEOE_VSA11: -0.049
+
+","The prediction is influenced by the following feature contributions, each of which pushes the outcome either upward (positive contribution) or downward (negative contribution):
+
+- **fr_nitrile: -0.078**  
+  The presence of nitrile groups contributes negatively to the prediction, reducing the predicted value by 0.078 units. This suggests that nitrile functionality is associated with a lower target value in the model.
+
+- **fr_piperdine: 0.075**  
+  The presence of a piperidine ring contributes positively, increasing the prediction by 0.075 units. This indicates that having a piperidine moiety tends to raise the predicted target in the model.
+
+- **fr_phos_ester: -0.064**  
+  Phosphorus ester functional groups decrease the prediction by 0.064 units, implying their presence lowers the predicted value.
+
+- **EState_VSA6: 0.051**  
+  This descriptor is a combination of electronic state and van der Waals surface area related to certain atom types. A positive contribution of 0.051 means that molecules with higher values of EState_VSA6 tend to have higher predictions.
+
+- **PEOE_VSA11: -0.049**  
+  This descriptor combines partial charges from the PEOE method with surface area calculations. Its negative contribution (-0.049) indicates that a higher PEOE_VSA11 value reduces the prediction.
+
+### Summary
+The prediction is a balance of positive and negative influences from different molecular features. Piperidine rings and higher EState_VSA6 values increase the prediction, while nitriles, phosphate esters, and higher PEOE_VSA11 values lower it. The net effect will depend on the sum of all these contributions and potentially other features not listed here."
+ADME_HLM,2,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA7', 'NumHDonors', 'PEOE_VSA13', 'VSA_EState9']","[-0.35750903429513703, -0.025890755320730593, -0.02343787589916693, -0.02333044519309878, -0.02200958723688426]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.358
+- PEOE_VSA7: -0.026
+- NumHDonors: -0.023
+- PEOE_VSA13: -0.023
+- VSA_EState9: -0.022
+
+","The provided feature contributions indicate how each feature influences the model's prediction relative to a baseline (e.g., the average prediction). Here's what the contributions tell us:
+
+- **SMR_VSA2: -0.358**  
+  This feature has the largest negative contribution, strongly pushing the prediction downward. It suggests that the particular value of SMR_VSA2 in this instance significantly decreases the predicted outcome.
+
+- **PEOE_VSA7: -0.026**  
+  This feature also has a negative influence but much smaller in magnitude. It slightly reduces the prediction.
+
+- **NumHDonors: -0.023**  
+  The number of hydrogen donors has a small negative effect, modestly lowering the prediction.
+
+- **PEOE_VSA13: -0.023**  
+  This feature also slightly decreases the prediction.
+
+- **VSA_EState9: -0.022**  
+  Similarly, this feature contributes a small negative effect.
+
+### Overall Interpretation:
+All listed features are contributing negatively to the model’s prediction, with **SMR_VSA2** having by far the most substantial impact. Collectively, these features are pushing the prediction value lower compared to the baseline. If the task is to predict something like activity, toxicity, or another property, these features are making the model less likely to predict a high value (e.g., less active or less toxic, depending on context).
+
+If you'd like, I can help you understand what each feature means chemically or in terms of molecular descriptors, to provide deeper insight."
+ADME_HLM,3,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'SMR_VSA9', 'PEOE_VSA11', 'MaxAbsPartialCharge', 'PEOE_VSA7']","[0.21859820346437753, -0.121118633449488, -0.0794540605848882, -0.07859022119279108, -0.06282487847906133]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.219
+- SMR_VSA9: -0.121
+- PEOE_VSA11: -0.079
+- MaxAbsPartialCharge: -0.079
+- PEOE_VSA7: -0.063
+
+","The prediction is influenced by the following feature contributions, where positive values push the prediction higher and negative values push it lower:
+
+- **SMR_VSA2 (0.219):** This feature has the largest positive contribution. It likely represents a descriptor related to molecular surface area weighted by some property (e.g., polarizability). Its positive contribution means that higher values of SMR_VSA2 increase the predicted value.
+
+- **SMR_VSA9 (-0.121):** This feature strongly pulls the prediction down. It might represent another surface area descriptor weighted differently. A higher value here decreases the predicted outcome.
+
+- **PEOE_VSA11 (-0.079):** This is another surface area descriptor, weighted by partial charges derived via the PEOE method. Its negative contribution lowers the prediction, indicating that higher values of PEOE_VSA11 reduce the prediction.
+
+- **MaxAbsPartialCharge (-0.079):** This feature measures the maximum absolute partial charge on any atom in the molecule. A negative contribution suggests that molecules with higher localized charges reduce the predicted value.
+
+- **PEOE_VSA7 (-0.063):** Similarly, this descriptor also negatively affects the prediction, though to a smaller extent. It’s another partial charge-weighted surface area descriptor, and higher values push the prediction down.
+
+### Summary
+The prediction is predominantly driven up by higher SMR_VSA2 values, while the other features, mostly related to charge-weighted surface areas and partial charges, reduce the prediction. The net effect balances these contributions, with the positive contribution of SMR_VSA2 outweighing the negative terms, leading to an overall higher predicted value."
+ADME_HLM,4,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA11', 'fr_bicyclic', 'TPSA', 'VSA_EState1']","[-0.34608530270126203, 0.052767727864801724, 0.04244887181535514, 0.028509560771254223, -0.028356435194837243]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.346
+- PEOE_VSA11: 0.053
+- fr_bicyclic: 0.042
+- TPSA: 0.029
+- VSA_EState1: -0.028
+
+","The prediction is explained by the contributions of the individual features as follows:
+
+- **SMR_VSA2: -0.346**  
+  This feature has the largest (in magnitude) negative contribution, strongly pushing the prediction downward. It indicates that higher values in SMR_VSA2 are associated with a decrease in the predicted outcome.
+
+- **PEOE_VSA11: 0.053**  
+  This feature contributes a small positive amount, slightly increasing the prediction. It suggests that higher values in PEOE_VSA11 tend to raise the predicted value.
+
+- **fr_bicyclic: 0.042**  
+  Another small positive contributor, indicating that the presence or higher count of bicyclic substructures marginally increases the prediction.
+
+- **TPSA: 0.029**  
+  This feature also adds a minor positive contribution, so a larger topological polar surface area slightly raises the prediction.
+
+- **VSA_EState1: -0.028**  
+  This feature makes a small negative contribution, slightly reducing the prediction.
+
+### Overall interpretation:
+The prediction is primarily driven down by the strong negative impact of **SMR_VSA2**, while the other features collectively push the prediction slightly upward but not enough to offset it. Therefore, the combined feature effects result in a net decrease in the predicted value."
+ADME_HLM,5,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA6', 'NumAliphaticCarbocycles', 'fr_nitrile', 'SMR_VSA9']","[-0.2831888060928299, 0.04738709811921638, 0.037293654677865926, -0.03571136636202326, 0.03126854618875526]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.283
+- EState_VSA6: 0.047
+- NumAliphaticCarbocycles: 0.037
+- fr_nitrile: -0.036
+- SMR_VSA9: 0.031
+
+","The prediction is influenced by the following feature contributions, each representing how much that feature pushes the prediction up or down:
+
+- **SMR_VSA2: -0.283**  
+  This feature has the largest negative contribution, strongly decreasing the predicted value. It suggests that the specific molecular surface area associated with SMR_VSA2 correlates negatively with the target.
+
+- **EState_VSA6: 0.047**  
+  A small positive contribution, indicating that this electronic state-related surface area feature slightly increases the prediction.
+
+- **NumAliphaticCarbocycles: 0.037**  
+  Slightly raises the prediction. A higher number of aliphatic carbocycles contributes positively to the predicted outcome.
+
+- **fr_nitrile: -0.036**  
+  This substructure feature (presence of nitrile group) reduces the prediction somewhat, indicating that nitrile groups are negatively correlated with the predicted measure.
+
+- **SMR_VSA9: 0.031**  
+  This surface area feature provides a minor positive push to the prediction.
+
+### Overall Interpretation:
+
+The strongest effect is from **SMR_VSA2**, which lowers the prediction significantly. The other features partially offset this with small positive contributions, except for **fr_nitrile**, which slightly decreases the prediction. Taken together, the prediction is primarily driven down by SMR_VSA2, with modest adjustments from the other features."
+ADME_HLM,6,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'NumHDonors', 'MaxAbsPartialCharge', 'PEOE_VSA7', 'EState_VSA6']","[0.30347752757758567, 0.07394494577863545, -0.0694323785646911, 0.04509846115835397, 0.03283992195988183]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.303
+- NumHDonors: 0.074
+- MaxAbsPartialCharge: -0.069
+- PEOE_VSA7: 0.045
+- EState_VSA6: 0.033
+
+","The prediction is explained by the combined contributions of the given features as follows:
+
+- **SMR_VSA2 (0.303):** This feature has the largest positive contribution, indicating that a higher value of SMR_VSA2 strongly pushes the prediction upward.
+- **NumHDonors (0.074):** This feature also increases the prediction, though to a smaller extent than SMR_VSA2. More hydrogen bond donors likely correlate with a higher predicted value.
+- **MaxAbsPartialCharge (-0.069):** This is the only feature with a negative contribution, meaning that a higher maximum absolute partial charge reduces the prediction.
+- **PEOE_VSA7 (0.045):** This contributes positively, slightly increasing the prediction.
+- **EState_VSA6 (0.033):** Similarly, this feature adds positively but with a smaller effect.
+
+### Overall interpretation:
+The prediction is primarily driven upward by SMR_VSA2, supported by smaller positive effects from NumHDonors, PEOE_VSA7, and EState_VSA6. The negative effect of MaxAbsPartialCharge partially offsets these increases. The final predicted value results from this net combination of positive and negative feature contributions."
+ADME_HLM,7,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA9', 'Chi3n', 'VSA_EState1', 'BCUT2D_MWHI']","[0.16499179157940097, 0.06542103859221815, 0.05806790959376459, 0.04673557262471484, -0.039247493065604294]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.165
+- EState_VSA9: 0.065
+- Chi3n: 0.058
+- VSA_EState1: 0.047
+- BCUT2D_MWHI: -0.039
+
+","The prediction is influenced by the listed features, each contributing a specific amount to the final output. Here's the explanation of the contributions:
+
+- **SMR_VSA2 (0.165)**: This feature has the largest positive contribution. It means higher values of SMR_VSA2 increase the predicted value significantly.
+- **EState_VSA9 (0.065)**: This feature also adds positively but to a smaller extent, supporting the increase in the prediction.
+- **Chi3n (0.058)**: Another positive contributor, it pushes the prediction upwards moderately.
+- **VSA_EState1 (0.047)**: This feature has a smaller positive impact, contributing to the increase slightly.
+- **BCUT2D_MWHI (-0.039)**: This feature negatively affects the prediction, pulling the predicted value down by a modest amount.
+
+### Overall Interpretation:
+The prediction is primarily driven upwards by SMR_VSA2, with additional positive support from EState_VSA9, Chi3n, and VSA_EState1. The BCUT2D_MWHI feature slightly counters this trend but not enough to outweigh the combined positive contributions. Thus, the final predicted value is higher due to the dominant positive influences."
+ADME_HLM,8,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA11', 'VSA_EState1', 'BCUT2D_LOGPLOW', 'MinEStateIndex']","[0.16551674276100026, 0.09139062714562067, 0.08240750050518228, 0.0753823973598486, -0.06850825567588045]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.166
+- PEOE_VSA11: 0.091
+- VSA_EState1: 0.082
+- BCUT2D_LOGPLOW: 0.075
+- MinEStateIndex: -0.069
+
+","These feature contributions indicate how each specific feature influences the prediction of the model, with positive values pushing the prediction higher and negative values pushing it lower.
+
+Here's the explanation of each feature's contribution:
+
+- **SMR_VSA2: 0.166**  
+  This feature has the largest positive contribution. It means that a higher value of SMR_VSA2 strongly increases the prediction value. SMR_VSA2 often relates to the sum of van der Waals surface areas of atoms with a specific molar refractivity range, suggesting that molecular size or polarizability in this range boosts the prediction.
+
+- **PEOE_VSA11: 0.091**  
+  This also contributes positively to the prediction, although less strongly than SMR_VSA2. PEOE_VSA11 typically corresponds to van der Waals surface areas for atoms with a partial charge in a certain range, which indicates regions of mild partial charge that increase the predicted property.
+
+- **VSA_EState1: 0.082**  
+  Another positive contributor. VSA_EState1 usually refers to van der Waals surface area weighted by an electrotopological state, reflecting electronic and topological environments that raise the prediction.
+
+- **BCUT2D_LOGPLOW: 0.075**  
+  This is a positive indicator related to lipophilicity or hydrophobicity, and its presence is raising the predicted value moderately. It often captures lower-range BCUT descriptors linked to logP (octanol-water partition coefficient).
+
+- **MinEStateIndex: -0.069**  
+  This feature has a negative contribution, reducing the predicted value. MinEStateIndex refers to the minimum electrotopological state index across atoms in the molecule, and a lower value here tends to decrease the prediction.
+
+**Summary:**  
+The overall prediction is pushed up mainly by the molecular size/polarizability (SMR_VSA2), partial charges (PEOE_VSA11), electronic/topological properties (VSA_EState1), and lipophilicity (BCUT2D_LOGPLOW). However, the minimal electrotopological state index (MinEStateIndex) acts against this trend, lowering the predicted value somewhat. The final prediction is a balance of these effects."
+ADME_HLM,9,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'Chi0v', 'BCUT2D_LOGPLOW', 'Kappa3', 'MinEStateIndex']","[-0.2378833387450576, 0.03480136466038019, -0.03232541796481143, -0.030317059894867583, 0.02913920302794297]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.238
+- Chi0v: 0.035
+- BCUT2D_LOGPLOW: -0.032
+- Kappa3: -0.030
+- MinEStateIndex: 0.029
+
+","The prediction is influenced by the combination of feature contributions as follows:
+
+- **SMR_VSA2 (-0.238)**: This feature has the largest negative contribution, meaning it strongly decreases the predicted value. It likely represents a property related to molecular surface area weighted by partial charges (SMR), and its particular range or value in this instance is pushing the prediction down significantly.
+
+- **Chi0v (0.035)**: This feature contributes a small positive effect, slightly increasing the prediction. Chi0v typically represents a connectivity index or molecular complexity measure, so this feature is nudging the prediction upward a bit.
+
+- **BCUT2D_LOGPLOW (-0.032)**: This feature slightly reduces the prediction. BCUT descriptors relate to atomic properties combined with topological info, and LOGPLOW indicates a lower logP-related component, which here reduces the prediction slightly.
+
+- **Kappa3 (-0.030)**: With a small negative effect, this topological shape index reduces the prediction a little, indicating the molecular shape or flexibility is contributing to a lower predicted value.
+
+- **MinEStateIndex (0.029)**: This is a minor positive contribution from an electronic state index feature, increasing the prediction slightly.
+
+**Summary:** The overall prediction is driven downward mainly due to the strong negative contribution from SMR_VSA2, partially offset by small positive contributions from Chi0v and MinEStateIndex. The other features have smaller negative impacts, so the net effect results in a somewhat reduced predicted value."
+ADME_HLM,10,gpt-4.1-mini,basic,5,"['PEOE_VSA7', 'MinAbsPartialCharge', 'SMR_VSA9', 'PEOE_VSA14', 'BCUT2D_LOGPLOW']","[-0.06697703518258478, -0.06302141541365287, -0.06177683128875947, 0.05672588411608346, -0.0497441992653513]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA7: -0.067
+- MinAbsPartialCharge: -0.063
+- SMR_VSA9: -0.062
+- PEOE_VSA14: 0.057
+- BCUT2D_LOGPLOW: -0.050
+
+","The prediction is influenced by the following feature contributions, which indicate how each feature affects the model's output:
+
+- **PEOE_VSA7 (-0.067):** This feature has a negative contribution, decreasing the predicted value. A more negative contribution suggests that higher values of PEOE_VSA7 push the prediction lower.
+  
+- **MinAbsPartialCharge (-0.063):** This also negatively impacts the prediction. Lower values of MinAbsPartialCharge or smaller minimum absolute partial charges lead to a decrease in the predicted outcome.
+
+- **SMR_VSA9 (-0.062):** Similarly, this feature reduces the prediction. Higher or specific values of SMR_VSA9 correlate with a lower predicted result.
+
+- **PEOE_VSA14 (0.057):** This feature contributes positively, increasing the predicted value. When PEOE_VSA14 is higher, it tends to raise the prediction.
+
+- **BCUT2D_LOGPLOW (-0.050):** This feature decreases the prediction slightly. Values associated with lower BCUT2D_LOGPLOW reduce the model's predicted output.
+
+### Overall Explanation:
+Most features are pushing the prediction downward, with only PEOE_VSA14 pulling it upward. The negative contributions from PEOE_VSA7, MinAbsPartialCharge, SMR_VSA9, and BCUT2D_LOGPLOW indicate the molecule's characteristics (captured by these features) make it less likely for the target property or classification to be positive (or higher). In contrast, PEOE_VSA14 slightly offsets this effect.
+
+In summary, the model prediction is mainly driven down by specific electronic and surface area descriptors, with a small positive influence from one of the PEOE_VSA descriptors."
+ADME_HLM,11,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'MaxAbsPartialCharge', 'VSA_EState1', 'fr_bicyclic', 'EState_VSA9']","[0.1500495855953215, -0.10376371085207359, -0.059885981549886884, -0.05970956800964556, 0.043888017459671455]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.150
+- MaxAbsPartialCharge: -0.104
+- VSA_EState1: -0.060
+- fr_bicyclic: -0.060
+- EState_VSA9: 0.044
+
+","The provided feature contributions explain how each feature influenced the model's prediction, with positive values pushing the prediction higher and negative values pushing it lower.
+
+- **SMR_VSA2 (0.150):** This feature had the largest positive contribution to the prediction, increasing the predicted value significantly. It indicates that a higher value or presence of the property captured by SMR_VSA2 favors the outcome predicted by the model.
+
+- **MaxAbsPartialCharge (-0.104):** This feature contributed negatively, substantially decreasing the prediction. A higher absolute partial charge (likely indicating more polarized atoms) works against the predicted outcome.
+
+- **VSA_EState1 (-0.060):** This negatively impacted the prediction as well, though less strongly than MaxAbsPartialCharge. This suggests that the electronic state related to VSA_EState1 decreases the likelihood or magnitude of the prediction.
+
+- **fr_bicyclic (-0.060):** This feature also lowered the prediction by a similar margin, implying that the presence of bicyclic substructures is unfavorable for the predicted property or classification.
+
+- **EState_VSA9 (0.044):** This feature had a small positive effect, slightly increasing the predicted value.
+
+### Summary:
+The prediction was influenced most strongly by **SMR_VSA2**, which increased the predicted value, while **MaxAbsPartialCharge**, **VSA_EState1**, and **fr_bicyclic** decreased it. The net effect depends on the sum of these contributions, but the model's output is primarily driven upward by SMR_VSA2 and slightly counteracted by the others."
+ADME_HLM,12,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA8', 'BCUT2D_MWLOW', 'VSA_EState1', 'BCUT2D_MRLOW']","[-0.14892360336444838, -0.05426104532206681, -0.04060712021031802, 0.03353585044313614, 0.03347947220826953]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.149
+- EState_VSA8: -0.054
+- BCUT2D_MWLOW: -0.041
+- VSA_EState1: 0.034
+- BCUT2D_MRLOW: 0.033
+
+","The prediction is influenced by these five features, each contributing positively or negatively to the final output. Here's the explanation of the contributions:
+
+- **SMR_VSA2 (-0.149)**: This feature has the largest negative impact on the prediction, pulling the prediction value down significantly. It suggests that higher values of SMR_VSA2 are associated with a lower prediction output.
+
+- **EState_VSA8 (-0.054)**: This feature also decreases the prediction, but less strongly than SMR_VSA2. Its negative contribution indicates that it drives the predicted value down moderately.
+
+- **BCUT2D_MWLOW (-0.041)**: This feature contributes negatively as well, further reducing the prediction, though with a smaller magnitude.
+
+- **VSA_EState1 (0.034)**: This feature has a positive contribution, pushing the prediction slightly upward.
+
+- **BCUT2D_MRLOW (0.033)**: Similar to VSA_EState1, this feature adds a small positive influence on the prediction.
+
+### Overall interpretation:
+
+The combined effect of these features is that the prediction is lowered mainly due to the large negative impact of SMR_VSA2, supported by smaller negative contributions from EState_VSA8 and BCUT2D_MWLOW. This downward influence is partially offset by the positive contributions of VSA_EState1 and BCUT2D_MRLOW, but the net effect tends toward decreasing the predicted output.
+
+If you want a deeper understanding, knowing the direction (increase/decrease) or meaning of each feature would help interpret why these influences occur in the model."
+ADME_HLM,13,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'SMR_VSA8', 'VSA_EState1', 'MinEStateIndex', 'fr_piperdine']","[0.2179971163369891, -0.06411442315556908, -0.05814349819973267, -0.04966071858680058, 0.04647953789312727]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.218
+- SMR_VSA8: -0.064
+- VSA_EState1: -0.058
+- MinEStateIndex: -0.050
+- fr_piperdine: 0.046
+
+","The prediction is influenced by the following feature contributions with their respective impacts:
+
+- **SMR_VSA2 (0.218):** This feature has the largest positive contribution, meaning it strongly pushes the prediction higher. It is likely associated with molecular surface area in a descriptor that correlates positively with the target.
+
+- **SMR_VSA8 (-0.064):** This feature contributes negatively, slightly decreasing the predicted value. It corresponds to another surface area descriptor but with an opposite effect compared to SMR_VSA2.
+
+- **VSA_EState1 (-0.058):** This negative contribution suggests that certain electronic or topological states measured by this feature reduce the predicted value.
+
+- **MinEStateIndex (-0.050):** This also negatively influences the prediction, indicating that lower values of the minimum electronic state index correlate with a decrease in the prediction.
+
+- **fr_piperdine (0.046):** This feature has a small positive contribution, suggesting the presence of a piperidine fragment slightly raises the prediction.
+
+**Summary:** The prediction is mostly driven up by the SMR_VSA2 descriptor and the presence of a piperidine moiety, whereas certain electronic state descriptors and another surface area measure (SMR_VSA8) slightly decrease the prediction. The net effect depends on the balance of these positive and negative contributions."
+ADME_HLM,14,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA11', 'MinEStateIndex', 'VSA_EState10', 'VSA_EState4']","[-0.3703124793866585, -0.04085525458495918, 0.04030821216996489, 0.036090021361214274, 0.03247711733075981]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.370
+- PEOE_VSA11: -0.041
+- MinEStateIndex: 0.040
+- VSA_EState10: 0.036
+- VSA_EState4: 0.032
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+- **SMR_VSA2 (-0.370)**: This feature has the largest negative contribution to the prediction. It means that higher values or presence of this descriptor tend to strongly decrease the predicted outcome. SMR_VSA2 typically relates to molecular surface area contributions weighted by a particular electronic property, so its negative impact suggests that the corresponding molecular characteristics reduce the prediction value.
+
+- **PEOE_VSA11 (-0.041)**: This feature also has a negative contribution, but much smaller compared to SMR_VSA2. PEOE_VSA11 usually encodes partial charge surface area contributions, so features related to this descriptor slightly push the prediction down.
+
+- **MinEStateIndex (0.040)**: This feature has a small positive effect on the prediction. The Minimum E-State Index represents the lowest electronic state value in the molecule, indicating that higher values here slightly increase the predicted output.
+
+- **VSA_EState10 (0.036)**: This feature positively contributes to the prediction as well, indicating that the specific electronic and surface area property it encodes increases the predicted value modestly.
+
+- **VSA_EState4 (0.032)**: Similarly, this feature adds a small positive contribution, again relating to a specific combination of electronic states and surface area.
+
+**Summary:** The prediction is primarily influenced by SMR_VSA2, which strongly decreases the predicted value. The other features have minor contributions, with three of them slightly increasing the prediction and one further decreasing it. Overall, the prediction is mainly driven down by the large negative contribution of SMR_VSA2, partially offset by small positive contributions from the electronic state and surface area descriptors."
+ADME_HLM,15,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'NumHDonors', 'NumHAcceptors', 'PEOE_VSA7', 'Kappa3']","[0.30812817605430065, -0.05481160870561824, -0.05454763053038437, -0.05295732442982779, -0.041583726175170546]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.308
+- NumHDonors: -0.055
+- NumHAcceptors: -0.055
+- PEOE_VSA7: -0.053
+- Kappa3: -0.042
+
+","The prediction is explained by the contributions of these features as follows:
+
+- **SMR_VSA2: +0.308**  
+  This feature has the largest positive contribution, indicating that a higher value of SMR_VSA2 strongly pushes the prediction upward. It is a key driver in increasing the predicted output.
+
+- **NumHDonors: -0.055**  
+  The number of hydrogen bond donors slightly decreases the prediction. This negative contribution suggests that more hydrogen bond donors tend to reduce the predicted value.
+
+- **NumHAcceptors: -0.055**  
+  Similar to hydrogen bond donors, more hydrogen bond acceptors also slightly lower the prediction.
+
+- **PEOE_VSA7: -0.053**  
+  This feature marginally reduces the prediction as well, showing a minor negative influence.
+
+- **Kappa3: -0.042**  
+  The shape descriptor Kappa3 contributes a small negative effect on the prediction.
+
+### Overall Summary:
+
+The prediction is largely driven upward by the strong positive effect of **SMR_VSA2**, while the other four features have modest but consistent negative contributions. Thus, the final prediction reflects the balance between the dominant positive influence of SMR_VSA2 and the minor negative influences of the other features."
+ADME_HLM,16,gpt-4.1-mini,basic,5,"['BCUT2D_LOGPLOW', 'fr_pyridine', 'SMR_VSA2', 'MinEStateIndex', 'Chi1v']","[0.09248474806044574, 0.0877058089637504, -0.07404505184544748, -0.05992428464423759, 0.053841137378381254]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_LOGPLOW: 0.092
+- fr_pyridine: 0.088
+- SMR_VSA2: -0.074
+- MinEStateIndex: -0.060
+- Chi1v: 0.054
+
+","The prediction is influenced by these molecular features as follows:
+
+- **BCUT2D_LOGPLOW (0.092):** This positive contribution suggests that lower BCUT2D_LOGP values, which relate to the molecule's logP (octanol-water partition coefficient) in a 2D topological sense, are associated with increasing the predicted value. Essentially, this indicates the molecule's hydrophobicity profile contributes positively to the prediction.
+
+- **fr_pyridine (0.088):** This positive value indicates the presence of a pyridine ring fragment increases the prediction. Pyridine groups are often associated with specific chemical or biological properties that enhance the predicted outcome.
+
+- **SMR_VSA2 (-0.074):** This negative contribution means that this descriptor, which reflects the molecular surface area weighted by the molar refractivity (polarizability), decreases the prediction. Higher values of SMR_VSA2 might be associated with less favorable properties for this model prediction.
+
+- **MinEStateIndex (-0.060):** The minimum electrotopological state index contributes negatively, indicating that atoms in the molecule with low electron density or low electronic influence reduce the predicted value.
+
+- **Chi1v (0.054):** This molecular connectivity index reflects the number of single bonds and branching in the molecule. A positive contribution indicates that certain types of molecular branching or connectivity favor an increase in the predicted value.
+
+**Overall interpretation:**
+The prediction is increased by the molecule's hydrophobic characteristics and presence of pyridine rings, as well as certain branching patterns (Chi1v). However, larger polarizable surface areas and atoms with low electronic state indices reduce the predictive value. The final prediction results from a balance of these positive and negative contributions."
+ADME_HLM,17,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA13', 'PEOE_VSA14', 'SlogP_VSA1', 'EState_VSA7']","[0.31526420977850755, 0.08408805450106194, 0.07406310419420263, 0.06980610562636323, 0.06097876885179584]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.315
+- PEOE_VSA13: 0.084
+- PEOE_VSA14: 0.074
+- SlogP_VSA1: 0.070
+- EState_VSA7: 0.061
+
+","The prediction is primarily driven by the listed molecular descriptors, each contributing positively to the output. Here's a breakdown:
+
+- **SMR_VSA2 (0.315):** This feature has the largest positive contribution. SMR_VSA descriptors relate to the sum of atomic contributions to the molecular refractivity (a measure linked to polarizability) within a specific van der Waals surface area range. A positive contribution here suggests that portions of the molecule with moderate refractivity are strongly influencing the prediction.
+
+- **PEOE_VSA13 (0.084) and PEOE_VSA14 (0.074):** These descriptors represent the summed van der Waals surface area for atoms within certain partial charge ranges (calculated using the PEOE method). Their positive contributions indicate that atoms with specific partial charges (likely in a relatively neutral or slightly charged range) on the molecular surface support the prediction.
+
+- **SlogP_VSA1 (0.070):** This feature sums the van der Waals surface area of atoms in certain hydrophobicity (logP) ranges. Its positive contribution means that parts of the molecule with particular hydrophobic characteristics positively affect the outcome.
+
+- **EState_VSA7 (0.061):** This comes from combining electrotopological state indices with molecular surface areas. It reflects specific electronic and topological environments. A positive influence here indicates that certain electronic environments on the molecular surface are important for the prediction.
+
+**Overall interpretation:** The prediction is strongly influenced by molecular regions characterized by moderate polarizability, specific partial charge ranges, particular hydrophobic properties, and certain electronic environments. These features act together to push the prediction in a positive direction, implying that the molecular structure and electronic distribution described by these descriptors are favorable for the predicted property or class."
+ADME_HLM,18,gpt-4.1-mini,basic,5,"['SlogP_VSA3', 'HallKierAlpha', 'NumHeteroatoms', 'VSA_EState1', 'SlogP_VSA10']","[0.059788512591336614, 0.05661450259904877, 0.03922364650186998, -0.03818148009539251, 0.03280998490923774]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA3: 0.060
+- HallKierAlpha: 0.057
+- NumHeteroatoms: 0.039
+- VSA_EState1: -0.038
+- SlogP_VSA10: 0.033
+
+","The prediction explanation based on the given feature contributions can be interpreted as follows:
+
+- **SlogP_VSA3 (0.060)**: This feature has a positive contribution to the prediction, meaning that higher values of SlogP_VSA3 increase the predicted outcome. SlogP_VSA3 typically represents a surface area descriptor weighted by a specific range of logP values, indicating that the molecule's hydrophobic surface area in this range is favorably influencing the model's prediction.
+
+- **HallKierAlpha (0.057)**: This also positively contributes to the prediction. HallKierAlpha is a shape or topology descriptor related to molecular flexibility or branching. A higher HallKierAlpha suggests that molecules with certain topological properties increase the predicted value.
+
+- **NumHeteroatoms (0.039)**: The number of heteroatoms (atoms other than carbon and hydrogen) has a small positive impact on the prediction, indicating that molecules with more heteroatoms slightly increase the predicted outcome.
+
+- **VSA_EState1 (-0.038)**: This feature has a negative contribution, reducing the prediction. VSA_EState1 combines surface area (VSA) and electronic state (EState) indices. A higher value of this descriptor decreases the predicted outcome, suggesting that certain electronic or surface characteristics inhibit the predicted property.
+
+- **SlogP_VSA10 (0.033)**: This feature also positively influences the prediction but to a lesser extent. Similar to SlogP_VSA3, it represents a particular range of hydrophobic surface area, contributing to an increase in the model's output.
+
+**Summary:**  
+Overall, the prediction is driven upward primarily by hydrophobic surface area descriptors (SlogP_VSA3 and SlogP_VSA10), molecular topology (HallKierAlpha), and presence of heteroatoms. The electronic/surface characteristics captured by VSA_EState1 counteract this trend somewhat, but the net effect of the listed features is to increase the predicted value."
+ADME_HLM,19,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'fr_nitrile', 'NumRotatableBonds', 'PEOE_VSA7', 'PEOE_VSA11']","[0.0874261420494265, -0.0524136881192749, -0.05133541667679416, 0.05068306554028464, -0.04945199968333134]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.087
+- fr_nitrile: -0.052
+- NumRotatableBonds: -0.051
+- PEOE_VSA7: 0.051
+- PEOE_VSA11: -0.049
+
+","The prediction can be interpreted by examining how each feature contributes positively or negatively to the outcome. Here's the explanation based on the given feature contributions:
+
+- **SMR_VSA2 (0.087)**: This feature has the largest positive contribution, indicating it pushes the prediction higher. SMR_VSA descriptors generally relate to the molecular surface area weighted by polarizability, suggesting that higher values of SMR_VSA2 increase the predicted property or likelihood.
+
+- **fr_nitrile (-0.052)**: This feature contributes negatively, decreasing the predicted value. The presence of a nitrile group (–C≡N) tends to lower the prediction, possibly because it changes the molecule's reactivity or properties adversely related to the target prediction.
+
+- **NumRotatableBonds (-0.051)**: A negative contribution implies that molecules with more rotatable bonds reduce the prediction. This could indicate that greater molecular flexibility is detrimental for the predicted characteristic.
+
+- **PEOE_VSA7 (0.051)**: This feature contributes positively, increasing the predicted value. PEOE_VSA descriptors are based on partial atomic charges and molecular surface areas, and here PEOE_VSA7's higher values favor the prediction.
+
+- **PEOE_VSA11 (-0.049)**: This feature slightly reduces the prediction, indicating that some specific surface area weighted by partial charges in PEOE_VSA11 negatively impacts the target.
+
+**Summary:**
+
+The prediction increases primarily due to SMR_VSA2 and PEOE_VSA7, suggesting that molecular surface areas linked with polarizability and partial charges at certain regions enhance the predicted outcome. Conversely, structural features like the presence of nitrile groups and the number of rotatable bonds negatively influence the prediction, implying less favorable properties associated with these factors. Overall, the balance of these contributions determines the final predicted value."
+ADME_HLM,20,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA7', 'VSA_EState1', 'fr_phos_acid', 'PEOE_VSA11']","[-0.3213124989038914, -0.04048259275260229, -0.03583626573685337, -0.028870539489339108, -0.02820096251840247]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.321
+- PEOE_VSA7: -0.040
+- VSA_EState1: -0.036
+- fr_phos_acid: -0.029
+- PEOE_VSA11: -0.028
+
+","The prediction is explained by the contributions of the different features listed, each impacting the prediction value either negatively or positively. Here, all the listed features have **negative contributions**, meaning they each push the prediction value downward by a certain amount.
+
+- **SMR_VSA2: -0.321**  
+  This feature has the largest negative impact among those listed. It strongly decreases the predicted value, indicating that whatever this feature quantifies in the molecule or instance is associated with lower predicted outcomes.
+
+- **PEOE_VSA7: -0.040**  
+  This feature also lowers the prediction but to a much smaller extent than SMR_VSA2.
+
+- **VSA_EState1: -0.036**  
+  Slight negative influence, reducing the prediction slightly.
+
+- **fr_phos_acid: -0.029**  
+  This indicates the presence or frequency of acidic phosphate groups, which slightly reduce the predicted value.
+
+- **PEOE_VSA11: -0.028**  
+  Another small negative contributor.
+
+### Summary:
+- The prediction is primarily lowered by **SMR_VSA2**.
+- The other four features all have small but consistent negative effects.
+- The combined influence of these features is to pull the prediction downward.
+
+If the goal is to understand why the model made a low prediction or to increase the predicted value, one would look to reduce the effect or presence of these features or identify features with positive contributions not listed here."
+ADME_HLM,21,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA11', 'EState_VSA7', 'BCUT2D_LOGPHI', 'NumAliphaticCarbocycles']","[0.2564494439133886, 0.05907199567403336, -0.048335164909287166, 0.04616279393149271, 0.04408140703390092]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.256
+- PEOE_VSA11: 0.059
+- EState_VSA7: -0.048
+- BCUT2D_LOGPHI: 0.046
+- NumAliphaticCarbocycles: 0.044
+
+","The prediction is based on the contributions of several molecular features, each impacting the predicted outcome in different ways. Here’s the explanation of the prediction using the given feature contributions:
+
+- **SMR_VSA2 (0.256)**: This feature has the largest positive contribution to the prediction. SMR_VSA2 typically represents the sum of van der Waals surface areas of atoms with specific ranges of molar refractivity (related to polarizability). A higher value in this feature strongly increases the predicted value, suggesting that molecules with larger or more polarizable surface areas in this range tend to have higher predicted outcomes.
+
+- **PEOE_VSA11 (0.059)**: This feature also positively contributes to the prediction but to a lesser extent. PEOE_VSA11 relates to the sum of van der Waals surface areas of atoms with specific partial charges calculated by the Partial Equalization of Orbital Electronegativities (PEOE) method. This indicates that the presence of certain charged atom environments slightly increases the prediction.
+
+- **EState_VSA7 (-0.048)**: This feature negatively contributes to the prediction. EState_VSA7 is associated with the sum of van der Waals surface areas of atoms with specific electrotopological state values, which reflect atom environments combining electronic and topological information. A negative value means that higher values of this feature reduce the predicted outcome.
+
+- **BCUT2D_LOGPHI (0.046)**: This is a descriptor derived from the BCUT metrics and involves logarithmic properties related to atomic properties of the molecule. It has a positive contribution, so higher values push the prediction upward, often capturing global molecular characteristics like polarity or electronic properties.
+
+- **NumAliphaticCarbocycles (0.044)**: The number of aliphatic carbocyclic rings in the molecule positively contributes to the prediction. More such rings slightly increase the predicted value, indicating that the structural complexity or ring content in the molecule matters.
+
+**Summary:**  
+The prediction is increased primarily by features related to molecular surface areas associated with polarizability (SMR_VSA2) and partial charges (PEOE_VSA11), plus some structural and electronic descriptors (BCUT2D_LOGPHI, NumAliphaticCarbocycles). A particular electrotopological feature (EState_VSA7) counters this trend by decreasing the predicted value. Overall, molecules with larger polarizable surfaces, specific charged environments, more aliphatic rings, and certain topological/electronic properties tend to have higher predictions in this model."
+ADME_HLM,22,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'BCUT2D_MRLOW', 'HeavyAtomCount', 'EState_VSA8', 'PEOE_VSA11']","[-0.15397965220698093, 0.11287868924119274, -0.09660831006593053, -0.06317006536651759, -0.05077703576063459]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.154
+- BCUT2D_MRLOW: 0.113
+- HeavyAtomCount: -0.097
+- EState_VSA8: -0.063
+- PEOE_VSA11: -0.051
+
+","The feature contributions provided explain how each feature influenced the model's prediction, either pushing it higher or lower relative to a baseline prediction (often the average prediction).
+
+Here’s the interpretation of the contributions:
+
+- **SMR_VSA2: -0.154**  
+  This feature has a fairly large negative contribution, meaning it decreased the predicted value by 0.154 units. Its effect is significant and pushes the prediction down.
+
+- **BCUT2D_MRLOW: 0.113**  
+  This feature contributed positively, increasing the prediction by 0.113 units. It partially offsets some negative contributions.
+
+- **HeavyAtomCount: -0.097**  
+  This feature also decreased the prediction by 0.097 units, contributing negatively though less than SMR_VSA2.
+
+- **EState_VSA8: -0.063**  
+  This feature contributed a moderate negative effect, lowering the prediction by 0.063 units.
+
+- **PEOE_VSA11: -0.051**  
+  This feature slightly lowered the prediction by 0.051 units.
+
+---
+
+### Summary:
+- Most features pushed the prediction downward (negative contributions).
+- The only feature pushing the prediction upward is **BCUT2D_MRLOW**, moderately increasing the predicted value.
+- The net effect is the sum of all contributions:  
+  \[
+  -0.154 + 0.113 - 0.097 - 0.063 - 0.051 = -0.252
+  \]
+  So, overall the features lowered the prediction by approximately 0.252 units relative to the baseline.
+
+This indicates the model predicted a lower value for this instance, mainly driven by strong negative effects from the features SMR_VSA2, HeavyAtomCount, EState_VSA8, and PEOE_VSA11. The positive effect from BCUT2D_MRLOW was not enough to offset these."
+ADME_HLM,23,gpt-4.1-mini,basic,5,"['BCUT2D_MWHI', 'fr_nitrile', 'VSA_EState1', 'MinAbsPartialCharge', 'MinEStateIndex']","[-0.09817505558196137, -0.07112385854891666, -0.055556395542283914, -0.05317850817455385, -0.05246652840958528]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_MWHI: -0.098
+- fr_nitrile: -0.071
+- VSA_EState1: -0.056
+- MinAbsPartialCharge: -0.053
+- MinEStateIndex: -0.052
+
+","The prediction explanation based on these feature contributions considers how each feature influences the final output, typically in a machine learning model for regression or classification.
+
+Here are the details of the contributions you provided:
+
+- **BCUT2D_MWHI: -0.098**  
+  This feature has the largest negative contribution, meaning that a high value of BCUT2D_MWHI pushes the prediction downward. BCUT2D_MWHI is typically a molecular descriptor related to molecular weight and connectivity, so whatever the model is predicting, a certain range of this descriptor decreases the output.
+
+- **fr_nitrile: -0.071**  
+  This feature likely represents the presence or count of nitrile groups (–C≡N) in the molecule. Its negative contribution suggests the presence of nitrile groups lowers the predicted value.
+
+- **VSA_EState1: -0.056**  
+  VSA_EState1 combines surface area (VSA) with electronic state indices, indicating that certain electronic/steric environments reduce the prediction.
+
+- **MinAbsPartialCharge: -0.053**  
+  A lower minimum absolute partial charge is associated with a lower prediction — or conversely, the presence of atoms with low absolute partial charges decreases the output.
+
+- **MinEStateIndex: -0.052**  
+  The minimum electronic state index also negatively impacts the prediction, meaning that atoms or molecular environments having lower MinEStateIndex lower the predicted value.
+
+### Summary:
+All these features contribute negatively to the predicted outcome. The model's output is decreased when the molecule has higher values or specific states in BCUT2D_MWHI, nitrile functional groups, certain surface area/electronic state configurations (VSA_EState1), and low partial charges or electronic states (MinAbsPartialCharge and MinEStateIndex).
+
+If you provide the context of what is being predicted (e.g., biological activity, solubility, toxicity), I can offer a more tailored interpretation. But in general, these features push the prediction downward and are key to understanding why the model arrived at its value."
+ADME_HLM,24,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA13', 'EState_VSA8', 'MinEStateIndex', 'PEOE_VSA9']","[-0.34438428313607944, -0.04960078373076185, -0.04343578304191213, -0.03863829118851611, -0.034783992543556526]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.344
+- PEOE_VSA13: -0.050
+- EState_VSA8: -0.043
+- MinEStateIndex: -0.039
+- PEOE_VSA9: -0.035
+
+","The prediction is influenced by the listed features, each contributing a negative value to the final prediction score. Here’s an explanation of how these feature contributions affect the prediction:
+
+- **SMR_VSA2: -0.344**  
+  This feature has the largest negative impact on the prediction. It strongly reduces the predicted value, meaning that the characteristic captured by SMR_VSA2 is associated with a lower target value or lower likelihood of the positive class in the model.
+
+- **PEOE_VSA13: -0.050**  
+  This feature also contributes negatively but to a smaller degree. Its effect is to slightly decrease the prediction, indicating that whatever property PEOE_VSA13 measures is negatively correlated with the output.
+
+- **EState_VSA8: -0.043**  
+  Similarly, this feature reduces the prediction marginally, implying a negative relationship between EState_VSA8 and the target.
+
+- **MinEStateIndex: -0.039**  
+  This feature has a small negative effect, further decreasing the prediction.
+
+- **PEOE_VSA9: -0.035**  
+  Finally, this feature slightly lowers the prediction as well.
+
+### Summary:
+All these features act to reduce the predicted outcome. The strongest negative influence comes from **SMR_VSA2**, while the others have smaller but consistent negative contributions. This means the molecular properties or descriptors captured by these features are indicative of lower values of the predicted target, or lower probability of a positive event/class in classification models."
+ADME_HLM,25,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'SMR_VSA7', 'SlogP_VSA10', 'PEOE_VSA7', 'BCUT2D_MRLOW']","[-0.19552062803794001, 0.056869035830328325, -0.04526652675147337, -0.04441191499480669, -0.038609044849758196]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.196
+- SMR_VSA7: 0.057
+- SlogP_VSA10: -0.045
+- PEOE_VSA7: -0.044
+- BCUT2D_MRLOW: -0.039
+
+","The prediction is based on the combined contributions of several molecular descriptors (features), each influencing the outcome to varying degrees. Here's an explanation of the provided feature contributions:
+
+- **SMR_VSA2: -0.196**  
+  This feature has the largest negative contribution, decreasing the predicted value. SMR_VSA2 generally relates to the sum of van der Waals surface areas of atoms with a specific range of molar refractivity. A higher value here likely pushes the prediction down.
+
+- **SMR_VSA7: +0.057**  
+  This feature slightly increases the prediction. It also involves van der Waals surface areas but in a different molar refractivity range. So, surface areas corresponding to this range contribute positively.
+
+- **SlogP_VSA10: -0.045**  
+  This feature has a small negative effect. It relates to the sum of surface areas associated with logP values (measure of lipophilicity) in a specific range. Higher logP surface areas here reduce the prediction slightly.
+
+- **PEOE_VSA7: -0.044**  
+  This feature also negatively influences the prediction slightly. It relates to partial charges (PEOE = Partial Equalization of Orbital Electronegativity) summed over certain van der Waals surface areas.
+
+- **BCUT2D_MRLOW: -0.039**  
+  This feature has a minor negative contribution. BCUT2D descriptors are eigenvalues derived from matrices representing atomic properties (like molar refractivity), reflecting structural aspects. Lower values here appear to lower the prediction.
+
+### Summary  
+The overall prediction is driven down primarily by the strong negative contribution from **SMR_VSA2**, indicating that molecular surface areas in that specific molar refractivity range are key in lowering the predicted outcome. Other features provide smaller adjustments, with **SMR_VSA7** slightly offsetting this with a positive contribution. The negative contributions from features related to lipophilicity (SlogP_VSA10), partial charges (PEOE_VSA7), and structural eigenvalues (BCUT2D_MRLOW) collectively push the prediction downward but to a lesser extent.
+
+Thus, the model is likely sensitive to molecular surface areas and electronic properties, with the input features suggesting a prediction predominantly decreased by specific surface area characteristics and electronic environments."
+ADME_HLM,26,gpt-4.1-mini,basic,5,"['NumHAcceptors', 'NumHDonors', 'SMR_VSA2', 'BCUT2D_MWHI', 'VSA_EState1']","[-0.18842098721245998, -0.10689495075015211, 0.09607374650783339, -0.08325622455263806, -0.06729183551827565]","
+Explain the prediction using the following feature contributions.
+
+- NumHAcceptors: -0.188
+- NumHDonors: -0.107
+- SMR_VSA2: 0.096
+- BCUT2D_MWHI: -0.083
+- VSA_EState1: -0.067
+
+","The prediction is influenced by the contributions of five features, each affecting the outcome either positively or negatively:
+
+- **NumHAcceptors (-0.188):** This feature has a negative contribution, which means a higher number of hydrogen bond acceptors tends to decrease the predicted value. The relatively large magnitude (-0.188) indicates it has a significant negative impact on the prediction.
+
+- **NumHDonors (-0.107):** Similarly, the number of hydrogen bond donors also negatively affects the prediction, though to a lesser extent than acceptors. More hydrogen bond donors lower the prediction by reducing it by 0.107 units approximately.
+
+- **SMR_VSA2 (0.096):** This feature contributes positively, increasing the predicted value. A higher SMR_VSA2 value is associated with an increase of about 0.096 in the prediction.
+
+- **BCUT2D_MWHI (-0.083):** This feature also decreases the prediction, but with a smaller effect compared to NumHAcceptors and NumHDonors. Its negative value suggests that higher BCUT2D_MWHI values slightly lower the prediction.
+
+- **VSA_EState1 (-0.067):** It has a small negative contribution, indicating that higher VSA_EState1 values mildly reduce the prediction.
+
+### Summary:
+Overall, the prediction is pulled down mainly by the number of hydrogen bond acceptors and donors, with smaller negative contributions from BCUT2D_MWHI and VSA_EState1, while SMR_VSA2 pushes the prediction upwards. The net effect depends on how these contributions sum up relative to the model's baseline."
+ADME_HLM,27,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'fr_piperdine', 'fr_phos_acid', 'BCUT2D_MRLOW', 'PEOE_VSA7']","[-0.32342987798514233, 0.043364896034460636, -0.037399155764194, -0.035638218421594425, -0.03441562241327656]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.323
+- fr_piperdine: 0.043
+- fr_phos_acid: -0.037
+- BCUT2D_MRLOW: -0.036
+- PEOE_VSA7: -0.034
+
+","The prediction is influenced by the combined effects of several features, each contributing positively or negatively to the final output. Here's an explanation based on the provided feature contributions:
+
+- **SMR_VSA2 (-0.323):** This feature has the largest negative contribution, pulling the prediction downward significantly. It suggests that a high value or presence of this descriptor strongly reduces the predicted outcome.
+  
+- **fr_piperdine (0.043):** This feature contributes positively but only slightly, nudging the prediction higher. The presence or count of piperdine groups slightly increases the predicted value.
+
+- **fr_phos_acid (-0.037):** This feature has a small negative impact, slightly lowering the predicted value. It indicates that the presence of phosphoric acid groups tends to reduce the outcome, but only marginally.
+
+- **BCUT2D_MRLOW (-0.036):** This descriptor also negatively influences the prediction a little, contributing to a slight decrease.
+
+- **PEOE_VSA7 (-0.034):** This feature has a small negative contribution as well, slightly pushing the prediction downward.
+
+### Overall Interpretation:
+The prediction is primarily decreased by the large negative effect of **SMR_VSA2**, with smaller negative contributions from **fr_phos_acid**, **BCUT2D_MRLOW**, and **PEOE_VSA7**, while **fr_piperdine** provides a minor push upwards. The net effect is a prediction leaning towards a lower value, mainly driven by the strong negative influence of SMR_VSA2."
+ADME_HLM,28,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'SlogP_VSA4', 'BCUT2D_CHGLO', 'EState_VSA8', 'NumHDonors']","[-0.29958430749749043, 0.10127244423971969, -0.0710325210300128, -0.06201510887717097, -0.05471321146825305]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.300
+- SlogP_VSA4: 0.101
+- BCUT2D_CHGLO: -0.071
+- EState_VSA8: -0.062
+- NumHDonors: -0.055
+
+","The prediction explanation using feature contributions indicates how each feature influences the model's output for this specific instance. Here's a breakdown of the contributions:
+
+- **SMR_VSA2: -0.300**  
+  This feature has the largest negative contribution, meaning its current value is pushing the prediction downward significantly. It is the dominant factor in reducing the model's predicted value.
+
+- **SlogP_VSA4: 0.101**  
+  This feature contributes positively, increasing the prediction moderately. It partially offsets the negative impact from SMR_VSA2.
+
+- **BCUT2D_CHGLO: -0.071**  
+  This has a small negative effect, slightly decreasing the predicted value.
+
+- **EState_VSA8: -0.062**  
+  This also has a minor negative contribution, further reducing the prediction a bit.
+
+- **NumHDonors: -0.055**  
+  This feature slightly decreases the prediction as well.
+
+**Summary:**  
+Most features contribute to lowering the prediction, with SMR_VSA2 having the largest negative effect. SlogP_VSA4 is the only feature pushing the prediction upward, but its effect is smaller compared to the negative influences. Overall, the model predicts a lower outcome driven primarily by the value of SMR_VSA2 and reinforced by the other negatively contributing features."
+ADME_HLM,29,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'SlogP_VSA10', 'VSA_EState5', 'fr_alkyl_halide', 'Chi4v']","[-0.14970147554200725, -0.05207882745645061, -0.04506493506977094, 0.0422819743421353, -0.04112070294353518]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.150
+- SlogP_VSA10: -0.052
+- VSA_EState5: -0.045
+- fr_alkyl_halide: 0.042
+- Chi4v: -0.041
+
+","The prediction is influenced by the contributions of the given features as follows:
+
+- **SMR_VSA2 (-0.150):** This feature has the largest negative contribution, meaning that higher values or presence of this descriptor decrease the predicted value significantly.
+- **SlogP_VSA10 (-0.052):** This feature also negatively affects the prediction, though less strongly than SMR_VSA2.
+- **VSA_EState5 (-0.045):** This contributes a small negative effect, further lowering the prediction.
+- **fr_alkyl_halide (0.042):** This feature provides a positive contribution, slightly increasing the prediction.
+- **Chi4v (-0.041):** This adds a small negative contribution, reducing the predicted value somewhat.
+
+**Summary:** Most of the main features push the predicted value down, with the strongest negative effect from SMR_VSA2. The only feature increasing the prediction is fr_alkyl_halide, but its positive impact is relatively modest compared to the negative contributors. Overall, the prediction is largely driven down by these feature effects."
+ADME_HLM,30,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'NumHDonors', 'VSA_EState1', 'EState_VSA8', 'Phi']","[0.11171427331590744, -0.0994089519502257, -0.06684585169022061, -0.05957063362588706, -0.04620197555612887]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.112
+- NumHDonors: -0.099
+- VSA_EState1: -0.067
+- EState_VSA8: -0.060
+- Phi: -0.046
+
+","The prediction is explained by the combined effects of these feature contributions on the model output:
+
+- **SMR_VSA2 (0.112):** This feature contributes positively to the prediction, increasing the predicted value. It has the largest positive influence among the listed features.
+- **NumHDonors (-0.099):** The number of hydrogen bond donors contributes negatively, decreasing the predicted value. This is the strongest negative contributor.
+- **VSA_EState1 (-0.067):** This feature also decreases the predicted value, further pushing the prediction down.
+- **EState_VSA8 (-0.060):** Similar to the previous one, this feature reduces the predicted value.
+- **Phi (-0.046):** The Phi feature contributes a smaller but still negative impact on the prediction.
+
+**Overall:** The positive effect from SMR_VSA2 is partially offset by several negative contributions, especially from NumHDonors, leading to a net influence that depends on the sum of these contributions. This balanced interplay directs the final prediction one way or another depending on the context."
+ADME_HLM,31,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'BCUT2D_MRHI', 'MinEStateIndex', 'PEOE_VSA7', 'fr_bicyclic']","[-0.24187933772112624, -0.04474086402635319, 0.041451996241591266, -0.03368451225792734, -0.032409513542950304]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.242
+- BCUT2D_MRHI: -0.045
+- MinEStateIndex: 0.041
+- PEOE_VSA7: -0.034
+- fr_bicyclic: -0.032
+
+","The prediction is influenced by the contributions of the listed features, each adjusting the overall prediction by the given amount:
+
+- **SMR_VSA2: -0.242**  
+  This feature has the largest negative contribution, significantly decreasing the prediction value. It suggests that the aspect captured by SMR_VSA2 strongly pushes the prediction downward.
+
+- **BCUT2D_MRHI: -0.045**  
+  This feature slightly decreases the prediction. Its effect is smaller but still contributes negatively.
+
+- **MinEStateIndex: 0.041**  
+  This feature contributes positively, increasing the prediction slightly. It offsets some of the negative effects from other features.
+
+- **PEOE_VSA7: -0.034**  
+  This feature has a small negative contribution, further lowering the prediction a bit.
+
+- **fr_bicyclic: -0.032**  
+  This feature also slightly decreases the prediction.
+
+**Summary:**  
+Overall, the model’s prediction is pushed down by most of these features, especially the strong negative influence of SMR_VSA2. MinEStateIndex is the only feature here nudging the prediction upward slightly. Thus, the combination of these features results in a net negative adjustment to the prediction."
+ADME_HLM,32,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'BCUT2D_CHGHI', 'Chi3n', 'MaxAbsPartialCharge', 'SlogP_VSA4']","[0.36534909332973564, 0.10241959150649547, 0.08598515064796483, 0.07326917519242652, 0.06329662044640179]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.365
+- BCUT2D_CHGHI: 0.102
+- Chi3n: 0.086
+- MaxAbsPartialCharge: 0.073
+- SlogP_VSA4: 0.063
+
+","The prediction is influenced by the following features, each contributing positively to the predicted value:
+
+- **SMR_VSA2 (0.365):** This feature has the largest positive contribution, indicating that the molecular property captured by SMR_VSA2 strongly increases the predicted outcome. SMR_VSA2 typically relates to the surface area of atoms with specific contributions to molar refractivity, suggesting that molecules with higher values in this descriptor tend to drive the prediction higher.
+
+- **BCUT2D_CHGHI (0.102):** This feature contributes moderately positively, reflecting the influence of the highest eigenvalue of the charge-related BCUT descriptors in 2D. It suggests that the distribution of high partial charges in the molecule supports increasing the prediction.
+
+- **Chi3n (0.086):** This topological descriptor, which measures the third-order chi connectivity index for non-hydrogen atoms, adds positively. It reflects certain molecular connectivity patterns that are beneficial for the predicted outcome.
+
+- **MaxAbsPartialCharge (0.073):** The maximum absolute partial charge on any atom contributes positively, indicating that higher ionic character or polarized atoms tend to increase the prediction.
+
+- **SlogP_VSA4 (0.063):** This descriptor combines logP-related lipophilicity with surface area, contributing positively though to a lesser extent. It suggests that surface area regions associated with a particular range of hydrophobicity increase the prediction slightly.
+
+### Summary
+Overall, the prediction is driven by molecular features that capture aspects of surface area related to refractivity and lipophilicity (SMR_VSA2 and SlogP_VSA4), charge distribution (BCUT2D_CHGHI and MaxAbsPartialCharge), and molecular connectivity (Chi3n). All these factors contribute positively, indicating the predicted property or activity increases when these molecular characteristics are more pronounced."
+ADME_HLM,33,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA7', 'EState_VSA7', 'VSA_EState10', 'fr_COO']","[0.22050422442322934, -0.04439463518382042, 0.043509975798482196, 0.04232248844828234, -0.041508336674490026]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.221
+- PEOE_VSA7: -0.044
+- EState_VSA7: 0.044
+- VSA_EState10: 0.042
+- fr_COO: -0.042
+
+","The prediction is influenced by the following feature contributions, each representing how much they push the prediction up or down:
+
+- **SMR_VSA2: 0.221**  
+  This feature has the largest positive contribution. It significantly increases the predicted value, suggesting that whatever property or descriptor SMR_VSA2 measures strongly supports a higher prediction.
+
+- **PEOE_VSA7: -0.044**  
+  This feature decreases the prediction slightly. It contributes a negative effect, indicating that higher values of PEOE_VSA7 are associated with lower predicted values.
+
+- **EState_VSA7: 0.044**  
+  This feature contributes positively, increasing the prediction moderately, indicating it favors a higher prediction.
+
+- **VSA_EState10: 0.042**  
+  Similar to EState_VSA7, this feature adds a modest positive contribution to the prediction.
+
+- **fr_COO: -0.042**  
+  This is a negative contributor, slightly decreasing the predicted value. It likely corresponds to the presence of a carboxyl group, which appears to reduce the prediction.
+
+**Summary:**  
+The final prediction is primarily driven upward by SMR_VSA2, with smaller positive contributions from EState_VSA7 and VSA_EState10. The negative contributions from PEOE_VSA7 and fr_COO slightly offset these increases. Overall, the prediction is increased but moderated due to the opposing effects of these features."
+ADME_HLM,34,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA8', 'VSA_EState5', 'PEOE_VSA7', 'NumHDonors']","[0.06918550206981368, -0.06015023980151555, -0.04922485160095978, 0.04288891838192652, -0.03580111179944291]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.069
+- EState_VSA8: -0.060
+- VSA_EState5: -0.049
+- PEOE_VSA7: 0.043
+- NumHDonors: -0.036
+
+","The prediction is influenced by several features, each contributing either positively or negatively to the final output. Here's an explanation based on the given feature contributions:
+
+- **SMR_VSA2 (0.069):** This feature has the largest positive contribution to the prediction, increasing the predicted value. It likely captures a molecular property related to surface area and molar refractivity that correlates positively with the target.
+
+- **EState_VSA8 (-0.060):** This feature contributes negatively, decreasing the predicted value. It represents an electrotopological state descriptor combined with van der Waals surface area, indicating that higher values of this feature reduce the prediction.
+
+- **VSA_EState5 (-0.049):** Also a negative contributor, this descriptor combines surface area and electrotopological state information, further decreasing the predicted value.
+
+- **PEOE_VSA7 (0.043):** This positively contributes to the prediction. PEOE descriptors relate to partial charges and surface areas; thus, this feature suggests a positive relationship between the distribution of partial charge surface area and the target.
+
+- **NumHDonors (-0.036):** The number of hydrogen bond donors negatively impacts the prediction, indicating that more hydrogen bond donors are associated with a lower predicted value.
+
+### Overall Interpretation:
+The prediction is a balance of positive and negative influences. The strongest positive factor is **SMR_VSA2**, indicating certain molecular surface and refractivity properties increase the predicted value. This is partially offset by negative contributions primarily from electrotopological state-related features (**EState_VSA8**, **VSA_EState5**) and the presence of hydrogen bond donors (**NumHDonors**). The net prediction reflects the combined effect of these molecular characteristics on the outcome."
+ADME_HLM,35,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA7', 'BCUT2D_MRLOW', 'PEOE_VSA11', 'BCUT2D_LOGPLOW']","[0.14567716929000932, 0.07151157084824118, 0.055704453496294055, -0.045328245131692355, -0.04192169508376535]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.146
+- PEOE_VSA7: 0.072
+- BCUT2D_MRLOW: 0.056
+- PEOE_VSA11: -0.045
+- BCUT2D_LOGPLOW: -0.042
+
+","The provided feature contributions indicate how each descriptor influences the prediction, with positive values pushing the prediction higher (toward a positive class or higher predicted value) and negative values pushing it lower.
+
+Here's the explanation of each contribution:
+
+1. **SMR_VSA2: 0.146**  
+   This feature has the largest positive contribution, meaning that higher values of SMR_VSA2 strongly increase the prediction. SMR_VSA2 typically relates to the surface area of atoms with a specific molar refractivity range, so molecules with surface areas matching this criteria positively impact the predicted outcome.
+
+2. **PEOE_VSA7: 0.072**  
+   This feature positively contributes as well, though less strongly than SMR_VSA2. PEOE_VSA7 corresponds to the van der Waals surface area of atoms with a specific partial charge range (computed via the Partial Equalization of Orbital Electronegativities method). Higher values here support an increase in the prediction.
+
+3. **BCUT2D_MRLOW: 0.056**  
+   A moderate positive contributor. BCUT2D_MRLOW is a BCUT descriptor related to atoms with low molar refractivity in the molecule and is connected with molecular complexity or electronic properties. A higher value nudges the prediction upward.
+
+4. **PEOE_VSA11: -0.045**  
+   This feature has a negative impact on the prediction. PEOE_VSA11 measures surface area for atoms with a different range of partial charges. Increased values reduce the predicted value, opposing the effects of the positive features above.
+
+5. **BCUT2D_LOGPLOW: -0.042**  
+   Another negative contributor, this feature is related to BCUT descriptors calculated from LogP (measure of hydrophobicity). Higher values here decrease the prediction.
+
+### Summary of the prediction influence:
+- The prediction is primarily driven upward by descriptors related to molecular surface areas with certain properties (SMR_VSA2 and PEOE_VSA7) and electronic/molecular complexity (BCUT2D_MRLOW).
+- Offsetting this, some surface area and hydrophobicity-related features (PEOE_VSA11 and BCUT2D_LOGPLOW) decrease the prediction.
+- Since the largest positive contribution (0.146) exceeds the magnitude of the largest negative contribution (−0.045), the overall prediction tends to be higher (positive impact dominates).
+
+If you provide the context (e.g., classification task, target property), I can tailor the explanation further."
+ADME_HLM,36,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA11', 'SlogP_VSA2', 'MinAbsPartialCharge', 'BCUT2D_LOGPHI']","[0.39048983018573286, 0.08507183860038679, 0.07224715123464022, 0.06331973221561202, 0.05620687210005291]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.390
+- PEOE_VSA11: 0.085
+- SlogP_VSA2: 0.072
+- MinAbsPartialCharge: 0.063
+- BCUT2D_LOGPHI: 0.056
+
+","The prediction is explained by the positive contributions from several molecular descriptors (features), each adding to the final predicted value. Here's what the contributions mean:
+
+1. **SMR_VSA2 (0.390)**  
+   This is the largest positive contributor. SMR_VSA2 relates to the sum of van der Waals surface areas of atoms with a specific range of molar refractivity. A high positive contribution suggests that the surface area for these atoms is strongly supporting the prediction, possibly indicating favorable molecular size or polarizability features.
+
+2. **PEOE_VSA11 (0.085)**  
+   This descriptor sums the van der Waals surface areas of atoms that have partial charges in a specific range, calculated using the PEOE method. Its positive contribution indicates that certain charged atom regions are positively influencing the predicted outcome.
+
+3. **SlogP_VSA2 (0.072)**  
+   SlogP_VSA descriptors relate to the molecule’s hydrophobicity (logP) combined with surface area. The positive contribution from SlogP_VSA2 implies that hydrophobic surface areas within a certain logP range favor the predicted effect or property.
+
+4. **MinAbsPartialCharge (0.063)**  
+   This is the smallest absolute partial charge on any atom in the molecule. A positive contribution here hints that the molecule’s minimal partial charge, perhaps reflecting subtle electron distribution, supports the prediction.
+
+5. **BCUT2D_LOGPHI (0.056)**  
+   BCUT descriptors involve eigenvalues from a modified adjacency matrix weighted by atomic properties such as electronegativity or logP. A positive contribution from BCUT2D_LOGPHI suggests that overall molecular topology and electronic properties correlate positively with the predicted value.
+
+**Summary:**  
+Each of these features contributes positively to the predicted outcome, with SMR_VSA2 being the dominant factor. The prediction is likely influenced by molecular size and shape (surface areas), partial charge distributions, hydrophobic surface characteristics, and molecular topology. Together, they suggest the molecule's structural and electronic features favor the predicted property (e.g., bioactivity, solubility, toxicity, depending on the model context)."
+ADME_HLM,37,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'NumHeteroatoms', 'VSA_EState10', 'SlogP_VSA3', 'PEOE_VSA11']","[-0.2498861675894557, 0.06493031758390794, 0.055465684504272035, 0.05418005430647367, 0.05360496404495669]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.250
+- NumHeteroatoms: 0.065
+- VSA_EState10: 0.055
+- SlogP_VSA3: 0.054
+- PEOE_VSA11: 0.054
+
+","The prediction is influenced by the listed features with their respective contributions indicating how much each feature pushes the prediction either down or up.
+
+- **SMR_VSA2: -0.250**  
+  This feature has the largest negative contribution, meaning it decreases the predicted value significantly. Higher or specific values of SMR_VSA2 are associated with a lower prediction outcome.
+
+- **NumHeteroatoms: 0.065**  
+  This feature contributes positively and slightly increases the prediction. More heteroatoms (atoms other than carbon and hydrogen) in the molecule tend to push the prediction higher.
+
+- **VSA_EState10: 0.055**  
+  This feature also positively influences the prediction, adding a moderate increase. It relates to a specific electronic state and surface area characteristic contributing to a higher predicted value.
+
+- **SlogP_VSA3: 0.054**  
+  Another positive contribution, indicating that certain hydrophobic surface areas with SlogP characteristics raise the prediction slightly.
+
+- **PEOE_VSA11: 0.054**  
+  This has a similar, small positive impact, related to the partial charge surface area descriptor, nudging the prediction upward.
+
+**Summary:**  
+The overall prediction is a balance between a strong negative effect from SMR_VSA2 and smaller positive contributions from the other features. The negative impact of SMR_VSA2 largely pulls the prediction down, while the other four features collectively push it upwards but to a lesser extent. Therefore, the final predicted value is somewhat reduced, primarily due to the SMR_VSA2 feature."
+ADME_HLM,38,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'fr_alkyl_halide', 'VSA_EState1', 'SlogP_VSA2', 'PEOE_VSA7']","[0.29442900723427123, 0.10219927237735917, 0.05291413338995061, 0.045869211431307275, 0.045464524610878826]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.294
+- fr_alkyl_halide: 0.102
+- VSA_EState1: 0.053
+- SlogP_VSA2: 0.046
+- PEOE_VSA7: 0.045
+
+","The prediction can be explained based on the positive contributions of the listed molecular features:
+
+- **SMR_VSA2 (0.294)**: This is the largest contributor. SMR_VSA2 represents the sum of van der Waals surface areas of atoms with a specific range of molar refractivity. A high positive value suggests that this particular surface area property strongly increases the predicted value, indicating that these atoms contribute significantly to the property being predicted (e.g., bioactivity, solubility, etc.).
+
+- **fr_alkyl_halide (0.102)**: This feature counts the presence of alkyl halide groups in the molecule. A positive contribution means the presence of alkyl halides tends to increase the predicted outcome, perhaps adding reactivity or lipophilicity relevant to the model.
+
+- **VSA_EState1 (0.053)**: This is the van der Waals surface area of atoms with a certain electronic state value. A positive contribution here suggests that atoms with this electronic environment favorably influence the prediction.
+
+- **SlogP_VSA2 (0.046)**: This represents the surface area of atoms in a specified range of SlogP (an estimate of partition coefficient, related to hydrophobicity). A positive contribution indicates that hydrophobic surface areas in this range increase the predicted value.
+
+- **PEOE_VSA7 (0.045)**: This is the surface area of atoms with partial charges in a certain range, calculated by the PEOE method. The positive contribution suggests that these partially charged surface areas also raise the predicted output.
+
+**Summary**: The prediction is primarily driven by specific atom surface areas related to molar refractivity and electronic states, along with the presence of alkyl halides and hydrophobic regions. These features collectively push the predicted value higher, indicating that molecules possessing these characteristics are more likely to exhibit the property modeled (e.g., higher activity, better solubility, etc.)."
+ADME_HLM,39,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA7', 'Phi', 'MaxAbsPartialCharge', 'fr_nitrile']","[-0.18254880354479655, 0.047147328019428565, -0.042938483272164506, 0.03771274692265767, -0.033759365987853125]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.183
+- PEOE_VSA7: 0.047
+- Phi: -0.043
+- MaxAbsPartialCharge: 0.038
+- fr_nitrile: -0.034
+
+","The prediction is influenced by the following feature contributions:
+
+- **SMR_VSA2 (-0.183):** This feature has the largest negative contribution, indicating that higher values of SMR_VSA2 strongly decrease the predicted value. SMR_VSA2 is related to the sum of surface areas of atoms with specific molar refractivity ranges, so molecular properties affecting polarizability and size in this range reduce the prediction.
+
+- **PEOE_VSA7 (0.047):** This feature has a positive contribution, meaning that an increase in PEOE_VSA7 slightly increases the predicted value. PEOE_VSA7 represents the van der Waals surface area of atoms with partial charges in a given range, so atoms with such partial charges drive the prediction up a bit.
+
+- **Phi (-0.043):** This dihedral angle-related feature contributes negatively, suggesting that certain conformations reduce the predicted value.
+
+- **MaxAbsPartialCharge (0.038):** The maximum absolute partial charge on any atom has a small positive effect, so molecules with atoms having higher charge magnitude tend to slightly increase the prediction.
+
+- **fr_nitrile (-0.034):** The presence or count of nitrile groups contributes negatively, indicating that nitrile groups lower the predicted value somewhat.
+
+### Summary
+
+Overall, the prediction is pushed down mainly by high values of SMR_VSA2 and the presence of nitrile groups, whereas partial charge-related features (PEOE_VSA7 and MaxAbsPartialCharge) slightly increase the prediction. The Phi angle contribution also slightly decreases the prediction, reflecting structural effects."
+ADME_HLM,40,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'NumHDonors', 'fr_piperdine', 'BCUT2D_MWHI', 'VSA_EState1']","[-0.24782217191036165, -0.08583837114477604, 0.0701387051511301, -0.0636625866092681, -0.04065741224978573]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.248
+- NumHDonors: -0.086
+- fr_piperdine: 0.070
+- BCUT2D_MWHI: -0.064
+- VSA_EState1: -0.041
+
+","The prediction is influenced by the individual contributions of each feature as follows:
+
+- **SMR_VSA2: -0.248**  
+  This feature has the largest negative contribution among the list, decreasing the prediction by 0.248 units. It means that higher values of SMR_VSA2 push the prediction lower.
+
+- **NumHDonors: -0.086**  
+  The number of hydrogen donors also negatively impacts the prediction, reducing it by 0.086 units. More hydrogen donors correspond to a lower predicted value.
+
+- **fr_piperdine: 0.070**  
+  This feature has a positive contribution, increasing the prediction by 0.070 units. The presence or higher count related to piperidine rings increases the predicted value.
+
+- **BCUT2D_MWHI: -0.064**  
+  This descriptor slightly lowers the prediction by 0.064 units. Higher BCUT2D_MWHI values tend to reduce the prediction.
+
+- **VSA_EState1: -0.041**  
+  This feature also negatively affects the prediction, but to a small degree, decreasing it by 0.041 units.
+
+### Summary:
+Overall, the prediction is mostly pushed down due to the negative contributions from SMR_VSA2, NumHDonors, BCUT2D_MWHI, and VSA_EState1. The positive contribution from fr_piperdine slightly offsets this decrease, but the net effect is a lowered prediction. If the prediction is for something like activity, toxicity, or another continuous outcome, these feature values collectively suggest that the combination represented favors a lower predicted value."
+ADME_HLM,41,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'fr_nitro_arom', 'VSA_EState1', 'fr_pyridine', 'PEOE_VSA7']","[0.11066085358092984, 0.06899173053593516, 0.06122786863997847, 0.05736822152260001, 0.05433345570138733]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.111
+- fr_nitro_arom: 0.069
+- VSA_EState1: 0.061
+- fr_pyridine: 0.057
+- PEOE_VSA7: 0.054
+
+","The prediction is influenced by the combined positive contributions of the listed features, each adding to the final prediction score. Here’s a breakdown of what the contributions indicate:
+
+- **SMR_VSA2 (0.111):** This feature contributes the most. SMR_VSA descriptors relate to the sum of molar refractivity (a measure of polarizability) over specific van der Waals surface areas. A positive value here suggests that regions of the molecule with certain polarizability characteristics and surface area positively impact the prediction.
+
+- **fr_nitro_arom (0.069):** This counts the presence of nitro aromatic groups. A positive contribution implies that the presence of nitro groups attached to aromatic rings pushes the prediction higher.
+
+- **VSA_EState1 (0.061):** This relates to the sum of electrotopological state values for atoms in a specific van der Waals surface area bin. A positive contribution here indicates that certain electronic environments on the molecule’s surface positively influence the prediction.
+
+- **fr_pyridine (0.057):** This counts the number of pyridine rings. The positive contribution suggests that molecules containing pyridine rings tend to increase the predicted property value.
+
+- **PEOE_VSA7 (0.054):** This feature sums the partial charges (from PEOE—Partial Equalization of Orbital Electronegativities) in a particular VSA range. A positive contribution means that the presence of atoms with these partial charges on the surface is associated with a higher predicted value.
+
+**Overall explanation:** The features associated with specific aromatic groups (nitro aromatic and pyridine), electronic states related to surface atoms, and polarizability characteristics positively contribute to the predicted property. The model likely uses these fragment and electronic structure descriptors to estimate a chemical or biological property, and the presence and characteristics of these features push the prediction upward."
+ADME_HLM,42,gpt-4.1-mini,basic,5,"['BCUT2D_MWHI', 'SMR_VSA2', 'PEOE_VSA13', 'VSA_EState1', 'NumHDonors']","[-0.09132851199782617, 0.06184592551390746, 0.058822245470941247, -0.057767765252013166, -0.054683388433528664]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_MWHI: -0.091
+- SMR_VSA2: 0.062
+- PEOE_VSA13: 0.059
+- VSA_EState1: -0.058
+- NumHDonors: -0.055
+
+","The prediction is influenced by the following feature contributions, each indicating how much the feature pushes the prediction higher (positive value) or lower (negative value):
+
+1. **BCUT2D_MWHI (-0.091)**: This feature has the largest negative contribution, meaning that higher values of BCUT2D_MWHI reduce the predicted outcome. It is a descriptor related to molecular weight and structure, so certain molecular characteristics captured by this feature are lowering the prediction.
+
+2. **SMR_VSA2 (0.062)**: This feature positively contributes to the prediction. It is likely related to surface area and electronic properties (e.g., polarizability surface area), so higher values increase the predicted value.
+
+3. **PEOE_VSA13 (0.059)**: Another positive contributor, this feature combines partial charge estimates with surface area. Larger values here push the prediction upward.
+
+4. **VSA_EState1 (-0.058)**: This is a negative contributor. It combines surface area with electrotopological state indices, and higher values decrease the prediction.
+
+5. **NumHDonors (-0.055)**: The number of hydrogen bond donors negatively influences the prediction. Molecules with more hydrogen bond donors tend to have lower predicted values.
+
+**Summary:**  
+The prediction results from a combination of features related to molecular structure, electronic properties, and hydrogen bonding capability. Features associated with certain molecular surface and electronic properties (SMR_VSA2, PEOE_VSA13) push the prediction up, while descriptors tied to molecular weight distribution, electrotopological surface characteristics, and number of hydrogen bond donors pull it down. Overall, the negative influences slightly outweigh the positive ones here, which may lead to a lower final predicted value."
+ADME_HLM,43,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA8', 'fr_alkyl_halide', 'MinAbsPartialCharge', 'PEOE_VSA7']","[0.27615906722809064, 0.11158008609622277, 0.10211940330784655, 0.07721340281878819, -0.061426599144344785]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.276
+- EState_VSA8: 0.112
+- fr_alkyl_halide: 0.102
+- MinAbsPartialCharge: 0.077
+- PEOE_VSA7: -0.061
+
+","The prediction is influenced by the following feature contributions:
+
+- **SMR_VSA2: +0.276**  
+  This feature has the largest positive contribution, suggesting that higher values of SMR_VSA2 strongly increase the predicted outcome.
+
+- **EState_VSA8: +0.112**  
+  This also positively contributes to the prediction, though less strongly than SMR_VSA2, indicating that this feature supports an increase in the predicted value.
+
+- **fr_alkyl_halide: +0.102**  
+  The presence or higher count of alkyl halide groups contributes positively to the prediction.
+
+- **MinAbsPartialCharge: +0.077**  
+  This feature adds a smaller positive influence on the outcome, meaning more extreme partial charge values tend to increase the prediction slightly.
+
+- **PEOE_VSA7: -0.061**  
+  This is the only feature with a negative contribution, decreasing the predicted value somewhat, indicating that higher values of PEOE_VSA7 lower the prediction.
+
+**Summary:**  
+The overall prediction is driven up primarily by SMR_VSA2, with other features like EState_VSA8, fr_alkyl_halide, and MinAbsPartialCharge also increasing the predicted value. PEOE_VSA7 has a modest downward effect, slightly offsetting some of the positive impacts."
+ADME_HLM,44,gpt-4.1-mini,basic,5,"['NumHDonors', 'SMR_VSA2', 'VSA_EState4', 'fr_piperdine', 'Kappa2']","[-0.09452388753073494, 0.08156910346519756, 0.059550786142725826, 0.052994668790080454, 0.046478222060611654]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: -0.095
+- SMR_VSA2: 0.082
+- VSA_EState4: 0.060
+- fr_piperdine: 0.053
+- Kappa2: 0.046
+
+","The prediction is influenced by the contributions of different features, each adding or subtracting from the final predicted value. Here's what each feature's contribution means in this context:
+
+- **NumHDonors: -0.095**  
+  This feature has a negative contribution, meaning that a higher number of hydrogen bond donors lowers the predicted value. Its influence is relatively strong compared to the other features, indicating it has a noticeable effect in decreasing the prediction.
+
+- **SMR_VSA2: 0.082**  
+  This feature positively contributes to the prediction, increasing its value. SMR_VSA2 is often related to molecular surface area descriptors weighted by molar refractivity, which suggests that certain structural or electronic properties represented by this feature increase the predicted output.
+
+- **VSA_EState4: 0.060**  
+  Similarly, this feature adds positively to the prediction, implying that the electronic state and surface area factors it measures are associated with a higher predicted value.
+
+- **fr_piperdine: 0.053**  
+  This fragment descriptor indicates the presence of a piperidine ring. Its positive contribution shows that having this structural fragment increases the predicted value moderately.
+
+- **Kappa2: 0.046**  
+  Kappa2 is a shape index descriptor related to molecular flexibility or complexity. A positive contribution means that increased molecular shape complexity or features captured by Kappa2 are associated with an increased prediction.
+
+### Summary
+Overall, the prediction balances one significant negative contribution (NumHDonors), which reduces the predicted value, against several moderate positive contributions (SMR_VSA2, VSA_EState4, fr_piperdine, Kappa2) that collectively raise it. The net result is the sum of these influences. Understanding which features push the prediction up or down helps interpret the factors driving the model's output for this particular instance."
+ADME_HLM,45,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'EState_VSA8', 'NumHDonors', 'PEOE_VSA11', 'BCUT2D_MRLOW']","[-0.3487445423520878, -0.07918918322192567, -0.04871779963328822, 0.04106409316535161, 0.036939858514047526]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.349
+- EState_VSA8: -0.079
+- NumHDonors: -0.049
+- PEOE_VSA11: 0.041
+- BCUT2D_MRLOW: 0.037
+
+","The prediction is explained by the combined contributions of several molecular features, with each feature pushing the prediction either down or up:
+
+- **SMR_VSA2 (-0.349):** This feature has the largest negative contribution and significantly lowers the predicted value. SMR_VSA2 typically relates to the sum of the approximate surface area of atoms with specific molar refractivity ranges, often capturing aspects of electronic polarizability. A negative value suggests that the presence or amount of these atoms decreases the predicted property.
+
+- **EState_VSA8 (-0.079):** This also contributes negatively, though less strongly. EState_VSA8 is related to electronic state indices combined with accessible surface area, reflecting specific atom types or environments. Its negative effect indicates that these atom types/environments reduce the predicted outcome.
+
+- **NumHDonors (-0.049):** The number of hydrogen bond donors slightly decreases the prediction. This suggests that molecules with more hydrogen bond donors have a marginally lower predicted value for this property.
+
+- **PEOE_VSA11 (0.041):** This contributes positively, increasing the predicted value. PEOE_VSA descriptors combine partial charge (PEOE) with surface area; a positive contribution here means that atoms with certain charge and area characteristics make the predicted property higher.
+
+- **BCUT2D_MRLOW (0.037):** This molecular descriptor relates to the lower eigenvalue of a BCUT matrix weighted by molar refractivity, capturing aspects of molecular size or branching related to polarizability. Its positive contribution slightly increases the prediction.
+
+**Summary:** The prediction is mainly decreased by the large negative contribution from SMR_VSA2, with further dampening effects from EState_VSA8 and NumHDonors. On the other hand, PEOE_VSA11 and BCUT2D_MRLOW pull the prediction upward but to a lesser extent. Overall, the net effect depends on the sum of these contributions, but the stronger negative terms suggest a tendency toward a lower predicted value based on these features."
+ADME_HLM,46,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'PEOE_VSA11', 'PEOE_VSA7', 'EState_VSA7', 'BCUT2D_LOGPHI']","[0.17057022403685973, 0.11396346568506315, 0.06163658663962646, 0.05714101385692243, 0.05706650829612142]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.171
+- PEOE_VSA11: 0.114
+- PEOE_VSA7: 0.062
+- EState_VSA7: 0.057
+- BCUT2D_LOGPHI: 0.057
+
+","The prediction is influenced by several molecular descriptors, each contributing positively to the output:
+
+- **SMR_VSA2 (0.171)**: This feature has the highest contribution. It generally represents the sum of the van der Waals surface areas of atoms with specific molar refractivity ranges, indicating that regions of the molecule with certain polarizabilities strongly increase the predicted value.
+
+- **PEOE_VSA11 (0.114)**: This descriptor relates to partial charges and surface areas, specifically the sum of van der Waals surface areas for atoms with partial charges in a particular range. Its positive contribution suggests that areas of the molecule with these partial charges also enhance the prediction.
+
+- **PEOE_VSA7 (0.062)**: Another charge-related surface area descriptor with a smaller but positive effect, indicating that additional atomic partial charge environments are relevant to the prediction.
+
+- **EState_VSA7 (0.057)**: This feature combines electrotopological state indices with surface areas, linking electronic environment and topology. Its positive contribution means these molecular electronic environments support the predicted outcome.
+
+- **BCUT2D_LOGPHI (0.057)**: BCUT descriptors are eigenvalues derived from modified adjacency matrices weighted by atomic properties, here involving log of atomic properties related to electronegativity or hydrophobicity. A positive contribution suggests that the overall topological and atomic property distribution in the molecule favors the prediction.
+
+**Summary:** The prediction is driven primarily by features describing the molecule’s polarizability and partial charge distribution on its surface, with additional support from electronic and topological properties. These combined molecular characteristics increase the predicted value in the model."
+ADME_HLM,47,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'NumSaturatedHeterocycles', 'MinAbsPartialCharge', 'PEOE_VSA11', 'PEOE_VSA13']","[0.33052035166304333, 0.06027240253927677, 0.052240786793249346, 0.05050513916732403, 0.04565842783850466]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: 0.331
+- NumSaturatedHeterocycles: 0.060
+- MinAbsPartialCharge: 0.052
+- PEOE_VSA11: 0.051
+- PEOE_VSA13: 0.046
+
+","The prediction is primarily influenced by the following features and their contributions:
+
+1. **SMR_VSA2 (0.331)**: This feature has the largest positive contribution to the prediction. SMR_VSA descriptors are related to the sum of contributions of atoms in specific van der Waals surface areas, weighted by the atomic molar refractivity. A high positive contribution here suggests that molecules with higher values in this SMR_VSA2 descriptor strongly drive the prediction towards the positive class or higher predicted value.
+
+2. **NumSaturatedHeterocycles (0.060)**: This feature counts the number of saturated heterocyclic rings in the molecule. A positive contribution indicates that the presence of more saturated heterocycles modestly increases the predicted output.
+
+3. **MinAbsPartialCharge (0.052)**: This feature represents the smallest absolute partial atomic charge in the molecule. A positive contribution means molecules with slightly higher minimum absolute partial charges tend to increase the prediction.
+
+4. **PEOE_VSA11 (0.051)** and **PEOE_VSA13 (0.046)**: These features are also based on the van der Waals surface area but weighted by atomic partial charges calculated using the PEOE (Partial Equalization of Orbital Electronegativity) method. Both contribute positively, indicating that areas of the molecule corresponding to these particular charged surface area bins are associated with increased predictions.
+
+### Summary
+The prediction is mainly driven by the SMR_VSA2 descriptor, with secondary positive contributions from molecular features related to the presence of saturated heterocycles, partial charges, and specific charged surface area ranges. Together, these suggest that molecules characterized by larger molar refractivity-based surface areas, more saturated heterocyclic rings, and certain partial charge distributions lead to higher predicted values."
+ADME_HLM,48,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'SlogP_VSA3', 'PEOE_VSA11', 'BCUT2D_LOGPHI', 'NumHeteroatoms']","[-0.2092309326108506, 0.06291451945092562, 0.06185122639233647, 0.052403026277465854, 0.0485133203167962]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.209
+- SlogP_VSA3: 0.063
+- PEOE_VSA11: 0.062
+- BCUT2D_LOGPHI: 0.052
+- NumHeteroatoms: 0.049
+
+","The prediction is explained by the contributions of the features as follows:
+
+- **SMR_VSA2 (-0.209):** This feature has the largest negative contribution, pushing the prediction down. It indicates that the attribute represented by SMR_VSA2 strongly decreases the predicted value or likelihood.
+
+- **SlogP_VSA3 (0.063):** This feature contributes positively to the prediction, increasing the predicted value moderately.
+
+- **PEOE_VSA11 (0.062):** Also a positive contributor, adding slightly to the predicted value.
+
+- **BCUT2D_LOGPHI (0.052):** This feature adds a small positive effect on the prediction.
+
+- **NumHeteroatoms (0.049):** Adds a minor positive contribution as well.
+
+**Summary:**
+
+The overall prediction is a balance of these effects. The largest negative impact is from SMR_VSA2, which pulls the prediction down. This is partially offset by several smaller positive contributions from SlogP_VSA3, PEOE_VSA11, BCUT2D_LOGPHI, and NumHeteroatoms, which push the prediction up. The net prediction depends on the sum of these contributions, and here the negative influence of SMR_VSA2 dominates, suggesting that the predicted value is likely lower than a baseline or reference value due to this feature."
+ADME_HLM,49,gpt-4.1-mini,basic,5,"['SMR_VSA2', 'VSA_EState9', 'BCUT2D_LOGPLOW', 'MinEStateIndex', 'VSA_EState1']","[-0.09540815901918731, 0.06275223340936763, 0.05352278472976753, 0.044056144916685754, 0.042367468897338965]","
+Explain the prediction using the following feature contributions.
+
+- SMR_VSA2: -0.095
+- VSA_EState9: 0.063
+- BCUT2D_LOGPLOW: 0.054
+- MinEStateIndex: 0.044
+- VSA_EState1: 0.042
+
+","The prediction is explained by analyzing how each feature contributes to the final output:
+
+- **SMR_VSA2: -0.095**  
+  This feature has the largest absolute contribution and a negative value, meaning it is pushing the prediction **downward** (decreasing the predicted value). Its relatively large magnitude suggests it plays a significant role in reducing the predicted score.
+
+- **VSA_EState9: 0.063**  
+  This feature contributes positively to the prediction, increasing the predicted value. It counteracts some of the negative impact of SMR_VSA2.
+
+- **BCUT2D_LOGPLOW: 0.054**  
+  Also a positive contributor, this suggests the corresponding chemical property increases the prediction moderately.
+
+- **MinEStateIndex: 0.044**  
+  This positive contribution indicates a smaller but still relevant increase to the prediction.
+
+- **VSA_EState1: 0.042**  
+  This feature adds a minor positive contribution as well.
+
+### Summary:
+The prediction is primarily decreased by the SMR_VSA2 feature, while the other four features collectively push the prediction upward. Overall, the model balances these influences, and the final prediction results from the sum of these positive and negative contributions. The negative value from SMR_VSA2 has the strongest effect, suggesting the compound or observation characterized by this feature tends to lower the predicted outcome, but this is partially offset by the other features."

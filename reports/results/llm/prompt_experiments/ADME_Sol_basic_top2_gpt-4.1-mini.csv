@@ -1,0 +1,738 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_Sol,0,gpt-4.1-mini,basic,2,"['NumHDonors', 'Chi4v']","[0.08028826390467006, 0.06234779232502139]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: 0.080
+- Chi4v: 0.062
+
+","The prediction is influenced by two features with the following contributions:
+
+- **NumHDonors (Number of Hydrogen Donors): 0.080**  
+  This positive contribution means that having hydrogen donors increases the predicted value. The higher the number of hydrogen donors in the molecule, the more it pushes the prediction upward by 0.080 units.
+
+- **Chi4v (Valence Fourth-Order Molecular Connectivity Index): 0.062**  
+  This feature also contributes positively but to a lesser extent than NumHDonors. A higher value of Chi4v increases the prediction by 0.062 units.
+
+**Overall explanation:**  
+Both features contribute positively to the final prediction. The number of hydrogen donors has the stronger effect, indicating that molecules with more hydrogen donors and higher Chi4v values are predicted to have higher target values in this model."
+ADME_Sol,1,gpt-4.1-mini,basic,2,"['TPSA', 'SlogP_VSA6']","[-0.09207122207548098, -0.0855083958541127]","
+Explain the prediction using the following feature contributions.
+
+- TPSA: -0.092
+- SlogP_VSA6: -0.086
+
+","The prediction is influenced by two features, TPSA and SlogP_VSA6, each contributing negatively to the predicted value.
+
+- **TPSA (-0.092)**: TPSA (Topological Polar Surface Area) measures the polar surface area of the molecule, which is related to its ability to interact with polar environments such as water. A negative contribution of -0.092 suggests that higher TPSA values are associated with a decrease in the predicted target value. This might indicate that increased polarity or polarity-related interactions reduce the property being predicted (e.g., bioactivity, permeability, solubility, etc.).
+
+- **SlogP_VSA6 (-0.086)**: SlogP_VSA6 corresponds to a descriptor related to the contributions of atom types with specific LogP (octanol-water partition coefficient) values and their van der Waals surface areas. A negative contribution of -0.086 implies that features corresponding to this descriptor also lower the prediction outcome. This might mean that the presence or extent of certain hydrophobic or lipophilic surface areas decreases the predicted property.
+
+**Summary:** Both higher TPSA and higher SlogP_VSA6 values decrease the predicted value, with TPSA having a slightly stronger effect. The prediction suggests that molecules with lower polarity and certain hydrophobic surface features will tend to have a higher predicted value."
+ADME_Sol,2,gpt-4.1-mini,basic,2,"['TPSA', 'NumHDonors']","[0.10355300248823868, 0.05407356264633692]","
+Explain the prediction using the following feature contributions.
+
+- TPSA: 0.104
+- NumHDonors: 0.054
+
+","The prediction is influenced by the two features as follows:
+
+- **TPSA (Topological Polar Surface Area): 0.104**  
+  This positive contribution indicates that a higher TPSA value increases the prediction output. TPSA is related to the molecule's ability to interact with polar environments (like water), so its presence positively influences the predicted property or activity.
+
+- **NumHDonors (Number of Hydrogen Donors): 0.054**  
+  This also contributes positively, meaning having more hydrogen donor groups enhances the prediction score, possibly because these groups play a role in molecular interactions relevant to the model.
+
+**Summary:** Both TPSA and the number of hydrogen donors positively impact the prediction, with TPSA having a larger contribution, suggesting that polar surface area and hydrogen bonding capability are key factors driving the predicted outcome."
+ADME_Sol,3,gpt-4.1-mini,basic,2,"['PEOE_VSA3', 'SlogP_VSA6']","[-0.053479431806700096, -0.05234001895948018]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA3: -0.053
+- SlogP_VSA6: -0.052
+
+","The prediction is influenced by the two features as follows:
+
+- **PEOE_VSA3: -0.053**  
+  This feature has a negative contribution of -0.053 to the prediction. PEOE_VSA3 typically represents the sum of van der Waals surface areas for atoms with partial charges in a certain range (usually moderately positive or negative partial charges). A negative contribution here means that higher values of PEOE_VSA3 are associated with a decrease in the predicted output (e.g., lower probability of an event, lower property value, etc.).
+
+- **SlogP_VSA6: -0.052**  
+  This feature also contributes negatively with -0.052. SlogP_VSA6 usually corresponds to the sum of van der Waals surface areas of atoms with certain logP (hydrophobicity) contribution in a defined range. A negative value means that higher values of SlogP_VSA6 push the prediction downward.
+
+**Overall Explanation:**  
+Both features contribute to decreasing the prediction value. If the prediction is for something like activity, toxicity, or a continuous property, these features suggest that molecules or instances with larger values of PEOE_VSA3 and SlogP_VSA6 tend to have lower predicted outcomes. The magnitudes of the contributions are roughly equal, with PEOE_VSA3 having a slightly stronger negative impact.
+
+If you have more context (e.g., what is being predicted, feature value ranges), I can provide a more tailored interpretation."
+ADME_Sol,4,gpt-4.1-mini,basic,2,"['fr_quatN', 'Chi4v']","[-0.25786771343713244, 0.06444708763444916]","
+Explain the prediction using the following feature contributions.
+
+- fr_quatN: -0.258
+- Chi4v: 0.064
+
+","The prediction is influenced by the two features, **fr_quatN** and **Chi4v**, with the following contributions:
+
+- **fr_quatN: -0.258**  
+  This feature contributes negatively to the prediction. Its value is pushing the predicted output down by about 0.258 units, indicating that higher or certain values of fr_quatN reduce the likelihood or magnitude of the predicted outcome.
+
+- **Chi4v: 0.064**  
+  This feature contributes positively but weakly to the prediction. It increases the predicted output slightly by 0.064 units, suggesting that higher or certain values of Chi4v have a small positive effect on the prediction.
+
+**Overall interpretation:**  
+The negative contribution from fr_quatN dominates the smaller positive contribution from Chi4v, so the combined effect of these features results in a net decrease in the predicted value relative to the baseline."
+ADME_Sol,5,gpt-4.1-mini,basic,2,"['VSA_EState3', 'NumHAcceptors']","[-0.14471436856316278, -0.11426199685916612]","
+Explain the prediction using the following feature contributions.
+
+- VSA_EState3: -0.145
+- NumHAcceptors: -0.114
+
+","The prediction is explained by the contributions of these two features as follows:
+
+- **VSA_EState3 (-0.145):** This feature contributes negatively to the prediction with a value of -0.145. This means that the value or characteristics captured by VSA_EState3 push the prediction score down. In other words, the higher or specific value of VSA_EState3 in this case reduces the likelihood or magnitude of the predicted outcome.
+
+- **NumHAcceptors (-0.114):** Similarly, the number of hydrogen bond acceptors also contributes negatively to the prediction by -0.114. This indicates that a higher number or specific value of hydrogen bond acceptors decreases the predicted outcome.
+
+**Overall interpretation:** Both features reduce the predicted value, and their combined contributions suggest that these molecular descriptors negatively influence the model’s prediction in this instance."
+ADME_Sol,6,gpt-4.1-mini,basic,2,"['NumHDonors', 'SlogP_VSA5']","[0.07068654691898327, 0.05225018469252035]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: 0.071
+- SlogP_VSA5: 0.052
+
+","The prediction is influenced by the features as follows:
+
+- **NumHDonors (Number of Hydrogen Bond Donors): 0.071**  
+  This indicates that having hydrogen bond donors positively contributes to the prediction. A value of 0.071 suggests a moderate positive impact, meaning that molecules with more hydrogen bond donors are slightly more likely to be predicted as the positive class (or higher predicted value, depending on the model's target).
+
+- **SlogP_VSA5: 0.052**  
+  SlogP_VSA5 corresponds to a specific molecular descriptor relating to the surface area of atoms with a certain logP (hydrophobicity) range. The positive contribution of 0.052 implies that higher values of this descriptor increase the predicted output moderately.
+
+**Summary:**  
+Both features contribute positively to the prediction, with NumHDonors having a somewhat stronger effect than SlogP_VSA5. This means the prediction likely favors molecules that have more hydrogen bond donors and a higher extent of the surface area characterized by the SlogP_VSA5 descriptor."
+ADME_Sol,7,gpt-4.1-mini,basic,2,"['SlogP_VSA5', 'Chi4v']","[-0.20798122128985636, -0.1147397880988239]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: -0.208
+- Chi4v: -0.115
+
+","The prediction is influenced by the two features:
+
+- **SlogP_VSA5: -0.208**  
+  This negative contribution indicates that this feature decreases the predicted value. SlogP_VSA5 typically represents the sum of the van der Waals surface areas of atoms in a molecule that fall within a certain range of logP (partition coefficient) values. A negative contribution suggests that the presence or magnitude of these atoms reduces the predicted property, possibly implying less hydrophobic surface area or a related effect that lowers the prediction.
+
+- **Chi4v: -0.115**  
+  Chi4v is a topological molecular descriptor related to the fourth order valence molecular connectivity index. Its negative contribution also reduces the predicted outcome, indicating that more complex or specific bonding/connectivity patterns captured by Chi4v negatively affect the prediction.
+
+**In summary:** Both features contribute negatively, lowering the prediction score. The molecule’s hydrophobic surface area patterns (SlogP_VSA5) and the fourth-order valence connectivity (Chi4v) aspects are driving the prediction downward."
+ADME_Sol,8,gpt-4.1-mini,basic,2,"['EState_VSA4', 'Chi4v']","[-0.12494687114151592, -0.11654752070078961]","
+Explain the prediction using the following feature contributions.
+
+- EState_VSA4: -0.125
+- Chi4v: -0.117
+
+","The prediction is influenced by the two features as follows:
+
+- **EState_VSA4: -0.125**  
+  This negative contribution indicates that a higher value of the EState_VSA4 feature decreases the predicted value. EState_VSA4 typically relates to the electronic state and surface area aspects of atoms in a molecule, so in this context, the particular electronic environment or surface area captured by this feature is pushing the prediction downward.
+
+- **Chi4v: -0.117**  
+  Similarly, Chi4v is a molecular connectivity or valence-based topological descriptor, reflecting the molecule’s branching or structural complexity. A negative contribution from Chi4v means that increased complexity or certain types of branching represented by this feature also reduce the prediction.
+
+**Overall explanation:**  
+Both features contribute negatively to the prediction, suggesting that higher values of these descriptors are associated with a lower predicted outcome. The combination of electronic state/surface area effects (EState_VSA4) and molecular topology/connectivity (Chi4v) work together to decrease the model’s output for this instance."
+ADME_Sol,9,gpt-4.1-mini,basic,2,"['TPSA', 'SlogP_VSA5']","[0.0513338274652742, 0.045620580792897124]","
+Explain the prediction using the following feature contributions.
+
+- TPSA: 0.051
+- SlogP_VSA5: 0.046
+
+","The prediction explanation based on the feature contributions:
+
+- **TPSA (Topological Polar Surface Area): 0.051**  
+  A positive contribution of 0.051 indicates that an increase in TPSA slightly increases the predicted outcome (e.g., activity, property score). TPSA often relates to polarity and hydrogen bonding; a higher TPSA may enhance properties like solubility or target interactions depending on the model.
+
+- **SlogP_VSA5 (Sum of logP contributions for atoms with specific surface area range): 0.046**  
+  A positive contribution of 0.046 suggests that this descriptor, related to lipophilicity and surface area, also slightly pushes the prediction higher. This feature could reflect hydrophobic surface patches increasing the predicted value.
+
+**Summary:**  
+Both TPSA and SlogP_VSA5 contribute positively and comparably to the prediction. Their combined effect raises the predicted outcome moderately, meaning the molecule's polar surface characteristics and specific lipophilic surface areas are favorable factors influencing the model's decision."
+ADME_Sol,10,gpt-4.1-mini,basic,2,"['Chi4v', 'NumHDonors']","[0.06976773384373999, 0.057312445457506245]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.070
+- NumHDonors: 0.057
+
+","The prediction is influenced positively by the two features you provided:
+
+- **Chi4v (0.070 contribution):** This feature has the highest positive contribution, indicating that the structural characteristic captured by the Chi4v descriptor increases the predicted value. Chi4v typically relates to molecular connectivity or shape, so specific aspects of the molecule's topology are likely driving the prediction upward.
+
+- **NumHDonors (0.057 contribution):** The number of hydrogen bond donors also positively contributes to the prediction, although to a slightly lesser extent than Chi4v. This means that molecules with more hydrogen bond donors tend to have higher predicted values in this model.
+
+In summary, both the molecular connectivity pattern (Chi4v) and the count of hydrogen bond donors (NumHDonors) are key factors pushing the prediction higher, with Chi4v having a somewhat stronger impact."
+ADME_Sol,11,gpt-4.1-mini,basic,2,"['Chi4v', 'SlogP_VSA5']","[0.06970194014505691, 0.06311448384533541]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.070
+- SlogP_VSA5: 0.063
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+- **Chi4v (Contributes 0.070)**: This feature represents a molecular connectivity index related to the fourth-order valence connectivity of the molecule. Its positive contribution of 0.070 indicates that features captured by this topological descriptor are increasing the predicted value. In other words, aspects of the molecule's structure quantified by Chi4v are positively influencing the outcome.
+
+- **SlogP_VSA5 (Contributes 0.063)**: This feature is a descriptor combining hydrophobicity (logP) and van der Waals surface area, specifically the part of the molecule falling within a particular hydrophobicity range. Its positive contribution of 0.063 suggests that more surface area in this hydrophobicity bin is also boosting the prediction.
+
+**Summary:** Both Chi4v and SlogP_VSA5 contribute positively and relatively comparably to the prediction, implying that molecular structural connectivity and hydrophobic surface properties are important factors driving the predicted result upwards in this case."
+ADME_Sol,12,gpt-4.1-mini,basic,2,"['SlogP_VSA6', 'TPSA']","[0.07145197214791849, 0.06989378820134949]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA6: 0.071
+- TPSA: 0.070
+
+","The prediction is influenced by the two features provided—**SlogP_VSA6** and **TPSA**—with their corresponding contribution values:
+
+- **SlogP_VSA6: 0.071**  
+  This indicates that the molecular descriptor SlogP_VSA6 has a positive contribution of 0.071 to the prediction. SlogP_VSA6 generally relates to the sum of van der Waals surface areas of atoms that have a specific range of LogP (partition coefficient) values. A positive contribution suggests that the characteristics captured by SlogP_VSA6 are pushing the prediction towards increasing the predicted value (which could be, for example, increasing activity, binding affinity, toxicity, or any endpoint depending on your model).
+
+- **TPSA: 0.070**  
+  TPSA stands for Topological Polar Surface Area, which reflects the polar surface area of a molecule and is related to properties like solubility and permeability. A positive contribution of 0.070 means that higher TPSA values (or the particular TPSA values in this molecule) are also nudging the prediction in the positive direction.
+
+**Summary:**  
+Both features contribute positively and nearly equally to the prediction outcome. The model predicts a higher value (for the property of interest) when both the SlogP_VSA6 descriptor and TPSA are considered, meaning these chemical properties are significant indicators pushing the model’s output upward."
+ADME_Sol,13,gpt-4.1-mini,basic,2,"['SlogP_VSA6', 'SlogP_VSA5']","[0.11547756445874752, 0.08837677386202383]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA6: 0.115
+- SlogP_VSA5: 0.088
+
+","The prediction is influenced by the features **SlogP_VSA6** and **SlogP_VSA5**, with contributions of 0.115 and 0.088, respectively. These features represent descriptors related to the molecular surface area associated with specific ranges of the **SlogP** (octanol-water partition coefficient) values.
+
+- **SlogP_VSA6 (0.115):** This indicates that the portion of the molecule's surface area with SlogP values in the range defined by VSA6 has a positive contribution of 0.115 to the prediction. A higher value here suggests this molecular region increases the likelihood or the output score of the predicted property or class.
+
+- **SlogP_VSA5 (0.088):** Similarly, the molecular surface area corresponding to the SlogP range in VSA5 contributes positively by 0.088, supporting the prediction but to a slightly lesser extent than VSA6.
+
+### Overall explanation:
+Both of these features, related to hydrophobic surface areas at specified SlogP intervals, are pushing the prediction upward (positive contributions). This means the molecular regions with these hydrophobic characteristics are important for the predicted outcome, likely indicating that molecules with these surface area properties are more likely to exhibit the activity or property being predicted.
+
+If you provide the context of the model (like the property or class being predicted), I can give a more tailored explanation."
+ADME_Sol,14,gpt-4.1-mini,basic,2,"['NumHAcceptors', 'EState_VSA7']","[-0.09781565297763409, -0.07593450403780727]","
+Explain the prediction using the following feature contributions.
+
+- NumHAcceptors: -0.098
+- EState_VSA7: -0.076
+
+","The prediction explanation based on the feature contributions is as follows:
+
+- **NumHAcceptors (-0.098):** This feature represents the number of hydrogen bond acceptors in the molecule. Its negative contribution (-0.098) indicates that increasing the number of hydrogen bond acceptors tends to decrease the predicted value (e.g., activity, property, or classification score depending on the context).
+
+- **EState_VSA7 (-0.076):** This feature relates to a specific electronic state and van der Waals surface area descriptor (likely capturing aspects of molecular shape, size, or electronic environment). Its negative contribution (-0.076) means that higher values for EState_VSA7 also reduce the predicted score.
+
+**Overall interpretation:** Both features contribute negatively to the prediction. Therefore, molecules with more hydrogen bond acceptors and larger or higher EState_VSA7 values are predicted to have lower target values based on this model."
+ADME_Sol,15,gpt-4.1-mini,basic,2,"['SlogP_VSA6', 'NumHDonors']","[0.06295849563253718, 0.04664337300388975]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA6: 0.063
+- NumHDonors: 0.047
+
+","The prediction is influenced by the two features as follows:
+
+- **SlogP_VSA6 (contribution: 0.063)**: This feature represents a sum of van der Waals surface areas of atoms with a certain range of predicted logP (octanol-water partition coefficient) values. A positive contribution of 0.063 means that higher values of SlogP_VSA6 are pushing the prediction upward — likely indicating that molecules with more surface area corresponding to this particular hydrophobicity range increase the predicted outcome.
+
+- **NumHDonors (contribution: 0.047)**: This feature counts the number of hydrogen bond donors in the molecule. A positive contribution of 0.047 means that more hydrogen bond donors are also supporting an increase in the predicted value.
+
+**Overall interpretation:** Both features contribute positively to the prediction, with SlogP_VSA6 having a slightly stronger effect. This suggests that having a larger hydrophobic surface area in that particular logP range and more hydrogen bond donors are associated with a higher predicted value (depending on the model's target, e.g., higher activity, solubility, etc.)."
+ADME_Sol,16,gpt-4.1-mini,basic,2,"['PEOE_VSA11', 'NumHDonors']","[0.09569306325996944, 0.07109281286156331]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA11: 0.096
+- NumHDonors: 0.071
+
+","The prediction is influenced by the contributions of the features PEOE_VSA11 and NumHDonors as follows:
+
+- **PEOE_VSA11 (Contribution: 0.096):** This feature contributes positively to the prediction. PEOE_VSA11 typically represents the sum of van der Waals surface areas of atoms having a specific range of partial charges (calculated by the PEOE method). A positive contribution of 0.096 means that molecules with higher values of PEOE_VSA11 tend to increase the predicted outcome, suggesting that this electronic and surface area property positively affects the model's prediction.
+
+- **NumHDonors (Contribution: 0.071):** This feature also contributes positively to the prediction. NumHDonors counts the number of hydrogen bond donors in the molecule (usually -OH or -NH groups). A positive contribution of 0.071 means that molecules with more hydrogen bond donors are predicted to have a higher value for the target variable by the model.
+
+**Summary:** Both features have positive contributions, meaning that higher values of PEOE_VSA11 and a greater number of hydrogen bond donors increase the prediction output in this particular model. The PEOE_VSA11 feature has a slightly stronger influence compared to NumHDonors based on these contribution values."
+ADME_Sol,17,gpt-4.1-mini,basic,2,"['fr_quatN', 'Chi4v']","[-0.23550220279365525, -0.11698215771767458]","
+Explain the prediction using the following feature contributions.
+
+- fr_quatN: -0.236
+- Chi4v: -0.117
+
+","The prediction is influenced by the two features as follows:
+
+- **fr_quatN** with a contribution of **-0.236**: This feature has a negative impact on the prediction. It decreases the predicted value or probability by 0.236 units (in the model's contribution scale). This means when the value of fr_quatN is such that it influences the prediction, it pushes the prediction downward.
+
+- **Chi4v** with a contribution of **-0.117**: Similarly, this feature also negatively impacts the prediction, reducing it by 0.117 units. It moves the prediction in the opposite direction to what might increase it.
+
+In summary, both features decrease the prediction, with fr_quatN having roughly twice the negative effect of Chi4v. Thus, the combined effect of these two features lowers the predicted outcome by about 0.353 units. If the goal was to increase the prediction, values of these features would need to change accordingly."
+ADME_Sol,18,gpt-4.1-mini,basic,2,"['Chi4v', 'FpDensityMorgan2']","[-0.08407886951593393, -0.057019222245764604]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: -0.084
+- FpDensityMorgan2: -0.057
+
+","The prediction is influenced by two features, Chi4v and FpDensityMorgan2, both contributing negatively:
+
+- **Chi4v: -0.084**  
+  This means that the Chi4v feature decreases the predicted value by 0.084 units. Chi4v typically refers to a molecular connectivity index related to atomic neighborhoods; a negative contribution suggests that the specific structural characteristics captured by Chi4v are pushing the prediction lower.
+
+- **FpDensityMorgan2: -0.057**  
+  This indicates that the fingerprint density calculated with Morgan radius 2 reduces the prediction by 0.057 units. Fingerprint density reflects how many substructures or features are present in the molecule; a negative contribution means a higher fingerprint density at this radius lowers the predicted output.
+
+**Overall**, both features act to reduce the prediction, with Chi4v having a somewhat stronger negative impact than FpDensityMorgan2. If the target is activity, score, or likelihood, these features indicate that particular molecular connectivity patterns and substructure densities are associated with lower predicted values."
+ADME_Sol,19,gpt-4.1-mini,basic,2,"['MaxAbsPartialCharge', 'SlogP_VSA5']","[-0.10963079512372066, -0.10349622017269795]","
+Explain the prediction using the following feature contributions.
+
+- MaxAbsPartialCharge: -0.110
+- SlogP_VSA5: -0.103
+
+","The prediction is influenced by two features, each contributing negatively to the predicted value:
+
+- **MaxAbsPartialCharge: -0.110**  
+  This indicates that a higher maximum absolute partial charge in the molecule is associated with a decrease in the prediction score (or the property being predicted). Since the contribution is negative, molecules with greater charge polarization reduce the predicted output.
+
+- **SlogP_VSA5: -0.103**  
+  SlogP_VSA5 corresponds to the sum of van der Waals surface areas of atoms with a specific range of SlogP values (logarithm of the partition coefficient) typically related to moderately hydrophobic atoms. A negative contribution here suggests that increasing this surface area associated with these moderately hydrophobic atoms also lowers the predicted value.
+
+**In summary:** Both features contribute to lowering the prediction, meaning that molecules with higher maximum absolute partial charges and larger van der Waals surface areas of moderately hydrophobic atoms tend to have a lower predicted property or probability, according to the model."
+ADME_Sol,20,gpt-4.1-mini,basic,2,"['NumHDonors', 'NumHAcceptors']","[-0.23888799648872727, -0.203095082696546]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: -0.239
+- NumHAcceptors: -0.203
+
+","The prediction is influenced by two features here: **NumHDonors** and **NumHAcceptors**, with their respective contributions:
+
+- **NumHDonors: -0.239**
+- **NumHAcceptors: -0.203**
+
+Both feature contributions are negative, meaning that higher values of these features are driving the prediction downward — they are pushing the predicted outcome to be lower.
+
+### Interpretation:
+
+- **NumHDonors** (Number of Hydrogen Donors): A negative contribution (-0.239) suggests that having more hydrogen donor groups in the molecule reduces the predicted value (e.g., the predicted property or activity).
+- **NumHAcceptors** (Number of Hydrogen Acceptors): Similarly, a negative contribution (-0.203) means that a higher number of hydrogen acceptors also decreases the predicted value.
+
+### Overall:
+
+The model predicts a lower outcome when the molecule has more hydrogen bond donors and acceptors. These features are both strong negative drivers of the prediction, indicating that molecules with fewer hydrogen donors and acceptors are associated with higher predicted values according to this model."
+ADME_Sol,21,gpt-4.1-mini,basic,2,"['NumHDonors', 'SlogP_VSA5']","[0.07345055332800643, 0.05728738033788281]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: 0.073
+- SlogP_VSA5: 0.057
+
+","The prediction is influenced by two features with positive contributions to the output:
+
+- **NumHDonors (Number of Hydrogen Donors): 0.073**  
+  This feature contributes +0.073 to the prediction. A positive contribution here means that having hydrogen donors increases the likelihood or magnitude of the predicted outcome. The magnitude (0.073) indicates a moderate positive influence.
+
+- **SlogP_VSA5 (Sum of LogP values for atoms with a specific Van der Waals surface area category): 0.057**  
+  This feature adds +0.057 to the prediction. It suggests that higher values of SlogP_VSA5 (related to hydrophobicity and molecular surface properties) also push the prediction upward, though slightly less than NumHDonors.
+
+### Overall Explanation:
+Both features contribute positively, pushing the prediction higher. The presence of hydrogen donors and the surface property measured by SlogP_VSA5 collectively increase the predicted value. Their combined contribution (0.073 + 0.057 = 0.13) gives a sense of how influential these features were in the model’s final decision."
+ADME_Sol,22,gpt-4.1-mini,basic,2,"['Chi4v', 'PEOE_VSA11']","[-0.10389336396059508, 0.09036261527977417]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: -0.104
+- PEOE_VSA11: 0.090
+
+","The prediction is influenced by two features as follows:
+
+- **Chi4v (-0.104):** This negative contribution means that higher values of the Chi4v feature decrease the predicted value. In other words, as the Chi4v feature increases, it pushes the prediction down.
+
+- **PEOE_VSA11 (0.090):** This positive contribution means that higher values of the PEOE_VSA11 feature increase the predicted value. So, as PEOE_VSA11 increases, it pushes the prediction up.
+
+Overall, the Chi4v feature is pulling the prediction lower, while the PEOE_VSA11 feature is pushing it higher. Since their contributions are roughly similar in magnitude but opposite in sign, they partially offset each other in determining the final prediction."
+ADME_Sol,23,gpt-4.1-mini,basic,2,"['NumHDonors', 'Chi4v']","[-0.16274359640942954, -0.09161034594188212]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: -0.163
+- Chi4v: -0.092
+
+","The prediction is influenced by two features with negative contributions:
+
+- **NumHDonors (-0.163):** This indicates that the number of hydrogen bond donors in the molecule decreases the predicted value. A negative contribution means that higher values of NumHDonors push the prediction downward (i.e., reduce the predicted outcome).
+
+- **Chi4v (-0.092):** The Chi4v (a type of molecular connectivity or topology descriptor) also negatively impacts the prediction, although to a lesser extent than NumHDonors. This suggests that structural features captured by Chi4v similarly reduce the predicted value.
+
+**Overall Explanation:**
+Both features are pulling the prediction lower, with NumHDonors having a stronger negative effect than Chi4v. Therefore, the final prediction is lower than the baseline because these molecular properties contribute negatively. This might imply that molecules with more hydrogen bond donors and higher Chi4v values tend to have lower predicted outcomes in the context of your model."
+ADME_Sol,24,gpt-4.1-mini,basic,2,"['TPSA', 'SlogP_VSA6']","[-0.09200452226930743, -0.08545981514053196]","
+Explain the prediction using the following feature contributions.
+
+- TPSA: -0.092
+- SlogP_VSA6: -0.085
+
+","The prediction is influenced by two features:
+
+1. **TPSA (Topological Polar Surface Area): -0.092**  
+   This negative contribution indicates that a higher TPSA value decreases the predicted outcome. TPSA often correlates with a molecule's ability to form hydrogen bonds and influences properties like solubility and permeability. Here, it suggests that increased polarity or hydrogen bonding capacity slightly reduces the predicted value.
+
+2. **SlogP_VSA6: -0.085**  
+   This feature measures the sum of van der Waals surface areas of atoms with a particular logP range (typically related to hydrophobicity). The negative contribution means that higher values for SlogP_VSA6 decrease the prediction. Essentially, this indicates that a greater hydrophobic surface area in this specific range lowers the predicted outcome.
+
+**Summary:** Both features negatively contribute to the prediction, meaning that increases in either TPSA or SlogP_VSA6 reduce the predicted value. This implies that molecules with higher polarity (TPSA) or certain hydrophobic surface characteristics (SlogP_VSA6) tend to lower the predicted property or activity assessed by the model."
+ADME_Sol,25,gpt-4.1-mini,basic,2,"['NumHAcceptors', 'NumHDonors']","[-0.20067980452393658, -0.19448837979342656]","
+Explain the prediction using the following feature contributions.
+
+- NumHAcceptors: -0.201
+- NumHDonors: -0.194
+
+","The prediction is influenced by the features **NumHAcceptors** and **NumHDonors**, each contributing negatively to the overall prediction score:
+
+- **NumHAcceptors (-0.201):** This indicates that having more hydrogen bond acceptors decreases the predicted value. In other words, as the number of hydrogen bond acceptors increases, the prediction score tends to go down.
+
+- **NumHDonors (-0.194):** Similarly, a higher number of hydrogen bond donors also lowers the prediction score, contributing negatively by a value of -0.194.
+
+**Overall interpretation:** Both features related to hydrogen bonding capacity—acceptors and donors—are pushing the model's prediction downward. This suggests that molecules with higher counts of hydrogen bond acceptors and donors are less likely to have the predicted positive outcome (depending on the context of your model, e.g., activity, toxicity, solubility)."
+ADME_Sol,26,gpt-4.1-mini,basic,2,"['fr_quatN', 'TPSA']","[-0.24543825430716756, -0.09108935089962132]","
+Explain the prediction using the following feature contributions.
+
+- fr_quatN: -0.245
+- TPSA: -0.091
+
+","The prediction explanation is based on the contributions of the two features:
+
+- **fr_quatN: -0.245**  
+  This feature has a negative contribution of -0.245 to the prediction, meaning that its presence or higher value decreases the predicted outcome. It is relatively large in magnitude, so it has a significant effect in pushing the prediction downward.
+
+- **TPSA: -0.091**  
+  This feature also contributes negatively, with a smaller effect of -0.091. It slightly lowers the prediction but with less impact compared to fr_quatN.
+
+**Overall interpretation:** Both features reduce the predicted value. Among them, fr_quatN plays a stronger role in lowering the prediction, while TPSA provides a smaller decrease. Together, they suggest factors related to these features are associated with a lower predicted outcome in the model."
+ADME_Sol,27,gpt-4.1-mini,basic,2,"['Chi4v', 'TPSA']","[-0.09390680043786603, -0.07217541307148628]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: -0.094
+- TPSA: -0.072
+
+","The prediction is influenced by two features, Chi4v and TPSA, both of which have negative contributions to the predicted outcome:
+
+- **Chi4v (-0.094):** This feature reduces the prediction by 0.094 units. Its negative contribution suggests that higher values of Chi4v likely decrease the predicted value, or that this particular value of Chi4v is associated with a lower prediction.
+
+- **TPSA (-0.072):** Similarly, TPSA decreases the prediction by 0.072 units. This means that higher TPSA values (or this specific TPSA value) correlate with a lower predicted outcome.
+
+**Overall interpretation:** Both Chi4v and TPSA are pushing the prediction downward, with Chi4v having a slightly larger negative impact than TPSA. If the prediction is for something like activity, risk, or effectiveness, these features are factors that reduce the expected value of that target."
+ADME_Sol,28,gpt-4.1-mini,basic,2,"['NumHDonors', 'Chi4v']","[0.08824704304137442, 0.06985233901928208]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: 0.088
+- Chi4v: 0.070
+
+","The prediction explanation includes the contributions of specific features to the model's output.
+
+- **NumHDonors (Number of Hydrogen Donors): 0.088**  
+  This means that the feature representing the number of hydrogen bond donors in the molecule contributes positively to the prediction by 0.088 units. A positive contribution indicates that higher or specific values of this feature increase the predicted value or likelihood for the target outcome.
+
+- **Chi4v (Valence Molecular Connectivity Index of order 4): 0.070**  
+  Similarly, the Chi4v feature contributes positively by 0.070 units to the prediction. This descriptor relates to the molecular topology and valence state of atoms in the molecule. Its positive value suggests that the molecular connectivity encoded by Chi4v also raises the predicted score.
+
+**Summary:** Both NumHDonors and Chi4v features have positive contributions, pushing the prediction higher by approximately 0.158 units together. This indicates these molecular characteristics favor the predicted outcome in the model."
+ADME_Sol,29,gpt-4.1-mini,basic,2,"['SlogP_VSA5', 'NumHAcceptors']","[-0.15585661988732055, -0.11754245623638872]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: -0.156
+- NumHAcceptors: -0.118
+
+","The feature contributions you've provided indicate how each feature impacts the model's prediction, with negative values suggesting that the feature is pushing the prediction downward (i.e., lowering the predicted value).
+
+Let's interpret each:
+
+- **SlogP_VSA5: -0.156**  
+  SlogP_VSA5 represents the sum of van der Waals surface areas of atoms with a certain range of calculated logP (a measure of hydrophobicity). A negative contribution of -0.156 means that this feature value is driving the prediction lower. This might suggest that the molecule has characteristics (e.g., certain hydrophobic surface area) that are associated with a decreased prediction target (such as lower activity, solubility, binding affinity, etc., depending on the model).
+
+- **NumHAcceptors: -0.118**  
+  NumHAcceptors is the number of hydrogen bond acceptors in the molecule. A negative contribution of -0.118 indicates that a higher count of hydrogen bond acceptors or the particular value of this feature is reducing the predicted value. This suggests that having these acceptors might be associated with a less favorable prediction outcome according to the model.
+
+**Overall:** Both features are pulling the prediction downward, with SlogP_VSA5 having a slightly larger negative impact than NumHAcceptors. This implies that the model predicts a lower value for your input molecule primarily because of these features."
+ADME_Sol,30,gpt-4.1-mini,basic,2,"['VSA_EState3', 'NumHDonors']","[-0.1513711476809311, 0.1039060673222219]","
+Explain the prediction using the following feature contributions.
+
+- VSA_EState3: -0.151
+- NumHDonors: 0.104
+
+","The prediction is influenced by two features with the following contributions:
+
+- **VSA_EState3: -0.151**  
+  This feature has a negative contribution to the prediction, reducing the predicted value. It means that the specific value or characteristic of VSA_EState3 in the data point pushes the model’s output downward by approximately 0.151 units.
+
+- **NumHDonors: 0.104**  
+  This feature has a positive contribution to the prediction, increasing the predicted value. The number of hydrogen donors (NumHDonors) raises the predicted output by about 0.104 units.
+
+**Overall Interpretation:**  
+The negative effect from VSA_EState3 outweighs the positive effect from NumHDonors, resulting in a net decrease in the predicted value (-0.151 + 0.104 = -0.047). Therefore, while having more hydrogen donors tends to increase the prediction, the influence of VSA_EState3 is stronger in the opposite direction for this instance, leading to a slight overall downward adjustment in the predicted outcome."
+ADME_Sol,31,gpt-4.1-mini,basic,2,"['SlogP_VSA5', 'TPSA']","[0.06989118945750551, 0.06328904489437795]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: 0.070
+- TPSA: 0.063
+
+","The prediction is influenced by the two features SlogP_VSA5 and TPSA, with their respective contributions:
+
+- **SlogP_VSA5 (0.070):** This is a molecular descriptor representing the sum of contributions of atoms with a particular range of calculated LogP values (hydrophobicity) weighted by their van der Waals surface area. A positive contribution of 0.070 suggests that higher values of hydrophobic surface area corresponding to this category are pushing the prediction in a positive direction.
+
+- **TPSA (0.063):** The Topological Polar Surface Area measures the polar surface area due to oxygen and nitrogen atoms and their attached hydrogens. A positive contribution of 0.063 indicates that higher polarity or hydrogen-bonding capacity (larger polar surface area) also positively affects the prediction.
+
+### Summary:
+Both features positively contribute to the prediction, with SlogP_VSA5 having a slightly larger impact. This means that molecules with a certain hydrophobic surface area range and higher polar surface area tend to increase the predicted value in this model."
+ADME_Sol,32,gpt-4.1-mini,basic,2,"['SlogP_VSA6', 'NumHDonors']","[0.1182447183425991, 0.05675323503802553]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA6: 0.118
+- NumHDonors: 0.057
+
+","The prediction is influenced by two features, SlogP_VSA6 and NumHDonors, with positive contributions:
+
+- **SlogP_VSA6 (0.118)**: This feature relates to the molecular surface area associated with a specific range of SlogP values (which measure lipophilicity). A positive contribution of 0.118 means that a higher value of SlogP_VSA6 increases the predicted outcome. This suggests that molecules with greater surface area in that lipophilicity range are more likely to increase the predicted value.
+
+- **NumHDonors (0.057)**: This feature counts the number of hydrogen bond donors in the molecule. The positive contribution of 0.057 indicates that molecules with more hydrogen bond donors also raise the prediction, although to a lesser extent than SlogP_VSA6.
+
+Overall, the prediction increases when the molecule has higher lipophilic surface area in the SlogP_VSA6 range and more hydrogen bond donors. These two features together positively drive the final predicted value."
+ADME_Sol,33,gpt-4.1-mini,basic,2,"['Chi4v', 'FpDensityMorgan2']","[0.08254372357954769, -0.07415146331029826]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.083
+- FpDensityMorgan2: -0.074
+
+","The prediction is influenced by two features with the following contributions:
+
+- **Chi4v: 0.083**  
+  This feature has a positive contribution (+0.083) to the prediction, meaning that higher values of Chi4v increase the predicted value. It suggests that the presence or magnitude of the Chi4v descriptor pushes the model towards a higher output.
+
+- **FpDensityMorgan2: -0.074**  
+  This feature has a negative contribution (-0.074), indicating that higher values of FpDensityMorgan2 decrease the predicted value. In other words, a higher fingerprint density associated with the Morgan2 fingerprint reduces the prediction.
+
+**Summary:**  
+Chi4v slightly increases the predicted value, while FpDensityMorgan2 slightly decreases it. The net effect depends on their magnitudes and directions, but here Chi4v has a marginally stronger positive impact compared to the negative impact of FpDensityMorgan2."
+ADME_Sol,34,gpt-4.1-mini,basic,2,"['Chi4v', 'NumHAcceptors']","[-0.12807774769202948, -0.08371095247071787]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: -0.128
+- NumHAcceptors: -0.084
+
+","The prediction is influenced by two features, Chi4v and NumHAcceptors, each contributing negatively to the predicted value.
+
+- **Chi4v (-0.128 contribution):** This feature has the largest negative impact on the prediction. A negative contribution means higher values (or values that trigger a negative contribution) of Chi4v decrease the predicted outcome. Chi4v is a molecular descriptor related to the fourth order molecular connectivity index (valence), often linked to the complexity or branching of the molecular structure. In this case, its effect pulls the prediction downward.
+
+- **NumHAcceptors (-0.084 contribution):** This feature also contributes negatively, but less strongly than Chi4v. NumHAcceptors refers to the number of hydrogen bond acceptors in the molecule. More hydrogen bond acceptors tend to reduce the predicted value according to the model.
+
+**Overall explanation:** Both features act to lower the prediction. The Chi4v descriptor suggests that structural aspects of the molecule related to branching/connectivity lead to a decrease in the predicted property, while the number of hydrogen bond acceptors similarly reduces the prediction. The combined negative contributions indicate that these molecular characteristics are associated with a lower predicted outcome for the target variable."
+ADME_Sol,35,gpt-4.1-mini,basic,2,"['SlogP_VSA6', 'NumHAcceptors']","[0.09562830232524065, 0.08817357093032828]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA6: 0.096
+- NumHAcceptors: 0.088
+
+","The prediction you're analyzing is influenced by two features with their respective contributions:
+
+1. **SlogP_VSA6 (0.096)**:  
+   This feature represents the sum of van der Waals surface areas of atoms in the molecule that have a particular range of SlogP values (a measure related to hydrophobicity). A positive contribution of 0.096 suggests that this aspect of the molecule—likely related to the hydrophobic surface area—is pushing the prediction value upward. In other words, higher or specific hydrophobic surface area measured by SlogP_VSA6 is associated with an increase in the predicted property.
+
+2. **NumHAcceptors (0.088)**:  
+   This feature counts the number of hydrogen bond acceptors in the molecule (atoms like oxygen or nitrogen that can accept hydrogen bonds). A contribution of 0.088 indicates that having more hydrogen bond acceptors is also increasing the predicted value. This implies molecules with more potential hydrogen bonding sites tend to have higher predicted outcomes according to the model.
+
+### Overall Explanation:
+Both features are positively contributing to the prediction, meaning that molecules with a larger hydrophobic surface area in the SlogP_VSA6 range and more hydrogen bond acceptors tend to score higher in the property or activity being predicted. These insights help understand what molecular characteristics are driving the prediction."
+ADME_Sol,36,gpt-4.1-mini,basic,2,"['SlogP_VSA5', 'NumHDonors']","[-0.13997190830742964, 0.0985239117591176]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: -0.140
+- NumHDonors: 0.099
+
+","The prediction is influenced by two features: **SlogP_VSA5** and **NumHDonors**, with their respective contributions to the prediction being:
+
+- **SlogP_VSA5: -0.140**  
+  This negative contribution indicates that a higher value of SlogP_VSA5 decreases the predicted outcome. SlogP_VSA5 typically represents the sum of solvent-accessible surface areas for atoms with a certain range of logP values (a measure of hydrophobicity). A negative contribution here suggests that molecular regions with these specific properties (likely related to certain hydrophobic/hydrophilic balances) reduce the probability or score associated with the prediction.
+
+- **NumHDonors: 0.099**  
+  This positive contribution means that an increase in the number of hydrogen bond donors raises the predicted outcome. Hydrogen bond donors often enhance molecular interactions like binding or solubility, which in many predictive tasks (e.g., bioactivity) can be favorable.
+
+**Summary:**  
+The overall prediction is a balance between these features: while more hydrogen bond donors push the prediction upward, the specific hydrophobic surface area measured by SlogP_VSA5 pulls it downward. The net result depends on the magnitude and interaction of these contributions."
+ADME_Sol,37,gpt-4.1-mini,basic,2,"['Chi4v', 'TPSA']","[0.05658970292411931, 0.03873519479352951]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.057
+- TPSA: 0.039
+
+","The prediction is explained by two feature contributions:
+
+- **Chi4v (0.057):** This feature has a positive contribution of 0.057, indicating that higher values of the Chi4v descriptor increase the predicted value. Chi4v is a molecular connectivity index related to the molecular topology and shape, so its presence suggests that certain structural features of the molecule are contributing positively to the prediction.
+
+- **TPSA (0.039):** TPSA (Topological Polar Surface Area) has a positive contribution of 0.039, meaning that molecules with larger polar surface areas tend to increase the prediction. TPSA often correlates with properties like solubility and permeability, so an increase in this feature is pushing the prediction upward.
+
+**Summary:** Both Chi4v and TPSA contribute positively to the prediction, with Chi4v having a slightly stronger effect. Together, these features indicate that molecular topology and polar surface area are important factors driving the final prediction higher."
+ADME_Sol,38,gpt-4.1-mini,basic,2,"['NumHAcceptors', 'fr_COO']","[0.08907308090620168, -0.0823773916414166]","
+Explain the prediction using the following feature contributions.
+
+- NumHAcceptors: 0.089
+- fr_COO: -0.082
+
+","The prediction for the model is influenced by the feature contributions as follows:
+
+- **NumHAcceptors (Number of Hydrogen Bond Acceptors): 0.089**  
+  This positive contribution indicates that having more hydrogen bond acceptors in the molecule increases the predicted value (e.g., likelihood of an activity, property score, etc.). A value of 0.089 means this feature pushes the prediction upward by that amount.
+
+- **fr_COO (Presence of Carboxyl Group): -0.082**  
+  This negative contribution means that the presence of a carboxyl group (COO) in the molecule decreases the predicted value. The contribution of -0.082 suggests it reduces the prediction by this amount.
+
+### Overall Explanation:
+The prediction is a balance between these influences. The positive impact of the number of hydrogen bond acceptors slightly outweighs the negative impact from the presence of a carboxyl group. Thus, the molecule's features push the prediction to be moderately higher, with NumHAcceptors contributing to an increase and fr_COO contributing to a decrease in the predicted outcome."
+ADME_Sol,39,gpt-4.1-mini,basic,2,"['MolWt', 'VSA_EState10']","[-0.10984177810988467, -0.10189417199215237]","
+Explain the prediction using the following feature contributions.
+
+- MolWt: -0.110
+- VSA_EState10: -0.102
+
+","The prediction is influenced by two features with the following contributions:
+
+- **MolWt (Molecular Weight): -0.110**  
+  This negative contribution means that higher molecular weight decreases the predicted value. In other words, as the molecular weight increases, the prediction is pushed lower.
+
+- **VSA_EState10: -0.102**  
+  This is another feature whose increase also lowers the predicted value. The negative contribution of VSA_EState10 indicates that when this descriptor is higher, it similarly reduces the prediction.
+
+### Summary:
+Both **MolWt** and **VSA_EState10** contribute negatively to the prediction, meaning increasing either of these features tends to decrease the final predicted outcome. The combined effect of these two features is to pull the prediction downward by roughly 0.21 units."
+ADME_Sol,40,gpt-4.1-mini,basic,2,"['NumHDonors', 'Chi4v']","[0.07396863078743451, 0.06893103878214406]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: 0.074
+- Chi4v: 0.069
+
+","The prediction is influenced by the two features shown, **NumHDonors** and **Chi4v**, with the following contributions:
+
+- **NumHDonors (Number of Hydrogen Donors): 0.074**  
+  This feature positively contributes to the prediction by 0.074 units. It means that as the number of hydrogen donors increases (or based on the specific value in your instance), it pushes the prediction higher (assuming a regression or probability output). Hydrogen bond donors often relate to molecule polarity and intermolecular interactions, so a higher number might suggest stronger interactions or specific biochemical properties relevant to your prediction.
+
+- **Chi4v (Valence Molecular Connectivity Index, order 4): 0.069**  
+  This feature also positively contributes to the prediction by 0.069 units. Chi4v is a topological descriptor that encodes information about the molecule’s structure at a particular order (4 bonds away). A positive contribution means that structural complexity or specific connectivity patterns captured by Chi4v increase the predicted value.
+
+**Summary:** Both features contribute positively and roughly similarly, with NumHDonors having a slightly larger effect. Together, they increase the predicted value by about 0.143 (0.074 + 0.069) from a baseline or zero point. This indicates that molecules with more hydrogen donors and certain structural connectivity patterns tend to have higher prediction scores in your model context."
+ADME_Sol,41,gpt-4.1-mini,basic,2,"['Chi4v', 'FpDensityMorgan1']","[0.07451767007586618, 0.06497688329733245]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.075
+- FpDensityMorgan1: 0.065
+
+","The prediction is influenced primarily by two features: Chi4v and FpDensityMorgan1.
+
+- **Chi4v (contribution: 0.075)**: This feature has a positive contribution of 0.075, meaning it increases the predicted value or likelihood. Chi4v is a molecular descriptor related to the connectivity and branching in the molecule's structure. A positive contribution suggests that higher or specific values of Chi4v are associated with a higher prediction output, indicating that certain structural characteristics captured by Chi4v favor the predicted outcome.
+
+- **FpDensityMorgan1 (contribution: 0.065)**: This feature also contributes positively with 0.065. FpDensityMorgan1 represents the density of Morgan fingerprints at radius 1, reflecting the presence of particular substructures or patterns within the molecule. Its positive contribution indicates that higher fingerprint density at this radius supports the prediction, meaning that certain local molecular environments or substructures are important for the predicted property.
+
+**Summary:** Both features support the prediction by adding positive contributions. Essentially, the model sees specific molecular connectivity patterns (Chi4v) and local substructural features (FpDensityMorgan1) as important and indicative of the predicted outcome."
+ADME_Sol,42,gpt-4.1-mini,basic,2,"['BCUT2D_CHGLO', 'Chi4v']","[-0.08771689015788203, 0.08367825310556866]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: -0.088
+- Chi4v: 0.084
+
+","The prediction is influenced by two features with roughly opposite contributions:
+
+- **BCUT2D_CHGLO: -0.088**  
+  This feature has a negative contribution to the prediction, meaning that higher values of BCUT2D_CHGLO tend to decrease the predicted outcome. In other words, this descriptor is pushing the prediction downward.
+
+- **Chi4v: 0.084**  
+  This feature has a positive contribution to the prediction, so higher values of Chi4v increase the predicted outcome. It is pushing the prediction upward.
+
+Since the absolute contributions are quite similar (~0.08-0.09) but with opposite signs, these two features are roughly balancing each other out, resulting in a relatively neutral combined effect on the final prediction. The overall prediction will be close to the baseline or intercept, modified slightly by these opposing influences."
+ADME_Sol,43,gpt-4.1-mini,basic,2,"['Chi4v', 'NumHAcceptors']","[0.06226630851309479, 0.058194618221124636]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.062
+- NumHAcceptors: 0.058
+
+","The prediction is influenced by two features with the following contributions:
+
+- **Chi4v (0.062):** This feature contributes positively to the prediction with a value of 0.062. The Chi4v descriptor is a topological molecular descriptor reflecting the connectivity and branching of the molecule. A positive contribution suggests that certain structural patterns or branching captured by Chi4v increase the predicted outcome.
+
+- **NumHAcceptors (0.058):** This feature also contributes positively, adding 0.058 to the prediction. NumHAcceptors counts the number of hydrogen bond acceptors (such as oxygen or nitrogen atoms with lone pairs) in the molecule. Its positive contribution indicates that the presence of more hydrogen bond acceptors is associated with a higher predicted value.
+
+**Summary:** Both features contribute positively and somewhat similarly, implying that molecular branching (Chi4v) and the ability to accept hydrogen bonds (NumHAcceptors) are important factors increasing the predicted property or activity in this model."
+ADME_Sol,44,gpt-4.1-mini,basic,2,"['Chi4v', 'SlogP_VSA5']","[0.07596985486468655, 0.04246873601549564]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.076
+- SlogP_VSA5: 0.042
+
+","The prediction explanation based on the given feature contributions can be understood as follows:
+
+- **Chi4v (Contribution: 0.076)**: This feature represents a molecular connectivity index that captures the presence of specific four-bond paths weighted by their valence state. A positive contribution of 0.076 indicates that the structural characteristic captured by Chi4v is pushing the prediction upwards—meaning the specific types of molecular substructures or connectivity patterns reflected by this index are associated with an increase in the predicted value.
+
+- **SlogP_VSA5 (Contribution: 0.042)**: This feature relates to the van der Waals surface area of atoms with specific logP (lipophilicity) values within a certain range (the ""VSA5"" bin). A positive contribution of 0.042 means that the presence of molecular regions with this lipophilicity surface area is also increasing the prediction value, although to a smaller extent than Chi4v.
+
+**In summary:** Both Chi4v and SlogP_VSA5 positively contribute to the model’s prediction, with Chi4v having a somewhat stronger effect. This suggests that molecular connectivity patterns captured by Chi4v and moderately lipophilic surface areas represented by SlogP_VSA5 are important factors driving the predicted outcome higher."
+ADME_Sol,45,gpt-4.1-mini,basic,2,"['Chi4v', 'TPSA']","[0.06752364137590681, 0.04754089626444998]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.068
+- TPSA: 0.048
+
+","The prediction is influenced by the following feature contributions:
+
+- **Chi4v (0.068)**: This positive contribution indicates that the Chi4v value (which is a molecular connectivity index related to the fourth-order valence connectivity) increases the predicted value. Since the contribution is 0.068, Chi4v has a moderately positive impact on the prediction.
+
+- **TPSA (0.048)**: TPSA stands for Topological Polar Surface Area, and its positive contribution of 0.048 shows that higher TPSA values also increase the prediction, though its effect is somewhat smaller than Chi4v.
+
+**Summary:** Both Chi4v and TPSA positively influence the prediction, with Chi4v having a slightly stronger impact. The prediction result moves higher because of these two features."
+ADME_Sol,46,gpt-4.1-mini,basic,2,"['NumHDonors', 'Chi4v']","[0.06799436093880469, 0.057559433183113816]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: 0.068
+- Chi4v: 0.058
+
+","The prediction you have is explained by the contributions of two features:
+
+1. **NumHDonors (Number of Hydrogen Donors): 0.068**
+   - This feature has a positive contribution of 0.068, indicating that a higher value or presence of hydrogen donors in the molecule positively influences the prediction. In other words, the more hydrogen donor groups (like -OH or -NH groups) present, the higher the predicted value or likelihood the model assigns to the target outcome.
+
+2. **Chi4v (Valence Chi4 Molecular Connectivity Index): 0.058**
+   - This feature contributes 0.058 positively to the prediction. The Chi4v index captures information about the molecular structure, specifically connectivity and branching related to valence electrons. A higher Chi4v value suggests more complex connectivity or branching, which the model considers favorable or indicative of the outcome being predicted.
+
+### Summary of Explanation:
+Both features positively influence the prediction, with NumHDonors having a slightly greater impact than Chi4v. The model suggests that molecules with more hydrogen bonding potential and more complex molecular connectivity (as captured by Chi4v) are more likely to exhibit the predicted property or behavior."
+ADME_Sol,47,gpt-4.1-mini,basic,2,"['SlogP_VSA5', 'EState_VSA11']","[-0.22656322266091275, -0.07765923532757228]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: -0.227
+- EState_VSA11: -0.078
+
+","The prediction explanation based on the feature contributions is as follows:
+
+- **SlogP_VSA5: -0.227**  
+  This feature has a negative contribution of -0.227 to the prediction. SlogP_VSA5 generally measures the sum of van der Waals surface areas of atoms with a specific range of calculated logP contributions (a measure related to hydrophobicity). A negative contribution here suggests that the presence or higher values of this feature decrease the predicted outcome, implying that molecules with higher SlogP_VSA5 values are less likely to have the property or class being predicted.
+
+- **EState_VSA11: -0.078**  
+  This feature also negatively contributes to the prediction, though less strongly than SlogP_VSA5. EState_VSA11 is related to the sum of the van der Waals surface area for atoms with a certain range of electrotopological state values, which combine electronic and topological information about the molecule. The negative value indicates that higher EState_VSA11 values also lower the predicted outcome.
+
+**Overall interpretation:**  
+Both features decrease the prediction score, with SlogP_VSA5 having a stronger negative effect than EState_VSA11. This suggests that molecules scoring high in these features are less likely to belong to the positive class or have a lower predicted value for whatever property is being modeled."
+ADME_Sol,48,gpt-4.1-mini,basic,2,"['Chi4v', 'SlogP_VSA5']","[0.07884001516277298, 0.06563056023933742]","
+Explain the prediction using the following feature contributions.
+
+- Chi4v: 0.079
+- SlogP_VSA5: 0.066
+
+","The prediction is influenced by two features with positive contributions:
+
+- **Chi4v (0.079):** This feature measures the chi connectivity index of order 4, which reflects the molecular branching and connectivity at a certain distance in the molecule. A positive contribution of 0.079 means that higher values of Chi4v push the prediction upward (e.g., increasing the predicted property or likelihood of the target class).
+
+- **SlogP_VSA5 (0.066):** This feature represents the sum of van der Waals surface areas of atoms within a specific range of logP (partition coefficient) values. A positive contribution of 0.066 implies that the molecular surface area related to hydrophobicity in this range also increases the predicted outcome.
+
+**Overall explanation:**
+
+Both Chi4v and SlogP_VSA5 contribute positively and relatively similarly to the prediction, indicating that molecular connectivity (as captured by Chi4v) and certain hydrophobic surface areas (SlogP_VSA5) play significant roles in increasing the predicted response. The model likely associates molecules with higher branching/connectivity and particular hydrophobic surface properties with a stronger or higher prediction."
+ADME_Sol,49,gpt-4.1-mini,basic,2,"['NumHDonors', 'SlogP_VSA5']","[-0.3553942997869951, -0.1907551699432993]","
+Explain the prediction using the following feature contributions.
+
+- NumHDonors: -0.355
+- SlogP_VSA5: -0.191
+
+","The feature contributions indicate how each feature influences the prediction outcome, with negative values suggesting that the feature is pushing the prediction toward a lower value (or away from the positive class, depending on the context).
+
+- **NumHDonors (-0.355):** The number of hydrogen bond donors is contributing negatively to the prediction by -0.355. This means that as the number of hydrogen bond donors increases, the model predicts a lower probability or score for the positive class (or a lower predicted value overall).
+
+- **SlogP_VSA5 (-0.191):** This descriptor, related to the surface area of atoms with a certain range of logP values, also has a negative contribution of -0.191. Its increase similarly pushes the prediction downward.
+
+**Overall explanation:** Both features are decreasing the predicted value, with **NumHDonors** having a stronger negative effect than **SlogP_VSA5**. This suggests that the prediction is being driven down primarily because there are more hydrogen bond donors in the molecule, and to a lesser extent, because of the specific surface area property captured by SlogP_VSA5."

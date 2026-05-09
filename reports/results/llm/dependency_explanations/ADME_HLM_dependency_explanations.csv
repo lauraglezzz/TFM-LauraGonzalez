@@ -1,0 +1,222 @@
+endpoint,feature,prompt,explanation
+ADME_HLM,MolLogP,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MolLogP
+
+Observed values (descriptor value -> contribution to prediction):
+
+-1.542 -> -0.116
+1.021 -> 0.315
+1.376 -> 0.041
+1.686 -> 0.207
+1.910 -> 0.309
+2.077 -> 0.162
+2.256 -> -0.041
+2.410 -> 0.218
+2.553 -> -0.331
+2.701 -> 0.361
+2.832 -> 0.335
+2.981 -> -0.393
+3.136 -> -0.260
+3.297 -> 0.049
+3.441 -> 0.349
+3.638 -> -0.108
+3.844 -> 0.101
+4.067 -> 0.265
+4.577 -> 0.181
+9.014 -> 0.272
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","MolLogP is a descriptor representing the predicted octanol-water partition coefficient of a molecule, which is a measure of its hydrophobicity or lipophilicity. Generally, higher MolLogP values indicate increased lipophilicity, meaning the compound is more soluble in lipids or nonpolar solvents, whereas lower values indicate greater hydrophilicity.
+
+From the observed data, the relationship between MolLogP and the predicted drug property is complex and non-linear:
+
+- At very low MolLogP values (around -1.5), there is a small negative contribution, suggesting that highly hydrophilic molecules might slightly decrease the property in question.
+- As MolLogP increases toward moderate lipophilicity (1 to 2.7), the contributions generally become positive, indicating that moderate hydrophobicity tends to enhance the predicted drug property. This could reflect improved membrane permeability, binding affinity to hydrophobic pockets, or better absorption.
+- However, at intermediate to higher MolLogP values (around 2.5 to 3.1), there are notable negative contributions intermittently. This suggests that excessively lipophilic compounds may start to negatively impact the property, possibly due to poor solubility, aggregation, increased metabolism, or off-target effects.
+- Beyond 3.4, the contributions alternate but tend to show some positive values again, indicating a more nuanced balance where very high lipophilicity might either help or hinder the property depending on other molecular contexts.
+- The highest value observed (9.014) still shows a positive contribution, but such extreme lipophilicity is generally rare and often associated with poor drug-like characteristics.
+
+In summary, the predicted drug property benefits from an optimal range of MolLogP that balances hydrophobicity to support desirable membrane interactions and bioavailability, while avoiding excessively high lipophilicity that can lead to negative effects such as poor solubility or metabolic instability. This suggests that moderate lipophilicity is advantageous for the drug property being predicted."
+ADME_HLM,FpDensityMorgan3,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: FpDensityMorgan3
+
+Observed values (descriptor value -> contribution to prediction):
+
+1.167 -> 0.011
+2.226 -> -0.099
+2.350 -> -0.037
+2.419 -> 0.038
+2.467 -> -0.072
+2.500 -> 0.011
+2.550 -> -0.023
+2.583 -> -0.037
+2.619 -> 0.024
+2.650 -> 0.053
+2.684 -> 0.006
+2.708 -> 0.047
+2.737 -> 0.068
+2.769 -> 0.027
+2.800 -> -0.026
+2.833 -> -0.005
+2.870 -> 0.002
+2.929 -> 0.054
+3.000 -> 0.027
+3.286 -> -0.105
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The FpDensityMorgan3 descriptor reflects the density of molecular fragments identified by the Morgan fingerprint algorithm at a radius of 3 bonds, essentially capturing the local molecular environment and degree of branching or complexity around each atom within that radius.
+
+In the observed range, lower values of this descriptor around 1.167 show a very slight positive contribution to the predicted drug property, suggesting that molecules with fewer or less complex substructures at this radius might favorably influence the property.
+
+As the descriptor value increases to around 2.2–2.5, the contribution tends to become negative, indicating that moderate increases in local molecular complexity or fragment density may reduce the predicted effectiveness or desired drug property. This could reflect added steric hindrance, reduced solubility, or less favorable interactions with the biological target.
+
+However, beyond 2.6 and up to approximately 2.77, an increasing positive contribution is observed again, implying that beyond a certain threshold, additional dense local fragments or structural features may enhance the property. This could be due to beneficial interactions from certain functional groups or optimal molecular packing improving binding affinity or stability.
+
+At the highest observed value (3.286), the contribution sharply declines, suggesting that excessively high local fragment density or over-complexity becomes detrimental, possibly due to poor pharmacokinetics, steric clashes, or decreased membrane permeability.
+
+In summary, the relationship is non-linear and shows an optimal intermediate range of fragment density for maximizing the predicted drug property, with both too low and too high structural density being less favorable. This likely reflects a balance between molecular complexity required for effective target engagement and the physicochemical constraints important for drug-like behavior."
+ADME_HLM,TPSA,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: TPSA
+
+Observed values (descriptor value -> contribution to prediction):
+
+3.240 -> 0.015
+38.130 -> -0.031
+41.990 -> 0.017
+43.860 -> 0.022
+46.840 -> -0.012
+48.990 -> -0.016
+50.950 -> 0.017
+53.070 -> 0.012
+55.630 -> 0.058
+58.120 -> -0.030
+59.810 -> -0.029
+62.120 -> 0.022
+64.850 -> 0.009
+68.010 -> -0.056
+71.260 -> -0.030
+75.270 -> 0.043
+79.310 -> -0.034
+85.860 -> 0.011
+99.150 -> -0.051
+175.840 -> -0.028
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor TPSA (Topological Polar Surface Area) relates to the sum of polar surfaces on a molecule, reflecting its capacity for hydrogen bonding and overall polarity. Analyzing the contributions across the observed values, the relationship with the predicted drug property is non-linear and fluctuates between positive and negative impacts.
+
+At very low TPSA values (around 3.24), the contribution is slightly positive, suggesting that minimal polarity may slightly enhance the property. Mid-range TPSA values (~40-60) show a mix of small positive and negative contributions, indicating no straightforward improvement or deterioration with moderate polarity.
+
+Higher TPSA values (above 60) show increasingly negative contributions, particularly around 68, 79, and 99, where the impact on the property becomes notably unfavorable. This trend suggests that excessive polar surface area negatively affects the predicted drug property.
+
+From a chemical perspective, low to moderate polarity may favor the property by balancing solubility and membrane permeability. However, excessive polarity likely decreases membrane permeability or bioavailability, reducing the predicted drug property. Thus, an optimal TPSA range likely exists where polarity supports favorable drug characteristics, while too high polarity is detrimental."
+ADME_HLM,VSA_EState3,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: VSA_EState3
+
+Observed values (descriptor value -> contribution to prediction):
+
+-0.406 -> 0.007
+0.000 -> 0.008
+0.000 -> -0.022
+0.700 -> 0.084
+2.179 -> -0.038
+2.795 -> 0.018
+3.002 -> 0.011
+3.303 -> -0.006
+3.891 -> -0.016
+4.370 -> -0.031
+5.281 -> -0.026
+6.389 -> 0.000
+7.256 -> 0.043
+8.145 -> -0.063
+9.152 -> 0.041
+10.453 -> -0.057
+11.878 -> -0.024
+13.475 -> -0.070
+16.498 -> -0.018
+47.629 -> 0.028
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor VSA_EState3 represents a combination of electronic state and van der Waals surface area properties of particular atom types or regions within a molecule. Essentially, it captures how certain electronically characterized surface areas contribute to the molecule’s behavior.
+
+From the observed data, we see that low to moderate values of VSA_EState3 (around -0.4 to 0.7) are generally associated with slightly positive contributions to the predicted drug property, suggesting that the presence of certain small to moderate electronic surface regions may enhance this property.
+
+As VSA_EState3 increases beyond this moderate range (e.g., 2.179 up to around 13-16), the contributions tend to become negative, indicating that larger or more electronically intense surface areas corresponding to this descriptor may reduce the predicted drug property value. This could reflect that bulky or strongly electronically active regions of this particular type negatively affect the property, perhaps due to steric hindrance or unfavorable electronic interactions.
+
+At very high values, such as 47.629, the contribution swings back slightly positive, possibly indicating that extremely large or unusual electronic surface features might sometimes mitigate the negative trend, or that the relationship is non-linear.
+
+Overall, molecules with moderate values of VSA_EState3—reflecting balanced electronic surface features—tend to favor higher predicted property values, while very high intermediate values correspond to detrimental effects on the predicted property. This suggests an optimal electronic surface environment is important for enhancing the drug-related behavior captured by this descriptor."
+ADME_HLM,VSA_EState5,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: VSA_EState5
+
+Observed values (descriptor value -> contribution to prediction):
+
+-8.941 -> -0.090
+-0.841 -> -0.066
+-0.411 -> -0.020
+-0.191 -> 0.027
+-0.065 -> 0.032
+0.000 -> -0.014
+0.019 -> 0.009
+0.165 -> 0.020
+0.339 -> 0.032
+0.483 -> 0.010
+0.627 -> 0.001
+0.741 -> 0.015
+0.859 -> -0.003
+0.983 -> 0.024
+1.167 -> 0.020
+1.400 -> -0.071
+1.621 -> 0.006
+1.904 -> 0.050
+2.422 -> -0.009
+8.202 -> 0.074
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor VSA_EState5 reflects a combination of atomic surface area (van der Waals surface area) and electronic state properties for certain atoms or groups in the molecule.
+
+In examining the relationship between VSA_EState5 values and their contribution to the predicted drug property, a few key patterns emerge:
+
+- At very low VSA_EState5 values (around -9 to -0.4), the contribution to the property is negative, indicating that molecules or regions with strongly negative VSA_EState5 tend to reduce the predicted property. Chemically, this might correspond to atoms or groups with low electronic accessibility or particular electronic environments (e.g., strongly electronegative atoms with small surface exposure).
+
+- Moving toward values near zero (around -0.2 to 0.3), the contribution shifts positive, peaking around 0.03 contribution. This suggests that moderate VSA_EState5 values correlate with an increased drug property prediction. Likely, these correspond to atoms/groups with balanced electronic and surface area characteristics favorable for the property (such as optimal polarity or size).
+
+- At intermediate positive values (around 0.6 to 1.2), the contributions are small, mostly positive to slightly negative or near neutral, indicating a lesser or mixed influence on the drug property.
+
+- At higher positive values (around 1.4 to 8.2), the contributions again vary, including some negative contributions at 1.4 and 2.4, but generally more positive contributions at the very high end (8.2), suggesting that very high VSA_EState5 values can sometimes favorably impact the property, possibly indicating the presence of large, electronically accessible groups or atoms.
+
+Overall, the descriptor VSA_EState5 appears to capture electronically influenced surface area features that have a nonlinear relationship with the predicted drug property. Moderate values seem most beneficial, possibly reflecting an optimal balance of electronic environment and molecular surface exposure relevant to biological activity or pharmacokinetics. Both very low and certain high values can reduce the property, indicating that extreme electronic surface characteristics might be detrimental."

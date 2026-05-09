@@ -1,204 +1,219 @@
+import os
+import sys
 from pathlib import Path
+import json
 import pandas as pd
-import numpy as np
 import shap
 import joblib
 import matplotlib.pyplot as plt
+
 from rdkit import Chem
 from rdkit.Chem import Draw
-import json
 
 # =========================================================
-# Paths
+# FIND ROOT (TFM)
 # =========================================================
-PROCESSED_PATH = Path("data/processed")
-RAW_PATH = Path("data/raw")
-MODELS_PATH = Path("models")
-OUTPUT_PATH = Path("reports/shap_local")
+ROOT = Path(__file__).resolve()
+while ROOT.name != "TFM":
+    ROOT = ROOT.parent
+
+sys.path.append(str(ROOT))
+
+# =========================================================
+# PATHS
+# =========================================================
+DATA_PATH = ROOT / "data/processed"
+SDF_PATH = ROOT / "data/raw"
+MODELS_PATH = ROOT / "models"
+OUTPUT_PATH = ROOT / "reports/shap_local_v2"
+
 OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
-# =========================================================
-# Endpoints
-# =========================================================
-ENDPOINTS = [
-    "ADME_HLM",
-    "ADME_hPPB",
-    "ADME_MDR1_ER",
-    "ADME_RLM",
-    "ADME_rPPB",
-    "ADME_Sol",
-]
+MAX_SAMPLES = 20
 
 # =========================================================
-# Load SMILES + ID
+# LOAD SDF
 # =========================================================
-def load_metadata_from_sdf(sdf_path):
-    supplier = Chem.SDMolSupplier(str(sdf_path))
+def load_sdf_as_df(sdf_file):
 
-    smiles_list = []
-    id_list = []
+    supplier = Chem.SDMolSupplier(str(sdf_file))
 
-    for i, mol in enumerate(supplier):
+    data = []
+    mols = []
 
+    for mol in supplier:
         if mol is None:
-            smiles_list.append(None)
-            id_list.append(f"mol_{i}")
             continue
 
-        # SMILES
-        if mol.HasProp("SMILES"):
-            smiles = mol.GetProp("SMILES")
-        else:
-            smiles = Chem.MolToSmiles(mol)
+        props = mol.GetPropsAsDict()
 
-        smiles_list.append(smiles)
+        smiles = props.get("SMILES", Chem.MolToSmiles(mol))
+        mol_id = props.get("Vendor ID", None)
 
-        # ID robusto
-        if mol.HasProp("Vendor ID"):
-            mol_id = mol.GetProp("Vendor ID")
-        elif mol.HasProp("Internal ID"):
-            mol_id = mol.GetProp("Internal ID")
-        elif mol.HasProp("ID"):
-            mol_id = mol.GetProp("ID")
-        elif mol.HasProp("_Name"):
-            mol_id = mol.GetProp("_Name")
-        else:
-            mol_id = f"mol_{i}"
+        data.append({
+            "smiles": smiles,
+            "id": mol_id
+        })
 
-        id_list.append(mol_id)
+        mols.append(mol)
 
-    return smiles_list, id_list
+    df = pd.DataFrame(data)
+    return df, mols
 
 
 # =========================================================
-# Main
+# MAIN
 # =========================================================
-def run_local_shap(endpoint_name):
+def run_all_local_shap():
 
-    print(f"\nRunning LOCAL SHAP for {endpoint_name}")
+    print("\n==============================")
+    print("Running LOCAL SHAP (FIXED)")
+    print("==============================")
 
-    data_path = PROCESSED_PATH / f"{endpoint_name}_rdkit.csv"
-    model_path = MODELS_PATH / f"{endpoint_name}_lightgbm.pkl"
-    sdf_path = RAW_PATH / f"{endpoint_name}.sdf"
+    for csv_file in DATA_PATH.glob("*_rdkit.csv"):
 
-    if not data_path.exists() or not model_path.exists():
-        print(f"Skipping {endpoint_name}")
-        return
-
-    df = pd.read_csv(data_path)
-
-    # =========================
-    # SMILES + ID
-    # =========================
-    if sdf_path.exists():
-        smiles_list, id_list = load_metadata_from_sdf(sdf_path)
-        df["smiles"] = smiles_list[:len(df)]
-        df["mol_id"] = id_list[:len(df)]
-    else:
-        df["smiles"] = None
-        df["mol_id"] = [f"idx_{i}" for i in range(len(df))]
-
-    # =========================
-    # Features
-    # =========================
-    X = df.drop(columns=["activity", "smiles", "mol_id"], errors="ignore")
-
-    model = joblib.load(model_path)
-
-    # =========================
-    # SHAP 
-    # =========================
-    explainer = shap.Explainer(model)
-    shap_values = explainer(X)
-
-    #  predictions
-    preds = model.predict(X)
-
-    # =========================
-    # Output folder
-    # =========================
-    endpoint_out = OUTPUT_PATH / endpoint_name
-    endpoint_out.mkdir(parents=True, exist_ok=True)
-
-    # =========================
-    # LOOP ALL SAMPLES
-    # =========================
-    for idx in range(len(df)):
-
-        mol_id = str(df.iloc[idx].get("mol_id", f"idx_{idx}"))
-
-        print(f"  Processing idx={idx} (ID={mol_id})")
-
-        sample_out = endpoint_out / f"mol_{idx}_{mol_id}"
-        sample_out.mkdir(parents=True, exist_ok=True)
-
-        # prediction for this molecule
-        pred_value = float(preds[idx])
+        endpoint = csv_file.stem.replace("_rdkit", "")
+        print(f"\nProcessing {endpoint}")
 
         # =========================
-        # Waterfall
+        # LOAD DATA
         # =========================
+        df = pd.read_csv(csv_file)
+
+        # 👉 quitar target si existe
+        if "target" in df.columns:
+            X = df.drop(columns=["target"])
+        else:
+            X = df.copy()
+
+        # 👉 QUITAR columnas problemáticas (ESTO ES EL FIX)
+        X = X.select_dtypes(include=["number"])
+
+        # =========================
+        # LOAD MODEL
+        # =========================
+        model_path = MODELS_PATH / f"{endpoint}_lightgbm.pkl"
+
+        if not model_path.exists():
+            print(f"Model not found for {endpoint}")
+            continue
+
+        model = joblib.load(model_path)
+
+        # 👉 ALINEAR FEATURES (ESTO ARREGLA EL ERROR)
+        model_features = model.feature_name_
+
         try:
-            plt.figure()
-            shap.plots.waterfall(shap_values[idx], max_display=10, show=False)
-            plt.tight_layout()
-            plt.savefig(sample_out / "waterfall.png", dpi=120)
-            plt.close()
+            X = X[model_features]
         except Exception as e:
-            print(f"Waterfall error: {e}")
+            print("Feature mismatch:")
+            print("Missing:", set(model_features) - set(X.columns))
+            print("Extra:", set(X.columns) - set(model_features))
+            continue
 
         # =========================
-        # Molecule image
+        # FIND SDF
         # =========================
-        smiles = df.iloc[idx].get("smiles")
+        possible_sdf = list(SDF_PATH.glob(f"{endpoint}*.sdf"))
 
-        if smiles:
+        if not possible_sdf:
+            print(f"No SDF found for {endpoint}")
+            continue
+
+        sdf_file = possible_sdf[0]
+        print(f"Using SDF: {sdf_file.name}")
+
+        sdf_df, mols = load_sdf_as_df(sdf_file)
+
+        if len(sdf_df) != len(X):
+            print(f"Size mismatch: CSV={len(X)} vs SDF={len(sdf_df)}")
+            continue
+
+        explainer = shap.TreeExplainer(model)
+
+        # =========================
+        # LOOP
+        # =========================
+        for i in range(min(len(X), MAX_SAMPLES)):
+
+            mol_id = sdf_df.iloc[i]["id"]
+            sample_name = f"mol_{i}_{mol_id}"
+
+            sample_path = OUTPUT_PATH / endpoint / sample_name
+            sample_path.mkdir(parents=True, exist_ok=True)
+
+            row = X.iloc[[i]]
+
+            # =========================
+            # PRED
+            # =========================
+            pred = float(model.predict(row)[0])
+
+            # =========================
+            # SHAP
+            # =========================
+            shap_values = explainer.shap_values(row)
+            shap_vals = shap_values[0]
+            base_value = float(explainer.expected_value)
+
+            # =========================
+            # SAVE JSON
+            # =========================
+            with open(sample_path / "prediction.json", "w") as f:
+                json.dump({
+                    "prediction": pred,
+                    "base_value": base_value
+                }, f, indent=2)
+
+            # =========================
+            # TOP FEATURES
+            # =========================
+            features = X.columns.tolist()
+
+            top_features = sorted(
+                [
+                    {
+                        "feature": feat,
+                        "impact": float(val)
+                    }
+                    for feat, val in zip(features, shap_vals)
+                ],
+                key=lambda x: abs(x["impact"]),
+                reverse=True
+            )[:10]
+
+            with open(sample_path / "top_features.json", "w") as f:
+                json.dump(top_features, f, indent=2)
+
+            # =========================
+            # WATERFALL
+            # =========================
+            shap_exp = shap.Explanation(
+                values=shap_vals,
+                base_values=base_value,
+                data=row.iloc[0],
+                feature_names=features
+            )
+
+            plt.figure()
+            shap.plots.waterfall(shap_exp, show=False)
+            plt.savefig(sample_path / "waterfall.png", bbox_inches="tight")
+            plt.close()
+
+            # =========================
+            # MOLECULE IMAGE
+            # =========================
+            mol = mols[i]
+
             try:
-                mol = Chem.MolFromSmiles(smiles)
-                if mol:
-                    img = Draw.MolToImage(mol, size=(300, 300))
-                    img.save(sample_out / "molecule.png")
+                img = Draw.MolToImage(mol, size=(300, 300))
+                img.save(sample_path / "molecule.png")
             except:
                 pass
 
-        # =========================
-        # TOP-3 SHAP
-        # =========================
-        values = shap_values.values[idx]
-        feature_names = X.columns
+            print(f"Done: {sample_name}")
 
-        top_idx = np.argsort(np.abs(values))[-3:]
-
-        top_features = [
-            {
-                "feature": feature_names[i],
-                "impact": float(values[i])
-            }
-            for i in top_idx[::-1]
-        ]
-
-        # =========================
-        # Save features
-        # =========================
-        with open(sample_out / "top_features.json", "w") as f:
-            json.dump(top_features, f, indent=2)
-
-        pd.DataFrame(top_features).to_csv(
-            sample_out / "top_features.csv",
-            index=False
-        )
-
-        # save prediction
-        with open(sample_out / "prediction.json", "w") as f:
-            json.dump({"prediction": pred_value}, f, indent=2)
-
-
-# =========================================================
-# RUN ALL
-# =========================================================
-def run_all_local_shap():
-    for endpoint in ENDPOINTS:
-        run_local_shap(endpoint)
+    print("\nSHAP generation complete.")
 
 
 # =========================================================

@@ -1,0 +1,3238 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_hPPB,0,gpt-4.1-mini,reasoning,3,"['fr_COO', 'fr_para_hydroxylation', 'AvgIpc']","[0.23030167332376775, 0.09173439901369888, 0.08776491290549547]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.230
+- fr_para_hydroxylation: 0.092
+- AvgIpc: 0.088
+
+","Certainly! Let’s analyze why the model predicted the given drug property based on the three descriptors: fr_COO, fr_para_hydroxylation, and AvgIpc.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The three descriptors provided with their importance scores are:
+
+- **fr_COO:** 0.230  
+- **fr_para_hydroxylation:** 0.092  
+- **AvgIpc:** 0.088  
+
+Here, **fr_COO** has the highest importance score, followed by fr_para_hydroxylation and AvgIpc. This suggests that the presence of the COO functional group is the strongest predictor in the model.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+1. **fr_COO (Fraction of carboxyl groups):**  
+   - Represents the frequency or proportion of carboxyl (-COOH) groups in the molecule. Carboxyl groups are acidic and can ionize under physiological pH, increasing solubility and influencing binding interactions.
+
+2. **fr_para_hydroxylation (Fraction of para-hydroxylation sites):**  
+   - Indicates the presence of hydroxyl groups (-OH) attached to the para position of aromatic rings. Hydroxyl groups can affect hydrogen bonding capacity and metabolic susceptibility (e.g., phase I metabolism by hydroxylation).
+
+3. **AvgIpc (Average information content of the molecule’s partial charges):**  
+   - A descriptor related to the distribution and variability of partial charges throughout the molecule, reflecting polarity, electronic distribution, and possibly the molecule’s reactivity or binding affinity.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+1. **fr_COO (0.230):**  
+   The high importance suggests that molecules with carboxyl groups strongly affect the predicted property. Carboxyl groups can enhance water solubility, facilitate ionic interactions with target proteins or enzymes, and affect pharmacokinetics like absorption and excretion. For example, if the property is bioavailability or metabolic stability, the COO group might improve or reduce it depending on the context.
+
+2. **fr_para_hydroxylation (0.092):**  
+   Para-hydroxylation sites increase the potential for metabolic transformation by enzymes such as cytochrome P450s. This could accelerate metabolism leading to faster clearance or activation of the drug. The model recognizes that such sites moderately influence the property, possibly by indicating susceptibility to metabolism.
+
+3. **AvgIpc (0.088):**  
+   The average information content of partial charges reflects the molecule’s electronic features. Variations here may influence how the molecule interacts with biological targets or enzymes, affecting binding affinity or reactivity, thereby modulating the drug property predicted by the model.
+
+---
+
+### Summary:
+
+- The model heavily weights the presence of **carboxyl groups** because they are key in defining solubility, ionization, and interactions (directly affecting the drug property).  
+- **Para-hydroxylation** sites provide moderate influence by indicating metabolic liability or modification sites.  
+- **Electronic distribution (AvgIpc)** subtly modulates interactions and reactivity, fine-tuning the prediction based on the molecule’s polarity and charge heterogeneity.
+
+This stepwise biochemical rationale clarifies how the model uses chemical features to predict the drug property."
+ADME_hPPB,1,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'HallKierAlpha']","[-0.09066957024896542, 0.05647438464739423, 0.056451441376551476]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.091
+- HeavyAtomMolWt: 0.056
+- HallKierAlpha: 0.056
+
+","Certainly! Let's analyze why the model predicted the drug property based on the provided descriptors.
+
+---
+
+### Step 1: Identify the Most Important Descriptors  
+The descriptors given with their values are:
+
+- **fr_COO**: -0.091  
+- **HeavyAtomMolWt**: 0.056  
+- **HallKierAlpha**: 0.056  
+
+Here, the magnitudes of the values represent their relative contributions (importance) to the prediction. The negative or positive sign indicates the direction of influence on the predicted property.
+
+- The **fr_COO** descriptor has the largest magnitude (-0.091), indicating it is the most influential.  
+- **HeavyAtomMolWt** and **HallKierAlpha** have equal values (0.056), showing moderate positive influence.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning  
+
+- **fr_COO (Frequency of carboxylic acid groups):**  
+  This descriptor counts the number (or frequency) of carboxyl (-COOH) functional groups in the molecule. Carboxylic acids are polar and often negatively charged at physiological pH, influencing solubility, permeability, and binding to targets or transport proteins.
+
+- **HeavyAtomMolWt (Heavy Atom Molecular Weight):**  
+  This is the total molecular weight contributed by all heavy atoms (non-hydrogen atoms) in the molecule. It reflects the size and complexity of the compound; larger molecules generally have higher molecular weight.
+
+- **HallKierAlpha (Hall-Kier alpha value):**  
+  This descriptor is related to molecular flexibility or shape. It is often used to estimate molecular branching and overall topology, which influences how the molecule fits into binding sites or crosses membranes.
+
+---
+
+### Step 3: Explain How They Influence the Prediction  
+
+- **fr_COO (-0.091):**  
+  The negative coefficient means the presence (higher frequency) of carboxylic acid groups reduces the predicted value of the drug property. Biochemically, carboxyl groups increase polarity and ionization, which can lower membrane permeability or bioavailability for some drug properties. Thus, molecules with more carboxyl groups might be predicted to have lower values for the property modeled (e.g., lower absorption or binding affinity).
+
+- **HeavyAtomMolWt (0.056):**  
+  The positive coefficient suggests that as the molecular weight increases (more or heavier heavy atoms), the predicted value of the drug property increases. This could indicate that larger molecules in this dataset tend to have higher values of the property studied (e.g., increased potency or stability).
+
+- **HallKierAlpha (0.056):**  
+  The positive influence of molecular shape/flexibility suggests that more branched or flexible molecules tend to have higher predicted property values. This might relate to better fitting to biological targets or greater ability to navigate cellular environments.
+
+---
+
+### Summary:  
+The model predicts the drug property primarily by penalizing molecules with carboxylic acid groups (which may reduce certain drug-like qualities) while favoring larger, more flexible molecules as reflected by molecular weight and shape descriptors.
+
+If you provide the specific drug property predicted, I can tailor the explanation in more detail!"
+ADME_hPPB,2,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'EState_VSA3']","[0.21410272034319877, -0.08789373115731833, 0.06264410426729361]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.214
+- HeavyAtomMolWt: -0.088
+- EState_VSA3: 0.063
+
+","Certainly! Let's analyze why the model predicted this drug property based on the given descriptors:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The three descriptors with their respective contributions/coefficients are:
+
+- **fr_COO:** 0.214  
+- **HeavyAtomMolWt:** -0.088  
+- **EState_VSA3:** 0.063
+
+Among them, **fr_COO (0.214)** has the highest positive contribution, followed by **EState_VSA3 (0.063)** with a smaller positive effect, and **HeavyAtomMolWt (-0.088)** with a negative effect.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO:** This descriptor represents the frequency or presence of carboxylic acid groups (-COOH) in the molecule. Carboxyl groups are acidic functional groups known for their ability to participate in hydrogen bonding and ionic interactions.
+
+- **HeavyAtomMolWt:** This is the molecular weight considering only heavy atoms (non-hydrogen atoms). Higher molecular weight can influence drug properties such as solubility, permeability, and bioavailability.
+
+- **EState_VSA3:** This is an electrotopological state (EState) descriptor combined with van der Waals surface area (VSA). It encodes electronic and surface area information of the molecule, often related to reactivity or binding affinity in specific regions.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (0.214):** A positive coefficient means an increased number or presence of carboxyl groups favors the predicted drug property. This can be because carboxylic acids often improve solubility and can form strong ionic or hydrogen bonds with biological targets, aiding in activity.
+
+- **HeavyAtomMolWt (-0.088):** The negative coefficient indicates that higher molecular weight negatively impacts the property prediction. Larger molecules may have poorer permeability or bioavailability, which could reduce the desired property.
+
+- **EState_VSA3 (0.063):** This relatively low but positive value suggests that molecules with certain electronic and surface area characteristics correlated with this descriptor have a slight positive effect on the property. It could reflect favorable interactions at the molecular surface or electronic distribution aiding activity.
+
+---
+
+### Summary:
+
+The model predicts the drug property primarily based on the presence of carboxyl groups (fr_COO), which enhance the activity/property through their chemical interactions. This positive effect is slightly reinforced by favorable electronic/surface area features (EState_VSA3). However, increasing molecular weight (HeavyAtomMolWt) decreases the property, probably due to detrimental pharmacokinetic factors. Together, these descriptors guide the model’s prediction step-by-step."
+ADME_hPPB,3,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'fr_C_O']","[-0.07941055982920611, -0.036676242675749135, 0.034697503994073946]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.079
+- HeavyAtomMolWt: -0.037
+- fr_C_O: 0.035
+
+","Certainly! Let's analyze the model's prediction of the drug property based on the provided descriptor importances and coefficients.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+We have three descriptors with their respective coefficients or importance scores related to the prediction:
+
+- **fr_COO**: -0.079  
+- **HeavyAtomMolWt**: -0.037  
+- **fr_C_O**: 0.035  
+
+Since descriptors with larger absolute coefficients impact the prediction more strongly, **fr_COO** is the most important, followed by **HeavyAtomMolWt**, and then **fr_C_O**.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+- **fr_COO**: This represents the **frequency (or presence)** of carboxylic acid groups (-COOH) in the molecule. Carboxylic acids are polar, acidic functional groups that can form hydrogen bonds and participate in ionic interactions.
+
+- **HeavyAtomMolWt**: This is the **molecular weight of all heavy atoms** (non-hydrogen atoms) in the molecule. It reflects the overall size and complexity of the molecule.
+
+- **fr_C_O**: This indicates the **frequency (or presence)** of carbon-oxygen single bonds (C-O), typically found in alcohols, ethers, esters, or other oxygen-containing functional groups.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+Given the coefficients:
+
+- **fr_COO (-0.079)**: The negative coefficient indicates that **an increase in carboxylic acid groups decreases the predicted value of the drug property**. Biochemically, carboxylic acids increase polarity and acidic character, which might reduce membrane permeability or bioavailability, depending on the predicted property.
+
+- **HeavyAtomMolWt (-0.037)**: Also negative, implying that **larger molecules with higher heavy atom molecular weight tend to have lower predicted property values**. This is common in absorption, distribution, or solubility models where bigger molecules are less favored.
+
+- **fr_C_O (+0.035)**: Positive coefficient means that **more C-O bonds increase the predicted property**. This could relate to improved solubility or hydrogen bonding capacity that enhances the predicted property, such as bioavailability or receptor interaction.
+
+---
+
+### Summary:
+
+The model predicts the drug property considering:
+
+- Presence of **carboxylic acid groups** tends to reduce the property value (e.g., lowers absorption or increases polarity).
+- **Heavier molecules** are less favorable for the property.
+- Presence of **carbon-oxygen single bonds** has a favorable influence, potentially improving solubility or interaction potential.
+
+Understanding these biochemical relationships helps rationalize why the model weighted these descriptors as it did."
+ADME_hPPB,4,gpt-4.1-mini,reasoning,3,"['Chi0n', 'PEOE_VSA1', 'HeavyAtomMolWt']","[-0.11669207127936318, 0.0823257502401111, 0.07957564252908186]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- Chi0n: -0.117
+- PEOE_VSA1: 0.082
+- HeavyAtomMolWt: 0.080
+
+","Certainly! Let's analyze why the model predicted a particular drug property using the given descriptor values step by step.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The descriptors with their values provided are:
+
+- **Chi0n:** -0.117  
+- **PEOE_VSA1:** 0.082  
+- **HeavyAtomMolWt:** 0.080  
+
+Among these, **Chi0n** has the largest magnitude (absolute value of -0.117), followed by **PEOE_VSA1 (0.082)** and **HeavyAtomMolWt (0.080)**. This indicates:
+
+- Chi0n contributes negatively.
+- PEOE_VSA1 contributes positively.
+- HeavyAtomMolWt contributes positively.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+**Chi0n** (Zero-order connectivity index for the molecule, neutral form)  
+- A topological descriptor indicating the molecular branching and connectivity at the atom level.  
+- It generally reflects molecular shape and size at the simplest (zero-order) connected atoms without regard to bond order or type.  
+- Negative correlation suggests that molecules with lower zero-order connectivity index (less branching or simpler connectivity) influence the drug property negatively.
+
+**PEOE_VSA1** (Partial Equalization of Orbital Electronegativities - Van der Waals Surface Area Bin 1)  
+- This descriptor represents the surface area of atoms in the molecule in a low partial charge environment (bin 1 corresponds to atoms with small positive or negative partial charge).  
+- It relates to the polar or charged surface exposed to solvents, influencing solubility, binding, or ADMET properties.
+
+**HeavyAtomMolWt** (Heavy Atom Molecular Weight)  
+- Refers to the sum of the atomic weights of all non-hydrogen atoms in the molecule.  
+- Generally reflects the size and complexity of the molecule.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+- **Chi0n (-0.117):**  
+  The negative contribution of Chi0n means that molecules with higher zero-order connectivity (more branching or more complex connectivity at the atom level) reduce the predicted value of the drug property. This could be because excessive branching may reduce properties like permeability or bioavailability due to steric hindrance or difficulty crossing membranes.
+
+- **PEOE_VSA1 (0.082):**  
+  The positive contribution of PEOE_VSA1 suggests that molecules with larger surface areas having nearly neutral partial charges contribute positively to the drug property. This may enhance interactions with protein targets or improve solubility—key desirable features in drug design.
+
+- **HeavyAtomMolWt (0.080):**  
+  The positive influence of molecular weight shows that larger molecules tend to favorably influence the predicted property, perhaps due to increased binding affinity or stability, but this can be context-dependent; very large molecules sometimes negatively impact properties like absorption.
+
+---
+
+### Summary
+
+The model predicts the drug property based on a balance between molecular branching/connectivity, surface charge distribution, and molecular size:
+
+- Less branching/simpler connectivity (lower Chi0n) tends to decrease the predicted property.  
+- Molecules with a larger neutral surface area (PEOE_VSA1) tend to increase it.  
+- Heavier, larger molecules (HeavyAtomMolWt) also tend to increase the predicted property.
+
+This interplay suggests that an optimal drug profile is achieved by controlling molecular topology, surface charge distribution, and size.
+
+---
+
+If you provide the specific drug property being predicted (e.g., solubility, permeability, toxicity), I can tailor the explanation more precisely."
+ADME_hPPB,5,gpt-4.1-mini,reasoning,3,"['fr_COO', 'Chi2n', 'PEOE_VSA6']","[0.671899759352337, 0.06830291145927844, -0.05654044626110822]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.672
+- Chi2n: 0.068
+- PEOE_VSA6: -0.057
+
+","Certainly! Let’s analyze why the model predicted this drug property based on the given descriptors:
+
+---
+
+### Step 1: Identify the most important descriptors  
+
+The descriptors and their weights (or importance values) are:
+
+- **fr_COO: 0.672** (Most important, positive influence)
+- **Chi2n: 0.068** (Moderate importance, positive influence)
+- **PEOE_VSA6: -0.057** (Least important, slight negative influence)
+
+The descriptor **fr_COO** (fraction of carboxylic acid groups) is the dominant factor in the prediction, followed by Chi2n. PEOE_VSA6 has a minor negative effect.
+
+---
+
+### Step 2: Explain their biochemical meaning  
+
+1. **fr_COO (Fraction of Carboxylic Acid Groups)**  
+   This descriptor measures the proportion of carboxyl (-COOH) groups present in the molecule relative to total molecular features. Carboxylic acids are acidic functional groups that can dissociate, contributing to ionization, possible hydrogen bonding, and affect solubility and permeability.
+
+2. **Chi2n (Second-order Normalized Molecular Connectivity Index)**  
+   Chi indices encode the topological structure of a molecule related to branching and connectivity of atoms. Chi2n reflects how the molecular graph is connected at the second level, normalized for molecular size, providing insight into molecular shape and framework complexity.
+
+3. **PEOE_VSA6 (Partial Equalization of Orbital Electronegativities, Van der Waals Surface area region 6)**  
+   This descriptor sums the Van der Waals surface area corresponding to atoms with a specific partial charge range (medium negative). It captures the molecular surface’s charge distribution, which relates to polarity and interaction potential with biological targets.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+- **fr_COO = 0.672 (strong positive contribution):**  
+  A high fraction of carboxylic acid groups strongly drives the drug property prediction positively. This suggests the model associates carboxylic acids with the property (e.g., solubility, binding affinity or clearance) being predicted. Because these groups can ionize and form key interactions, their presence likely enhances the property of interest.
+
+- **Chi2n = 0.068 (positive contribution):**  
+  Moderate branching or specific topological features increase the predicted property slightly. This implies that molecular shape and connectivity, as captured by Chi2n, help improve or maintain the beneficial property. Possibly, certain molecular frameworks facilitate interaction or stability.
+
+- **PEOE_VSA6 = -0.057 (slight negative contribution):**  
+  More van der Waals surface area associated with medium-negative partial charge slightly reduces the predicted property. This could mean that increased negative charge regions on the molecular surface may hinder the property, possibly due to unfavorable interactions or solubility issues.
+
+---
+
+### Summary:  
+
+The model predicts the drug property mainly because the molecule has a significant number of carboxylic acid groups (fr_COO), which favorably influence the property. The molecular connectivity (Chi2n) provides additional small positive influence by reflecting beneficial topology. In contrast, partial negative surface charge areas (PEOE_VSA6) slightly reduce the predicted property. Together, these descriptors shape the model’s output.
+
+If you provide the specific drug property or model context, I can tailor the explanation further!"
+ADME_hPPB,6,gpt-4.1-mini,reasoning,3,"['fr_ketone', 'HeavyAtomMolWt', 'PEOE_VSA14']","[0.09213258011619159, -0.0678695845211875, -0.05898779363623399]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_ketone: 0.092
+- HeavyAtomMolWt: -0.068
+- PEOE_VSA14: -0.059
+
+","Certainly! Let's analyze the model's prediction of the drug property based on the given descriptors step by step.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model identifies three descriptors with their respective weights or importance scores:
+
+- **fr_ketone: 0.092**
+- **HeavyAtomMolWt: -0.068**
+- **PEOE_VSA14: -0.059**
+
+The magnitude of these values indicates their relative influence on the prediction. Here, **fr_ketone** has the strongest positive influence, while **HeavyAtomMolWt** and **PEOE_VSA14** have negative influences.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_ketone (Fragment ketone)**
+   - This descriptor counts the number of ketone functional groups (C=O bonded to carbon atoms) present in the molecule.
+   - Ketones are polar groups that can participate in hydrogen bonding as acceptors, affecting solubility, reactivity, and binding interactions.
+
+2. **HeavyAtomMolWt (Heavy Atom Molecular Weight)**
+   - This is the total molecular weight of all atoms in the molecule, excluding hydrogens.
+   - It reflects molecule size and complexity. Larger molecules generally have higher molecular weight.
+
+3. **PEOE_VSA14 (Partial Equalization of Orbital Electronegativities, Van der Waals Surface Area bin 14)**
+   - A descriptor that sums the surface area of atoms with a particular partial charge range.
+   - It captures the accessible surface area of atoms with certain electronic properties, influencing interactions such as binding affinity or permeability.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_ketone (Positive influence: +0.092)**
+  - A higher number of ketone groups likely increases the property value predicted by the model (e.g., solubility, binding affinity).
+  - Ketone groups can enhance polarity and the potential for hydrogen bonding with biological targets or solvents, improving drug-target interactions or solubility.
+
+- **HeavyAtomMolWt (Negative influence: -0.068)**
+  - Heavier molecules tend to negatively influence the predicted property.
+  - This could be because large molecular size might reduce bioavailability, permeability, or increase metabolic instability, thus lowering the predicted favorability of the property.
+
+- **PEOE_VSA14 (Negative influence: -0.059)**
+  - A larger surface area with particular charge characteristics reduces the predicted property.
+  - This may suggest that the specific electronic surface properties represented by PEOE_VSA14 could hinder the favorable drug property, possibly by affecting membrane permeability or non-specific binding.
+
+---
+
+### Summary:
+
+The model predicts the drug property by balancing these factors:
+- Presence of **ketone groups** contributes positively, likely enhancing interaction capability or solubility.
+- Increasing **molecular weight** and the particular **charged surface area** (PEOE_VSA14) decrease the property, possibly by reducing permeability or increasing metabolic burden.
+
+This integrated understanding aids in rational design or optimization of drug candidates by targeting these molecular features."
+ADME_hPPB,7,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'PEOE_VSA1']","[0.13489737593521717, -0.10046860935451038, 0.08911939643095157]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.135
+- HeavyAtomMolWt: -0.100
+- PEOE_VSA1: 0.089
+
+","Certainly! Let's analyze why the model predicted this drug property using the given descriptors step by step:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model uses three descriptors with their associated coefficients (weights):
+
+- **fr_COO**: +0.135  
+- **HeavyAtomMolWt**: -0.100  
+- **PEOE_VSA1**: +0.089
+
+Here, the magnitude of the coefficient represents its importance and the sign (+/-) represents the direction of influence on the predicted outcome.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO**:  
+  This descriptor indicates the frequency (or presence) of carboxylic acid functional groups (–COOH) in the molecule. Carboxylic acids are acidic and can ionize in physiological conditions, affecting solubility and binding interactions.
+
+- **HeavyAtomMolWt**:  
+  This is the molecular weight of the compound considering only heavy atoms (non-hydrogen atoms). It reflects the size and complexity of the molecule.
+
+- **PEOE_VSA1**:  
+  This descriptor is a hybrid that combines partial charge (PEOE - Partial Equalization of Orbital Electronegativities) and Van der Waals surface area (VSA) of atoms within a certain charge range, typically representing slightly positive or neutral regions on the molecule’s surface.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (+0.135)**:  
+  The positive coefficient suggests that having more carboxylic acid groups increases the predicted drug property (for instance, solubility or binding affinity). Carboxyl groups can form hydrogen bonds and ionic interactions, enhancing target binding or solubility, thereby favorably influencing the drug’s activity or pharmacokinetic profile.
+
+- **HeavyAtomMolWt (-0.100)**:  
+  A negative coefficient means that as the molecular weight increases, the predicted drug property decreases. Larger molecules often have poorer membrane permeability, reduced bioavailability, or metabolic stability issues, which can negatively affect the drug's overall performance.
+
+- **PEOE_VSA1 (+0.089)**:  
+  A positive effect here indicates that molecules with a higher solvent-accessible surface area of atoms in this particular partial charge range tend to have better predicted properties. This may relate to optimized polarity and charge distribution that enhance favorable interactions with biological targets or improve solubility.
+
+---
+
+### Summary:
+
+The model predicts higher drug property values for molecules that:
+
+- Contain carboxylic acid groups, which facilitate favorable biochemical interactions (fr_COO).  
+- Are moderate or lower in molecular weight to avoid issues related to large molecular size (HeavyAtomMolWt).  
+- Have a favorable distribution of slightly positive or neutral partial charges exposed on the molecular surface (PEOE_VSA1), which may optimize binding or solubility.
+
+Together, these descriptors help the model balance molecular size, functionality, and surface charge to predict the property of interest effectively."
+ADME_hPPB,8,gpt-4.1-mini,reasoning,3,"['fr_COO', 'Phi', 'ExactMolWt']","[0.1141172624089847, 0.08616550763236536, 0.07881938810849363]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.114
+- Phi: 0.086
+- ExactMolWt: 0.079
+
+","Certainly! Let's analyze the model's prediction for the drug property step by step based on the provided descriptors and their importance values.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The model has identified three descriptors with the highest importance scores in predicting the drug property:
+
+1. **fr_COO** (Importance: 0.114)
+2. **Phi** (Importance: 0.086)
+3. **ExactMolWt** (Importance: 0.079)
+
+These three descriptors contribute most significantly to the model’s output.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+**1. fr_COO (Fraction of Carboxylic Acid Groups):**  
+- Represents the frequency or presence of carboxyl (-COOH) groups within the molecule.  
+- Carboxylic acids are acidic functional groups that can donate a proton (H⁺), influencing solubility, charge at physiological pH, and binding interactions.
+
+**2. Phi (Molecular Flexibility or Torsion Angle Counts):**  
+- Typically relates to the count of rotatable bonds or torsional angles in the molecule.  
+- Indicates molecular flexibility or conformational freedom.
+
+**3. ExactMolWt (Exact Molecular Weight):**  
+- The precise molecular weight calculated based on the isotope composition of atoms in the molecule.  
+- A fundamental physicochemical property that affects absorption, distribution, metabolism, excretion (ADME), and often correlates with drug-likeness.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+**1. fr_COO:**  
+- The presence of carboxylic acid groups can significantly impact the drug's acidity and ionization state at physiological pH, affecting solubility and permeability.  
+- Ionized carboxyl groups typically improve water solubility but may reduce membrane permeability.  
+- Depending on the target property (e.g., solubility, bioavailability, metabolic stability), a higher or lower fr_COO could enhance or reduce the property. The model likely learned that a specific level of carboxylic content favors the predicted property.
+
+**2. Phi (Molecular Flexibility):**  
+- Molecules with too many rotatable bonds (high Phi) are more flexible, which may reduce binding affinity due to an entropic penalty.  
+- Conversely, some flexibility is essential for fitting into active sites or transporters. The model uses Phi to gauge whether the molecular flexibility is conducive or detrimental to the drug property.  
+- For example, low Phi might favor membrane permeability or metabolic stability, influencing the prediction accordingly.
+
+**3. ExactMolWt:**  
+- Molecular weight can dictate the molecule’s ability to permeate biological membranes (smaller molecules usually permeate better) and affect pharmacokinetics.  
+- A molecular weight that is too high may reduce oral bioavailability or cause rapid clearance.  
+- The model uses ExactMolWt to balance molecular size with the property of interest, associating certain weight ranges with better or worse drug property outcomes.
+
+---
+
+### Summary
+
+The model predicted the drug property primarily influenced by the presence of carboxyl groups (fr_COO), the molecular flexibility (Phi), and the exact molecular weight (ExactMolWt). These descriptors together inform the biochemical profile that shapes solubility, permeability, binding potential, and overall pharmacokinetic behavior, which the model integrates to make its prediction.
+
+If you provide the specific drug property (e.g., solubility, permeability, metabolic stability), I can tailor the explanation even more precisely."
+ADME_hPPB,9,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState4', 'VSA_EState3']","[0.4660350543987155, 0.06998149123792072, 0.057304458739837034]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.466
+- VSA_EState4: 0.070
+- VSA_EState3: 0.057
+
+","Certainly! Let's analyze why the model predicted the drug property based on the given descriptors.
+
+---
+
+### Step 1: Identify the most important descriptors
+The three descriptors ranked by importance are:
+
+1. **fr_COO** (0.466)
+2. **VSA_EState4** (0.070)
+3. **VSA_EState3** (0.057)
+
+The values represent their relative contributions or weights in the model, with **fr_COO** being the most influential.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO**: This descriptor represents the frequency or presence of carboxyl groups (-COO) in the molecule. Carboxyl groups are acidic functional groups commonly found in organic acids and play critical roles in molecular ionization, hydrogen bonding, and interactions with biological targets.
+
+- **VSA_EState4**: This is a hybrid descriptor combining van der Waals surface area (VSA) and electrotopological state (EState) indices for atom types in a molecule. Specifically, VSA_EState4 corresponds to atoms characterized by certain electronic and topological environments. VSA-based descriptors relate to molecular size and shape, while EState captures electronic effects and reactivity.
+
+- **VSA_EState3**: Similar to VSA_EState4, but corresponds to a slightly different atom type or electronic environment defined within the model’s feature set.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (Most important)**:  
+  The presence of carboxyl groups can drastically affect the drug's physicochemical properties, such as solubility, acidity, and the ability to form salt bridges or hydrogen bonds with biological macromolecules (proteins, enzymes). This can influence properties like bioavailability, permeability, and binding affinity. A higher frequency of COO groups may suggest acidic character enhancing solubility or specific target interactions, driving the model’s prediction.
+
+- **VSA_EState4 and VSA_EState3 (Lower importance)**:  
+  These descriptors inform the model about the molecule's electronic environment combined with surface area. They reflect the spatial distribution of electronic charges and molecular shape/size, influencing how the molecule can fit into binding pockets or interact sterically and electronically. Their positive contributions mean that particular atom types with certain electronic properties and surface accessibility favor the predicted drug property.
+
+---
+
+### Summary
+
+- The predominance of **fr_COO** indicates that acidic groups are key determinants in the property's prediction, likely affecting solubility and target binding.
+- The VSA_EState descriptors provide additional nuances on molecular shape and electronic features that enhance or complement the main effect of the carboxyl groups.
+  
+Thus, the model integrates these biochemical characteristics to predict the drug property with the greatest weight on molecular acidity and related interactions."
+ADME_hPPB,10,gpt-4.1-mini,reasoning,3,"['fr_COO', 'fr_ketone', 'EState_VSA9']","[0.23201331387892193, 0.06441642838872992, -0.03633415771955667]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.232
+- fr_ketone: 0.064
+- EState_VSA9: -0.036
+
+","Certainly! To explain why the model predicted a particular drug property based on the given descriptors, we proceed as follows:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The provided descriptors and their importance coefficients (or contributions) to the prediction are:
+
+- **fr_COO: 0.232** (most positive contribution)
+- **fr_ketone: 0.064** (moderate positive contribution)
+- **EState_VSA9: -0.036** (negative contribution)
+
+From their magnitudes, **fr_COO** has the largest positive influence, followed by **fr_ketone**, while **EState_VSA9** slightly reduces the predicted value.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO (frequency of carboxylic acid groups)**  
+   - Represents the fraction (normalized count) of carboxyl (-COOH) moieties in the drug molecule.  
+   - Carboxylic acids are acidic functional groups capable of forming hydrogen bonds, often increasing solubility and influencing ionization at physiological pH.
+
+2. **fr_ketone (frequency of ketone groups)**  
+   - Measures the fraction of ketone groups (C=O bonded to carbon atoms) in the molecule.  
+   - Ketones are polar functional groups that can act as hydrogen bond acceptors but are less acidic than carboxyl groups.
+
+3. **EState_VSA9 (Electrotopological State - Van der Waals Surface Area for a specific atom type class)**  
+   - Combines electronic and topological information; here, VSA9 refers to surface area contributions of atoms in a specific range of electrotopological states, often linked to partial charge or hydrogen bonding environment.  
+   - A negative coefficient suggests that the presence of these atoms or surface properties decrease the predicted property.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (0.232):**  
+  The presence of carboxylic acid groups strongly increases the predicted value of the drug property. This may be because carboxyl groups can enhance drug solubility, improve binding via ionic or hydrogen-bonding interactions, or affect membrane permeability due to ionization. The model thus associates a higher number/frequency of carboxyl groups with higher target property values.
+
+- **fr_ketone (0.064):**  
+  Ketone groups also positively contribute, though to a lesser extent. Their polarity and hydrogen bond acceptor ability might modestly enhance binding affinity or influence pharmacokinetic properties, raising the predicted score.
+
+- **EState_VSA9 (-0.036):**  
+  Atoms with high EState_VSA9 contribution slightly reduce the predicted value. This may indicate that certain electronic or steric features (reflected in this descriptor) are unfavorable for the drug property. For example, it might correspond to atom environments that reduce permeability or binding, or promote unfavorable interactions.
+
+---
+
+### Summary
+
+The model predicts a higher drug property value primarily when the molecule has more carboxylic acid groups, supported moderately by the presence of ketone groups, while certain atom surface properties encoded by EState_VSA9 slightly detract from the prediction. This aligns with biochemical principles where acidic and polar functional groups often modulate drug behavior significantly."
+ADME_hPPB,11,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState8', 'VSA_EState4']","[-0.6924093339782766, 0.07126712930884477, -0.058448230719866275]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.692
+- VSA_EState8: 0.071
+- VSA_EState4: -0.058
+
+","Certainly! Let’s analyze why the model predicted this drug property step by step, based on the three provided descriptors and their contributions:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model has assigned the following weights (coefficients or feature importances) to these descriptors:
+
+- **fr_COO: -0.692** (strong negative impact)  
+- **VSA_EState8: 0.071** (slight positive impact)  
+- **VSA_EState4: -0.058** (slight negative impact)
+
+The most important descriptor here is **fr_COO** due to its relatively large magnitude (-0.692) compared to the other two. The other two descriptors have relatively small, but opposite signs in their contributions.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO**: This descriptor counts the frequency of **carboxylic acid groups (-COOH)** in the molecule. Carboxyl groups contribute acidic character and can form strong hydrogen bonds and ionic interactions at physiological pH (often negatively charged as COO⁻).
+
+- **VSA_EState8**: This is a descriptor combining **Van der Waals surface area (VSA)** of atoms with a specific **electrotopological state (EState)** value ""8"". The EState encodes electronic and topological characteristics of atoms in the molecule. EState8 typically corresponds to certain environment types, often related to oxygen atoms bonded in a particular chemical environment (for example, part of a carbonyl or ether functionality contributing to polarity).
+
+- **VSA_EState4**: Similar to VSA_EState8, but counting surface areas of atoms with EState value ""4"". This often corresponds to other atom types or environments, potentially related to hydrophobic or less polar atoms.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+- **fr_COO (-0.692, negative contribution):**  
+  The presence of carboxyl groups negatively influences the predicted property. For example, if the predicted property is **bioavailability** or **membrane permeability**, carboxyl groups can impede this because their acidic nature often results in ionization at physiological pH, reducing membrane crossing efficiency. If the model predicts an adverse property such as toxicity or clearance, the negative weight could imply that more carboxyl groups reduce that property. In general, they strongly influence the molecule’s polarity, charge, and H-bonding.
+
+- **VSA_EState8 (0.071, positive contribution):**  
+  The positive but small contribution indicates that atoms with this particular electrotopological environment and their surface area slightly promote the predicted property. For example, if these are oxygen atoms in polar functional groups that improve solubility, metabolic stability, or specific target binding, this descriptor’s presence helps the molecule exhibit the desired property.
+
+- **VSA_EState4 (-0.058, negative contribution):**  
+  This descriptor’s negative contribution suggests that the atoms or groups associated with EState4 tend to diminish the property. These groups might be less favorable in terms of polarity, possibly contributing to hydrophobic or steric effects that reduce the effectiveness or desired activity.
+
+---
+
+### Summary
+
+- The model predicts the drug property largely based on the number of carboxyl groups, which have a strong negative effect.
+- The overall electronic and surface area environment (captured by VSA_EState8 and VSA_EState4) fine-tunes the prediction subtly.
+- Therefore, the molecular features associated with acidity and polarity dominate the prediction, modulated by nuanced electronic environment characteristics.
+
+If you provide the specific drug property and the nature of the model output, I can give a more tailored biological interpretation!"
+ADME_hPPB,12,gpt-4.1-mini,reasoning,3,"['HeavyAtomMolWt', 'fr_COO', 'PEOE_VSA1']","[0.10329290196699509, 0.09176128219994943, 0.08390663050484298]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- HeavyAtomMolWt: 0.103
+- fr_COO: 0.092
+- PEOE_VSA1: 0.084
+
+","Certainly! Let's analyze the model prediction of the drug property step by step based on the given descriptors.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+From the provided list, the top three most important descriptors with their relative importance values are:
+
+- HeavyAtomMolWt: 0.103  
+- fr_COO: 0.092  
+- PEOE_VSA1: 0.084  
+
+These descriptors have the highest values, indicating they contribute the most to the model's prediction.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **HeavyAtomMolWt (Heavy Atom Molecular Weight)**  
+   - This descriptor represents the sum of the atomic weights of all heavy (non-hydrogen) atoms in the molecule.  
+   - It reflects the overall size and mass of the molecule excluding hydrogens.  
+
+2. **fr_COO (Frequency of Ester and Carboxylic Acid groups)**  
+   - This descriptor counts the number of ester (–COO–) and carboxylic acid (–COOH) functional groups in the molecule.  
+   - These groups are polar and can engage in hydrogen bonding and ionic interactions.  
+
+3. **PEOE_VSA1 (Partial Equalization of Orbital Electronegativities – Van der Waals Surface Area bin 1)**  
+   - This descriptor relates to the Van der Waals surface area of molecular atoms with a specific range of partial atomic charges, calculated using the PEOE method.  
+   - Specifically, VSA1 corresponds to atoms with a particular partial charge range, often representing slightly positive or neutral atoms on the surface.  
+   - It reflects the molecule’s charge distribution and surface characteristics relevant for molecular recognition.  
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+1. **HeavyAtomMolWt (0.103) Influence:**  
+   - Higher heavy atom molecular weight often indicates a larger, possibly more complex molecule.  
+   - Larger molecules may have different pharmacokinetic properties (absorption, distribution, metabolism, and excretion—ADME), which can influence the drug property predicted (e.g., solubility, permeability, or bioavailability).  
+   - The model likely uses this descriptor to assess the molecule’s size-related behavior, affecting the predicted property.
+
+2. **fr_COO (0.092) Influence:**  
+   - The presence of carboxylic acid and ester groups strongly affects polarity and the molecule’s ability to form hydrogen bonds.  
+   - These functional groups can enhance aqueous solubility and influence binding to target proteins by ionic and hydrogen bonding interactions.  
+   - Their count helps the model estimate how functional group composition impacts the drug property.
+
+3. **PEOE_VSA1 (0.084) Influence:**  
+   - This surface area of atoms within a specific partial charge range relates to how the molecule interacts electrostatically with its environment, including solvents and biological targets.  
+   - Regions with slight positive or neutral charge may influence binding affinity or membrane permeability, depending on the property modeled.  
+   - The model uses this descriptor to capture the electronic and surface-related effects on the drug property.
+
+---
+
+### Summary:
+
+The model predicts the drug property by heavily weighing molecular size (HeavyAtomMolWt), the presence of key polar functional groups with specific binding capabilities (fr_COO), and the distribution of surface atomic charges influencing interactions (PEOE_VSA1). Together, these descriptors allow the model to estimate how the molecular structure and electronic properties relate to the drug’s behavior relevant to the predicted property."
+ADME_hPPB,13,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'BalabanJ']","[-0.05648788350153549, 0.05363327848729964, -0.03621439703177483]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.056
+- HeavyAtomMolWt: 0.054
+- BalabanJ: -0.036
+
+","Certainly! Let's analyze why the model predicted this drug property based on the given descriptors step by step.
+
+---
+
+### Step 1: Identify the most important descriptors  
+The model uses three descriptors to make its prediction, with the following contributions (coefficients):  
+- **fr_COO:** -0.056  
+- **HeavyAtomMolWt:** 0.054  
+- **BalabanJ:** -0.036  
+
+Here, the magnitude of the coefficient indicates importance. The order from most to least important is:  
+1. fr_COO (absolute value 0.056)  
+2. HeavyAtomMolWt (0.054)  
+3. BalabanJ (0.036)
+
+---
+
+### Step 2: Explain their biochemical meaning  
+
+- **fr_COO:**  
+  This descriptor counts the fraction or frequency of carboxylic acid groups (-COOH) in the molecule. Carboxyl groups are acidic functional groups that can affect solubility, ionization state, and interactions with biological targets and metabolism.
+
+- **HeavyAtomMolWt:**  
+  This represents the molecular weight of all the heavy atoms (non-hydrogen atoms) in the molecule. Molecular weight correlates with size, permeability, and metabolic stability of the compound.
+
+- **BalabanJ:**  
+  The Balaban J index is a topological descriptor that encodes molecular connectivity and shape complexity. It reflects how atoms are connected and can relate to conformational flexibility and three-dimensional arrangement.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+- **fr_COO (-0.056):**  
+  The negative coefficient means that a higher fraction of carboxyl groups decreases the predicted property value. This could be because carboxyl groups often increase polarity and decrease membrane permeability, potentially lowering a property like bioavailability or permeability.
+
+- **HeavyAtomMolWt (0.054):**  
+  The positive coefficient shows that increasing molecular weight of heavy atoms raises the predicted property. Larger molecules might have better target binding affinity or other favorable pharmacokinetic traits (up to a point), thus increasing the property.
+
+- **BalabanJ (-0.036):**  
+  The negative coefficient for the Balaban J index suggests that molecules with more complex or branched topology slightly reduce the predicted property. Increased complexity might reduce drug-likeness or cause steric hindrance affecting binding or metabolism.
+
+---
+
+### Summary:
+
+The model predicts the drug property by balancing the presence of acidic carboxyl groups (which reduce the property), molecular size (which increases the property), and molecular connectivity complexity (which also reduces it). Hence, a molecule with fewer carboxyl groups, moderate to high molecular weight, and simpler topology is predicted to have a higher property value."
+ADME_hPPB,14,gpt-4.1-mini,reasoning,3,"['fr_COO', 'fr_ketone', 'fr_para_hydroxylation']","[0.5704528397652694, 0.06836895475537104, 0.05640116934964586]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.570
+- fr_ketone: 0.068
+- fr_para_hydroxylation: 0.056
+
+","Certainly! Let's analyze the model's prediction for the drug property based on the given descriptors step by step.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+From the provided data, the three descriptors and their relative importance values are:
+
+- **fr_COO (Fraction of carboxylic acid groups): 0.570**  
+- **fr_ketone (Fraction of ketone groups): 0.068**  
+- **fr_para_hydroxylation (Frequency of para-position hydroxylation): 0.056**
+
+The descriptor **fr_COO** has the highest value by far (0.570), indicating it is the most significant contributor to the model's prediction. The other two descriptors are much less influential but still considered by the model.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO (Fraction of carboxylic acid groups):**  
+   This descriptor measures the proportion of carboxylic acid functional groups (-COOH) present in the molecule. Carboxylic acids are acidic, polar, and can form hydrogen bonds. They often influence solubility, ionization state (depending on pH), and interactions with biological targets or transporters.
+
+2. **fr_ketone (Fraction of ketone groups):**  
+   This descriptor measures the proportion of ketone groups (C=O within a carbon chain, not at the terminal position like aldehydes). Ketones are polar and electrophilic, influencing molecular reactivity, binding affinity, and metabolism.
+
+3. **fr_para_hydroxylation (Frequency of para-position hydroxylation):**  
+   Indicates the presence frequency of hydroxyl (-OH) groups on the para position of aromatic rings. Hydroxyl groups increase polarity and hydrogen bonding potential and can be sites for metabolic transformation (e.g., phase II conjugation).
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (0.570, major influence):**  
+  The high importance of carboxylic acid groups suggests the model predicts that the presence of these acidic groups strongly affects the drug property in question (e.g., solubility, permeability, binding, or metabolic stability). Carboxyl groups can increase aqueous solubility but may reduce membrane permeability due to ionization at physiological pH, or conversely, enable specific interactions with target proteins or transporters. The model likely associates a high number of COOH groups with a significant change in the property (depending on the property being modeled).
+
+- **fr_ketone (0.068, minor influence):**  
+  Ketone groups moderately affect the property, likely by influencing molecular polarity and the ability to form dipole interactions or hydrogen bonds as acceptors. Ketones can also be sites sensitive to reduction or metabolism, affecting stability or bioavailability.
+
+- **fr_para_hydroxylation (0.056, minor influence):**
+  The para-hydroxyl group adds hydrophilicity and is a common site for metabolic modifications like glucuronidation or sulfation, potentially influencing the drug's metabolic profile and hence the property predicted by the model.
+
+---
+
+### Summary
+
+- The model's prediction is primarily driven by the presence of carboxylic acid groups in the molecule (fr_COO), which have substantial biochemical effects on solubility, ionization, and biological interactions.
+- Ketone and para-hydroxylation groups modulate polarity and metabolic susceptibility, providing additional but smaller contributions to the predicted drug property.
+- The exact influence (positive or negative) depends on the context of the drug property being predicted (e.g., efficacy, toxicity, ADME profile).
+
+If you provide the specific property being predicted, I can offer more tailored interpretation."
+ADME_hPPB,15,gpt-4.1-mini,reasoning,3,"['AvgIpc', 'fr_para_hydroxylation', 'fr_COO']","[0.09671728735014064, 0.09133884498835236, -0.07322228318065295]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- AvgIpc: 0.097
+- fr_para_hydroxylation: 0.091
+- fr_COO: -0.073
+
+","Certainly! Let's analyze the model's prediction of the drug property step by step, focusing on the given descriptors:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The three descriptors provided are:
+
+- **AvgIpc (0.097)**
+- **fr_para_hydroxylation (0.091)**
+- **fr_COO (-0.073)**
+
+Values here likely represent the magnitude and direction of the descriptor's contribution to the predicted property. Positive values indicate a positive influence, while negative values represent a negative influence on the property.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **AvgIpc (Average Information Content of the molecule's topology)**
+  - Represents the structural complexity and branching of the molecule. Higher AvgIpc values often correlate with a more complex 3D structure.
+
+- **fr_para_hydroxylation (Frequency of para-hydroxylation groups)**
+  - Counts the presence of hydroxyl groups (-OH) located at the para position relative to other substituents on an aromatic ring. Para-hydroxyl groups can influence polarity and hydrogen bonding.
+
+- **fr_COO (Frequency of carboxyl groups)**
+  - Represents the number of carboxyl (-COOH) functional groups. Carboxyl groups are acidic and increase polarity and potential ionic interactions.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **AvgIpc (0.097, positive influence)**
+  - A higher AvgIpc suggests greater molecular complexity or branching, which may enhance specific drug properties such as binding affinity or membrane permeability due to more diverse interactions or fit in the target binding site.
+
+- **fr_para_hydroxylation (0.091, positive influence)**
+  - Para-hydroxyl groups increase the molecule's ability to form hydrogen bonds, which can improve water solubility, target binding, or metabolic stability, positively impacting the predicted drug property.
+
+- **fr_COO (-0.073, negative influence)**
+  - The presence of carboxyl groups tends to increase polarity and acidity, which might reduce the molecule's ability to diffuse across membranes or affect its overall bioavailability, thus negatively impacting the predicted property.
+
+---
+
+### Summary:
+
+The model predicted the drug property by weighing these descriptors as follows:
+
+- The molecule's structural complexity (AvgIpc) and the presence of para-hydroxyl groups enhance the drug property (e.g., efficacy, solubility, etc.)
+- While carboxyl groups appear to hinder it, potentially due to increased polarity or acidity.
+  
+This combination of structural motifs helps the model estimate the drug's behavior or performance accurately."
+ADME_hPPB,16,gpt-4.1-mini,reasoning,3,"['fr_lactam', 'NumAromaticCarbocycles', 'AvgIpc']","[0.08175047560165764, 0.08019525158837393, 0.07307065787156841]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_lactam: 0.082
+- NumAromaticCarbocycles: 0.080
+- AvgIpc: 0.073
+
+","Sure! Let's go through the explanation step-by-step based on the descriptors and their importance values:
+
+---
+
+### Step 1: Identify the most important descriptors  
+The model has identified the following three descriptors as most important for predicting this drug property, with importance scores in parentheses:  
+- **fr_lactam (0.082)**  
+- **NumAromaticCarbocycles (0.080)**  
+- **AvgIpc (0.073)**  
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_lactam**:  
+  This descriptor represents the presence (or count) of lactam groups in the molecule. A lactam is a cyclic amide structure commonly found in β-lactam antibiotics (like penicillins). Lactams may affect drug reactivity, stability, and interaction with biological targets, often contributing to antibacterial activity or influencing metabolic stability.
+
+- **NumAromaticCarbocycles**:  
+  This counts the number of aromatic carbocyclic rings present in the compound (e.g., benzene rings). Aromatic carbocycles can enhance molecule stability, play a key role in π-π stacking interactions with proteins, and affect the compound’s hydrophobicity and membrane permeability.
+
+- **AvgIpc (Average Information Content per atom)**:  
+  AvgIpc quantifies the molecular complexity based on the molecular graph topology. It provides an average measure of how connected and diversified the atoms are within the structure. Higher AvgIpc values generally correlate with increased structural complexity, which can influence binding specificity and metabolic stability.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+- **fr_lactam (0.082)**:  
+  The presence of lactam groups suggests that the drug may have certain pharmacological properties like antibacterial activity or specific enzyme inhibition. The model uses this descriptor to identify compounds potentially having this activity or stability conferred by the lactam ring. For example, lactam presence might increase the likelihood that the drug is effective or stable.
+
+- **NumAromaticCarbocycles (0.080)**:  
+  Aromatic rings frequently enhance drug-target binding through stacking interactions and affect the compound’s lipophilicity. A higher number might predict better membrane permeability or stronger binding affinity, contributing positively to properties like bioavailability or potency.
+
+- **AvgIpc (0.073)**:  
+  Higher structural complexity represented by AvgIpc can improve binding selectivity and reduce off-target effects, but it may also make the molecule harder to metabolize. The model accounts for this descriptor to balance potency with the likelihood of favorable pharmacokinetics and safety.
+
+---
+
+### Summary:  
+Together, these descriptors suggest the model is predicting a drug property that depends on the presence of lactam rings (likely related to activity or stability), aromatic ring count (affecting binding and permeability), and molecular complexity (influencing selectivity and metabolism). The model weighs these descriptors because they biochemically determine how the molecule interacts with biological systems, ultimately driving the predicted property."
+ADME_hPPB,17,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState3', 'Phi']","[0.17649785070845542, -0.09227044022638244, 0.07531143550959007]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.176
+- VSA_EState3: -0.092
+- Phi: 0.075
+
+","Certainly! Let's analyze the model prediction for the drug property step-by-step based on the given descriptors and their contributions.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model has identified three descriptors with their corresponding influence values (presumably coefficients or feature importance scores):
+
+- **fr_COO: 0.176** (positive influence, largest magnitude)
+- **VSA_EState3: -0.092** (negative influence)
+- **Phi: 0.075** (positive influence)
+
+Since fr_COO has the highest absolute value, it is the most important descriptor, followed by VSA_EState3 and Phi.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO (Frequency of carboxylic acid groups):**  
+   This descriptor counts the fraction of carboxyl (-COO) functional groups in the molecule. Carboxyl groups are acidic, polar entities that can form hydrogen bonds and ionic interactions, affecting solubility, ionization state, and binding affinity.
+
+2. **VSA_EState3 (Sum of E-state values for atoms with specific van der Waals surface area window #3):**  
+   This descriptor combines **Van der Waals Surface Area (VSA)** and **Electrotopological State (EState)** indices for certain atoms falling into a specific surface area range (window 3). EState indices indicate electronic and topological environments of atoms, reflecting reactivity and electronic distribution, while VSA relates to the molecular surface accessible to solvent or target proteins.
+
+3. **Phi (Molecular flexibility or shape related descriptor):**  
+   The Phi descriptor generally relates to molecular shape and conformational flexibility. Higher Phi values often indicate more flexible molecules that can adopt multiple conformations to fit biological targets.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+1. **fr_COO = 0.176 (positive contribution):**  
+   A higher presence of carboxyl groups increases the predicted property (e.g., solubility, binding affinity, or biological activity). Carboxyl groups enhance polarity and can form strong hydrogen bonds and ionic interactions, which might improve interactions with biological targets or increase aqueous solubility—both often desirable drug properties.
+
+2. **VSA_EState3 = -0.092 (negative contribution):**  
+   Atoms with surface areas in this specific range, combined with their electronic state, tend to reduce the property prediction. This suggests that certain electronic or steric environments associated with these atoms might hinder the drug property, possibly by reducing favorable interactions or increasing steric hindrance.
+
+3. **Phi = 0.075 (positive contribution):**  
+   Increased molecular flexibility or favorable shape characteristics promote the drug property. A molecule that can flexibly adapt to the binding site's shape usually shows better binding affinity or bioavailability, reflecting positively in the prediction.
+
+---
+
+### Summary:
+The model predicts an enhanced drug property primarily due to the presence of carboxyl groups (fr_COO), which promotes favorable molecular interactions. This positive effect is somewhat offset by the electronic and surface area characteristics of certain atoms (VSA_EState3), which may reduce the property. Overall, molecular flexibility (Phi) aids the property by allowing better molecular fit or interaction dynamics.
+
+If you provide the specific drug property (e.g., solubility, permeability, toxicity), I can tailor the explanation further!"
+ADME_hPPB,18,gpt-4.1-mini,reasoning,3,"['fr_COO', 'SMR_VSA6', 'HeavyAtomMolWt']","[-0.47552652329425077, -0.1401437973543603, -0.06158045312051016]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.476
+- SMR_VSA6: -0.140
+- HeavyAtomMolWt: -0.062
+
+","Certainly! Let's analyze why the model predicted the drug property by following the steps to understand the impact of each descriptor.
+
+---
+
+### Step 1: Identify the most important descriptors  
+The three descriptors provided, along with their coefficients (importance weights), are:
+
+- **fr_COO: -0.476**  
+- **SMR_VSA6: -0.140**  
+- **HeavyAtomMolWt: -0.062**
+
+Since these values appear to indicate contributions or feature importance weights in a linear model (or coefficients), their magnitude and sign tell us about the impact on the prediction.
+
+- **fr_COO** has the largest magnitude (-0.476), making it the most influential descriptor.
+- Followed by **SMR_VSA6** (-0.140).
+- Then **HeavyAtomMolWt** (-0.062).
+
+---
+
+### Step 2: Explain their biochemical meaning  
+
+**1. fr_COO**  
+- ""fr_"" often stands for ""fragment"" or ""frequency,"" and COO typically denotes the **carboxyl group (-COO⁻)**.  
+- So fr_COO likely refers to the count or presence of carboxyl groups in the molecule.  
+- Biochemically, carboxyl groups are acidic and negatively charged at physiological pH, influencing solubility, ionization, and interaction with biological targets.
+
+**2. SMR_VSA6**  
+- SMR stands for **Sum of Molecular Refractivity**, which relates to polarizability and size of atoms or groups.  
+- VSA refers to **van der Waals Surface Area** of atoms within a certain property class.  
+- SMR_VSA6 specifically sums the van der Waals surface areas of atoms with an SMR value in bin 6. These often correspond to atoms with particular electronic or steric properties relevant to molecular recognition or binding.
+
+**3. HeavyAtomMolWt**  
+- This is the **molecular weight of all heavy atoms** (non-hydrogen atoms) in the molecule.  
+- Molecular weight is linked to size and complexity of the drug molecule, influencing absorption, distribution, metabolism, and excretion (ADME) properties.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (-0.476)**:  
+  A negative coefficient means an increase in carboxyl groups decreases the predicted value of the property (which could be affinity, bioavailability, toxicity, etc., depending on the model).  
+  Carboxyl groups increase polarity and negative charge, which may reduce membrane permeability or binding if the property favors neutral or lipophilic compounds.
+
+- **SMR_VSA6 (-0.140)**:  
+  The negative influence of this descriptor suggests molecules with larger van der Waals surface area in the SMR bin 6 category tend to lower the predicted property.  
+  This could indicate that bulkiness or certain electronic polarizability in these atoms reduce activity or the property modeled.
+
+- **HeavyAtomMolWt (-0.062)**:  
+  Though less impactful, a higher molecular weight reduces the predicted property slightly, likely because larger molecules may have worse pharmacokinetics or lower binding selectivity.
+
+---
+
+### Summary
+
+The model predicts that molecules with **more carboxyl groups, larger surface areas corresponding to SMR_VSA6 atoms, and heavier molecular weight** tend to have a *lower* value of the target drug property. The biggest driver is the presence of carboxyl groups, which biochemically changes the molecule's charge and solubility, critically influencing the property of interest.
+
+If you provide the exact drug property being predicted, I can tailor the biochemical rationale more specifically."
+ADME_hPPB,19,gpt-4.1-mini,reasoning,3,"['Chi0n', 'Kappa2', 'HallKierAlpha']","[0.07274975401143807, 0.05731062043537562, 0.053281827433969677]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- Chi0n: 0.073
+- Kappa2: 0.057
+- HallKierAlpha: 0.053
+
+","Sure! Here's a step-by-step explanation of why the model predicted the drug property, based on the given descriptor importance values:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model identified the following descriptors as the most important for predicting the drug property, ranked by their importance values:
+
+- **Chi0n (0.073)**
+- **Kappa2 (0.057)**
+- **HallKierAlpha (0.053)**
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+**Chi0n (Zero-order molecular connectivity index - normalized):**  
+- This descriptor captures the overall molecular topology by encoding atom connectivity without considering bond order or bond types. It reflects the branching and size of the molecule at a basic level.  
+- Biochemically, it can correlate with molecular complexity, which affects how a drug interacts with biological targets or is metabolized.
+
+**Kappa2 (Second order molecular shape index):**  
+- Kappa shape indices describe molecular shape and flexibility, especially related to the presence and size of rings or linear chains in the molecule.  
+- Kappa2 focuses on the shape complexity by considering paths of length 2, so it reflects the presence of branched structures or ring systems.  
+- This descriptor can influence binding affinity and steric interactions in the biochemical environment.
+
+**HallKierAlpha (Hall-Kier alpha parameter):**  
+- This is a shape/complexity descriptor that quantifies molecular flexibility or the degree of branching by comparing different connectivity indices.  
+- It provides insight into how ""linear"" or ""branched"" a molecule is, which can affect the molecule’s conformation, solubility, and ability to reach the target site.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **Chi0n (0.073)** contributes most strongly by indicating the overall molecular size and connectivity. Drugs with certain connectivity patterns might better fit target sites or evade metabolism, thus influencing the predicted property (e.g., bioavailability or binding affinity).
+
+- **Kappa2 (0.057)** impacts prediction by reflecting the shape and rigidity of the molecule. Molecules with specific shapes or the right degree of branching might have improved interactions with proteins or membranes, affecting permeability or activity.
+
+- **HallKierAlpha (0.053)** influences the model by highlighting the flexibility or branching level of the molecule, which can alter how the drug folds, its solubility, and how easily it crosses cell membranes or resists degradation.
+
+In summary, the model likely predicts that molecules with particular connectivity patterns (Chi0n), shape complexity (Kappa2), and branching/flexibility (HallKierAlpha) display favorable drug properties, such as better target binding efficiency, metabolic stability, or bioavailability.
+
+---
+
+If you provide the exact drug property predicted, I can give more specific biochemical connections!"
+ADME_hPPB,20,gpt-4.1-mini,reasoning,3,"['fr_COO', 'SMR_VSA6', 'EState_VSA3']","[-0.2561860846366209, -0.15076422946183524, -0.08937276507156378]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.256
+- SMR_VSA6: -0.151
+- EState_VSA3: -0.089
+
+","Certainly! Let’s analyze why the model predicted the drug property based on the given descriptors step by step.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The three descriptors provided with their weights (likely coefficients in the model) are:
+
+- **fr_COO: -0.256**  
+- **SMR_VSA6: -0.151**  
+- **EState_VSA3: -0.089**
+
+All have negative values, meaning they contribute negatively to the prediction value.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+1. **fr_COO**  
+   - Refers to the **frequency (count) of carboxyl groups (-COO⁻)** in the molecule.
+   - Carboxyl groups are acidic functional groups important in solubility, ionization, and binding interactions with proteins or enzymes.
+
+2. **SMR_VSA6**  
+   - SMR = Sum of atomic contributions to **molar refractivity**, related to polarizability (ability of the molecule's electrons to distort).
+   - VSA = Van der Waals Surface Area, specifically the portion of the molecule surface associated with atoms having a particular SMR value range.
+   - SMR_VSA6 quantifies the surface area of atoms with a specific refractivity range, linked to molecule’s electronic properties and interaction potential.
+
+3. **EState_VSA3**  
+   - EState = **Electrotopological state index**, combining electronic effects and topology of the molecule.
+   - VSA3 refers to the van der Waals surface area for atoms with a particular EState value range.
+   - Reflects subtle electronic environment and steric factors impacting binding affinity or reactivity.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+- **Negative coefficient for fr_COO (-0.256):**  
+  A higher number of carboxyl groups lowers the predicted property. This could mean:  
+  - Increased acidity or ionization state reduces permeability or cell membrane crossing ability.  
+  - Could signal lower bioavailability or unfavorable pharmacokinetic properties.
+
+- **Negative coefficient for SMR_VSA6 (-0.151):**  
+  Increased surface area with certain polarizability atoms reduces the predicted property. This may imply:  
+  - Molecules with more polarizable surface area in this range might be less stable or have weaker binding in the context modeled.  
+  - Could affect hydrophobicity or interaction with hydrophobic pockets in targets.
+
+- **Negative coefficient for EState_VSA3 (-0.089):**  
+  A higher van der Waals surface area of atoms with EState3 electronic/topological character reduces the property. This suggests:  
+  - Electronic configurations tied to these atoms could interfere with optimal binding or cause steric hindrance.  
+  - Might affect molecular recognition or enzyme inhibition negatively.
+
+---
+
+### Summary
+
+The model predicts a **lower value** of the drug property when:  
+- The molecule has more **carboxyl groups (fr_COO),** likely reducing permeability or bioavailability.  
+- There is increased surface area with certain **polarizability (SMR_VSA6),** which may negatively modulate interactions.  
+- There is more surface area with specific **electronic/topological characteristics (EState_VSA3),** potentially causing unfavorable binding or reactivity.
+
+These biochemical interpretations explain how these descriptors contribute negatively, shaping the model’s prediction for the drug property."
+ADME_hPPB,21,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'SlogP_VSA6']","[-0.5258083724859114, -0.09461140181177966, 0.054770261118923635]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.526
+- HeavyAtomMolWt: -0.095
+- SlogP_VSA6: 0.055
+
+","Certainly! Let’s analyze the model's prediction of the drug property step by step, based on the provided descriptors and their importance scores.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The three descriptors provided, along with their importance values, indicate their influence on the model’s prediction:
+
+- **fr_COO (-0.526)**: Highest absolute importance, negative value
+- **HeavyAtomMolWt (-0.095)**: Moderate importance, negative value
+- **SlogP_VSA6 (0.055)**: Lowest importance among the three, positive value
+
+The most important descriptor is **fr_COO**, followed by **HeavyAtomMolWt**, and lastly **SlogP_VSA6**.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+1. **fr_COO**: This refers to the **frequency of carboxylic acid groups (-COOH)** within the molecule. Carboxyl groups are acidic functional groups important in solubility, ionization, and hydrogen bonding.
+
+2. **HeavyAtomMolWt**: This is the **molecular weight of all heavy atoms** (non-hydrogen atoms) in the molecule. It relates to the molecule’s size and overall mass.
+
+3. **SlogP_VSA6**: This descriptor involves a combination of:
+   - **SlogP**: An estimate of lipophilicity (logarithm of the octanol-water partition coefficient).
+   - **VSA6**: The van der Waals surface area of atoms with SlogP in a particular range (likely more lipophilic atoms).
+   It captures the extent of the molecule's lipophilic surface area, related to membrane permeability and binding properties.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+- **fr_COO (-0.526, negative influence):**
+  - A higher number of carboxylic acid groups tends to **decrease** the predicted drug property (e.g., absorption, permeability, or bioavailability).
+  - This is because carboxyl groups are polar and often negatively charged at physiological pH, which can **reduce membrane permeability** and **increase hydrophilicity**.
+  - The strong negative coefficient indicates that increasing carboxyl groups strongly lowers the predicted property value.
+
+- **HeavyAtomMolWt (-0.095, negative influence):**
+  - Larger molecular weight tends to **negatively affect** the predicted property.
+  - Heavier molecules often have poorer diffusion and **less favorable pharmacokinetics** (e.g., lower oral absorption or slower distribution).
+  - Though less influential than fr_COO, it contributes to decreasing the property with increasing size.
+
+- **SlogP_VSA6 (0.055, positive influence):**
+  - Lipophilic surface area contributes **positively** to the predicted property.
+  - Higher lipophilicity often **improves membrane permeability** and sometimes **binding affinity**.
+  - This descriptor’s positive but smaller coefficient suggests it has a modest increasing effect on the prediction.
+
+---
+
+### Summary
+
+The model predicts the property primarily based on the presence of carboxylic acid groups, which strongly lower it. Larger molecules also tend to have lower property values, while an increase in lipophilic surface area slightly enhances the predicted drug property. This aligns well with common drug-like characteristics such as permeability and bioavailability.
+
+If you want, I can further elaborate based on the specific drug property being predicted!"
+ADME_hPPB,22,gpt-4.1-mini,reasoning,3,"['PEOE_VSA1', 'HeavyAtomMolWt', 'ExactMolWt']","[0.08877750781621638, -0.07431886473544108, 0.05992418816279728]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- PEOE_VSA1: 0.089
+- HeavyAtomMolWt: -0.074
+- ExactMolWt: 0.060
+
+","Certainly! Let’s analyze why the model predicted the drug property based on the given descriptors step by step.
+
+---
+
+### Step 1: Identify the most important descriptors  
+The model highlighted three key descriptors with their respective contributions (positive or negative):
+
+- **PEOE_VSA1**: +0.089  
+- **HeavyAtomMolWt**: -0.074  
+- **ExactMolWt**: +0.060  
+
+From these values, **PEOE_VSA1** has the most positive influence, followed by **ExactMolWt**, while **HeavyAtomMolWt** has a negative influence on the predicted property.
+
+---
+
+### Step 2: Explain their biochemical meaning  
+
+**1. PEOE_VSA1**  
+- **Meaning:** This descriptor combines Partial Equalization of Orbital Electronegativities (PEOE) charges with VolSurf Accessible Surface Area (VSA). Essentially, it quantifies the sum of the surface areas of atoms within a specific range of partial charge values.  
+- **Biochemical implication:** It relates to the polar surface area of certain charge domains, which can influence molecular interactions such as hydrogen bonding, solubility, and binding to biological targets.
+
+**2. HeavyAtomMolWt**  
+- **Meaning:** The molecular weight calculated by summing the weights of all heavy atoms (non-hydrogen atoms) in the molecule.  
+- **Biochemical implication:** Generally correlates with molecular size and complexity. Larger molecules may have different pharmacokinetics, such as bioavailability or permeability.
+
+**3. ExactMolWt**  
+- **Meaning:** The precise molecular weight of the compound, including isotopic masses (typically including hydrogens).  
+- **Biochemical implication:** Reflects the overall mass of the molecule which can influence diffusion, metabolic stability, and interaction kinetics.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+1. **PEOE_VSA1 (+0.089 contribution)**  
+   - A higher PEOE_VSA1 indicates the molecule has more surface area with certain partial charges, potentially improving interactions with charged or polar biological targets.  
+   - This might be favorable for the drug property being predicted (e.g., activity, solubility, or binding affinity), hence a positive influence.
+
+2. **HeavyAtomMolWt (-0.074 contribution)**  
+   - A heavier molecular weight of non-hydrogen atoms could reduce the predicted drug property (e.g., lower permeability or bioavailability).  
+   - The negative coefficient suggests that increased size or complexity of the molecule decreases the desirability or effectiveness related to the property.
+
+3. **ExactMolWt (+0.060 contribution)**  
+   - The positive effect of exact molecular weight implies that including hydrogens and isotopic composition slightly improves the prediction.  
+   - This might capture subtle mass-related nuances influencing drug behavior, such as metabolic stability or molecular recognition.
+
+---
+
+### Summary:  
+The model predicts the drug property as a balance of charge distribution (PEOE_VSA1), molecular size (HeavyAtomMolWt), and precise mass (ExactMolWt). The molecule’s polar charged surface area positively drives the prediction, while larger heavy atom mass negatively impacts it, and exact molecular weight contributes positively but to a lesser extent."
+ADME_hPPB,23,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'SMR_VSA4']","[-0.17924993004410167, 0.06811917206491082, 0.04344205479516056]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.179
+- HeavyAtomMolWt: 0.068
+- SMR_VSA4: 0.043
+
+","Certainly! Let's analyze the drug property prediction step by step based on the provided descriptors and their importance values.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The model lists three descriptors with their importance values (presumably coefficients or feature importances):
+
+- **fr_COO: -0.179** (most important, negative influence)
+- **HeavyAtomMolWt: 0.068**
+- **SMR_VSA4: 0.043**
+
+The descriptor **fr_COO** has the largest magnitude and a negative sign, indicating it plays the most significant role in the prediction, and it is inversely correlated with the predicted property. The other two descriptors, **HeavyAtomMolWt** and **SMR_VSA4**, have smaller, positive influence values.
+
+---
+
+### Step 2: Explain their Biochemical Meaning
+
+1. **fr_COO (Frequency of Carboxylic Acid Groups):**  
+   This descriptor counts the number of carboxylic acid functional groups (-COOH) in the molecule. Carboxylic acids are acidic groups that can ionize at physiological pH, often conferring polarity and the ability to form hydrogen bonds.
+
+2. **HeavyAtomMolWt (Molecular Weight of Heavy Atoms):**  
+   This is the sum of the atomic weights of all heavy atoms (non-hydrogen) in the molecule. It reflects the overall size and mass of the drug, which can affect pharmacokinetics such as absorption and distribution.
+
+3. **SMR_VSA4 (Sum of Molecular Refractivity for atoms with certain van der Waals surface area):**  
+   SMR stands for molecular refractivity, a measure related to the polarizability of atoms; VSA means it considers atoms grouped by their van der Waals surface area. SMR_VSA4 thus captures information about the polarizability of portions of the molecule with specific surface areas, influencing interactions like Van der Waals forces.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+- **fr_COO: -0.179**  
+  The negative value indicates that an increase in carboxylic acid groups lowers the predicted drug property value. Biochemically, having more acidic groups increases polarity and might reduce membrane permeability or oral bioavailability. This negative effect suggests the model associates more COO groups with unfavorable properties (e.g., decreased bioavailability or increased clearance).
+
+- **HeavyAtomMolWt: 0.068**  
+  The positive coefficient suggests larger molecules with heavier atoms may slightly increase the predicted property. For example, an increased molecular weight might correlate with higher binding affinity or longer half-life, depending on the property predicted by the model.
+
+- **SMR_VSA4: 0.043**  
+  This descriptor’s positive contribution indicates that higher molecular refractivity in the specific van der Waals surface area range supports an increase in the predicted property. This could reflect favorable electronic polarizability or hydrophobic interactions enhancing the drug’s property.
+
+---
+
+### Summary
+
+The model predicts a drug property primarily based on the presence of carboxylic acid groups (decreasing the property), with secondary positive contributions from the molecule’s heavy atom molecular weight and the molecular refractivity of specific VSA regions. This implies the property favors molecules that are larger and moderately polarizable but have fewer acidic moieties.
+
+If you have more details on the drug property predicted, I can provide a more tailored explanation!"
+ADME_hPPB,24,gpt-4.1-mini,reasoning,3,"['fr_COO', 'SMR_VSA6', 'HeavyAtomMolWt']","[-0.26573371163352055, -0.08025752941001019, -0.07843123173099636]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.266
+- SMR_VSA6: -0.080
+- HeavyAtomMolWt: -0.078
+
+","Certainly! Let's analyze why the model predicted this drug property based on the three given important descriptors:
+
+---
+
+### Step 1: Identify the most important descriptors  
+The model noted the following descriptors with their importance weights:  
+- **fr_COO**: -0.266  
+- **SMR_VSA6**: -0.080  
+- **HeavyAtomMolWt**: -0.078  
+
+Since these have negative values (likely coefficients in a linear model or SHAP values indicating negative contribution), these descriptors reduce the predicted value related to the drug property. The magnitude indicates that **fr_COO** has the strongest impact.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO**: This descriptor represents the frequency (count) of carboxylic acid groups (-COOH) in the molecule. Carboxyl groups are acidic functional groups that can ionize under physiological conditions and influence solubility, permeability, and binding.
+
+- **SMR_VSA6**: This descriptor is a hybrid one: it combines the **Sum of atomic contributions to molecular refractivity (SMR)** weighted by the **van der Waals surface area (VSA)** of atoms in a specific bin (number 6). It's a proxy for electronic polarizability and molecular size/shape in certain atom types/regions.
+
+- **HeavyAtomMolWt**: This is the molecular weight of the molecule excluding hydrogen atoms. It reflects the size and complexity of the molecule.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (-0.266)**: A higher count of carboxylic acid groups reduces the predicted drug property value. For example, if the model predicts permeability or membrane crossing ability, more acidic groups (COOH) can lower membrane permeability because these groups tend to ionize and become negatively charged at physiological pH, reducing passive diffusion.
+
+- **SMR_VSA6 (-0.080)**: A higher value in this descriptor suggests increased polarizability or particular surface area characteristics that negatively affect the property. For instance, greater polarizability or certain VSA bins might correlate with lower solubility or poorer interaction with the target.
+
+- **HeavyAtomMolWt (-0.078)**: Larger molecules (higher heavy atom molecular weight) often are less bioavailable or have limitations in crossing membranes, thus reducing favorable drug properties like oral absorption or clearance.
+
+---
+
+### Summary
+
+The model predicted a decrease in the drug property primarily because of the presence of multiple carboxyl groups, possibly due to their ionization reducing permeability or bioavailability. Additional contributions from molecular size and surface polarizability also negatively affect the property, cumulatively leading to the reduced predicted value.
+
+Let me know if you'd like me to tailor the explanation to a specific drug property (e.g., solubility, permeability, toxicity, etc.)!"
+ADME_hPPB,25,gpt-4.1-mini,reasoning,3,"['ExactMolWt', 'VSA_EState3', 'PEOE_VSA1']","[-0.073227944800371, -0.05291920231278154, -0.04948448826158724]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- ExactMolWt: -0.073
+- VSA_EState3: -0.053
+- PEOE_VSA1: -0.049
+
+","Certainly! Let’s analyze the model’s prediction step-by-step for the drug property based on the given descriptors and their associated importance (coefficients or feature contributions):
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The model has identified three main descriptors contributing to the prediction, with their corresponding values (likely coefficients or importance scores):
+
+- **ExactMolWt:** -0.073  
+- **VSA_EState3:** -0.053  
+- **PEOE_VSA1:** -0.049  
+
+Since all values are negative, these descriptors each contribute to *decreasing* the predicted drug property value.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+1. **ExactMolWt (Exact Molecular Weight)**  
+   - This is the precise molecular weight of the compound calculated from the sum of the exact isotope masses of atoms in the molecule.  
+   - It reflects the size and mass of the molecule, which can influence the molecule’s pharmacokinetics like absorption, distribution, and permeability.  
+
+2. **VSA_EState3**  
+   - This descriptor combines the **EState (Electrotopological State)** indices with **Van der Waals surface area (VSA)** contributions.  
+   - Specifically, VSA_EState3 represents the surface area of atoms in the molecule with a particular range of EState values (usually corresponding to a certain electronic environment, e.g., atoms that are moderately electronegative or parts of certain functional groups).  
+   - It reflects how electronic and steric effects are distributed on the molecular surface, which correlates with reactivity, binding affinity, or molecular interactions.
+
+3. **PEOE_VSA1**  
+   - This descriptor is based on the **Partial Equalization of Orbital Electronegativities (PEOE)** charge model combined with VSA contributions.  
+   - PEOE_VSA1 measures the portion of the molecular surface area corresponding to atoms with specific partial charge ranges (usually slightly positive or neutral).  
+   - It provides insight into the molecule’s charge distribution on its surface, impacting intermolecular interactions such as hydrogen bonding or ionic interactions.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+- **ExactMolWt (-0.073):**  
+  A negative coefficient means higher molecular weight reduces the predicted drug property (e.g., solubility, permeability, or bioavailability). This aligns with typical pharmaceutical understanding that larger molecules often have poorer absorption or permeability because they cross membranes less efficiently.
+
+- **VSA_EState3 (-0.053):**  
+  A reduction in the property is associated with an increase in the surface area of atoms within this EState range. Possibly, having a larger VSA_EState3 means a more pronounced presence of certain functional groups or electronic environments, which might hinder favorable interactions, reduce binding affinity, or increase metabolic liability.
+
+- **PEOE_VSA1 (-0.049):**  
+  A larger surface area with specific partial charges (likely slightly positive or neutral) decreases the predicted property. This might indicate that molecules with more exposed partial positive charges (or lack of negative charges in these regions) have less favorable interactions with the target or have reduced solubility or permeability due to charge-driven repulsions.
+
+---
+
+### Summary
+
+The model predicts lower values of the drug property for molecules that:
+
+- Have higher exact molecular weight (larger size),  
+- Have larger electron-rich or electronically moderate surface areas (VSA_EState3), and  
+- Exhibit specific partial charge surface area distributions (PEOE_VSA1).
+
+All these factors combined imply that for this particular property (e.g., bioavailability, solubility, or target binding), smaller molecules with optimized electronic and charge distributions on their surfaces are preferred.
+
+If you have the exact drug property in question, I can provide more tailored interpretations."
+ADME_hPPB,26,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'SMR_VSA6']","[-0.26156878859813093, -0.07301115166507138, -0.05320728537548584]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.262
+- HeavyAtomMolWt: -0.073
+- SMR_VSA6: -0.053
+
+","Certainly! Let's analyze the drug property prediction step-by-step using the given descriptors and their corresponding contributions:
+
+---
+
+### Step 1: Identify the most important descriptors  
+The model lists three descriptors with negative values, indicating their influence on the predicted drug property (likely decreasing the property value):
+
+- **fr_COO:** -0.262  
+- **HeavyAtomMolWt:** -0.073  
+- **SMR_VSA6:** -0.053  
+
+Among these, **fr_COO** has the largest magnitude of influence (-0.262), followed by **HeavyAtomMolWt** and **SMR_VSA6** with smaller contributions.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO:**  
+  This descriptor counts the frequency of the **carboxylic acid group (-COOH)** in the molecule. It reflects how many such acidic functional groups are present.
+
+- **HeavyAtomMolWt:**  
+  This represents the **molecular weight considering only heavy atoms** (all atoms except hydrogen). It gives an idea of the molecule's size and complexity.
+
+- **SMR_VSA6:**  
+  This descriptor combines **electronic properties (molar refractivity, SMR)** with **van der Waals surface area (VSA)**, specifically the surface area of atoms contributing electronic effects in a certain range classified as `VSA6`. It reflects aspects of both size and polarizability in specific molecular regions.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (-0.262):**  
+  The presence of carboxylic acid groups often increases polarity and acidity, which can **reduce lipid membrane permeability** and affect pharmacokinetics or bioavailability negatively for some drug properties (e.g., oral absorption or BBB permeability). Thus, more carboxyl groups strongly decrease the predicted property.
+
+- **HeavyAtomMolWt (-0.073):**  
+  Higher molecular weight generally correlates with increased molecular size, which can **hinder diffusion or cellular uptake**, or influence pharmacokinetics negatively. The small negative coefficient suggests that as the molecule gets heavier, the predicted property slightly decreases.
+
+- **SMR_VSA6 (-0.053):**  
+  A greater surface area in the VSA6 region (associated with particular polarizable atoms or functional groups) may increase interactions with solvent or reduce membrane permeability. This also slightly decreases the predicted property, though with less impact than `fr_COO`.
+
+---
+
+### Summary:
+
+The model predicts a **decrease** in the drug property when:
+
+- The molecule contains more carboxylic acid groups (fr_COO).  
+- The molecule has a higher heavy atom molecular weight.  
+- There is increased surface area of specific polarizable regions (SMR_VSA6).
+
+This typically indicates the predicted property might be something related to **cell membrane permeability, oral bioavailability, or blood-brain barrier penetration**, where high polarity and large size negatively impact the property.
+
+---
+
+If you provide the exact drug property being modeled, I can tailor the explanation even more!"
+ADME_hPPB,27,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'fr_ether']","[-0.1274923620838642, 0.075310793491549, 0.04180465738880848]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.127
+- HeavyAtomMolWt: 0.075
+- fr_ether: 0.042
+
+","Certainly! Let's analyze the prediction of the drug property step by step based on the provided descriptors and their values.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+You provided three descriptors with their corresponding coefficients (weights) that likely represent the contribution to the model’s output (for example, from a linear model or feature importance in a regression/tree model):
+
+- **fr_COO**: -0.127  
+- **HeavyAtomMolWt**: 0.075  
+- **fr_ether**: 0.042
+
+Among these, **fr_COO** has the largest absolute impact, followed by **HeavyAtomMolWt**, then **fr_ether**.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO**: This descriptor refers to the frequency (fr) of carboxylic acid groups (-COOH) in the molecule. Carboxyl groups are acidic functionalities often involved in hydrogen bonding and ionization at physiological pH.
+
+2. **HeavyAtomMolWt**: This is the molecular weight calculated using only heavy atoms (non-hydrogen atoms) in the molecule. It reflects the overall size and mass of the molecule without counting hydrogens.
+
+3. **fr_ether**: The frequency of ether groups (R-O-R’) in the molecule. Ether groups are generally neutral, polar oxygen-containing functional groups that can influence solubility and metabolic stability.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (-0.127)**: The negative coefficient indicates that having more carboxylic acid groups decreases the predicted value of the drug property (e.g., bioavailability, permeability, or CNS penetration). This makes sense because carboxyl groups increase polarity and acidity, often decreasing membrane permeability or increasing clearance due to ionization, thus negatively impacting properties like oral bioavailability or blood-brain barrier penetration.
+
+- **HeavyAtomMolWt (0.075)**: Positive coefficient means larger molecular weight (excluding hydrogens) increases the predicted property. Depending on the property, this might reflect that larger molecules have higher binding affinity or metabolic stability. However, in many cases, high molecular weight can reduce permeability, so it depends on the exact property predicted.
+
+- **fr_ether (0.042)**: Ether groups positively contribute but less strongly. Ethers add polar but neutral oxygen atoms, which can improve solubility without strongly affecting ionization, potentially beneficial for drug-like properties such as improved absorption or stability.
+
+---
+
+### Summary
+
+The model predicts the drug property based primarily on the presence of carboxylic acid groups, which reduce the property score, perhaps due to lowering permeability or bioavailability. Molecular weight and ether contents positively contribute, indicating that larger molecules with ether groups may enhance the drug property in the model context.
+
+If you provide the specific drug property predicted, I can tailor the interpretation even more precisely."
+ADME_hPPB,28,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState3', 'HeavyAtomMolWt']","[-0.16481841609785058, 0.05825330001933454, -0.036525165976976436]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.165
+- VSA_EState3: 0.058
+- HeavyAtomMolWt: -0.037
+
+","Certainly! Let's analyze the model prediction step by step based on the given descriptors and their importance weights.
+
+---
+
+### Step 1: Identify the Most Important Descriptors  
+The descriptors provided along with their weights are:
+
+- **fr_COO: -0.165**  
+- **VSA_EState3: 0.058**  
+- **HeavyAtomMolWt: -0.037**
+
+The magnitude of the weight indicates the importance of the descriptor to the prediction. Here, **fr_COO** has the largest magnitude (-0.165), followed by VSA_EState3 (0.058) and then HeavyAtomMolWt (-0.037). Thus, **fr_COO is the most important descriptor**, followed by the others.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning  
+
+- **fr_COO (Fraction of carboxylic acid groups)**  
+  This descriptor counts or estimates the fraction of carboxylic acid groups (-COOH) present in the molecule. Carboxylic acids are acidic functional groups capable of hydrogen bonding and ionization at physiological pH, influencing solubility, permeability, and binding.
+
+- **VSA_EState3 (Van der Waals surface area with specific electrotopological state)**  
+  This is a hybrid descriptor that combines surface area (VSA) with electronic and topological properties (EState indices) for a subset of atoms falling within a specific range of these values. It often reflects molecular shape, electronic distribution, and potential interaction capabilities.
+
+- **HeavyAtomMolWt (Molecular weight of all non-hydrogen atoms)**  
+  This is the sum of all heavy (non-hydrogen) atom masses in the molecule, reflecting molecular size and complexity.
+
+---
+
+### Step 3: Explain How They Influence the Prediction  
+
+- **fr_COO (-0.165):**  
+  A negative weight means that a higher fraction of carboxylic acid groups reduces the predicted property. For drug properties, this might imply that more acidic groups decrease permeability or bioavailability because charged carboxylates at physiological pH are less able to cross membranes, or they reduce binding to hydrophobic sites.
+
+- **VSA_EState3 (0.058):**  
+  The positive weight indicates that higher values of this descriptor increase the predicted property. Since this combines surface area and electronic properties, molecules with favorable shape and electronic distribution in the specified range increase the predicted effect, possibly improving binding affinity or solubility.
+
+- **HeavyAtomMolWt (-0.037):**  
+  The slight negative weight suggests that larger molecules with higher molecular weight tend to decrease the property, for example by lowering permeability or increasing metabolic instability.
+
+---
+
+### Summary  
+
+The model prediction is influenced most strongly by the fraction of carboxylic acid groups, which negatively impacts the property, possibly due to acidity and ionization effects reducing membrane permeability or binding. Molecules with favorable surface-electrostatic characteristics (VSA_EState3) slightly increase the predicted property, enhancing beneficial interactions. Larger molecular weight slightly reduces the property, reflecting typical drug design challenges with bigger molecules.
+
+If you provide the specific drug property being predicted, I can tailor this explanation even more precisely!"
+ADME_hPPB,29,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState4', 'Kappa2']","[0.6001558987840071, 0.08512303771389867, -0.0721320527062139]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.600
+- VSA_EState4: 0.085
+- Kappa2: -0.072
+
+","Certainly! Let's analyze the drug property prediction step by step based on the given descriptors and their values.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model uses three descriptors with their associated values indicating importance or contribution to the prediction:
+
+1. **fr_COO: 0.600**  
+2. **VSA_EState4: 0.085**  
+3. **Kappa2: -0.072**
+
+The magnitude of the values (absolute value) suggests their relative weights or impact:
+
+- **fr_COO** is the most influential descriptor (0.600, positive)
+- **VSA_EState4** has a moderate positive contribution (0.085)
+- **Kappa2** has a small negative contribution (-0.072)
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO**  
+   - This stands for ""frequency of the carboxyl group (COO)"" in the molecule.
+   - The carboxyl group is a negatively charged or polar functional group commonly found in acidic drugs.
+   - It can participate in hydrogen bonding or ionic interactions with biological targets or enzymes.
+
+2. **VSA_EState4**  
+   - ""VSA"" refers to Van der Waals surface area, a descriptor reflecting molecular surface characteristics.
+   - ""EState"" refers to the electrotopological state, which combines electronic and topological features of atoms.
+   - VSA_EState4 typically corresponds to a specific range of surface area contributions from atoms with particular electronic environments.
+   - This descriptor reflects how certain electronically unique regions of the molecule interact sterically and electronically.
+
+3. **Kappa2**  
+   - The second Kappa shape index descriptor related to molecular shape and flexibility.
+   - It provides insight into molecular branching and overall molecular architecture by quantifying features like cyclicity and complexity.
+   - Negative contribution indicates that higher values (more complex shapes or branching) may decrease the predicted property.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+1. **fr_COO (positive influence)**  
+   - A higher frequency of carboxyl groups strongly increases the predicted property (e.g., solubility, binding affinity, or acidic character).
+   - Carboxyl groups often enhance water solubility and can improve interactions with biological targets through ionic or hydrogen bonding.
+   - This suggests the model predicts higher drug property values when the molecule contains more carboxyl functionalities.
+
+2. **VSA_EState4 (small positive influence)**  
+   - The presence of certain electronically and sterically defined surface areas slightly increases the predicted property.
+   - This indicates that surface regions with specific electrotopological environments contribute to the activity, possibly through improved receptor or enzyme interactions.
+   
+3. **Kappa2 (negative influence)**  
+   - Increased molecular complexity or certain shapes reduce the predicted property slightly.
+   - Perhaps more branched or complex molecules are less favorable for the property evaluated (e.g., permeability or bioavailability).
+   - Thus, molecules with simpler or less branched structures are predicted to have higher values of the property.
+
+---
+
+### Summary
+
+- The model heavily weights the presence of carboxyl groups (fr_COO), implying that acidic or polar functional groups are crucial for the drug property.
+- Moderate contribution from specific surface electronic environments (VSA_EState4) fine-tunes the prediction.
+- Molecular shape complexity and branching (Kappa2) slightly reduce the predicted property, favoring simpler molecules.
+
+Together, these descriptors guide the model to assign higher predicted drug property values to molecules rich in carboxyl groups, with favorable electronic surface features and less complex shapes.
+
+If you provide the exact property predicted (e.g., solubility, permeability), I can tailor the explanation even more precisely!"
+ADME_hPPB,30,gpt-4.1-mini,reasoning,3,"['Kappa2', 'VSA_EState3', 'PEOE_VSA1']","[-0.09399886699904136, -0.07275630009258682, -0.062019607018264006]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- Kappa2: -0.094
+- VSA_EState3: -0.073
+- PEOE_VSA1: -0.062
+
+","Certainly! Let's analyze why the model predicted this drug property by going through the steps you outlined.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The three most important descriptors for the model prediction, based on their absolute coefficient values, are:
+
+- **Kappa2:** -0.094
+- **VSA_EState3:** -0.073
+- **PEOE_VSA1:** -0.062
+
+All of these descriptors have **negative coefficients**, suggesting that higher values of these descriptors are associated with a *lower* predicted value of the drug property modeled.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **Kappa2 (2nd-order molecular shape index)**  
+   - This is a **topological index** that captures information about the **molecular shape and branching**.  
+   - Higher Kappa2 values indicate more complex branching and shape irregularity.
+
+2. **VSA_EState3 (van der Waals Surface Area of atoms with specific E-State values)**  
+   - This descriptor counts the **surface area** of atoms with particular **Electrotopological State (E-State)** values, which combine electronic and topological information.  
+   - VSA_EState3 corresponds to surface areas of atoms that have a specific range of E-State values associated with **moderate electronic environments**, often related to polar or slightly electronegative atoms.
+
+3. **PEOE_VSA1 (van der Waals Surface Area from Partial Equalization of Orbital Electronegativities charge bins)**  
+   - It measures the **surface area of atoms with partial charges falling within the lowest PEOE charge bin**.  
+   - PEOE_VSA1 usually corresponds to surface area contributed by **slightly positively charged or neutral atoms**.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **Kappa2 (-0.094)**  
+  The negative coefficient means that as the molecular shape becomes **more complex or branched** (higher Kappa2), the predicted drug property decreases.  
+  → This suggests the drug property (e.g., permeability, solubility, or binding affinity) is favored by **less branched, simpler molecular shapes**, possibly because simpler shapes fit better into binding pockets or pass membranes more easily.
+
+- **VSA_EState3 (-0.073)**  
+  Since this measures surface area of atoms with moderate electronic effects, a higher VSA_EState3 implies more polar or moderately electronegative surface area. Its negative contribution suggests **increased polar surface area in this range diminishes the drug property**, such as membrane permeability or bioavailability, as polar molecules often have reduced passive diffusion.
+
+- **PEOE_VSA1 (-0.062)**  
+  This accounts for surface areas of atoms with slightly positive or neutral charge. The negative coefficient indicates that having a **larger surface area of such atoms reduces the predicted property**, possibly because these atoms do not favor interactions required for efficacy or permeability.
+
+---
+
+### Summary
+
+The model predicts that the drug property is enhanced by molecules that are:
+
+- Less branched/simpler in shape (low Kappa2)  
+- Have lower polar van der Waals surface area in the moderate E-State category (low VSA_EState3)  
+- Have less surface area contributed by atoms with slight positive or neutral partial charges (low PEOE_VSA1)
+
+These characteristics influence the biochemical behavior of the drug—such as membrane permeability, binding affinity, or metabolic stability—leading to the predicted property value.
+
+---
+
+If you provide the specific drug property or target endpoint, I can tailor the biochemical interpretation more precisely."
+ADME_hPPB,31,gpt-4.1-mini,reasoning,3,"['HeavyAtomMolWt', 'fr_COO', 'VSA_EState4']","[-0.08646777980282389, -0.06570102851622062, 0.0431844193628244]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- HeavyAtomMolWt: -0.086
+- fr_COO: -0.066
+- VSA_EState4: 0.043
+
+","Certainly! Let's analyze why the model predicted this drug property based on the provided descriptors and their contributions.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model provides coefficients indicating the weight or importance of each descriptor on the prediction:
+
+- **HeavyAtomMolWt:** -0.086 (most negative influence)
+- **fr_COO:** -0.066 (second most negative influence)
+- **VSA_EState4:** 0.043 (positive influence)
+
+The magnitude of the coefficient reflects the strength of the influence, with negative values lowering the predicted property and positive values increasing it.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **HeavyAtomMolWt (Heavy Atom Molecular Weight):**  
+   This descriptor sums up the molecular weights of all non-hydrogen atoms in the molecule. It is an indicator of the size and complexity of the drug molecule.
+
+2. **fr_COO (Frequency of Carboxylic Acid Groups):**  
+   This counts how many carboxylic acid groups (-COOH) are present in the molecule. Carboxyl groups are acidic functional groups that can influence solubility, ionization state, and interactions with biological targets.
+
+3. **VSA_EState4 (Van der Waals Surface Area of EState Indices in Bin 4):**  
+   This is a more complex descriptor that relates the Van der Waals surface area of the atoms whose electrotopological state (EState) falls within a specific range (bin 4). EState indices combine electronic and topological information of atoms and are related to their reactivity and interaction potential.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **HeavyAtomMolWt (-0.086):**  
+  A higher molecular weight typically correlates with larger molecule size, which may negatively impact some drug properties such as bioavailability or permeability. The negative coefficient suggests that as the heavy atom molecular weight increases, the predicted property decreases. This means that smaller molecules are favored in this prediction.
+
+- **fr_COO (-0.066):**  
+  The presence of carboxylic acid groups can increase polarity and affect acidity. Since fr_COO has a negative coefficient, molecules with more carboxyl groups tend to reduce the predicted property. This could be because too many acidic groups might reduce membrane permeability or increase clearance, thereby negatively impacting the property being predicted.
+
+- **VSA_EState4 (0.043):**  
+  The positive coefficient indicates that an increase in the Van der Waals surface area of atoms with EState indices in bin 4 raises the predicted property. This descriptor might reflect regions of the molecule that contribute beneficial electronic or steric interactions with biological targets, thus increasing activity or another favorable drug property.
+
+---
+
+### Summary
+
+- Larger molecules (higher HeavyAtomMolWt) decrease the predicted drug property.
+- Molecules with more carboxyl groups (fr_COO) also decrease it, possibly due to increased polarity or acidity.
+- Certain atomic surface areas with specific electronic states (VSA_EState4) enhance the predicted property, likely by improving interaction potential.
+
+Together, these descriptors highlight a balance between molecule size, functional group composition, and specific atom-level electronic characteristics that drive the model's prediction of the drug property."
+ADME_hPPB,32,gpt-4.1-mini,reasoning,3,"['fr_COO', 'Kappa3', 'SlogP_VSA6']","[-0.23397678820114612, -0.08097550307897823, 0.059884841459342246]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.234
+- Kappa3: -0.081
+- SlogP_VSA6: 0.060
+
+","Certainly! Let’s analyze why the model predicted the drug property based on the given descriptors step by step:
+
+---
+
+### Step 1: Identify the most important descriptors  
+The descriptors given along with their values are:
+- **fr_COO:** -0.234  
+- **Kappa3:** -0.081  
+- **SlogP_VSA6:** 0.060  
+
+Here, the magnitude of the coefficients or values often indicates the importance on the prediction. The descriptor with the largest absolute value is **fr_COO (-0.234)**, followed by **Kappa3 (-0.081)** and then **SlogP_VSA6 (0.060)**. Therefore, the most important descriptor for this prediction is **fr_COO**, followed by **Kappa3**, and the least important is **SlogP_VSA6**.
+
+---
+
+### Step 2: Explain their biochemical meaning  
+
+- **fr_COO:**  
+This descriptor represents the **frequency of carboxylic acid groups (-COOH)** in the molecule. Carboxylic acids are acidic functional groups that can donate a proton, contributing to molecular polarity and the ability to form hydrogen bonds.
+
+- **Kappa3:**  
+Kappa shape indices (e.g., Kappa3) are molecular shape descriptors that encode aspects of the molecule’s flexibility, branching, and overall 3D shape complexity. Kappa3 in particular relates to higher order shape complexity.
+
+- **SlogP_VSA6:**  
+This descriptor is related to the **sum of the van der Waals surface area of atoms whose contribution to the logP (octanol-water partition coefficient) falls within a certain range (specific to SlogP_VSA6)**. Essentially, it reflects part of the molecule's lipophilicity and surface area characteristics.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+- **fr_COO (-0.234):**  
+A **negative value** for fr_COO means that an increase in the number of carboxylic acid groups tends to **decrease** the predicted property (e.g., maybe permeability, bioavailability, or binding affinity, depending on the model’s target). Biochemically, COOH groups can decrease membrane permeability due to their polarity and charge at physiological pH, potentially reducing absorption or distribution in hydrophobic environments.
+
+- **Kappa3 (-0.081):**  
+The negative sign here suggests that **more complex or branched molecular shapes** (higher Kappa3 values) slightly **reduce** the predicted drug property. More complex shapes could hinder fitting into a target binding site or reduce passive diffusion through membranes.
+
+- **SlogP_VSA6 (0.060):**  
+A positive influence means that **increased surface area of atoms contributing to moderate lipophilicity** slightly **increases** the predicted property. Moderate lipophilicity generally favors membrane permeability and target binding in hydrophobic pockets, aiding drug-like behavior.
+
+---
+
+### Summary:
+
+- The dominant negative effect of **fr_COO** indicates that having more carboxylic acid groups reduces the predicted property, likely due to increased polarity or ionization.
+- The molecular shape complexity (Kappa3) also modestly decreases the property, possibly by making the molecule less favorable for interaction or permeability.
+- Slightly increased lipophilic surface area (SlogP_VSA6) favors the property, supporting better membrane permeation or target binding.
+
+This combination reflects a nuanced trade-off between polarity (carboxyl groups), shape complexity, and lipophilicity that the model uses to predict the drug property.
+
+---
+
+If you provide the exact drug property being predicted (e.g., solubility, permeability, toxicity), I can refine the explanation further!"
+ADME_hPPB,33,gpt-4.1-mini,reasoning,3,"['fr_COO', 'PEOE_VSA1', 'fr_ether']","[0.08959984029505264, -0.04580611320380841, -0.04018009212585334]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.090
+- PEOE_VSA1: -0.046
+- fr_ether: -0.040
+
+","Certainly! Let's go through the three steps to explain why the model predicted the drug property based on these descriptors.
+
+---
+
+### Step 1: Identify the most important descriptors  
+The descriptors and their contributions (coefficients or importance values) provided are:
+
+- **fr_COO**: 0.090 (positive contribution)
+- **PEOE_VSA1**: -0.046 (negative contribution)
+- **fr_ether**: -0.040 (negative contribution)
+
+Among these, **fr_COO** has the largest absolute value and a positive sign, suggesting it is the most influential descriptor increasing the predicted property. The other two descriptors have lesser magnitude and negative effects.
+
+---
+
+### Step 2: Explain their biochemical meaning  
+
+- **fr_COO**: This represents the frequency or fraction of carboxylic acid groups (-COOH) in the molecule. Carboxyl groups are acidic functional groups that can participate in hydrogen bonding, ionic interactions, and increase polarity and solubility.
+
+- **PEOE_VSA1**: This descriptor is part of the Partial Equalization of Orbital Electronegativities (PEOE) VolSurf Area (VSA) metrics. VSA descriptors measure the summed surface area of atoms with partial charge in a specific range. PEOE_VSA1 typically corresponds to the surface area of atoms with very low partial charge (near-neutral regions), reflecting hydrophobic or nonpolar surface areas.
+
+- **fr_ether**: This descriptor measures the frequency of ether groups (-C-O-C-) in the molecule. Ether functional groups are relatively polar but less so than hydroxyl or carboxyl groups and can affect molecular flexibility and polarity moderately.
+
+---
+
+### Step 3: Explain how they influence the prediction  
+
+- **fr_COO (positive influence)**: The presence of carboxylic acid groups often enhances water solubility and the ability to interact with biological targets through hydrogen bonding or ionic interactions. If the predicted property is related to solubility, bioavailability, or binding affinity, an increased number of carboxyl groups would positively impact the property.
+
+- **PEOE_VSA1 (negative influence)**: A higher surface area of atoms with near-neutral partial charge suggests more hydrophobic character or less polar surface. Since this descriptor has a negative coefficient, an increase in hydrophobic surface area likely lowers the predicted property. For example, if the property is aqueous solubility or absorption, increasing hydrophobic regions may reduce these.
+
+- **fr_ether (negative influence)**: Ether groups add some polarity but can also increase molecular flexibility or change the metabolic profile. Here, the slight negative coefficient suggests that the presence of ether groups might slightly reduce the desired property — possibly because ethers do not contribute strongly to binding or solubility, or they may introduce metabolic liabilities.
+
+---
+
+### Summary:  
+The model predicts an increased value of the drug property if the molecule has more carboxylic acid groups (fr_COO), which enhance polarity and interaction potential. Conversely, it predicts a decrease if the molecule has larger near-neutral hydrophobic surface area (PEOE_VSA1) or more ether groups (fr_ether), which may negatively impact solubility, binding, or metabolism. Overall, the balance of these features determines the predicted property."
+ADME_hPPB,34,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'EState_VSA3']","[-0.4219542214465735, -0.07261358508667336, -0.07017242754017838]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.422
+- HeavyAtomMolWt: -0.073
+- EState_VSA3: -0.070
+
+","Certainly! Let's go through the prediction explanation step by step using the given descriptors and their importance values.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The model has highlighted three key descriptors with their importance values (weights or effect sizes):
+
+1. **fr_COO**: -0.422  
+2. **HeavyAtomMolWt**: -0.073  
+3. **EState_VSA3**: -0.070  
+
+The most important descriptor is **fr_COO** due to the largest magnitude of its value. The other two descriptors have smaller but still relevant contributions.
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+1. **fr_COO**:  
+   - This descriptor represents the frequency (or count) of carboxylic acid groups (-COOH) in the molecule.  
+   - Carboxylic acids are acidic functional groups that can donate a proton (H+) and tend to be negatively charged at physiological pH.  
+   - They influence solubility, ionization, and hydrogen bonding capacity.
+
+2. **HeavyAtomMolWt** (Heavy Atom Molecular Weight):  
+   - This is the sum of the atomic weights of all heavy (non-hydrogen) atoms in the molecule.  
+   - It indicates the overall size and mass of the molecule exclusive of hydrogens. Larger values often correspond to larger or more complex molecules.
+
+3. **EState_VSA3**:  
+   - This represents a specific combination of Electrotopological State indices and Van der Waals surface area contributions for atoms within a certain electronic/steric environment.  
+   - EState descriptors capture both electronic effects and molecular topology, while VSA relates to surface area properties that impact interactions with biological targets or environments.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+1. **fr_COO (-0.422)**  
+   - The negative coefficient means that an increased number of carboxylic acid groups tends to **decrease** the predicted property value.  
+   - Biochemically, carboxylic acids might reduce permeability or bioavailability because their negative charge at physiological pH can limit membrane crossing. They can also increase polarity, solubility, or binding to plasma proteins, affecting drug distribution.
+
+2. **HeavyAtomMolWt (-0.073)**  
+   - The small negative weight suggests that higher molecular weight slightly decreases the drug property value.  
+   - Larger molecules often have poorer absorption or permeability, which can negatively impact properties like oral bioavailability or permeability in ADME (absorption, distribution, metabolism, excretion) models.
+
+3. **EState_VSA3 (-0.070)**  
+   - This combined electronic-topological descriptor also has a negative effect.  
+   - A higher value here may indicate molecular substructures with specific electronic states and steric environments that reduce the target property, possibly by affecting binding affinity, solubility, or interaction with metabolic enzymes.
+
+---
+
+### Summary:
+
+- The model predicts a **lower value** of the drug property when there are more carboxylic acid groups, larger molecular weight, and higher values of the EState_VSA3 descriptor.  
+- These factors correspond to increased polarity/charge (fr_COO), molecular size (HeavyAtomMolWt), and certain electronic/steric features (EState_VSA3) that can reduce permeability, bioavailability, or other favorable drug characteristics.
+
+---
+
+If you want, I can help interpret these results for a specific drug property or suggest strategies to modify the molecule accordingly!"
+ADME_hPPB,35,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState4', 'HeavyAtomMolWt']","[0.6764397665078442, 0.07251317771438194, 0.04790867069458139]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.676
+- VSA_EState4: 0.073
+- HeavyAtomMolWt: 0.048
+
+","Certainly! Let's analyze the model prediction based on the given descriptors step by step:
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The model predicted the drug property primarily based on the following descriptors ranked by their importance weights:
+
+1. **fr_COO (0.676)** – Most important
+2. **VSA_EState4 (0.073)**
+3. **HeavyAtomMolWt (0.048)**
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+- **fr_COO (Carboxylic Acid Functional Group Frequency):**  
+  This descriptor counts the number or frequency of carboxylic acid groups (-COOH) in the molecule. Carboxylic acids are acidic functional groups that can donate a proton and form hydrogen bonds.
+
+- **VSA_EState4:**  
+  This is a hybrid descriptor combining Van der Waals Surface Area (VSA) and Electrotopological State (EState) indices. It usually represents the surface area contribution of atoms with a specific electronic environment. The exact meaning depends on the EState atom type indexed as ""4"", often related to specific atom types or chemical environments (like oxygen or nitrogen atoms in polar groups).
+
+- **HeavyAtomMolWt (Molecular Weight of Heavy Atoms):**  
+  This is the sum of the atomic weights of all non-hydrogen atoms in the molecule. It reflects molecular size and complexity.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+- **fr_COO (0.676):**  
+  The presence of carboxylic acid groups significantly impacts drug properties because these acidic groups influence solubility, ionization state at physiological pH, and interactions with biological targets or transporters through hydrogen bonding and ionic interactions. The high importance suggests the property predicted is strongly related to acidic functionalities—for example, solubility, permeability, or metabolism.
+
+- **VSA_EState4 (0.073):**  
+  This descriptor captures the surface area of atoms in a particular electronic environment, which influences how the drug molecule interacts with its environment—such as binding affinity, pharmacokinetics, or membrane permeability. Although less important than fr_COO, it still provides information about molecular shape and polarity affecting the property.
+
+- **HeavyAtomMolWt (0.048):**  
+  Molecular weight generally affects the drug’s pharmacokinetics—larger molecules may have lower permeability and slower absorption. Its lower weight in the model indicates a secondary role, perhaps modulating the overall prediction by considering size-related constraints.
+
+---
+
+### Summary of Influence
+
+The model likely predicts a property sensitive to acidic functional groups and molecular interactions—e.g., **aqueous solubility, permeability, or binding affinity influenced by acidic groups.** The dominant role of fr_COO suggests strong dependence on carboxylic acid presence, while VSA_EState4 and molecular weight fine-tune the prediction based on surface polarity and molecular size.
+
+If you provide the specific drug property predicted, we could tailor the explanation further."
+ADME_hPPB,36,gpt-4.1-mini,reasoning,3,"['NumAromaticCarbocycles', 'HeavyAtomMolWt', 'fr_COO']","[0.07199252330881509, 0.06771069614603203, -0.06510660062782841]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- NumAromaticCarbocycles: 0.072
+- HeavyAtomMolWt: 0.068
+- fr_COO: -0.065
+
+","Certainly! Let's analyze why the model predicted the drug property by following the three steps:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model highlights three descriptors with their associated importance (or contribution weights):
+
+- **NumAromaticCarbocycles**: 0.072  
+- **HeavyAtomMolWt**: 0.068  
+- **fr_COO**: -0.065  
+
+These are the top features impacting the prediction.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **NumAromaticCarbocycles**  
+  This counts the number of aromatic carbocyclic rings (rings composed only of carbon atoms with conjugated pi-electron systems) in the drug molecule. Aromatic rings contribute to molecular stability and influence molecular interactions like π-π stacking.
+
+- **HeavyAtomMolWt**  
+  This is the molecular weight calculated only using heavy atoms (all atoms except hydrogen). It gives an idea of molecule size and complexity, influencing properties like solubility and permeability.
+
+- **fr_COO**  
+  This denotes the presence (frequency) of carboxylic acid groups (-COOH). The carboxyl group is polar and acidic, often influencing solubility, charge, and binding interactions.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **NumAromaticCarbocycles (positive effect: +0.072)**  
+  Aromatic rings often enhance drug-target binding through hydrophobic and π-stacking interactions. The positive contribution suggests that molecules with more aromatic carbocycles are predicted to exhibit the drug property (e.g., higher bioavailability, potency, or stability).
+
+- **HeavyAtomMolWt (positive effect: +0.068)**  
+  Larger molecules with more heavy atoms may have enhanced binding sites or more complex structures favorable to the property predicted. The positive weight indicates heavier molecules correlate positively with the drug property.
+
+- **fr_COO (negative effect: -0.065)**  
+  The presence of carboxylic acid groups contributes negatively. Carboxyl groups can increase polarity and ionization, potentially reducing membrane permeability and oral bioavailability. Hence, their presence might decrease the likelihood of exhibiting the favorable drug property predicted.
+
+---
+
+### Summary:
+
+The model predicts the drug property primarily based on increased aromatic ring count and higher heavy atom molecular weight, both associated with positive effects such as better receptor binding or stability. Meanwhile, the presence of carboxylic acid groups negatively influences the prediction, likely due to their impact on solubility and permeability."
+ADME_hPPB,37,gpt-4.1-mini,reasoning,3,"['fr_COO', 'Phi', 'HeavyAtomMolWt']","[-0.12787226785454903, -0.04913731088520995, 0.03327457142736972]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.128
+- Phi: -0.049
+- HeavyAtomMolWt: 0.033
+
+","Certainly! Let’s analyze why the model predicted the drug property based on the given descriptors step by step.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The descriptors provided with their model coefficients or importance values are:
+
+- **fr_COO: -0.128**  
+- **Phi: -0.049**  
+- **HeavyAtomMolWt: 0.033**
+
+Among these three descriptors, **fr_COO** has the largest magnitude coefficient (-0.128), making it the most influential; followed by **Phi (-0.049)**, and lastly **HeavyAtomMolWt (0.033)**.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO:**  
+   - This descriptor stands for the **frequency (or fraction) of carboxylic acid groups (-COO−)** in the molecule. Carboxylic acid groups are acidic functional groups that can donate protons and typically carry a negative charge at physiological pH.  
+   
+2. **Phi:**  
+   - Phi represents **molecular flexibility**, often quantified as the number of rotatable bonds or a related metric of conformational freedom. A higher Phi indicates a more flexible molecule, while a lower Phi means a more rigid structure.
+
+3. **HeavyAtomMolWt:**  
+   - This is the **molecular weight** of the molecule considering only heavy atoms (non-hydrogen atoms). It reflects the size and mass of the molecule, which can impact pharmacokinetic and pharmacodynamic properties.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+1. **fr_COO (-0.128 coefficient):**  
+   - The negative coefficient indicates that **an increase in the number of carboxyl groups reduces the likelihood (or magnitude) of the predicted drug property**.  
+   - Biochemically, carboxylic acid groups increase polarity and ionization, which may reduce a drug’s membrane permeability or oral bioavailability. This often leads to lower lipophilicity and higher solubility but can hinder cellular uptake, thus negatively impacting drug-likeness or activity predicted by the model.
+
+2. **Phi (-0.049 coefficient):**  
+   - The negative coefficient here means that **greater molecular flexibility decreases the predicted property value**.  
+   - High flexibility may lead to an entropic penalty upon binding or metabolic instability, potentially reducing efficacy or increasing degradation. Conversely, more rigid molecules can have better binding affinity due to a lower entropic cost during target engagement.
+
+3. **HeavyAtomMolWt (0.033 coefficient):**  
+   - The positive but smaller coefficient suggests that **an increase in molecular weight slightly increases the predicted drug property**.  
+   - Larger heavy atom molecular weight can correlate with increased potency or target binding due to more interaction sites, but beyond a threshold, this can also reduce drug-likeness due to poor absorption or distribution. Here, the positive coefficient indicates that in the model’s training data, a heavier molecule is marginally favorable.
+
+---
+
+### Summary
+
+- The model predicts **lower drug property values when the molecule has more carboxyl groups and greater flexibility**, likely due to decreased membrane permeability and increased entropic costs.
+- Conversely, **higher molecular weight (heavy atom count) slightly favors the drug property**, possibly because of enhanced target interactions.
+- The relative magnitudes show that **carboxyl groups dominate the prediction**, meaning functional group chemistry plays the largest role here, followed by molecular flexibility and size.
+
+If you want, I can help relate these steps to a specific drug property (e.g., solubility, permeability, bioavailability) if you provide the context."
+ADME_hPPB,38,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState4', 'NumRotatableBonds']","[0.4426604457844035, 0.0639775499087337, -0.0506718269726604]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.443
+- VSA_EState4: 0.064
+- NumRotatableBonds: -0.051
+
+","Certainly! Let me explain step by step why the model predicted the drug property based on the given descriptors and their importance scores.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The three most important descriptors and their importance scores are:
+
+- **fr_COO: 0.443** (most important, positive effect)
+- **VSA_EState4: 0.064** (moderately important, positive effect)
+- **NumRotatableBonds: -0.051** (less important, negative effect)
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+**fr_COO**:  
+This descriptor counts the frequency of the carboxyl group (-COO) in the molecule. Carboxyl groups are acidic functional groups present in many organic molecules and drugs. They can influence solubility, ionization state, and interaction with biological targets.
+
+**VSA_EState4**:  
+This represents the sum of EState (Electrotopological State) values of atoms whose van der Waals surface area falls within a certain range. It typically reflects specific electronic and spatial properties of parts of the molecule, which contribute to molecular recognition and binding.
+
+**NumRotatableBonds**:  
+This counts the number of rotatable bonds in the molecule. It is an indicator of molecular flexibility. More rotatable bonds usually mean higher conformational flexibility.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (0.443 positive effect):**  
+The high positive importance and positive coefficient indicate that the presence of carboxyl groups strongly drives the predicted property upward. For example, if the property is solubility or bioactivity, the -COO groups likely enhance interactions with the biological environment (e.g., hydrogen bonding, ionic interactions), improving the property.
+
+- **VSA_EState4 (0.064 positive effect):**  
+Although less influential than fr_COO, the positive effect suggests that specific electronic and spatial features represented by VSA_EState4 contribute positively. This might mean that atoms with specific electronic states and surface areas aid molecular recognition or stability, improving the modeled property.
+
+- **NumRotatableBonds (-0.051 negative effect):**  
+The negative coefficient shows that more rotatable bonds decrease the predicted property value. Increased flexibility can reduce binding affinity by entropic penalties or reduce membrane permeability, thus lowering bioavailability or efficacy.
+
+---
+
+### Summary
+
+The model predicts the drug property mainly because molecules with more carboxyl groups (fr_COO) tend to have better values of the property, possibly due to enhanced binding or solubility. The electronic and spatial features captured by VSA_EState4 also help, while increased molecular flexibility (more rotatable bonds) detracts from the property.
+
+If you want, I can also help interpret the predicted property more specifically based on the nature of the property or context!"
+ADME_hPPB,39,gpt-4.1-mini,reasoning,3,"['Phi', 'BalabanJ', 'BCUT2D_LOGPHI']","[0.04351910333405565, -0.042005582314561626, 0.041205653253329484]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- Phi: 0.044
+- BalabanJ: -0.042
+- BCUT2D_LOGPHI: 0.041
+
+","Certainly! To explain why the model predicted a certain drug property using the given descriptors, let's follow the steps:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The descriptors and their respective model coefficients (or importance values) are:
+
+- **Phi**: 0.044  
+- **BalabanJ**: -0.042  
+- **BCUT2D_LOGPHI**: 0.041  
+
+Since these are the descriptors listed, they are presumably the most important for the model's prediction. Their absolute values are close, with Phi and BCUT2D_LOGPHI having slightly positive influence, and BalabanJ having a slight negative influence.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+**1. Phi (Molecular Phi value):**  
+- Phi is often used as a connectivity or structural index that encodes the shape or branching of a molecule. It captures molecular complexity in terms of atomic connections and may relate to flexibility or steric hindrance.
+
+**2. BalabanJ (Balaban's J index):**  
+- BalabanJ is a topological index based on the distance matrix of the molecular graph. It’s a measure of molecular connectivity and branching that incorporates distances between bonded atoms. It captures information about the molecule's overall topology.
+
+**3. BCUT2D_LOGPHI:**  
+- BCUT descriptors are eigenvalues derived from modified adjacency matrices weighted by atomic properties such as electronegativity or partial charge (here likely weighted by log(Phi)). BCUT2D_LOGPHI is a 2D descriptor reflecting electronic and topological properties, related to molecular polarity and spatial distribution of atomic features.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+**Phi (0.044, positive):**  
+- A positive coefficient means that increasing Phi leads to an increase in the predicted drug property (e.g., efficacy, bioavailability). Since Phi captures molecular branching or shape complexity, compounds with moderate complexity and certain structural features might be predicted to have more favorable properties.
+
+**BalabanJ (-0.042, negative):**  
+- A negative coefficient indicates that higher BalabanJ values reduce the predicted property. BalabanJ being a topological measure means molecules with certain connectivity patterns or more branching/complexity might have less favorable drug properties according to the model. This suggests the model favors molecules with simpler or certain specific topologies.
+
+**BCUT2D_LOGPHI (0.041, positive):**  
+- This positive coefficient indicates that molecules with particular electronic distributions and topologies (as captured by BCUT2D_LOGPHI) increase the predicted property. This descriptor reflects how atomic properties are dispersed over the molecular graph, thus favoring molecules with certain polarity or charge distribution patterns critical for the drug property.
+
+---
+
+### Summary
+
+The model’s prediction is influenced positively by molecular shape/complexity (Phi) and specific electron-topological features (BCUT2D_LOGPHI), while negatively influenced by general molecular connectivity (BalabanJ). This balance suggests the drug property depends on having an optimal molecular shape and electronic distribution but not overly complex connectivity, which might hinder the property.
+
+If you can share the exact property or drug example, I can tailor the explanation further!"
+ADME_hPPB,40,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'HallKierAlpha']","[0.09851364156040887, -0.09011808203079769, -0.07671624034513568]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.099
+- HeavyAtomMolWt: -0.090
+- HallKierAlpha: -0.077
+
+","Certainly! Let's analyze step-by-step why the model predicted this drug property based on the given descriptors and their importance values.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model provides three descriptors with their importance values (which usually indicate the strength and direction of influence on the prediction):
+
+- **fr_COO:** +0.099  
+- **HeavyAtomMolWt:** -0.090  
+- **HallKierAlpha:** -0.077  
+
+Here, **fr_COO** has the highest positive importance (0.099), suggesting that the presence of carboxylic acid groups positively influences the predicted drug property.
+
+**HeavyAtomMolWt** and **HallKierAlpha** have negative importance values (-0.090 and -0.077 respectively), indicating that increasing these descriptors decreases the predicted value for this drug property.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO:** This descriptor counts the fraction of carboxylic acid groups (-COOH) in the molecule. Carboxylic acids are polar, often acidic functional groups that can participate in hydrogen bonding and ionic interactions, affecting solubility, binding affinity, and metabolism.
+
+- **HeavyAtomMolWt:** This is the molecular weight considering only heavy atoms (non-hydrogen atoms). It reflects the size and complexity of the molecule. Larger molecules tend to have higher molecular weight.
+
+- **HallKierAlpha:** This is a shape index descriptor derived from the molecular graph, related to molecular flexibility and shape. Higher values typically correspond to more complex or flexible molecules.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (+0.099):** The positive coefficient means that the presence or higher fraction of carboxylic acid groups increases the predicted drug property. Biochemically, this could be because carboxylic acids enhance solubility or enable favorable interactions with biological targets via ionic or hydrogen bonds.
+
+- **HeavyAtomMolWt (-0.090):** The negative importance indicates that larger molecules with higher molecular weight tend to decrease the predicted property. This could mean that bulkier molecules might have lower bioavailability, poorer membrane permeability, or less favorable pharmacokinetic profiles related to the property being predicted.
+
+- **HallKierAlpha (-0.077):** Molecular shape and flexibility negatively impact the predicted property. More complex or flexible molecules might have reduced binding specificity or less optimal pharmacodynamic profiles, lowering the prediction.
+
+---
+
+### Summary:
+
+The model predicts a higher drug property value when there are more carboxylic acid groups, which can enhance interactions or solubility. However, larger molecular weight and more complex molecular shapes negatively influence the prediction, possibly due to poorer pharmacokinetics or binding efficiency. This balance of properties drives the model's output for the target drug property."
+ADME_hPPB,41,gpt-4.1-mini,reasoning,3,"['fr_COO', 'VSA_EState3', 'SMR_VSA6']","[-0.23443027210439787, -0.11097678291541709, -0.10057436844790324]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.234
+- VSA_EState3: -0.111
+- SMR_VSA6: -0.101
+
+","Certainly! Let’s analyze the model prediction step by step based on the provided descriptors and their values:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model highlights three descriptors as key predictors of the drug property (likely some physicochemical or pharmacokinetic property):
+
+- **fr_COO** = -0.234  
+- **VSA_EState3** = -0.111  
+- **SMR_VSA6** = -0.101  
+
+The negative values indicate that these descriptors contribute negatively to the predicted drug property, meaning higher values of these descriptors likely reduce the property value.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **fr_COO (Carboxylic acid functional group frequency)**  
+   - Represents the frequency or count of carboxylic acid (-COO) groups in the molecule.  
+   - Carboxylic acids are acidic groups that can ionize under physiological conditions, affecting solubility and charge.
+
+2. **VSA_EState3 (Van der Waals surface area with E-state index range 3)**  
+   - Combines Van der Waals surface area (VSA) for atoms having an E-state (Electrotopological state) index in a specific range (3 in this case).  
+   - The E-state index reflects both electronic and topological environment of atoms in the molecule — higher values indicate certain electronic environments likely related to polarity or reactivity.
+
+3. **SMR_VSA6 (Sum of atomic contributions to the molar refractivity for atoms in VSA bin 6)**  
+   - Indicates the sum of molar refractivity (SMR) contributions for atoms whose surface areas fall within a certain VSA bin (bin 6).  
+   - Molar refractivity correlates with molecular volume and polarizability — higher SMR means more polarizable electron cloud around atoms.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (-0.234)**  
+  The presence of carboxylic acid groups tends to lower the predicted property. Biochemically, this could be due to:  
+  - Increased polarity and ionization at physiological pH, leading to decreased membrane permeability if the property relates to bioavailability or permeability.  
+  - Increased hydrophilicity, which might reduce lipophilicity-dependent properties such as binding to hydrophobic sites.
+
+- **VSA_EState3 (-0.111)**  
+  Atoms with E-state values in this range likely contribute to polar or electronegative environments; their associated surface areas might indicate polar regions accessible to solvent.  
+  - Higher values would suggest more polar exposed surface area, reducing properties that favor hydrophobic or less polar molecules (e.g., membrane penetration, passive absorption).  
+  - The negative coefficient indicates that such electronic environments lower the predicted property.
+
+- **SMR_VSA6 (-0.101)**  
+  This descriptor accounts for polarizability of atoms in a certain size range.  
+  - Higher polarizability tends to increase interactions with the environment, possibly increasing water solubility but reducing lipophilicity.  
+  - The negative impact here could indicate that increased polarizable surface area in this bin lowers the target property, similar to how hydrophobicity might be inversely related.
+
+---
+
+### Summary
+
+The model prediction is driven by descriptors related to molecular polarity, ionization, and surface characteristics:
+
+- **Carboxylic acid groups** introduce ionizable, polar groups which tend to decrease the drug property (possibly related to membrane permeability or binding affinity in hydrophobic sites).  
+- **Electronically active surface areas (VSA_EState3)** reflect polar environments that reduce the property.  
+- **Polarizable surface volumes (SMR_VSA6)** similarly contribute negatively, reflecting the role of molecular polarizability in modulating the predicted property.
+
+Together, these descriptors suggest that increased polarity, ionization, and polarizability reduce the drug property predicted by the model.
+
+---
+
+If you provide the exact property being predicted (e.g., permeability, solubility, toxicity), I can tailor the explanation even more precisely!"
+ADME_hPPB,42,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'HallKierAlpha']","[0.4190580547084548, 0.17801278732851597, 0.11188003712754943]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.419
+- HeavyAtomMolWt: 0.178
+- HallKierAlpha: 0.112
+
+","Certainly! Let’s analyze why the model predicted this drug property by following the steps:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model’s three most important descriptors for the prediction are:
+
+- **fr_COO:** Importance weight = 0.419  
+- **HeavyAtomMolWt:** Importance weight = 0.178  
+- **HallKierAlpha:** Importance weight = 0.112  
+
+These are the top features the model relied on, ranked by their contribution to the prediction.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO (Carboxyl group frequency):**  
+This descriptor counts the number (or presence) of carboxylic acid groups (-COOH) in the molecule. Carboxyl groups are acidic functional groups that can ionize, influencing solubility, binding affinity, and reactivity.
+
+- **HeavyAtomMolWt (Heavy atom molecular weight):**  
+This refers to the combined molecular weight of all non-hydrogen atoms in the molecule. It reflects the molecule’s size and complexity, impacting pharmacokinetics, permeability, and metabolism.
+
+- **HallKierAlpha (Molecular shape index):**  
+Hall-Kier alpha is a shape descriptor related to molecular flexibility and branching. It captures information about the molecule’s topology, such as how linear or branched it is, which affects interaction with biological targets and enzymes.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (0.419 importance):**  
+A high presence of carboxyl groups likely makes the drug more acidic and polar, increasing solubility in aqueous environments and potentially improving interaction with target proteins or enzymes via hydrogen bonding and ionic interactions. This can strongly influence properties like bioavailability, binding affinity, or clearance, explaining its highest importance in the model.
+
+- **HeavyAtomMolWt (0.178 importance):**  
+Heavier molecules tend to have lower permeability through biological membranes and potentially different metabolic stability. The molecular weight modulates pharmacokinetic properties such as absorption and distribution. The moderate importance suggests that size influences these pharmacokinetic or pharmacodynamic attributes but less so than direct functional groups.
+
+- **HallKierAlpha (0.112 importance):**  
+Molecular shape and flexibility govern how a molecule fits into binding pockets or interacts with enzymes. A more branched or flexible molecule may have different binding affinity or metabolic pathways compared to linear rigid drugs. This descriptor helps refine predictions related to structural complementarity and biological activity.
+
+---
+
+### Summary
+
+The model predicts the drug property mainly due to the presence of carboxyl groups (fr_COO), which strongly affect polarity and binding interactions. The overall molecular size (HeavyAtomMolWt) and shape/flexibility (HallKierAlpha) also contribute, influencing pharmacokinetic behavior and molecular recognition, but to lesser extents. Together, these descriptors provide a biochemical rationale for the predicted property."
+ADME_hPPB,43,gpt-4.1-mini,reasoning,3,"['fr_COO', 'HeavyAtomMolWt', 'fr_sulfone']","[0.3275752581687039, -0.06603879664273464, -0.040180861286987474]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: 0.328
+- HeavyAtomMolWt: -0.066
+- fr_sulfone: -0.040
+
+","Certainly! Let’s analyze why the model predicted the drug property based on the given descriptors step-by-step.
+
+---
+
+### Step 1: Identify the most important descriptors  
+The three descriptors given, with their relative importance or coefficients, are:
+- **fr_COO: 0.328** (positive contribution, largest magnitude)
+- **HeavyAtomMolWt: -0.066** (negative contribution)
+- **fr_sulfone: -0.040** (negative contribution)
+
+Clearly, **fr_COO** is the most important descriptor due to its highest absolute value (0.328) and positive sign. The other two descriptors have smaller absolute values and negative signs, suggesting they reduce the predicted property to some extent.
+
+---
+
+### Step 2: Explain their biochemical meaning  
+- **fr_COO**: This represents the frequency (fragment count) or presence of **carboxylic acid groups (–COOH)** within the molecule. Carboxylic acids are common acidic functional groups which can dissociate, influencing solubility, ionization state, and interactions with biological targets.
+
+- **HeavyAtomMolWt**: This is the **molecular weight considering all non-hydrogen atoms** in the molecule. It reflects the size and complexity of the drug molecule.
+
+- **fr_sulfone**: This indicates the frequency or presence of **sulfone groups (–SO2–)** within the molecule. Sulfones are polar groups that affect electronic properties, polarity, and metabolic stability.
+
+---
+
+### Step 3: Explain how these descriptors influence the prediction  
+
+- **fr_COO (positive influence):**  
+  The presence of carboxylic acid groups (–COOH) strongly increases the predicted property. For example, if the property is solubility or acidic pKa, COO groups enhance hydrophilicity and ionization, increasing solubility or acidity. If the property is binding affinity to enzymes/receptors sensitive to acidic groups, COO groups can form favorable ionic or hydrogen bonds, enhancing activity.
+
+- **HeavyAtomMolWt (negative influence):**  
+  Higher molecular weight generally results in decreased solubility, permeability, or bioavailability. Larger molecules may have poorer pharmacokinetic properties or face steric hindrance in binding pockets, reducing efficacy. Hence, an increase in heavy atom molecular weight slightly lowers the predicted value.
+
+- **fr_sulfone (negative influence):**  
+  Sulfone groups, while polar, may negatively impact the property if they cause metabolic instability, reduced membrane permeability, or unfavorable protein interactions in this context. Their presence reduces the predicted property modestly.
+
+---
+
+### Summary:
+
+- The model predicts a higher value of the drug property mainly when the molecule contains more **carboxylic acid groups (fr_COO)**, because these groups enhance relevant biochemical traits such as solubility, ionization, or receptor binding.
+- Larger molecular size (HeavyAtomMolWt) and presence of sulfones (fr_sulfone) both contribute negatively, possibly due to reduced permeability, increased metabolic liability, or steric effects.
+- The dominance of fr_COO indicates that acidic functional groups are a key positive determinant for this property in the model.
+
+---
+
+If you provide the specific drug property or endpoint, I can tailor the explanation even further for that context!"
+ADME_hPPB,44,gpt-4.1-mini,reasoning,3,"['ExactMolWt', 'fr_COO', 'PEOE_VSA1']","[-0.0801186268384817, -0.0566876442974273, -0.05408357810521985]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- ExactMolWt: -0.080
+- fr_COO: -0.057
+- PEOE_VSA1: -0.054
+
+","Certainly! Let me walk you through the reasoning behind the model's prediction of the drug property step by step based on the given descriptors and their importance values.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The three descriptors with the highest absolute importance values (negative in this case) are:
+
+- **ExactMolWt:** -0.080  
+- **fr_COO:** -0.057  
+- **PEOE_VSA1:** -0.054  
+
+These descriptors have the largest influence on the model's prediction, with negative weights indicating that an increase in these descriptor values tends to decrease the predicted value of the drug property.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **ExactMolWt (Exact Molecular Weight):**  
+  Represents the precise molecular weight of the compound calculated from the isotopic composition of atoms. It reflects the compound's size and mass.
+
+- **fr_COO (Number of Carboxylic Acid Groups):**  
+  Counts how many carboxylic acid functional groups (-COOH) are present in the molecule. Carboxyl groups are acidic and can impact solubility, ionization, and binding properties.
+
+- **PEOE_VSA1 (Partial Equalization of Orbital Electronegativities - Van der Waals surface area bin 1):**  
+  This is a descriptor combining partial atomic charges with the van der Waals surface area. Specifically, PEOE_VSA1 sums the total surface area of atoms whose partial charges fall within a particular range—usually the most positive or least negative charges—related to polarity and electronic distribution.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **ExactMolWt (-0.080):**  
+  A heavier molecule (higher molecular weight) may have poorer absorption, distribution, or cell permeability because larger molecules often struggle to pass through membranes and can have altered metabolism. Therefore, an increase in ExactMolWt tends to reduce the predicted favorable drug property—such as bioavailability or permeability.
+
+- **fr_COO (-0.057):**  
+  More carboxylic acid groups increase molecule polarity and acidity, which might enhance water solubility but potentially reduce membrane permeability due to ionization at physiological pH. This could negatively impact properties like permeability, oral bioavailability, or blood-brain barrier penetration, explaining the negative coefficient.
+
+- **PEOE_VSA1 (-0.054):**  
+  A higher PEOE_VSA1 value indicates a larger van der Waals surface area associated with certain partial charges (likely polar regions). Increased polar surface area usually correlates with reduced membrane permeability and increased aqueous solubility. Thus, this negative influence aligns with the tendency of highly polar molecules to have lower permeability or other related drug properties.
+
+---
+
+### Summary
+
+- The model predicts lower values of the drug property for compounds with higher ExactMolWt, more carboxylic groups, and larger polar surface areas corresponding to PEOE_VSA1.
+- Biochemically, these features correlate with increased size and polarity, which generally reduce membrane permeability or oral bioavailability.
+- Hence, the model learned that large, polar, acidic molecules tend to have less favorable values of this drug property.
+
+If you tell me the specific drug property (e.g., solubility, permeability, or toxicity), I can provide a more tailored explanation!"
+ADME_hPPB,45,gpt-4.1-mini,reasoning,3,"['fr_COO', 'SMR_VSA6', 'Kappa3']","[-0.27447990333258815, -0.0852070403313365, -0.08501818404875956]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.274
+- SMR_VSA6: -0.085
+- Kappa3: -0.085
+
+","Certainly! Let's analyze why the model predicted the drug property by following the requested steps with the given descriptors: fr_COO, SMR_VSA6, and Kappa3.
+
+---
+
+### Step 1: Identify the Most Important Descriptors
+
+The three descriptors provided with their relative weights or contributions (negative values suggesting negative correlation) are:
+
+- **fr_COO**: –0.274  
+- **SMR_VSA6**: –0.085  
+- **Kappa3**: –0.085  
+
+Among these, **fr_COO** has the largest magnitude of influence (–0.274), followed by **SMR_VSA6** and **Kappa3**, which have equal but smaller influence (–0.085 each).
+
+---
+
+### Step 2: Explain Their Biochemical Meaning
+
+**fr_COO:**  
+- Stands for the frequency (count) of carboxylic acid groups (-COO⁻) in the molecule.  
+- Carboxyl groups are acidic functional groups that can donate protons, often imparting polarity and potential ionic character to the drug molecule.
+
+**SMR_VSA6:**  
+- SMR refers to the sum of atomic contribution to molar refractivity, which relates to polarizability and volume; VSA6 indicates it's calculated over a specific van der Waals surface area bin (probably atoms with a specific range of contributions).  
+- Essentially, SMR_VSA6 reflects the molecule’s polarizability distribution in a spatial region identified by surface area.
+
+**Kappa3:**  
+- The third-order molecular shape kappa descriptor.  
+- It gauges molecular shape and flexibility, probing aspects like branching and cyclicity at a higher-order level than simpler kappa indices.  
+- Lower values often correlate with more linear or less branched molecules; higher values can indicate more complex molecular shapes.
+
+---
+
+### Step 3: Explain How They Influence the Prediction
+
+**fr_COO (most influential, negative coefficient):**  
+- A higher number of carboxylic acid groups (fr_COO) corresponds to a decrease in the predicted drug property (because of the negative coefficient).  
+- Biochemically, this could mean that acidic groups may reduce lipophilicity, increase polarity, or influence drug permeability and absorption negatively affecting the property predicted (e.g., cell permeability, bioavailability).  
+- Alternatively, these groups might increase ionization at physiological pH, thereby reducing membrane crossing ability or increasing clearance.
+
+**SMR_VSA6 (moderately influential, negative coefficient):**  
+- Lower polarizability or less favorable distribution of polarizable surface area (reflected by SMR_VSA6) is associated with lower predicted values of the property.  
+- This surface area bin might represent regions critical for interaction with the biological target or for solubility.  
+- A negative effect means molecules with higher polarizability in this region may have lower values of the drug property, possibly due to altered binding or increased nonspecific interactions.
+
+**Kappa3 (also moderately influential, negative coefficient):**  
+- Higher complexity or branching (higher Kappa3) reduces the predicted drug property.  
+- This may be due to steric hindrance, affecting binding or transport, or altering metabolic stability.  
+- A less branched or more linear structure might favorably influence the property, such as diffusion or enzymatic cleavage, so higher Kappa3 reduces it.
+
+---
+
+### Summary
+
+- The prediction decreases as the number of carboxyl groups increases, indicating acidic, polar groups negatively impact the property.
+- Molecules with higher polarizability in the SMR_VSA6 surface area and increased molecular complexity (Kappa3) also tend to have lower predicted values.
+- Overall, the model favors molecules with fewer acidic groups, balanced surface polarizability, and simpler molecular shape for the drug property in question.
+
+If you provide the property being predicted or further context, I can tailor this explanation more specifically!"
+ADME_hPPB,46,gpt-4.1-mini,reasoning,3,"['HeavyAtomMolWt', 'HallKierAlpha', 'fr_COO']","[-0.11972319761069228, -0.11744203029335752, -0.1046517930350762]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- HeavyAtomMolWt: -0.120
+- HallKierAlpha: -0.117
+- fr_COO: -0.105
+
+","Certainly! Let’s analyze the model’s prediction of the drug property step by step based on the provided descriptor importances and values.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model indicates three key descriptors with their respective coefficients or importance values (negative values):
+
+- **HeavyAtomMolWt**: -0.120  
+- **HallKierAlpha**: -0.117  
+- **fr_COO**: -0.105  
+
+These are the top descriptors influencing the prediction, with negative coefficients meaning their increase decreases the predicted value of the drug property.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **HeavyAtomMolWt (Heavy Atom Molecular Weight)**  
+   - This descriptor is the sum of the atomic weights of all non-hydrogen atoms in the molecule. It reflects the overall size and mass of the molecule excluding hydrogens.
+
+2. **HallKierAlpha**  
+   - This is a molecular shape index related to the flexibility or cyclic nature of the molecule. It quantifies molecular branching and complexity; higher values often correlate with more branching or complex shapes.
+
+3. **fr_COO (Carboxylic Acid Functional Group Count)**  
+   - This descriptor counts the number of carboxylic acid groups (-COOH) in the molecule. Carboxylic acids are polar, ionizable groups that can strongly influence solubility, acidity, and charge.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+Given the negative coefficients for all three descriptors, increasing their values tends to **decrease** the predicted drug property (the exact property isn’t specified, but common predictions include bioavailability, permeability, or blood-brain barrier penetration):
+
+1. **HeavyAtomMolWt (-0.120)**  
+   - Larger molecules (higher heavy atom weight) generally find it harder to permeate membranes or be absorbed due to steric hindrance and decreased solubility, lowering favorable drug properties like oral bioavailability.  
+   - Thus, increasing heavy atom weight reduces the property value.
+
+2. **HallKierAlpha (-0.117)**  
+   - More branched or complex molecules (higher HallKierAlpha) might have conformational constraints or steric bulk that impede interactions with targets or membrane permeability.  
+   - This shape complexity could reduce the drug property (e.g., permeability), explaining the negative impact.
+
+3. **fr_COO (-0.105)**  
+   - Carboxylic acid groups are acidic and often negatively charged at physiological pH, which can reduce passive membrane permeability and increase polarity.  
+   - While aiding solubility, excessive carboxylic groups can hinder permeation or crossing lipid membranes, thus decreasing the predicted property.
+
+---
+
+### Summary
+
+- **Large size (HeavyAtomMolWt)** tends to lower the drug property likely due to poorer absorption or permeability.  
+- **Complex molecular shape (HallKierAlpha)** can reduce favorable interactions or membrane passage.  
+- **Presence of multiple carboxylic groups (fr_COO)** increases polarity/charge, which can hinder membrane permeation or related properties.
+
+Hence, the model predicts lower values of the drug property for molecules that are bigger, more branched, and contain more carboxylic acids.
+
+---
+
+If you provide the exact drug property predicted, I can tailor this explanation more precisely!"
+ADME_hPPB,47,gpt-4.1-mini,reasoning,3,"['HeavyAtomMolWt', 'HallKierAlpha', 'Phi']","[-0.05423831330912234, 0.03320100211543249, 0.030555640881566263]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- HeavyAtomMolWt: -0.054
+- HallKierAlpha: 0.033
+- Phi: 0.031
+
+","Certainly! Let’s go through the model's prediction step by step, based on the provided descriptors and their contributions.
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model has assigned importance scores to the following descriptors with their respective values indicating the magnitude and direction of their influence on the predicted drug property:
+
+- **HeavyAtomMolWt:** -0.054  
+- **HallKierAlpha:** 0.033  
+- **Phi:** 0.031  
+
+Here, **HeavyAtomMolWt** has the largest absolute value (0.054), indicating it is the most influential descriptor in the prediction. Next are **HallKierAlpha** and **Phi**, both positively contributing but with smaller magnitudes.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **HeavyAtomMolWt:**  
+This descriptor measures the molecular weight of the molecule, counting only the heavy atoms (non-hydrogen atoms). It's a proxy for the size and mass of the drug molecule.
+
+- **HallKierAlpha:**  
+This is a shape index descriptor derived from molecular graph theory, specifically the Hall-Kier alpha index. It reflects molecular shape and flexibility by capturing the degree of branching and cyclic structures in the molecule.
+
+- **Phi:**  
+Phi is a Kier flexibility index representing molecular flexibility, quantifying how freely molecular segments can rotate or bend. A higher Phi usually means a more flexible molecule.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **HeavyAtomMolWt (-0.054):**  
+The negative coefficient implies that as the molecular weight of heavy atoms increases, the predicted drug property decreases. This can happen because larger molecules often have poorer pharmacokinetics (e.g., lower absorption, higher clearance) or unfavorable bioavailability, making them less effective or desirable in certain drug contexts.
+
+- **HallKierAlpha (0.033):**  
+The positive contribution of this molecular shape descriptor suggests that molecules with more complex shapes, branching, or cyclic structures are favored. These features can enhance binding affinity, specificity, or stability, improving the predicted property.
+
+- **Phi (0.031):**  
+With a positive effect, increased molecular flexibility supports the predicted property. Flexibility can allow the drug to better adapt to the target binding site’s shape, improving efficacy or bioavailability.
+
+---
+
+### Summary
+
+The model predicts the drug property primarily decreases with increasing molecular size (HeavyAtomMolWt), while increasing molecular shape complexity (HallKierAlpha) and flexibility (Phi) enhances the property. Biochemically, smaller, appropriately branched, and somewhat flexible molecules may have more favorable drug-like properties such as improved absorption, binding, or stability in this context."
+ADME_hPPB,48,gpt-4.1-mini,reasoning,3,"['fr_COO', 'fr_ketone', 'HeavyAtomMolWt']","[-0.1867373201689503, 0.06971473723088815, 0.04984951723802789]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- fr_COO: -0.187
+- fr_ketone: 0.070
+- HeavyAtomMolWt: 0.050
+
+","Certainly! Let's analyze why the model predicted this drug property by following the steps:
+
+---
+
+### Step 1: Identify the most important descriptors
+
+The model output lists three descriptors with their associated coefficients (weights):
+
+- **fr_COO**: -0.187  
+- **fr_ketone**: 0.070  
+- **HeavyAtomMolWt**: 0.050  
+
+Here, the descriptor **fr_COO** has the highest absolute weight (-0.187), indicating it has the strongest influence on the prediction. The next most important are **fr_ketone** (0.070) and **HeavyAtomMolWt** (0.050).
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+- **fr_COO (Carboxylic acid group frequency)**  
+  This descriptor represents the fraction or frequency of carboxyl (-COOH) groups in the molecule. Carboxylic acids are polar, acidic groups capable of forming hydrogen bonds and ionic interactions, affecting solubility and binding.
+
+- **fr_ketone (Ketone group frequency)**  
+  This indicates the presence and number of ketone functional groups (C=O) within the molecule. Ketones are polar but generally less acidic than carboxyl groups. They can act as hydrogen bond acceptors and influence molecular reactivity and binding.
+
+- **HeavyAtomMolWt (Heavy Atom Molecular Weight)**  
+  This is the total molecular weight of all non-hydrogen atoms in the molecule. It reflects the size and mass of the compound, correlating with molecular complexity and possibly bioavailability.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **fr_COO (-0.187)**:  
+  The negative coefficient indicates that a higher number or fraction of carboxylic acid groups lowers the predicted drug property value. For example, if the property predicts absorption or membrane permeability, the acidic and highly polar nature of carboxylic acids may reduce permeability, hence negatively influencing the prediction.
+
+- **fr_ketone (0.070)**:  
+  The positive coefficient suggests that the presence of ketones slightly increases the predicted value. Ketones provide polarity and interaction sites without strong acidity, possibly enhancing certain properties such as binding affinity or solubility beneficially.
+
+- **HeavyAtomMolWt (0.050)**:  
+  A positive but smaller coefficient indicates that larger molecules (more heavy atoms) slightly increase the predicted value. This might be related to improved binding affinity due to larger molecular surface area but only marginally influences the prediction.
+
+---
+
+### Summary
+
+The model primarily predicts the drug property as negatively impacted by the presence of carboxylic acid groups (fr_COO), moderately enhanced by ketone groups (fr_ketone), and slightly favored by higher molecular weight (HeavyAtomMolWt). This suggests that the property likely depends on polarity, acidity, and molecular size, with acidic groups reducing and certain polar functionalities and size increasing the property.
+
+If you provide the specific drug property being predicted, I can tailor this explanation more precisely!"
+ADME_hPPB,49,gpt-4.1-mini,reasoning,3,"['HeavyAtomMolWt', 'PEOE_VSA1', 'VSA_EState3']","[0.17674537318385725, 0.08240135313710552, -0.06994197964114217]","
+You are a biomedical expert.
+
+Explain step by step why the model predicted this drug property.
+
+Step 1: Identify the most important descriptors  
+Step 2: Explain their biochemical meaning  
+Step 3: Explain how they influence the prediction  
+
+Descriptors:
+
+- HeavyAtomMolWt: 0.177
+- PEOE_VSA1: 0.082
+- VSA_EState3: -0.070
+
+","Certainly! Let's analyze why the model predicted this drug property based on the given descriptors step by step:
+
+---
+
+### Step 1: Identify the most important descriptors  
+The model indicates the following three descriptors as the most important contributors, along with their coefficients or weights:
+
+- **HeavyAtomMolWt:** 0.177  
+- **PEOE_VSA1:** 0.082  
+- **VSA_EState3:** -0.070  
+
+The magnitude of the weights suggests their relative importance:  
+- HeavyAtomMolWt has the largest positive impact.  
+- PEOE_VSA1 has a moderate positive impact.  
+- VSA_EState3 has a negative impact.
+
+---
+
+### Step 2: Explain their biochemical meaning
+
+1. **HeavyAtomMolWt (Heavy Atom Molecular Weight)**  
+   - This descriptor represents the total molecular weight contributed by all atoms excluding hydrogens (heavy atoms).  
+   - It is commonly used as a proxy for the size and bulkiness of the molecule, which can influence properties like permeability, solubility, and binding.
+
+2. **PEOE_VSA1 (Partial Equalization of Orbital Electronegativities - Van der Waals Surface Area bin 1)**  
+   - PEOE is a method to assign partial charges based on electronegativity equalization.  
+   - VSA1 corresponds to the van der Waals surface area where the partial charge falls within a specific range (usually slightly positive or near-neutral charges).  
+   - This descriptor relates to the surface area distribution of partial charges, which influences solvation, molecular interactions, and binding to biological targets.
+
+3. **VSA_EState3 (Van der Waals Surface Area EState bin 3)**  
+   - EState stands for Electrotopological State which combines electronic and topological information.  
+   - VSA_EState3 groups parts of the molecule’s surface area that have a certain range of EState values, reflecting specific electronic environments or atom types.  
+   - This descriptor often correlates with polarizability, electron distribution, or specific functional group presence.
+
+---
+
+### Step 3: Explain how they influence the prediction
+
+- **HeavyAtomMolWt (0.177)**:  
+  A positive coefficient means that an increase in molecular weight (more or larger heavy atoms) increases the predicted value of the drug property. For instance, if the property is related to bioavailability or target affinity, larger molecules may have greater interactions or longer half-life.
+
+- **PEOE_VSA1 (0.082)**:  
+  This positive coefficient suggests that increasing the van der Waals surface area corresponding to low-to-neutral partial charges enhances the predicted property. This could mean that having more neutral-like surface area improves, for example, membrane permeability or reduces nonspecific binding.
+
+- **VSA_EState3 (-0.070)**:  
+  The negative coefficient implies that an increase in this descriptor reduces the predicted property. Since VSA_EState3 relates to specific electronic environments, a higher value might indicate functionalities or atoms that decrease the drug property (e.g., polarity or electronic states that reduce permeability or increase clearance).
+
+---
+
+### Summary:
+
+- Larger molecules (higher HeavyAtomMolWt) and those with greater neutral partial charge surface area (PEOE_VSA1) tend to positively influence the predicted drug property.  
+- Conversely, increased presence of atoms or groups associated with the VSA_EState3 descriptor reduces the predicted outcome.  
+
+This balance between molecular size, charge distribution, and specific electronic features drives the model's prediction."
