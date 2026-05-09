@@ -1,0 +1,1237 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_RLM,0,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumSaturatedHeterocycles', 'FpDensityMorgan2', 'Chi4n', 'SMR_VSA6']","[0.14323733333643263, 0.10566044905866491, 0.09814408390957707, 0.08175174278268342, -0.07402442999082973]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.143
+- NumSaturatedHeterocycles: 0.106
+- FpDensityMorgan2: 0.098
+- Chi4n: 0.082
+- SMR_VSA6: -0.074
+
+","The prediction is explained by the contributions of the given features to the model's output. Here's the interpretation of each feature's contribution:
+
+1. **NumValenceElectrons: 0.143**  
+   This feature has a positive contribution of 0.143, meaning that a higher number of valence electrons leads to an increase in the predicted value or likelihood. It suggests that valence electrons are an important factor driving the prediction upward.
+
+2. **NumSaturatedHeterocycles: 0.106**  
+   This feature also contributes positively (0.106), indicating that having more saturated heterocyclic rings in the molecule increases the predicted outcome.
+
+3. **FpDensityMorgan2: 0.098**  
+   The fingerprint density (Morgan radius 2) contributes positively as well by 0.098, suggesting that higher molecular fingerprint density correlates with higher predicted values.
+
+4. **Chi4n: 0.082**  
+   This topological index adds a smaller positive contribution (0.082) to the prediction, implying that certain molecular connectivity patterns reflected by Chi4n slightly increase the prediction.
+
+5. **SMR_VSA6: -0.074**  
+   In contrast, this feature has a negative contribution (-0.074), meaning values associated with SMR_VSA6 decrease the predicted target. This could be related to specific surface area or electronic properties that reduce the prediction.
+
+### Summary:
+The overall prediction is driven primarily by features related to the electronic properties (valence electrons), molecular structure (saturated heterocycles), and fingerprints, which all increase the prediction. One feature related to surface area/electronic environment (SMR_VSA6) decreases the predicted value. Together, these feature contributions combine to push the model prediction toward a higher or lower value depending on their sign and magnitude."
+ADME_RLM,1,gpt-4.1-mini,basic,5,"['AvgIpc', 'NumValenceElectrons', 'MinPartialCharge', 'SlogP_VSA6', 'fr_Ndealkylation2']","[-0.06331929838713857, 0.06278251945629282, 0.04650962297160636, 0.046416300002703935, 0.046322974340734686]","
+Explain the prediction using the following feature contributions.
+
+- AvgIpc: -0.063
+- NumValenceElectrons: 0.063
+- MinPartialCharge: 0.047
+- SlogP_VSA6: 0.046
+- fr_Ndealkylation2: 0.046
+
+","The prediction is influenced by several feature contributions, each adding or subtracting from the final predicted value. Here's a breakdown of how each feature affects the prediction:
+
+- **AvgIpc (-0.063)**: This feature has a negative contribution, decreasing the prediction by 0.063. It suggests that higher values of AvgIpc are associated with a lower predicted outcome in this model.
+
+- **NumValenceElectrons (0.063)**: This contributes positively and equally but oppositely to AvgIpc, increasing the prediction by 0.063. More valence electrons tend to push the prediction higher.
+
+- **MinPartialCharge (0.047)**: This positive contribution means that an increase in the minimum partial charge on the molecule raises the prediction by 0.047.
+
+- **SlogP_VSA6 (0.046)**: A positive influence, indicating that this particular descriptor related to lipophilicity and surface area (SlogP_VSA6) increases the predicted value by 0.046.
+
+- **fr_Ndealkylation2 (0.046)**: This is a fragment-based feature (likely a binary indicator for the presence of a dealkylation site), and its presence adds 0.046 to the prediction.
+
+**Summary:**  
+The prediction results from the sum of these effects. The only feature pulling the prediction down is AvgIpc, while the other four features increase it. The relatively balanced magnitudes of AvgIpc and NumValenceElectrons cancel each other out, meaning the prediction is mainly pushed upward by MinPartialCharge, SlogP_VSA6, and fr_Ndealkylation2. These positive contributions suggest that properties related to valence electrons, partial charge, lipophilicity surface area, and specific molecular fragments increase the predicted value, whereas AvgIpc reduces it.
+
+If you want, I can also help interpret what these features mean chemically or biologically, depending on the context of the prediction."
+ADME_RLM,2,gpt-4.1-mini,basic,5,"['BCUT2D_CHGLO', 'FpDensityMorgan2', 'NumValenceElectrons', 'PEOE_VSA11', 'fr_epoxide']","[0.088169545368933, -0.07816642821069815, 0.06713938599807753, 0.05596713800800872, 0.055694480320192016]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: 0.088
+- FpDensityMorgan2: -0.078
+- NumValenceElectrons: 0.067
+- PEOE_VSA11: 0.056
+- fr_epoxide: 0.056
+
+","The prediction is influenced by several molecular features, each contributing positively or negatively to the final outcome. Here's an explanation based on the given feature contributions:
+
+- **BCUT2D_CHGLO: 0.088**  
+  This feature has the largest positive contribution. BCUT2D_CHGLO is related to the overall charge distribution and electronic properties of the molecule. A positive value here suggests that molecules with certain charge characteristics contribute to increasing the predicted property (e.g., activity, solubility, toxicity).
+
+- **FpDensityMorgan2: -0.078**  
+  This feature contributes negatively, reducing the prediction. It reflects the density of certain molecular substructures (Morgan fingerprints) within a 2-bond radius. A negative contribution implies that higher density of these substructures decreases the predicted outcome.
+
+- **NumValenceElectrons: 0.067**  
+  The number of valence electrons positively affects the prediction, indicating that molecules with more valence electrons tend to increase the predicted value.
+
+- **PEOE_VSA11: 0.056**  
+  This descriptor represents the sum of van der Waals surface areas of atoms in a certain partial charge range (using PEOE charges). Its positive contribution means that molecular surface areas with specific charge characteristics positively influence the prediction.
+
+- **fr_epoxide: 0.056**  
+  The presence of epoxide rings (three-membered cyclic ethers) contributes positively to the prediction. This suggests that molecules containing epoxide functional groups are more likely to have higher predicted values.
+
+### Summary:
+The prediction increases mainly due to electronic features (BCUT2D_CHGLO, NumValenceElectrons), specific charged surface areas (PEOE_VSA11), and the presence of epoxide rings. However, the presence of dense substructures captured by Morgan fingerprints (FpDensityMorgan2) slightly decreases the prediction. Overall, the positive contributions dominate, leading to a higher predicted value."
+ADME_RLM,3,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'Chi0n', 'Ipc', 'MinPartialCharge']","[0.17191914373622905, 0.13144406913073056, 0.10635649163913592, 0.07601052222038616, -0.06712897604741369]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.172
+- BCUT2D_CHGLO: 0.131
+- Chi0n: 0.106
+- Ipc: 0.076
+- MinPartialCharge: -0.067
+
+","The prediction is influenced by several features, each contributing either positively or negatively:
+
+- **NumValenceElectrons (0.172):** This feature has the largest positive contribution, meaning that a higher number of valence electrons significantly increases the predicted value.
+- **BCUT2D_CHGLO (0.131):** This also has a strong positive impact, suggesting that the molecular charge distribution captured by this descriptor raises the prediction.
+- **Chi0n (0.106):** This topological descriptor contributes positively as well, indicating that certain connectivity or molecular complexity aspects enhance the prediction.
+- **Ipc (0.076):** The contribution is positive but smaller, showing that this property slightly supports increasing the predicted value.
+- **MinPartialCharge (-0.067):** This feature has a negative contribution, meaning that a lower (more negative) minimum partial charge decreases the predicted output.
+
+**Overall:** The prediction is mainly driven upward by the number of valence electrons, molecular charge-related features, and molecular topology, with a slight reduction due to the minimum partial charge value."
+ADME_RLM,4,gpt-4.1-mini,basic,5,"['PEOE_VSA12', 'BCUT2D_CHGLO', 'SlogP_VSA2', 'EState_VSA5', 'Chi4n']","[-0.1240532791901092, 0.12161941571194915, -0.08665936354010007, 0.07682756628218454, 0.07510820491818487]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA12: -0.124
+- BCUT2D_CHGLO: 0.122
+- SlogP_VSA2: -0.087
+- EState_VSA5: 0.077
+- Chi4n: 0.075
+
+","The prediction is explained based on the contributions of the five features you provided. Each feature contributes either positively or negatively to the predicted value.
+
+Here is the interpretation of the feature contributions:
+
+- **PEOE_VSA12: -0.124**  
+  This feature has a negative contribution, decreasing the predicted value by 0.124 units. This suggests that higher values of PEOE_VSA12 push the prediction lower or the model associates higher values of this feature with a decrease in the target.
+
+- **BCUT2D_CHGLO: 0.122**  
+  This feature contributes positively, increasing the prediction by 0.122 units. Higher BCUT2D_CHGLO values raise the predicted value, indicating that this molecular charge-related descriptor positively influences the outcome.
+
+- **SlogP_VSA2: -0.087**  
+  SlogP_VSA2 also negatively influences the prediction, reducing it by 0.087 units. This implies that increases in this hydrophobicity-related descriptor correlate with a decrease in the predicted outcome.
+
+- **EState_VSA5: 0.077**  
+  This feature contributes positively, increasing the prediction by 0.077 units. It means higher EState_VSA5 values tend to raise the predicted value.
+
+- **Chi4n: 0.075**  
+  Chi4n has a positive impact of 0.075 units on the prediction. This topological descriptor likely contributes to increasing the predicted value.
+
+### Summary:
+The net effect depends on the sum of these contributions (assuming no other features):
+
+\[
+-0.124 + 0.122 - 0.087 + 0.077 + 0.075 = 0.063
+\]
+
+This net positive contribution (+0.063) suggests that overall, these features push the prediction slightly higher, with BCUT2D_CHGLO, EState_VSA5, and Chi4n driving the increase and PEOE_VSA12 and SlogP_VSA2 pushing it lower.
+
+### Conclusion:
+- Features related to molecular charge (BCUT2D_CHGLO) and certain structural properties (EState_VSA5 and Chi4n) positively influence the prediction.
+- Features associated with electronegativity/charge distribution (PEOE_VSA12) and hydrophobicity (SlogP_VSA2) contribute negatively.
+- The final predicted value is a balance of these opposing effects, slightly leaning towards an increase given the sum of contributions.
+
+If you want a more detailed analysis, providing the context of the predicted property and the meanings of the descriptors can deepen the explanation."
+ADME_RLM,5,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'MinPartialCharge', 'fr_SH', 'fr_pyridine']","[-0.568895664135654, -0.06330421247746273, -0.052812243684025074, -0.051235979250697304, -0.04689540574795271]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.569
+- BCUT2D_CHGLO: -0.063
+- MinPartialCharge: -0.053
+- fr_SH: -0.051
+- fr_pyridine: -0.047
+
+","The prediction is influenced by five features, each contributing negatively to the final prediction value. Here's what each contribution means:
+
+- **NumValenceElectrons: -0.569**  
+  This is the largest negative contributor. The number of valence electrons significantly decreases the predicted value. In other words, molecules with higher or certain counts of valence electrons push the prediction lower.
+
+- **BCUT2D_CHGLO: -0.063**  
+  This feature represents a 2D BCUT descriptor related to the overall charge distribution (charge low). A negative contribution suggests that higher or certain values of charge localization reduce the prediction.
+
+- **MinPartialCharge: -0.053**  
+  The smallest partial charge on the molecule has a small negative effect, meaning that as the minimum partial charge increases in magnitude (or certain values occur), the prediction decreases slightly.
+
+- **fr_SH: -0.051**  
+  This is a count of thiol groups (-SH) in the molecule. Its negative contribution means the presence or higher count of thiol groups slightly lowers the predicted value.
+
+- **fr_pyridine: -0.047**  
+  This counts the presence of pyridine rings. It also slightly reduces the prediction.
+
+**Summary:**  
+All five features reduce the predicted output to some extent, with the number of valence electrons having the dominant impact. The presence of certain chemical groups (thiol, pyridine) and charge-related descriptors contribute small but consistent negative influences. Therefore, the molecule characteristics captured by these features steer the prediction downward."
+ADME_RLM,6,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'MinPartialCharge', 'BCUT2D_CHGLO', 'FpDensityMorgan2', 'fr_Ndealkylation2']","[0.1921607362329072, 0.08914702429385783, -0.07018145215202128, 0.06478310392520929, -0.052875900393689876]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.192
+- MinPartialCharge: 0.089
+- BCUT2D_CHGLO: -0.070
+- FpDensityMorgan2: 0.065
+- fr_Ndealkylation2: -0.053
+
+","The prediction is influenced by the combination of these feature contributions, which indicate how each feature impacts the output compared to a baseline or average prediction.
+
+Here's a breakdown of the feature contributions:
+
+1. **NumValenceElectrons (0.192)**  
+   This feature has the largest positive contribution, increasing the prediction significantly. A higher number of valence electrons tends to push the prediction in a positive direction in this model.
+
+2. **MinPartialCharge (0.089)**  
+   This feature also contributes positively, though to a lesser extent. A higher minimum partial charge in the molecule increases the predicted value.
+
+3. **BCUT2D_CHGLO (-0.070)**  
+   This feature contributes negatively, decreasing the prediction. A higher BCUT2D_CHGLO value tends to reduce the predicted outcome.
+
+4. **FpDensityMorgan2 (0.065)**  
+   This feature adds a moderate positive effect, slightly increasing the prediction. It reflects the density of certain molecular fingerprints, favoring a higher score.
+
+5. **fr_Ndealkylation2 (-0.053)**  
+   This feature reduces the prediction marginally. Its presence or higher count is associated with a negative effect on the predicted value.
+
+**Summary:**  
+The prediction is primarily driven upward by the number of valence electrons and minimum partial charge, which have the strongest positive effects. These are partially offset by negative contributions from BCUT2D_CHGLO and the presence of fr_Ndealkylation2, while FpDensityMorgan2 provides a smaller positive influence. Overall, the model predicts a higher value mainly due to electronic properties (valence electrons, partial charge) with some moderating structural factors reducing the prediction."
+ADME_RLM,7,gpt-4.1-mini,basic,5,"['fr_SH', 'VSA_EState1', 'Chi3n', 'Chi4n', 'FpDensityMorgan2']","[-0.06670822990553447, -0.0662557240205352, 0.06534992939759365, -0.05828046145578021, -0.049226873895457296]","
+Explain the prediction using the following feature contributions.
+
+- fr_SH: -0.067
+- VSA_EState1: -0.066
+- Chi3n: 0.065
+- Chi4n: -0.058
+- FpDensityMorgan2: -0.049
+
+","The prediction explanation is based on the individual contributions of each feature to the model's output. Here's what each feature's contribution indicates:
+
+- **fr_SH: -0.067**  
+  This feature has a negative contribution, meaning that the presence or higher value of fr_SH reduces the predicted output. It decreases the likelihood or score of the predicted class/target.
+
+- **VSA_EState1: -0.066**  
+  Similarly, this feature also negatively impacts the prediction, pushing the prediction lower.
+
+- **Chi3n: 0.065**  
+  This feature positively contributes to the prediction, increasing the predicted value or probability.
+
+- **Chi4n: -0.058**  
+  This feature negatively contributes, lowering the prediction.
+
+- **FpDensityMorgan2: -0.049**  
+  This feature too contributes negatively, decreasing the predicted score.
+
+### Overall Interpretation:
+Most of the listed features (fr_SH, VSA_EState1, Chi4n, FpDensityMorgan2) **decrease** the predicted value, while Chi3n **increases** it slightly. The net effect appears to be a slightly **negative influence** on the prediction given these contributions. If the prediction is a probability or a score, these features collectively push it lower, with Chi3n partially offsetting that trend."
+ADME_RLM,8,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'fr_Ndealkylation2', 'Chi4n', 'EState_VSA2', 'NumAmideBonds']","[0.27580452305244, 0.0692681056313249, -0.06281972244521426, 0.046600397006372966, 0.04418234056800415]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.276
+- fr_Ndealkylation2: 0.069
+- Chi4n: -0.063
+- EState_VSA2: 0.047
+- NumAmideBonds: 0.044
+
+","The prediction is explained by the combined contributions of the listed features, each influencing the model's output to varying degrees:
+
+- **NumValenceElectrons (0.276)**: This is the largest positive contributor. A higher number of valence electrons is strongly pushing the prediction upward, indicating that molecules with more valence electrons are associated with higher predicted values in this model.
+
+- **fr_Ndealkylation2 (0.069)**: This feature has a moderate positive contribution, suggesting that the presence or frequency of this specific substructure or reaction type (N-dealkylation) increases the prediction moderately.
+
+- **Chi4n (-0.063)**: The negative contribution here indicates that higher values of this molecular connectivity index lead to a decrease in the predicted value. So, more branching or specific connectivity patterns reduce the prediction slightly.
+
+- **EState_VSA2 (0.047)**: This positively contributes to the prediction, implying that electronic state-related surface area features at this bin increase the predicted outcome.
+
+- **NumAmideBonds (0.044)**: Also a positive contributor, meaning molecules with more amide bonds are slightly pushing the prediction higher.
+
+**Summary:**  
+The prediction is primarily driven upward by the number of valence electrons, with additional modest positive boosts from specific structural features (N-dealkylation count, electronic state surface area, amide bonds). Meanwhile, certain connectivity aspects captured by Chi4n exert a small opposing effect, lowering the prediction slightly. Overall, the net effect of these features results in an increased predicted value."
+ADME_RLM,9,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'fr_piperdine', 'Chi4n', 'Chi0n', 'Chi3n']","[0.17644455503913414, 0.08082875848924088, -0.07587295245958817, 0.07019699150028427, 0.055361530266116774]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.176
+- fr_piperdine: 0.081
+- Chi4n: -0.076
+- Chi0n: 0.070
+- Chi3n: 0.055
+
+","The prediction is influenced by the following feature contributions as follows:
+
+- **NumValenceElectrons (0.176)**: This feature has the largest positive contribution, indicating that a higher number of valence electrons strongly increases the prediction value.
+- **fr_piperdine (0.081)**: The presence or frequency of the piperidine group positively contributes to the prediction, though less strongly than the number of valence electrons.
+- **Chi4n (-0.076)**: This feature has a negative contribution, meaning a higher Chi4n value decreases the prediction.
+- **Chi0n (0.070)**: This small positive contribution suggests that higher values of Chi0n slightly increase the prediction.
+- **Chi3n (0.055)**: Similarly, this feature has a positive but smaller effect on increasing the prediction.
+
+**Summary:** The prediction is primarily driven upward by the number of valence electrons and the presence of piperidine groups. Some molecular connectivity information captured by Chi descriptors influences the prediction in both positive (Chi0n, Chi3n) and negative (Chi4n) directions, with Chi4n slightly reducing the predicted value."
+ADME_RLM,10,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumSaturatedHeterocycles', 'MinPartialCharge', 'fr_bicyclic', 'NumAmideBonds']","[-0.5105891547715944, 0.09325253253370897, -0.09131504411138926, -0.06480561149809363, 0.06430639304519249]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.511
+- NumSaturatedHeterocycles: 0.093
+- MinPartialCharge: -0.091
+- fr_bicyclic: -0.065
+- NumAmideBonds: 0.064
+
+","Certainly! The prediction is influenced by the following features and their contributions:
+
+- **NumValenceElectrons: -0.511**  
+  This feature has the largest negative contribution, decreasing the predicted value significantly. It suggests that higher numbers of valence electrons in the molecule reduce the predicted output.
+
+- **NumSaturatedHeterocycles: 0.093**  
+  This has a positive contribution, slightly increasing the prediction. The presence of saturated heterocyclic rings tends to increase the predicted value.
+
+- **MinPartialCharge: -0.091**  
+  This feature slightly lowers the prediction. A lower minimum partial charge (or a more negative partial charge) decreases the predicted outcome.
+
+- **fr_bicyclic: -0.065**  
+  The presence of bicyclic structures has a small negative effect on the prediction, slightly reducing it.
+
+- **NumAmideBonds: 0.064**  
+  The number of amide bonds contributes positively but only a little, increasing the predicted value slightly.
+
+### Summary:
+The prediction is primarily driven down by the **NumValenceElectrons** and also slightly reduced by **MinPartialCharge** and **fr_bicyclic**. On the other hand, **NumSaturatedHeterocycles** and **NumAmideBonds** push the prediction up, but their effects are comparatively small. Overall, the negative contributions dominate, resulting in a decreased predicted output."
+ADME_RLM,11,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumAmideBonds', 'BCUT2D_CHGLO', 'PEOE_VSA4', 'AvgIpc']","[-0.19615067046530502, -0.16486719094678876, -0.11326997517971585, -0.0651652410450159, -0.0637254206751929]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.196
+- NumAmideBonds: -0.165
+- BCUT2D_CHGLO: -0.113
+- PEOE_VSA4: -0.065
+- AvgIpc: -0.064
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+Each feature's contribution value indicates how much it has pushed the prediction either up or down compared to the baseline (or average) prediction.
+
+- **NumValenceElectrons: -0.196**  
+  This is the largest negative contributor in the list. It indicates that the number of valence electrons in the molecule is pushing the prediction downward by 0.196 units. This suggests that a higher or certain range of valence electrons is associated with a lower predicted outcome in this model.
+
+- **NumAmideBonds: -0.165**  
+  The presence or count of amide bonds reduces the prediction by 0.165 units. This implies molecules with more amide bonds are linked to lower values of the predicted variable.
+
+- **BCUT2D_CHGLO: -0.113**  
+  This descriptor, likely related to charge distribution or molecular charge, is also negatively influencing the prediction by 0.113 units, indicating that certain charge characteristics reduce the predicted score.
+
+- **PEOE_VSA4: -0.065**  
+  This feature relates to partial charges on the molecular surface area. Its negative contribution means higher values of this descriptor also lower the prediction, though its effect is smaller compared to the others.
+
+- **AvgIpc: -0.064**  
+  Average information content or related descriptor slightly decreases the prediction by 0.064 units, implying subtle influence towards lowering the predicted value.
+
+**Summary:**  
+All these features contribute negatively, meaning the combination of molecular electronic properties (valence electrons), structural features (amide bonds), and charge-related descriptors (BCUT2D_CHGLO, PEOE_VSA4) collectively reduce the model’s output. In practical terms, the prediction made by the model is lower because these particular characteristics—likely indicative of molecular structure and electronic environment—are associated with whatever property or target is being predicted.
+
+If you provide the exact target being predicted or the baseline value, I can help interpret more precisely what this lowering effect means in context."
+ADME_RLM,12,gpt-4.1-mini,basic,5,"['fr_Ndealkylation2', 'Chi0n', 'NumAmideBonds', 'Chi2n', 'FpDensityMorgan2']","[-0.06984873765147735, -0.06646937306542984, -0.06406911971442479, 0.06272349829474323, 0.06178391609076671]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation2: -0.070
+- Chi0n: -0.066
+- NumAmideBonds: -0.064
+- Chi2n: 0.063
+- FpDensityMorgan2: 0.062
+
+","The prediction is influenced by five features, each contributing either positively or negatively to the model’s output. Here's the explanation of the contributions:
+
+- **fr_Ndealkylation2: -0.070**  
+  This feature has the largest negative impact on the prediction. The presence or frequency of ""N-dealkylation"" functional groups or related substructures reduces the predicted value by 0.070 units, suggesting that this chemical characteristic is associated with a lower prediction score.
+
+- **Chi0n: -0.066**  
+  Chi0n is a topological descriptor (likely the zero-order molecular connectivity index). A negative contribution means that molecules with higher Chi0n values tend to lower the predicted value.
+
+- **NumAmideBonds: -0.064**  
+  The number of amide bonds contributes negatively, decreasing the prediction by 0.064 units. This suggests that more amide bonds are associated with a lower predicted outcome in the model.
+
+- **Chi2n: 0.063**  
+  Chi2n, another topological descriptor (second-order molecular connectivity index), contributes positively. Higher values increase the prediction by 0.063, indicating that molecules with certain branching or connectivity patterns captured by this descriptor tend to raise the predicted value.
+
+- **FpDensityMorgan2: 0.062**  
+  FpDensityMorgan2 quantifies the density of Morgan fingerprint features at radius 2. A positive contribution of 0.062 implies that greater fingerprint density in this radius is associated with a higher predicted value.
+
+---
+
+### Summary:
+The overall prediction is the result of a combination of positive and negative feature effects. Structural features like N-dealkylation groups, higher Chi0n values, and more amide bonds push the prediction down, whereas certain connectivity patterns (Chi2n) and molecular fingerprint density push it up. The closest balancing weights suggest that the prediction depends on nuanced molecular structural characteristics influencing the model output in both directions."
+ADME_RLM,13,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumAmideBonds', 'NumHeterocycles', 'VSA_EState6', 'EState_VSA5']","[-0.20466941171539962, -0.151891973035241, -0.10297825213848691, -0.05323225385027358, -0.052908153743696326]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.205
+- NumAmideBonds: -0.152
+- NumHeterocycles: -0.103
+- VSA_EState6: -0.053
+- EState_VSA5: -0.053
+
+","The prediction explanation based on the feature contributions is as follows:
+
+- **NumValenceElectrons (-0.205)**: This feature has the largest negative contribution, meaning that a higher or specific value of the number of valence electrons is reducing the predicted outcome. The model sees this feature as strongly pushing the prediction downward.
+
+- **NumAmideBonds (-0.152)**: This also strongly decreases the prediction. The presence or count of amide bonds in the molecule is associated with a lower predicted value.
+
+- **NumHeterocycles (-0.103)**: This feature further reduces the prediction, indicating that the model associates heterocyclic structures with a negative impact on the target.
+
+- **VSA_EState6 (-0.053)** and **EState_VSA5 (-0.053)**: These two electronic state and surface area descriptors have smaller negative contributions, but still collectively pull the prediction down slightly.
+
+### Overall Summary:
+All the top contributing features have negative values, which means they are collectively pushing the model's output prediction lower than a baseline or average prediction. Key structural features like valence electrons, amide bonds, heterocycles, and specific electronic/steric descriptors all reduce the predicted value, indicating that molecules with these characteristics are predicted to have a lower target property (e.g., activity, property measurement) according to this model."
+ADME_RLM,14,gpt-4.1-mini,basic,5,"['FpDensityMorgan2', 'NumValenceElectrons', 'fr_piperdine', 'Chi2n', 'EState_VSA5']","[0.17997766518406483, 0.13732300240162237, 0.11093196032677552, 0.083831599151437, 0.0769726147100893]","
+Explain the prediction using the following feature contributions.
+
+- FpDensityMorgan2: 0.180
+- NumValenceElectrons: 0.137
+- fr_piperdine: 0.111
+- Chi2n: 0.084
+- EState_VSA5: 0.077
+
+","The prediction is explained by the contributions of different features to the model's output. Here's a breakdown of what each feature's contribution indicates:
+
+- **FpDensityMorgan2 (0.180)**: This feature has the largest positive contribution to the prediction. It represents the density of certain molecular fingerprints generated by the Morgan algorithm (radius 2). A higher value means the molecule has a denser or more complex substructural pattern, which strongly pushes the prediction in a particular direction.
+
+- **NumValenceElectrons (0.137)**: This indicates the number of valence electrons in the molecule. Its positive contribution suggests that molecules with more valence electrons are more aligned with the predicted outcome.
+
+- **fr_piperdine (0.111)**: This is a binary or count indicator of the presence of a piperidine ring in the molecule. The positive contribution means that the presence of this chemical substructure increases the likelihood of the predicted outcome.
+
+- **Chi2n (0.084)**: Chi2n is a topological connectivity descriptor describing molecular structure complexity. Its positive contribution implies that certain molecular connectivity patterns favor the prediction.
+
+- **EState_VSA5 (0.077)**: This is an electrotopological state descriptor combined with van der Waals surface area information. A positive contribution here means that certain electronic environments and surface area characteristics in the molecule support the predicted outcome.
+
+### Summary
+
+All these features contribute positively to the prediction, with FpDensityMorgan2 having the strongest influence, followed by the number of valence electrons, the presence of a piperidine ring, molecular connectivity, and specific electrotopological/size characteristics. Together, they shape the model’s confidence in the predicted class or value."
+ADME_RLM,15,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'Chi3n', 'EState_VSA8', 'NumAmideBonds']","[-0.13207397695680018, -0.10417119617501916, 0.09975619065212721, 0.05753988191654518, 0.042600319780611434]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.132
+- BCUT2D_CHGLO: -0.104
+- Chi3n: 0.100
+- EState_VSA8: 0.058
+- NumAmideBonds: 0.043
+
+","The prediction is based on the combined influence of several features, each contributing either positively or negatively to the final result. Here's how to interpret these contributions:
+
+- **NumValenceElectrons: -0.132**  
+  This feature has the largest negative impact on the prediction. A higher number of valence electrons reduces the predicted value, indicating that molecules with more valence electrons are less likely to have the predicted property or outcome.
+
+- **BCUT2D_CHGLO: -0.104**  
+  This descriptor also negatively affects the prediction, though slightly less than NumValenceElectrons. Increased BCUT2D_CHGLO values—related to charge distribution in the molecule—tend to decrease the predicted outcome.
+
+- **Chi3n: 0.100**  
+  This feature contributes positively, pushing the prediction higher. Chi3n is a molecular connectivity index reflecting shape or branching; a higher value here suggests more complex branching increases the predicted value.
+
+- **EState_VSA8: 0.058**  
+  This descriptor adds a moderate positive effect. It relates to the electronic state and accessible surface area in a certain property range, meaning higher values slightly increase the prediction.
+
+- **NumAmideBonds: 0.043**  
+  With the smallest positive contribution, the number of amide bonds slightly raises the prediction, indicating that molecules with more amide bonds are modestly more likely to show the predicted characteristic.
+
+**Summary:**  
+The overall prediction results from summing these contributions. The two main features, NumValenceElectrons and BCUT2D_CHGLO, push the prediction downward, while Chi3n, EState_VSA8, and NumAmideBonds push it upward. The negative effects are somewhat stronger than the positive effects here, so the final prediction might lean lower relative to the baseline or reference value, influenced largely by electron count and charge-related molecular properties."
+ADME_RLM,16,gpt-4.1-mini,basic,5,"['BCUT2D_CHGLO', 'SlogP_VSA2', 'NumValenceElectrons', 'Chi4n', 'NumAmideBonds']","[-0.10956290507372303, -0.08999432306544242, -0.08398358882191406, -0.06148368743980971, 0.05945924107687719]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: -0.110
+- SlogP_VSA2: -0.090
+- NumValenceElectrons: -0.084
+- Chi4n: -0.061
+- NumAmideBonds: 0.059
+
+","The feature contributions indicate how each feature influenced the overall prediction, either pushing it higher (positive contribution) or lower (negative contribution).
+
+Here's the interpretation of the contributions:
+
+- **BCUT2D_CHGLO: -0.110**  
+  This feature contributed negatively to the prediction, decreasing the predicted value by 0.110. This suggests that a higher or more pronounced value in BCUT2D_CHGLO leads the model to predict a lower outcome.
+
+- **SlogP_VSA2: -0.090**  
+  This also has a negative contribution, indicating that the aspect measured by SlogP_VSA2 reduces the predicted value.
+
+- **NumValenceElectrons: -0.084**  
+  The number of valence electrons feature similarly pulls the prediction down by 0.084.
+
+- **Chi4n: -0.061**  
+  Another negative contributor, but smaller in magnitude than the above features, slightly decreasing the prediction.
+
+- **NumAmideBonds: 0.059**  
+  This is the only positive contributor among the list, increasing the prediction by 0.059. The presence or count of amide bonds thus slightly raises the predicted value.
+
+**Summary**:  
+The combined effect of these features is mostly negative, suggesting that the model's prediction is being lowered primarily due to the contributions of BCUT2D_CHGLO, SlogP_VSA2, NumValenceElectrons, and Chi4n. Only the NumAmideBonds feature works in the opposite direction to increase the prediction, but its positive effect is smaller than the combined negative effects of the other features.
+
+If you provide the base value or overall prediction, I can show how these contributions sum up to the final prediction."
+ADME_RLM,17,gpt-4.1-mini,basic,5,"['FpDensityMorgan2', 'BCUT2D_CHGLO', 'Chi4n', 'MinPartialCharge', 'NumValenceElectrons']","[0.17991580252866904, 0.1320036322356157, 0.07273436508410992, 0.05792331638593081, 0.05135114057717924]","
+Explain the prediction using the following feature contributions.
+
+- FpDensityMorgan2: 0.180
+- BCUT2D_CHGLO: 0.132
+- Chi4n: 0.073
+- MinPartialCharge: 0.058
+- NumValenceElectrons: 0.051
+
+","The prediction is explained by the contributions of the following features, each adding positively to the final prediction score:
+
+- **FpDensityMorgan2 (0.180)**: This is the most influential feature here. It likely represents a molecular fingerprint density, capturing the presence and arrangement of specific substructures or fragments in the molecule. A higher value indicates certain structural motifs strongly related to the predicted property, contributing significantly to the outcome.
+
+- **BCUT2D_CHGLO (0.132)**: This feature measures 2D topological and charge-related properties of the molecule, reflecting global charge distribution and electronic characteristics. Its positive contribution suggests that molecules with certain charge patterns influence the prediction favorably.
+
+- **Chi4n (0.073)**: Chi-type molecular connectivity indices describe molecular shape, branching, and connectivity. The fourth-order index (Chi4n) captures complex structural motifs, indicating that particular branching patterns positively impact the prediction.
+
+- **MinPartialCharge (0.058)**: This is the minimum partial atomic charge found in the molecule, reflecting regions of high electron density or potential reactivity. Its contribution signifies the role of specific partial charges in influencing the predicted outcome.
+
+- **NumValenceElectrons (0.051)**: The total number of valence electrons in the molecule relates to its electronic configuration and reactivity. A higher number here adds positively, indicating the electronic richness of the molecule supports the prediction.
+
+**Summary:**  
+The prediction is primarily driven by the molecular structure and electronic properties captured by these features. Structural motifs (FpDensityMorgan2), charge distribution (BCUT2D_CHGLO and MinPartialCharge), molecular branching/connectivity (Chi4n), and overall electronic configuration (NumValenceElectrons) all contribute positively, indicating these aspects collectively favor the predicted property or class."
+ADME_RLM,18,gpt-4.1-mini,basic,5,"['BCUT2D_CHGLO', 'NumValenceElectrons', 'FpDensityMorgan2', 'PEOE_VSA11', 'Chi2n']","[0.15692113810543346, 0.14266579903749116, 0.07474777382473961, 0.0644710275100618, -0.047429647835417935]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: 0.157
+- NumValenceElectrons: 0.143
+- FpDensityMorgan2: 0.075
+- PEOE_VSA11: 0.064
+- Chi2n: -0.047
+
+","The prediction is influenced by the contributions of several features, each either increasing or decreasing the predicted value based on their numerical contribution:
+
+- **BCUT2D_CHGLO (0.157):** This feature has the largest positive contribution, increasing the prediction significantly. It likely reflects a property related to molecular charge distribution or electronegativity, where a higher value pushes the prediction upward.
+
+- **NumValenceElectrons (0.143):** Also a strong positive contributor, indicating that molecules with more valence electrons tend to increase the predicted value. This feature often relates to molecular reactivity or stability.
+
+- **FpDensityMorgan2 (0.075):** This moderately positive contribution suggests that a higher fingerprint density (representing certain structural fragments within a 2-bond radius) correlates with an increase in the prediction.
+
+- **PEOE_VSA11 (0.064):** Another positive contributor, this feature represents the sum of van der Waals surface areas for atoms with a specific partial charge range, which slightly raises the prediction.
+
+- **Chi2n (-0.047):** The only negative contributor here, this molecular connectivity index modestly decreases the prediction. It may relate to molecular branching or topology that reduces the predicted outcome.
+
+**Summary:** The overall prediction is increased primarily by features associated with charge distribution, valence electrons, and certain substructural densities, while molecular connectivity slightly lowers the predicted value. The net effect is a positive influence on the prediction."
+ADME_RLM,19,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'FpDensityMorgan2', 'SMR_VSA6', 'EState_VSA5']","[0.21296647193781132, 0.08631084713444326, 0.06751947148763489, -0.0669862526923211, -0.05938375452603139]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.213
+- BCUT2D_CHGLO: 0.086
+- FpDensityMorgan2: 0.068
+- SMR_VSA6: -0.067
+- EState_VSA5: -0.059
+
+","The prediction is influenced by the contributions of each feature as follows:
+
+- **NumValenceElectrons (0.213):** This feature has the largest positive contribution, meaning that a higher number of valence electrons strongly increases the predicted value (e.g., activity, property, or score).
+  
+- **BCUT2D_CHGLO (0.086):** This feature also contributes positively but to a lesser extent. It indicates that higher values of this charge-related descriptor slightly increase the prediction.
+
+- **FpDensityMorgan2 (0.068):** This fingerprint density descriptor provides a moderate positive effect on the prediction.
+
+- **SMR_VSA6 (-0.067):** This feature negatively affects the prediction. Higher values of this descriptor reduce the predicted value.
+
+- **EState_VSA5 (-0.059):** Similar to SMR_VSA6, this electrotopological state descriptor slightly decreases the prediction when its values increase.
+
+### Summary:
+The prediction is primarily driven upwards by the number of valence electrons and certain molecular charge and structural density descriptors, while some surface area and electro-topological features counterbalance this increase to a smaller degree."
+ADME_RLM,20,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'SlogP_VSA2', 'NumAmideBonds', 'Chi4n', 'FpDensityMorgan2']","[-0.19030531883555749, 0.11174988578885049, 0.1001147319099868, 0.09723575696718227, 0.08851550833050383]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.190
+- SlogP_VSA2: 0.112
+- NumAmideBonds: 0.100
+- Chi4n: 0.097
+- FpDensityMorgan2: 0.089
+
+","The prediction explanation based on the given feature contributions can be summarized as follows:
+
+- **NumValenceElectrons (-0.190):** This feature has the largest negative contribution, meaning a higher number of valence electrons decreases the predicted value. It is pulling the prediction down.
+
+- **SlogP_VSA2 (0.112):** This feature contributes positively, increasing the predicted value. It is reflecting some aspect of the molecule’s hydrophobic surface area related to lipophilicity.
+
+- **NumAmideBonds (0.100):** The number of amide bonds also adds a positive contribution to the prediction. More amide bonds push the prediction higher.
+
+- **Chi4n (0.097):** This topological feature increases the prediction moderately, indicating that some molecular connectivity aspects are associated with a higher predicted value.
+
+- **FpDensityMorgan2 (0.089):** This fingerprint density feature contributes positively, suggesting that molecular substructure density at a certain radius is linked to an increased predicted value.
+
+### Overall interpretation:
+The prediction is being pushed up primarily by structural and molecular topology features (SlogP_VSA2, NumAmideBonds, Chi4n, FpDensityMorgan2) but is pulled down most strongly by the number of valence electrons. The net effect of these features determines the final prediction, with the valence electrons having the strongest negative influence, partially offset by the other positive contributions."
+ADME_RLM,21,gpt-4.1-mini,basic,5,"['SlogP_VSA7', 'NumAromaticCarbocycles', 'NumValenceElectrons', 'BCUT2D_CHGLO', 'SlogP_VSA12']","[-0.5756156758945216, -0.18627806990528611, 0.10384410656169214, 0.06930327891455818, -0.06454990497713413]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA7: -0.576
+- NumAromaticCarbocycles: -0.186
+- NumValenceElectrons: 0.104
+- BCUT2D_CHGLO: 0.069
+- SlogP_VSA12: -0.065
+
+","The feature contributions you provided reflect how each individual feature influenced the prediction, typically in a model explanation context such as SHAP values or feature attribution scores. Here's an interpretation of these contributions:
+
+- **SlogP_VSA7: -0.576**  
+  This feature has the largest negative contribution, indicating that the property described by SlogP_VSA7 strongly decreases the predicted value. In chemistry, SlogP_VSA7 represents a sum of van der Waals surface areas segmented by their SlogP (partition coefficient) values in a specific range. The negative contribution suggests that having a higher value of this feature reduces the predicted target—possibly indicating that molecules with certain hydrophobic surface area characteristics are less likely to have a high predicted response.
+
+- **NumAromaticCarbocycles: -0.186**  
+  This also negatively impacts the prediction, though less strongly. A higher number of aromatic carbocycles in the molecule decreases the prediction. This could imply that compounds with more aromatic rings tend to lower the predicted outcome.
+
+- **NumValenceElectrons: 0.104**  
+  This contributes positively to the prediction. More valence electrons correspond to an increase in the predicted value, suggesting that molecules with more valence electrons may enhance the predicted property—possibly linked to reactivity, charge distribution, or other electronic factors.
+
+- **BCUT2D_CHGLO: 0.069**  
+  A small positive contribution. BCUT descriptors relate to eigenvalues of molecular graphs weighted by atomic properties; CHGLO usually refers to charge-related weighting. This indicates that a feature related to charge distribution slightly increases the prediction.
+
+- **SlogP_VSA12: -0.065**  
+  Another SlogP_VSA descriptor with a small negative influence, showing that this molecular surface area segment slightly decreases the predicted value.
+
+---
+
+**Summary:**
+
+The prediction is mainly lowered by features related to specific hydrophobic surface areas (SlogP_VSA7) and aromatic rings, whereas molecular electronic properties like the number of valence electrons and charge distribution (NumValenceElectrons and BCUT2D_CHGLO) increase the prediction. The model weighs these factors to produce the final prediction, with the dominant effect coming from SlogP_VSA7 pulling it down."
+ADME_RLM,22,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'Chi4n', 'Chi2n', 'Chi0n', 'MinPartialCharge']","[0.3030832118854847, 0.07483804650498421, 0.07270920698407668, 0.07144677247735709, 0.06074436629715105]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.303
+- Chi4n: 0.075
+- Chi2n: 0.073
+- Chi0n: 0.071
+- MinPartialCharge: 0.061
+
+","The prediction is influenced by the contributions of different features as follows:
+
+- **NumValenceElectrons (0.303):** This feature has the largest positive contribution to the prediction. It indicates that the number of valence electrons (electrons in the outermost shell) strongly supports the predicted outcome. A higher value in this feature increases the prediction score substantially.
+
+- **Chi4n (0.075), Chi2n (0.073), Chi0n (0.071):** These are likely chi connectivity indices of different orders (0, 2, and 4). They represent molecular topology or the branching characteristics of the chemical structure. Each has a moderate positive contribution, suggesting that certain structural features associated with these indices contribute positively to the prediction.
+
+- **MinPartialCharge (0.061):** This feature reflects the minimum partial charge in the molecule and contributes positively, though less strongly than NumValenceElectrons. It suggests that the presence of atoms with certain partial charge values supports the prediction.
+
+**Summary:** The prediction is primarily driven by the number of valence electrons, with moderate additional support from molecular topology (chi indices) and electronic environment (partial charge). These combined positive contributions indicate that the molecule's electronic structure and topology align well with the predicted outcome."
+ADME_RLM,23,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumAmideBonds', 'Chi0n', 'EState_VSA5', 'EState_VSA10']","[0.15532502521933816, -0.12250982245803142, -0.09336042265963575, -0.09189584459730978, -0.08409658292710996]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.155
+- NumAmideBonds: -0.123
+- Chi0n: -0.093
+- EState_VSA5: -0.092
+- EState_VSA10: -0.084
+
+","The prediction is influenced by five features with the contributions indicating how much each feature pushes the prediction up or down relative to the baseline.
+
+- **NumValenceElectrons (0.155):** This feature has the largest positive contribution, meaning that a higher number of valence electrons is pushing the prediction upwards. It is a strong positive indicator for the predicted outcome.
+
+- **NumAmideBonds (-0.123):** This feature has a notable negative contribution, meaning that the presence (or higher count) of amide bonds is reducing the predicted value. It acts as a negative predictor in this case.
+
+- **Chi0n (-0.093):** This molecular connectivity index contributes negatively as well, meaning that higher values of Chi0n lower the prediction.
+
+- **EState_VSA5 (-0.092):** This electronic state-based descriptor is also negatively impacting the prediction, slightly decreasing it.
+
+- **EState_VSA10 (-0.084):** Similarly, this descriptor reduces the predicted value somewhat.
+
+### Summary:
+- The prediction is primarily driven upward by the **number of valence electrons**.
+- However, several molecular structure descriptors like **amide bonds, molecular connectivity, and electronic state VSA features** are working to decrease the prediction.
+- The net prediction will depend on the sum of these contributions, with the positive effect of valence electrons partially offset by the negative effects of the other features."
+ADME_RLM,24,gpt-4.1-mini,basic,5,"['Chi4n', 'Chi0n', 'Chi3v', 'SlogP_VSA2', 'NumValenceElectrons']","[0.07936562919103538, 0.07920569597959953, -0.07020698053941886, -0.06607051253226788, 0.06391184904468818]","
+Explain the prediction using the following feature contributions.
+
+- Chi4n: 0.079
+- Chi0n: 0.079
+- Chi3v: -0.070
+- SlogP_VSA2: -0.066
+- NumValenceElectrons: 0.064
+
+","The prediction is influenced by the following feature contributions, each representing how much they push the prediction up or down:
+
+- **Chi4n (0.079):** This feature contributes positively to the prediction. A higher Chi4n value increases the predicted outcome by about 0.079 units.
+- **Chi0n (0.079):** This also has a positive influence, adding 0.079 units to the predicted value.
+- **Chi3v (-0.070):** This feature negatively affects the prediction, reducing the predicted value by approximately 0.070 units.
+- **SlogP_VSA2 (-0.066):** Another feature with a negative impact, lowering the prediction by 0.066 units.
+- **NumValenceElectrons (0.064):** This positively influences the prediction, increasing it by 0.064 units.
+
+### Overall Explanation:
+The features Chi4n, Chi0n, and NumValenceElectrons push the prediction upward, suggesting that structural characteristics captured by these descriptors and the number of valence electrons favor a higher predicted value. Meanwhile, contributions from Chi3v and SlogP_VSA2 reduce the prediction, indicating that aspects related to these features (possibly certain structural or electronic properties) lower the predicted outcome.
+
+The net effect is obtained by summing these contributions, resulting in a partially increased prediction, partially decreased, depending on their magnitude. This balance helps explain why the model predicts the final value."
+ADME_RLM,25,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'FpDensityMorgan2', 'MinPartialCharge', 'NumAmideBonds', 'BalabanJ']","[0.2580365515109759, 0.103813227765097, 0.10310157245814573, 0.04453372023767626, 0.04403788960825213]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.258
+- FpDensityMorgan2: 0.104
+- MinPartialCharge: 0.103
+- NumAmideBonds: 0.045
+- BalabanJ: 0.044
+
+","The prediction is influenced by several features, each contributing positively to the final output. Here's an explanation of each feature's contribution:
+
+- **NumValenceElectrons (0.258):** This is the largest contributor among the features listed. It indicates that the number of valence electrons has a strong positive effect on the prediction. A higher number of valence electrons likely pushes the prediction value higher.
+
+- **FpDensityMorgan2 (0.104):** This feature captures molecular fingerprint density at a specific radius (Morgan radius 2). Its positive contribution means that higher fingerprint density tends to increase the predicted value.
+
+- **MinPartialCharge (0.103):** This feature represents the minimum partial charge in the molecule. A positive contribution suggests that molecules with a higher minimum partial charge are more strongly associated with an increase in the prediction.
+
+- **NumAmideBonds (0.045):** This indicates the number of amide bonds in the molecule. Its positive contribution means that more amide bonds slightly raise the predicted output.
+
+- **BalabanJ (0.044):** Balaban’s J index is a topological descriptor reflecting molecule connectivity and complexity. A small positive contribution implies that greater molecular complexity (as captured by this index) slightly increases the prediction.
+
+**Overall interpretation:**  
+All these features contribute positively, with the number of valence electrons having the most significant impact. The model's prediction is higher when the molecule has more valence electrons, a higher fingerprint density, larger minimum partial charge, more amide bonds, and slightly higher molecular connectivity/complexity."
+ADME_RLM,26,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'SMR_VSA6', 'FpDensityMorgan2', 'Chi4n', 'EState_VSA10']","[0.10930340654722401, -0.08383707707260471, -0.0784708992021016, -0.07137067506791649, -0.06528237689587708]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.109
+- SMR_VSA6: -0.084
+- FpDensityMorgan2: -0.078
+- Chi4n: -0.071
+- EState_VSA10: -0.065
+
+","The prediction is influenced by the following feature contributions:
+
+- **NumValenceElectrons (0.109)**: This feature has a positive contribution of +0.109, meaning that a higher number of valence electrons increases the predicted value. Valence electrons often play a key role in chemical reactivity and properties, so more valence electrons likely push the prediction higher.
+
+- **SMR_VSA6 (-0.084)**: This feature contributes negatively (-0.084), decreasing the prediction. SMR_VSA6 relates to the sum of Van der Waals surface area where the atomic molar refractivity lies within a certain range. A higher value here is associated with lowering the prediction.
+
+- **FpDensityMorgan2 (-0.078)**: This density measure of Morgan fingerprints with radius 2 contributes negatively as well (-0.078), indicating that higher molecular fingerprint density in this context reduces the predicted value.
+
+- **Chi4n (-0.071)**: The Chi4n descriptor captures the molecular connectivity at a certain path order (order 4 normalized connectivity). Its negative contribution (-0.071) suggests that higher values of this connectivity index decrease the prediction.
+
+- **EState_VSA10 (-0.065)**: Another Van der Waals surface area descriptor weighted by electrotopological state values, this feature's negative contribution (-0.065) also lowers the predicted value.
+
+**Summary**: The prediction is increased by the number of valence electrons but is decreased by multiple surface area and molecular connectivity features. This suggests that electronic factors (valence electrons) push the prediction up, but structural and steric factors (surface areas and connectivity) pull the prediction down."
+ADME_RLM,27,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'FpDensityMorgan2', 'BCUT2D_CHGLO', 'Chi4n', 'BCUT2D_MRLOW']","[0.1855162663163556, 0.14042005120369325, 0.11555563778860987, 0.05391624535689159, 0.0433846435249732]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.186
+- FpDensityMorgan2: 0.140
+- BCUT2D_CHGLO: 0.116
+- Chi4n: 0.054
+- BCUT2D_MRLOW: 0.043
+
+","The prediction is based on the combined contributions of several features, each influencing the outcome to a different extent. Here's a breakdown of what the contributions imply:
+
+1. **NumValenceElectrons (0.186)**:  
+   This feature has the highest positive contribution. It indicates that a higher number of valence electrons strongly increases the likelihood of the predicted outcome. Valence electrons often determine chemical reactivity and bonding characteristics, so this feature is quite influential.
+
+2. **FpDensityMorgan2 (0.140)**:  
+   This feature also has a significant positive contribution. It likely represents a molecular fingerprint density calculated using the Morgan algorithm (radius 2). A higher FP density indicates structural complexity or presence of certain functional groups, which positively influences the prediction.
+
+3. **BCUT2D_CHGLO (0.116)**:  
+   This descriptor relates to the atomic charge values in the molecule (a BCUT descriptor focusing on charge-based properties). Its positive value suggests that molecules with certain charge distributions or polarizability enhance the predicted property or classification.
+
+4. **Chi4n (0.054)**:  
+   This is a molecular connectivity fingerprint (Chi index of order 4, normalized). It measures molecular shape and branching. Although its contribution is smaller, it still positively affects the prediction by capturing subtle topological features.
+
+5. **BCUT2D_MRLOW (0.043)**:  
+   Another BCUT descriptor, likely related to low eigenvalues of the molecular refractivity matrix. It positively affects the prediction but to a lesser extent, indicating minor influence from aspects related to molecular size or polarizability.
+
+---
+
+### Summary
+
+The prediction outcome is primarily driven by electronic structure (valence electrons), molecular complexity (fingerprint density), and charge distribution (BCUT charge descriptor). Additional molecular topology and refractivity features provide supplementary positive contributions. Collectively, these features suggest a molecule with rich electron availability, defined structural features, and polarizable regions is more likely to achieve the predicted result."
+ADME_RLM,28,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumAmideBonds', 'Chi4n', 'Chi0n', 'BCUT2D_CHGLO']","[-0.5347691097847223, -0.171962408406989, 0.061688824375412704, -0.06075042883796432, -0.05756792329342202]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.535
+- NumAmideBonds: -0.172
+- Chi4n: 0.062
+- Chi0n: -0.061
+- BCUT2D_CHGLO: -0.058
+
+","The prediction is influenced by the following feature contributions, where negative values decrease the predicted output and positive values increase it:
+
+- **NumValenceElectrons (-0.535):** This feature has the largest negative contribution, indicating that a higher number of valence electrons strongly decreases the prediction.
+- **NumAmideBonds (-0.172):** The presence of more amide bonds also reduces the prediction, although to a lesser extent than valence electrons.
+- **Chi4n (+0.062):** This topological descriptor slightly increases the predicted value.
+- **Chi0n (-0.061):** Another topological descriptor that slightly decreases the prediction.
+- **BCUT2D_CHGLO (-0.058):** This BCUT 2D charge-related descriptor modestly lowers the prediction.
+
+### Summary:
+The overall prediction is driven down mainly by the number of valence electrons and amide bonds, with minor positive influence from the Chi4n descriptor and small negative adjustments from Chi0n and BCUT2D_CHGLO. The net effect is a decreased predicted value predominantly due to chemical structure characteristics related to electrons and bonding."
+ADME_RLM,29,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'FpDensityMorgan2', 'BCUT2D_CHGLO', 'PEOE_VSA11', 'MinPartialCharge']","[0.23934564157068983, 0.11967193443396738, 0.11746921048218695, 0.060661832683929974, -0.053256105007826876]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.239
+- FpDensityMorgan2: 0.120
+- BCUT2D_CHGLO: 0.117
+- PEOE_VSA11: 0.061
+- MinPartialCharge: -0.053
+
+","The prediction is influenced by the following feature contributions:
+
+- **NumValenceElectrons (0.239):** This feature has the largest positive contribution to the prediction. A higher number of valence electrons significantly increases the predicted value.
+
+- **FpDensityMorgan2 (0.120):** This fingerprint-based density measure also positively contributes, indicating molecular substructures related to this feature increase the prediction.
+
+- **BCUT2D_CHGLO (0.117):** Another positive contributor, this descriptor related to charge distribution further raises the prediction.
+
+- **PEOE_VSA11 (0.061):** This partial charge-related surface area descriptor offers a smaller but positive effect on the prediction.
+
+- **MinPartialCharge (-0.053):** This is the only feature with a negative contribution, slightly decreasing the prediction. This suggests that a more negative minimum partial charge reduces the predicted value.
+
+**Summary:** The prediction is mainly driven upward by the number of valence electrons, molecular fingerprint density, and charge-related descriptors, while a more negative minimum partial charge provides a small downward influence."
+ADME_RLM,30,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'fr_prisulfonamd', 'MinPartialCharge', 'FpDensityMorgan2']","[0.15292518672678213, -0.08166650343128787, 0.08121212747360823, 0.07608825439561691, 0.07606220113826438]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.153
+- BCUT2D_CHGLO: -0.082
+- fr_prisulfonamd: 0.081
+- MinPartialCharge: 0.076
+- FpDensityMorgan2: 0.076
+
+","The prediction is influenced by the following feature contributions, which indicate how each feature impacts the final prediction value:
+
+- **NumValenceElectrons (0.153):** This feature has the largest positive contribution. A higher number of valence electrons likely increases the predicted value, suggesting that molecules with more valence electrons tend to have a stronger or higher predicted property in this context.
+
+- **BCUT2D_CHGLO (-0.082):** This feature contributes negatively, reducing the prediction score. It likely represents a charge-related molecular descriptor where higher values lower the predicted outcome.
+
+- **fr_prisulfonamd (0.081):** This is a fragment-based feature indicating the presence of a sulfonamide group, which positively contributes to the prediction, meaning that the presence of this group is associated with an increase in the predicted property.
+
+- **MinPartialCharge (0.076):** This positive contribution suggests that more negative partial charges or certain distributions of partial charge increase the prediction.
+
+- **FpDensityMorgan2 (0.076):** This is a fingerprint density descriptor based on Morgan fingerprints, representing molecule complexity or richness in structural features. Its positive contribution suggests that higher fingerprint density supports a higher prediction.
+
+### Summary:
+The prediction is driven mainly by the number of valence electrons, presence of sulfonamide groups, partial charge characteristics, and molecular fingerprint density, all enhancing the predicted output. The BCUT2D_CHGLO descriptor decreases the prediction, indicating that certain charge features negatively influence the prediction score. Overall, these contributions provide insight into what molecular properties most strongly affect the model's decision."
+ADME_RLM,31,gpt-4.1-mini,basic,5,"['BCUT2D_CHGLO', 'Chi0n', 'EState_VSA5', 'NumValenceElectrons', 'NumAmideBonds']","[-0.06638332425507312, 0.06338324275182354, -0.06287902308234135, -0.05316469331705029, -0.05260387734269731]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: -0.066
+- Chi0n: 0.063
+- EState_VSA5: -0.063
+- NumValenceElectrons: -0.053
+- NumAmideBonds: -0.053
+
+","The prediction is influenced by several features with both positive and negative contributions. Here’s the explanation of each feature's contribution:
+
+- **BCUT2D_CHGLO (-0.066):** This feature has a negative contribution to the prediction, meaning that higher values of BCUT2D_CHGLO tend to decrease the predicted outcome. BCUT2D_CHGLO is a charge-related descriptor reflecting the molecular charge distribution.
+
+- **Chi0n (+0.063):** This feature contributes positively, so higher Chi0n values increase the predicted value. Chi0n is a molecular connectivity index indicating the presence and arrangement of atoms in the molecule.
+
+- **EState_VSA5 (-0.063):** This feature negatively impacts the prediction, with higher values reducing the predicted outcome. EState_VSA5 relates to electronic states combined with van der Waals surface area contributions in specific atom types.
+
+- **NumValenceElectrons (-0.053):** A negative contribution here means that molecules with more valence electrons tend to lower the prediction. Valence electrons affect molecular reactivity and properties.
+
+- **NumAmideBonds (-0.053):** This also negatively affects the prediction, suggesting that more amide bonds in the molecule reduce the predicted value.
+
+**Summary:**
+
+The overall prediction tends to be lowered by features related to molecular charge distribution (BCUT2D_CHGLO), electron-related properties (EState_VSA5, NumValenceElectrons), and specific bond types (NumAmideBonds). In contrast, molecular connectivity (Chi0n) slightly increases the prediction. The final predicted value results from the balance of these opposing effects."
+ADME_RLM,32,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'NumRadicalElectrons', 'Chi2n', 'NumSaturatedCarbocycles', 'fr_prisulfonamd']","[0.21794668194710717, 0.1467178814027434, 0.14522617234994914, -0.09199659543717074, 0.05804251589851992]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.218
+- NumRadicalElectrons: 0.147
+- Chi2n: 0.145
+- NumSaturatedCarbocycles: -0.092
+- fr_prisulfonamd: 0.058
+
+","The prediction is influenced by several features with varying contributions (positive or negative) to the model's output. Here's the explanation based on the given feature contributions:
+
+1. **NumValenceElectrons (0.218)**  
+   This feature has the largest positive contribution. It indicates that a higher number of valence electrons strongly increases the predicted value. Valence electrons often correlate with the reactivity or electronic properties of the molecule, so this feature is an important driver in the prediction.
+
+2. **NumRadicalElectrons (0.147)**  
+   This feature also positively impacts the prediction, though less strongly than NumValenceElectrons. Radical electrons can indicate unpaired electrons, usually associated with higher reactivity. Their presence increases the predicted value.
+
+3. **Chi2n (0.145)**  
+   This is a molecular connectivity index or a topological descriptor. Its positive contribution suggests that certain structural features or branching patterns represented by this index increase the prediction.
+
+4. **NumSaturatedCarbocycles (-0.092)**  
+   This feature contributes negatively, decreasing the predicted value. Saturated carbocycles (non-aromatic saturated rings made of carbon) reduce the prediction, possibly because they imply a less reactive or different structural profile that detracts from the predicted effect.
+
+5. **fr_prisulfonamd (0.058)**  
+   This is likely a fragment-based feature denoting the presence of a specific functional group (presumably a sulfonamide derivative). Its positive contribution means that the presence of this group slightly increases the prediction.
+
+### Summary:
+- The prediction is mostly driven upward by higher valence electrons, radical electrons, and structural features measured by the Chi2n index.  
+- Presence of saturated carbocycles lowers the prediction, likely representing less reactive or different molecular characteristics.  
+- Having the pr sulfonamide functional group slightly boosts the predicted value.
+
+These contributions explain how each feature pushes the prediction higher or lower, and their relative magnitudes show which factors are most influential."
+ADME_RLM,33,gpt-4.1-mini,basic,5,"['BCUT2D_CHGLO', 'NumHeterocycles', 'NumValenceElectrons', 'EState_VSA8', 'Chi2n']","[0.09749598931048059, -0.09698869113668238, 0.07408448868589257, -0.05202977035270608, -0.04281026205670361]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: 0.097
+- NumHeterocycles: -0.097
+- NumValenceElectrons: 0.074
+- EState_VSA8: -0.052
+- Chi2n: -0.043
+
+","The prediction is influenced by the combined effects of these chemical features, each contributing either positively or negatively to the final output. Here's the explanation based on the feature contributions provided:
+
+- **BCUT2D_CHGLO (0.097):** This feature has a positive contribution. It suggests that a higher value of BCUT2D_CHGLO increases the predicted value. BCUT2D_CHGLO generally relates to the charge distribution in the molecule; higher values may indicate more favorable electronic properties for the prediction.
+
+- **NumHeterocycles (-0.097):** This feature contributes negatively, meaning that an increased number of heterocyclic rings in the molecule reduces the predicted value. Heterocycles could introduce structural complexity or electronic effects that negatively influence the predicted property.
+
+- **NumValenceElectrons (0.074):** This positive contribution indicates that molecules with more valence electrons tend to have higher predicted values. This might reflect greater chemical reactivity or stability associated with valence electron count.
+
+- **EState_VSA8 (-0.052):** The negative value shows that larger or specific surface area related to this EState descriptor decreases the prediction. EState_VSA8 relates to atom electron states combined with the van der Waals surface area, so this suggests that certain spatial electron density features negatively impact the prediction.
+
+- **Chi2n (-0.043):** This topological descriptor has a slight negative contribution, indicating that molecular connectivity captured by the Chi2n descriptor negatively affects the prediction.
+
+### Summary:
+The prediction is pushed higher mainly by **BCUT2D_CHGLO** and **NumValenceElectrons**, indicating the importance of charge distribution and electron count. Conversely, the **NumHeterocycles**, **EState_VSA8**, and **Chi2n** decrease the predicted outcome, reflecting the influence of molecular structure complexity and specific electronic/spatial properties.
+
+Together, these feature contributions sum to shape the final prediction, balancing electronic properties and structural characteristics."
+ADME_RLM,34,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'Chi0n', 'Chi4n', 'SlogP_VSA3']","[0.1607272522645873, -0.10396985486433276, -0.07273826135758821, -0.07117290522903304, -0.06659774684493193]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.161
+- BCUT2D_CHGLO: -0.104
+- Chi0n: -0.073
+- Chi4n: -0.071
+- SlogP_VSA3: -0.067
+
+","The prediction is explained by the contributions of different features as follows:
+
+- **NumValenceElectrons (0.161):** This feature has a positive contribution to the prediction (+0.161). It means that a higher number of valence electrons is increasing the predicted value or likelihood of the target outcome.
+
+- **BCUT2D_CHGLO (-0.104):** This feature contributes negatively (-0.104), so higher values of BCUT2D_CHGLO decrease the prediction.
+
+- **Chi0n (-0.073):** This feature also decreases the prediction slightly with its negative contribution (-0.073).
+
+- **Chi4n (-0.071):** Similarly, Chi4n negatively impacts the predicted value (-0.071).
+
+- **SlogP_VSA3 (-0.067):** This feature contributes a small negative effect (-0.067), reducing the predicted value.
+
+### Summary:
+The main driver pushing the prediction higher is the number of valence electrons, while the other features related to molecular structure and properties (BCUT2D_CHGLO, Chi indices, and SlogP_VSA3) collectively reduce the prediction. Overall, the balance of contributions determines the final model output, with the positive effect of NumValenceElectrons partially offset by the negative impacts of the other features."
+ADME_RLM,35,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'Chi1n', 'FpDensityMorgan2', 'NumHDonors', 'Chi4n']","[0.18714552573714777, -0.14197703941676512, -0.08401238952869519, -0.08193273245869917, -0.07280475050430286]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.187
+- Chi1n: -0.142
+- FpDensityMorgan2: -0.084
+- NumHDonors: -0.082
+- Chi4n: -0.073
+
+","The prediction can be understood by looking at the contribution of each feature to the final output:
+
+- **NumValenceElectrons (0.187):** This feature has the largest positive contribution. It means that a higher number of valence electrons increases the predicted value or likelihood associated with the target.
+- **Chi1n (-0.142):** This feature has a negative contribution, decreasing the predicted value. A higher Chi1n value reduces the prediction.
+- **FpDensityMorgan2 (-0.084):** Also a negative contributor, indicating that higher fingerprint density at Morgan radius 2 lowers the predicted outcome.
+- **NumHDonors (-0.082):** The number of hydrogen donors negatively influences the prediction, reducing the output as it increases.
+- **Chi4n (-0.073):** Another negative feature, higher Chi4n reduces the prediction but to a smaller extent compared to the others.
+
+### Summary:
+The prediction is driven upward mainly by NumValenceElectrons, while the other features collectively pull the prediction downward. The net effect depends on the balance between this positive contribution and the combined negative contributions from Chi1n, FpDensityMorgan2, NumHDonors, and Chi4n."
+ADME_RLM,36,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'FpDensityMorgan2', 'BCUT2D_CHGLO', 'Chi4n', 'fr_Ndealkylation2']","[0.1863541228462223, 0.1008639638638162, 0.0772088306515475, 0.07444308278906854, 0.051608022667220727]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.186
+- FpDensityMorgan2: 0.101
+- BCUT2D_CHGLO: 0.077
+- Chi4n: 0.074
+- fr_Ndealkylation2: 0.052
+
+","The prediction explanation using the given feature contributions can be understood as follows:
+
+- **NumValenceElectrons: 0.186**  
+  This feature has the highest contribution toward the prediction. It indicates that the number of valence electrons significantly influences the model's output. A higher or specific count of valence electrons in the molecule strongly pushes the prediction in its current direction.
+
+- **FpDensityMorgan2: 0.101**  
+  This feature represents the density of certain molecular fingerprints using the Morgan (circular) fingerprints algorithm with radius 2. It contributes moderately, suggesting that certain local structural patterns or substructures in the molecule moderately influence the prediction.
+
+- **BCUT2D_CHGLO: 0.077**  
+  This topological descriptor relates to the overall charge distribution or electronegativity properties of the molecule. Its positive contribution indicates that the charge-related structure of the molecule affects the predicted outcome to a notable degree.
+
+- **Chi4n: 0.074**  
+  Chi4n is a molecular connectivity index describing the complexity of the molecule at a particular size scale (four bonds) focusing on certain atom types. This feature's contribution suggests molecular connectivity patterns slightly impact the prediction.
+
+- **fr_Ndealkylation2: 0.052**  
+  This is a fragment-based feature that counts occurrences of a specific substructure related to N-dealkylation (a metabolic reaction). Its contribution, though smaller, points to a minor influence of this metabolic motif on the prediction.
+
+---
+
+### Overall interpretation:
+The prediction is primarily driven by electronic properties (valence electrons), followed by structural density and charge distribution features, with some molecular connectivity and metabolic fragment features also playing a part. Together, these features indicate that the model's decision depends largely on the molecule’s electronic structure and certain local substructures relevant to its behavior or activity."
+ADME_RLM,37,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'Chi1n', 'PEOE_VSA12', 'Chi2n', 'fr_Ndealkylation2']","[0.12990562777136677, -0.102589777297545, -0.08284361504265153, 0.0804161347558885, 0.061702438329912186]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.130
+- Chi1n: -0.103
+- PEOE_VSA12: -0.083
+- Chi2n: 0.080
+- fr_Ndealkylation2: 0.062
+
+","The prediction is influenced by several features with varying contributions, both positive and negative:
+
+- **NumValenceElectrons (0.130):** This feature has the largest positive contribution, indicating that a higher number of valence electrons increases the predicted value. It suggests that compounds or structures with more valence electrons are more likely to have the predicted property or outcome.
+
+- **Chi1n (-0.103):** This feature has a significant negative contribution, meaning that higher values of Chi1n decrease the prediction. Chi1n typically relates to molecular connectivity or structural complexity at a certain order, so greater connectivity or specific structural attributes here reduce the predicted value.
+
+- **PEOE_VSA12 (-0.083):** This feature also negatively impacts the prediction. PEOE_VSA descriptors relate to partial charge and surface area; a higher PEOE_VSA12 value decreases the prediction, suggesting that the presence of certain charged surface areas lowers the predicted outcome.
+
+- **Chi2n (0.080):** This is a positive contributor, though smaller than NumValenceElectrons. Chi2n is another connectivity descriptor involving second-order neighborhood structures; higher values slightly raise the prediction.
+
+- **fr_Ndealkylation2 (0.062):** This functional group count feature positively contributes to the prediction. The presence or higher frequency of the Ndealkylation2 group increases the predicted value, suggesting that molecules with this group are more likely to show the predicted behavior.
+
+**Summary:**  
+The prediction is primarily increased by a higher number of valence electrons, specific molecular connectivity patterns (Chi2n), and the presence of the Ndealkylation2 functional group. Conversely, certain molecular connectivity (Chi1n) and molecular charge surface properties (PEOE_VSA12) reduce the predicted value. Overall, the structural and electronic characteristics summarized by these features collectively guide the predicted outcome."
+ADME_RLM,38,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'MinPartialCharge', 'fr_Ndealkylation2', 'BCUT2D_CHGHI', 'SMR_VSA10']","[0.2712467081622091, 0.12317836980936946, 0.06938962663251802, 0.04598035486289616, 0.04119116489227041]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.271
+- MinPartialCharge: 0.123
+- fr_Ndealkylation2: 0.069
+- BCUT2D_CHGHI: 0.046
+- SMR_VSA10: 0.041
+
+","Certainly! The prediction you're examining is influenced by several features, each contributing a certain amount to the final outcome. Here's an explanation of each feature's contribution:
+
+1. **NumValenceElectrons (0.271)**  
+   - This feature represents the number of valence electrons in the molecule. A positive contribution of 0.271 suggests that a higher number of valence electrons is a strong factor pushing the prediction in a particular direction (likely increasing the predicted value or probability).
+
+2. **MinPartialCharge (0.123)**  
+   - This indicates the minimum partial charge on any atom within the molecule. A positive contribution here means that the presence of atoms with relatively low partial charge (or more negative partial charge, depending on how it's defined) is also driving the prediction upwards.
+
+3. **fr_Ndealkylation2 (0.069)**  
+   - Typically, ""fr_"" prefix refers to the presence (frequency) of certain functional groups or reaction sites — in this case, likely related to the ""N-dealkylation"" metabolic reaction site of type 2. A positive contribution means the presence of this feature is enhancing the predicted outcome.
+
+4. **BCUT2D_CHGHI (0.046)**  
+   - This is a BCUT descriptor related to charges, specifically a high-charge BCUT eigenvalue calculated in 2D. It's a molecular descriptor related to electronic distribution and molecular topology. Its positive contribution means molecular charge distribution associated with this descriptor supports the prediction.
+
+5. **SMR_VSA10 (0.041)**  
+   - SMR_VSA descriptors are surface-area based descriptors weighted by atomic properties like molar refractivity. SMR_VSA10 specifically relates to surface area contributions from atoms in a certain range of molar refractivity. The positive value indicates this property slightly increases the predicted outcome.
+
+### Summary
+All these features contribute positively to the prediction, meaning each one is pushing the prediction score higher. The strongest contribution comes from the number of valence electrons, indicating that the molecule's electronic structure heavily influences the prediction. Partial charges and the presence of specific metabolic sites (N-dealkylation) also play meaningful roles, followed by molecular charge distribution and surface area-related properties.
+
+If you share the context of the prediction (e.g., toxicity, activity, solubility), I can provide more specific interpretations!"
+ADME_RLM,39,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'PEOE_VSA2', 'FpDensityMorgan2', 'NumSaturatedCarbocycles', 'SlogP_VSA2']","[0.19522961037581013, 0.08756471923482798, -0.07767797539331499, -0.0644752783091883, -0.05649874536726834]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.195
+- PEOE_VSA2: 0.088
+- FpDensityMorgan2: -0.078
+- NumSaturatedCarbocycles: -0.064
+- SlogP_VSA2: -0.056
+
+","The prediction is influenced by the following features and their contributions:
+
+1. **NumValenceElectrons (0.195)**: This feature has the largest positive contribution, meaning that a higher number of valence electrons increases the predicted value. Valence electrons typically correlate with reactivity and bonding capacity, so molecules with more valence electrons tend to push the prediction upward.
+
+2. **PEOE_VSA2 (0.088)**: This is another positive contributor. PEOE_VSA2 relates to the partial charge surface area of the molecule. A higher value here suggests that the molecule has more specific charged surface areas, which also increases the prediction moderately.
+
+3. **FpDensityMorgan2 (-0.078)**: This feature negatively contributes to the prediction. Since it relates to the density of certain circular fingerprints within the molecule, a higher density decreases the prediction. It could indicate structural elements or complexity that lower the predicted property.
+
+4. **NumSaturatedCarbocycles (-0.064)**: This negatively impacts the prediction as well. More saturated carbocycles (non-aromatic carbon rings) reduce the predicted value, possibly because they make the molecule less reactive or change its overall property being predicted in a way that lowers the output.
+
+5. **SlogP_VSA2 (-0.056)**: This feature also has a negative contribution. SlogP_VSA2 represents a surface area weighted by the logP (octanol-water partition coefficient) in a certain range of atom partial charges. A higher value here relates to more hydrophobic surface area in that charge range, reducing the predicted value slightly.
+
+### Summary:
+The prediction is driven upward primarily by the number of valence electrons and the partial charge surface areas, indicating these increase the predicted property. Conversely, molecular features related to fingerprint density, saturated carbocycles, and hydrophobic surface area reduce the predicted output. Overall, the predicted value is a balance of these competing factors, with valence electrons being the most influential positive factor."
+ADME_RLM,40,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'Chi4n', 'NumHDonors', 'VSA_EState1', 'Kappa3']","[-0.22061626795429115, -0.12080779162470508, -0.08697895564079963, -0.07421928430148288, -0.05546451550473774]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.221
+- Chi4n: -0.121
+- NumHDonors: -0.087
+- VSA_EState1: -0.074
+- Kappa3: -0.055
+
+","The prediction is influenced by the combined effect of the feature contributions listed. Each feature's contribution value indicates how much it pushes the prediction away from the baseline (or expected) value, with negative values meaning a decrease in the predicted outcome.
+
+Here is the explanation based on the given feature contributions:
+
+- **NumValenceElectrons (-0.221):** This feature has the largest negative impact among the listed ones. A higher or specific count of valence electrons is reducing the predicted value by 0.221 units, suggesting that the presence or quantity of valence electrons makes the target property less likely or lowers its predicted score.
+
+- **Chi4n (-0.121):** This molecular connectivity feature also negatively impacts the prediction, decreasing it by 0.121. Its contribution indicates certain structural aspects described by Chi4n reduce the predicted outcome.
+
+- **NumHDonors (-0.087):** The number of hydrogen bond donors is lowering the prediction by 0.087. This suggests that more hydrogen bond donors are associated with a decreased target value.
+
+- **VSA_EState1 (-0.074):** This feature, related to the electronic state and surface area, is also decreasing the predicted value. Its presence contributes negatively, but to a smaller extent than the above features.
+
+- **Kappa3 (-0.055):** This shape index descriptor has the smallest negative effect on the prediction here, reducing it by 0.055. It indicates that certain aspects of molecular shape reduce the likelihood or magnitude of the target.
+
+**Summary:** All of the listed features are pushing the prediction downward, each decreasing the predicted value to some extent. The primary driver of the reduction is the number of valence electrons, followed by Chi4n and number of hydrogen bond donors. Together, these features indicate that structural, electronic, and bonding properties represented here are associated with a lower predicted value for the property or class in question."
+ADME_RLM,41,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'Chi4n', 'FpDensityMorgan2', 'NumHDonors', 'MinPartialCharge']","[0.16628798113090357, -0.10032138907410337, -0.08016467478919405, -0.06804092779563371, 0.06314634915060574]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.166
+- Chi4n: -0.100
+- FpDensityMorgan2: -0.080
+- NumHDonors: -0.068
+- MinPartialCharge: 0.063
+
+","The prediction is influenced by the contributions of each feature as follows:
+
+- **NumValenceElectrons (0.166):** This feature has the largest positive contribution, meaning that having a higher number of valence electrons increases the predicted value or likelihood of the target outcome.
+- **Chi4n (-0.100):** This feature contributes negatively, indicating that higher values of Chi4n decrease the predicted outcome.
+- **FpDensityMorgan2 (-0.080):** This also negatively impacts the prediction, suggesting that higher fingerprint density (Morgan2) lowers the predicted value.
+- **NumHDonors (-0.068):** The number of hydrogen donors contributes negatively, so more hydrogen donors reduce the predicted probability or score.
+- **MinPartialCharge (0.063):** This has a moderate positive effect, where higher minimum partial charge slightly raises the predicted outcome.
+
+**Summary:** The prediction is mainly driven up by the number of valence electrons and minimum partial charge, while properties related to molecular structure and hydrogen bonding decrease the prediction. This indicates that the model favors molecules with more valence electrons and higher partial charges but penalizes certain structural and donor features."
+ADME_RLM,42,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'Chi4n', 'BCUT2D_CHGLO', 'MolMR', 'fr_epoxide']","[0.20440153500473088, 0.10216606073207443, 0.08117444601551843, -0.07185128298140847, 0.046217662074949005]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.204
+- Chi4n: 0.102
+- BCUT2D_CHGLO: 0.081
+- MolMR: -0.072
+- fr_epoxide: 0.046
+
+","The prediction is explained by the contributions of each feature to the final outcome. Here's a detailed breakdown:
+
+- **NumValenceElectrons (0.204):** This feature has the largest positive contribution, indicating that a higher number of valence electrons strongly increases the predicted value. Valence electrons often influence molecular reactivity and properties, so this makes sense.
+
+- **Chi4n (0.102):** This topological descriptor positively contributes to the prediction, meaning molecules with higher Chi4n values tend to increase the predicted outcome. It reflects certain structural aspects of the molecule relevant to the prediction task.
+
+- **BCUT2D_CHGLO (0.081):** This charge-related descriptor also positively impacts the prediction, suggesting that the global charge distribution captured by BCUT2D_CHGLO raises the predicted value.
+
+- **MolMR (-0.072):** This molecular refractivity feature negatively influences the prediction, meaning higher MolMR values reduce the predicted value somewhat. This could be related to molecular size or polarizability aspects that lower the predicted outcome.
+
+- **fr_epoxide (0.046):** This is a fragment count feature (presence of epoxide groups), which positively contributes, but to a smaller extent. Molecules containing epoxide groups slightly increase the predicted value.
+
+### Summary:
+The prediction is driven mainly by electronic and topological features, particularly the number of valence electrons and Chi4n, with smaller contributions from molecular charge distribution and specific fragments like epoxides. Molecular refractivity has a moderate negative effect, partially offsetting the positive factors."
+ADME_RLM,43,gpt-4.1-mini,basic,5,"['NumAmideBonds', 'NumValenceElectrons', 'BCUT2D_CHGLO', 'PEOE_VSA9', 'SlogP_VSA8']","[-0.142819827177398, -0.14277118195023758, -0.08020247725271855, 0.07169147404673402, 0.06011845835529343]","
+Explain the prediction using the following feature contributions.
+
+- NumAmideBonds: -0.143
+- NumValenceElectrons: -0.143
+- BCUT2D_CHGLO: -0.080
+- PEOE_VSA9: 0.072
+- SlogP_VSA8: 0.060
+
+","The prediction is influenced by several features with varying contributions, both negative and positive:
+
+- **NumAmideBonds (-0.143):** This feature reduces the prediction score. A higher number of amide bonds likely decreases the predicted value, suggesting that amide bonds are negatively associated with the target outcome.
+
+- **NumValenceElectrons (-0.143):** Similarly, more valence electrons contribute negatively to the prediction, lowering the score. This implies that molecules with higher valence electrons tend to have a lower predicted value.
+
+- **BCUT2D_CHGLO (-0.080):** This descriptor also negatively impacts the prediction, though to a lesser extent. It relates to the charge distribution within the molecule; a certain pattern here decreases the prediction.
+
+- **PEOE_VSA9 (0.072):** This feature positively contributes to the prediction, increasing the score. It reflects certain partial charge-related surface area characteristics that make the prediction higher.
+
+- **SlogP_VSA8 (0.060):** This also adds a positive contribution, associated with hydrophobic surface area. This suggests that more hydrophobic regions captured by this descriptor raise the predicted value.
+
+**Overall, the prediction is lowered mainly by the number of amide bonds and valence electrons, partly by the BCUT2D charge descriptor, while certain surface area features related to charge and hydrophobicity push the prediction higher.** This balance of molecular features determines the final prediction outcome."
+ADME_RLM,44,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'SlogP_VSA2', 'fr_Ndealkylation2', 'FpDensityMorgan2', 'NumAmideBonds']","[-0.31117466280093997, -0.1294760961557847, 0.07634020477822237, -0.07178830235442926, 0.06260173845557712]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.311
+- SlogP_VSA2: -0.129
+- fr_Ndealkylation2: 0.076
+- FpDensityMorgan2: -0.072
+- NumAmideBonds: 0.063
+
+","The prediction is influenced by the following feature contributions as follows:
+
+- **NumValenceElectrons (-0.311)**: This feature has the largest negative contribution, meaning a higher number of valence electrons decreases the predicted value significantly.
+- **SlogP_VSA2 (-0.129)**: This feature also contributes negatively, albeit less strongly, indicating that higher values of SlogP_VSA2 lower the prediction.
+- **fr_Ndealkylation2 (0.076)**: This feature has a positive contribution, so its presence or higher value increases the predicted outcome.
+- **FpDensityMorgan2 (-0.072)**: This feature slightly decreases the prediction, contributing negatively but to a smaller extent.
+- **NumAmideBonds (0.063)**: This has a modest positive effect, increasing the predicted value.
+
+**Summary:** The prediction is pulled down mainly by NumValenceElectrons and SlogP_VSA2, while fr_Ndealkylation2 and NumAmideBonds push the prediction up. FpDensityMorgan2 contributes a small negative effect. Overall, the prediction leans negative due to stronger negative contributions."
+ADME_RLM,45,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'FpDensityMorgan2', 'NumHDonors', 'NumHeterocycles']","[0.19919969542535132, 0.1328315000431009, -0.0977821468718377, -0.06881654880026548, 0.06249830393616695]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.199
+- BCUT2D_CHGLO: 0.133
+- FpDensityMorgan2: -0.098
+- NumHDonors: -0.069
+- NumHeterocycles: 0.062
+
+","The prediction is based on the combined effect of the following feature contributions:
+
+- **NumValenceElectrons (0.199):** This is the strongest positive contributor, indicating that a higher number of valence electrons increases the predicted value.
+- **BCUT2D_CHGLO (0.133):** This also positively contributes, suggesting that higher values of this molecular descriptor (related to charge distribution) push the prediction upward.
+- **FpDensityMorgan2 (-0.098):** This feature negatively impacts the prediction, so higher fingerprint density here decreases the predicted value.
+- **NumHDonors (-0.069):** The number of hydrogen donors has a negative contribution, meaning compounds with more hydrogen donors tend to lower the prediction.
+- **NumHeterocycles (0.062):** The presence of heterocycles slightly increases the prediction.
+
+**Summary:** The model’s prediction increases mainly due to the number of valence electrons and charge-related properties, while molecular features like hydrogen donors and fingerprint density reduce it. The net effect of all these features produces the final prediction."
+ADME_RLM,46,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'BCUT2D_CHGLO', 'SlogP_VSA2', 'Chi3n', 'fr_NH0']","[-0.45815442854665966, 0.0886364251168573, -0.07110061221985185, 0.06530168183124692, 0.05777596186214002]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.458
+- BCUT2D_CHGLO: 0.089
+- SlogP_VSA2: -0.071
+- Chi3n: 0.065
+- fr_NH0: 0.058
+
+","The prediction explanation based on the provided feature contributions is as follows:
+
+- **NumValenceElectrons (-0.458)**: This feature has the largest negative contribution, indicating that a higher number of valence electrons strongly decreases the predicted value. This might suggest that compounds with more valence electrons are less likely to have the target property or outcome.
+
+- **BCUT2D_CHGLO (0.089)**: This feature has a positive contribution, meaning that higher values of this charge-related descriptor increase the predicted value slightly, indicating a moderate positive influence on the prediction.
+
+- **SlogP_VSA2 (-0.071)**: This feature contributes negatively, suggesting that increases in this particular surface area descriptor related to lipophilicity decrease the predicted value to a small extent.
+
+- **Chi3n (0.065)**: This topological descriptor positively affects the prediction, indicating that certain structural complexity (captured by Chi3n) slightly raises the predicted value.
+
+- **fr_NH0 (0.058)**: This fragment descriptor, likely counting groups without nitrogen-hydrogen bonds, contributes a small positive amount to the prediction.
+
+### Summary:
+The prediction is mainly driven down by the high number of valence electrons, with moderate positive pushes from descriptors related to molecular charge distribution, molecular topology, and specific chemical fragments. The net effect is a balance between strong negative influence from valence electrons and smaller positive influences from structural features and charge, resulting in the final predicted value."
+ADME_RLM,47,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'MinPartialCharge', 'Chi0n', 'BalabanJ', 'FpDensityMorgan2']","[-0.45541336973099594, -0.09998955812976568, -0.08444847925243426, -0.07395613125602733, -0.06558964201422979]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: -0.455
+- MinPartialCharge: -0.100
+- Chi0n: -0.084
+- BalabanJ: -0.074
+- FpDensityMorgan2: -0.066
+
+","The prediction explanation based on the provided feature contributions can be interpreted as follows:
+
+- **NumValenceElectrons (-0.455):** This feature has the largest negative contribution, indicating that a higher number (or certain values) of valence electrons strongly decreases the predicted outcome. This might mean that the property being predicted is less likely or reduced in molecules with this characteristic.
+
+- **MinPartialCharge (-0.100):** The minimum partial charge on the molecule also negatively affects the prediction, but to a lesser extent. A lower (or more negative) partial charge might be lowering the predicted value.
+
+- **Chi0n (-0.084):** This is a molecular connectivity index (a topological descriptor), and its negative contribution suggests that molecules with certain connectivity patterns less favorably influence the predicted outcome.
+
+- **BalabanJ (-0.074):** Another topological index related to molecular structure; its negative contribution indicates that higher or specific values make the prediction lower.
+
+- **FpDensityMorgan2 (-0.066):** This fingerprint density measure slightly reduces the predicted value, suggesting that molecule fragments or features counted by Morgan2 fingerprints have a minor negative contribution.
+
+### Summary
+In total, all these features push the prediction downward, with **NumValenceElectrons** having the most significant impact. The combined effect of these negative contributions is to lower the predicted value of the model output.
+
+If you provide the context of what is being predicted (e.g., activity, toxicity, solubility), I can interpret these contributions more specifically."
+ADME_RLM,48,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'FpDensityMorgan2', 'Chi4n', 'FpDensityMorgan3', 'Chi2n']","[0.18876829031751308, 0.09138506615277014, 0.07644516197133168, 0.0603677932877233, 0.06034992745477724]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.189
+- FpDensityMorgan2: 0.091
+- Chi4n: 0.076
+- FpDensityMorgan3: 0.060
+- Chi2n: 0.060
+
+","The prediction is explained by the contributions of various features, each indicating how much it influenced the final result:
+
+- **NumValenceElectrons (0.189):** This feature has the largest positive contribution, suggesting that the number of valence electrons plays a significant role in increasing the predicted value. It means that higher or specific numbers of valence electrons strongly push the prediction upwards.
+  
+- **FpDensityMorgan2 (0.091):** This fingerprint density feature, calculated using Morgan radius 2, positively contributes to the prediction but to a lesser extent. It reflects local molecular substructure patterns that help support the prediction.
+
+- **Chi4n (0.076):** This connectivity index measures molecular branching or shape at a certain level and adds moderately to the prediction, indicating the molecule's topological complexity affects the outcome.
+
+- **FpDensityMorgan3 (0.060):** Similar to FpDensityMorgan2 but computed at a larger radius (3), this feature also supports the prediction somewhat, capturing molecular substructures at a broader scale.
+
+- **Chi2n (0.060):** Another connectivity index at a different level, this also positively influences the prediction, further emphasizing the importance of the molecule’s topological features.
+
+**Overall explanation:**  
+The prediction is primarily driven by electronic structure (number of valence electrons) along with molecular substructure information captured by fingerprint densities and topological complexity described by the Chi indices. Each of these features contributes positively, collectively reinforcing the prediction in the same direction."
+ADME_RLM,49,gpt-4.1-mini,basic,5,"['NumValenceElectrons', 'fr_Ndealkylation2', 'fr_epoxide', 'MinPartialCharge', 'NumAmideBonds']","[0.26232527941069506, 0.0723855880652589, 0.045805307020622875, 0.04261522101860689, 0.04231772534439548]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.262
+- fr_Ndealkylation2: 0.072
+- fr_epoxide: 0.046
+- MinPartialCharge: 0.043
+- NumAmideBonds: 0.042
+
+","The prediction can be understood by examining how each feature contributes positively or negatively to the model's output. Based on the provided feature contributions (all positive values), each feature is pushing the prediction score higher to some extent. Here's what each feature's contribution implies:
+
+- **NumValenceElectrons (0.262):** This is the largest contributor. The number of valence electrons likely plays a critical role in determining the predicted property (e.g., chemical reactivity, biological activity). A higher number of valence electrons might be strongly associated with the positive class or higher predicted value.
+
+- **fr_Ndealkylation2 (0.072):** This feature corresponds to the presence of a specific substructure or reaction site related to N-dealkylation (a metabolic reaction). Its positive contribution indicates that molecules with this feature tend to increase the prediction score.
+
+- **fr_epoxide (0.046):** The presence of an epoxide functional group contributes positively but less strongly. Epoxides could influence the predicted property (e.g., toxicity or metabolism) relevant to the model.
+
+- **MinPartialCharge (0.043):** This likely measures the minimum partial atomic charge in the molecule. A positive contribution means that molecules with certain charge characteristics (e.g., more negative or positive partial charges) tend to raise the prediction score.
+
+- **NumAmideBonds (0.042):** The number of amide bonds contributes positively, implying that molecules containing amide functionalities influence the predicted property in this context.
+
+### Overall Explanation:
+The model's prediction is driven primarily by the number of valence electrons, supplemented by specific structural features—presence of N-dealkylation sites, epoxide groups, amide bonds, and atomic charge distribution. All these features push the prediction in the same direction, suggesting that molecules with these properties are more likely to exhibit the predicted behavior or class label."

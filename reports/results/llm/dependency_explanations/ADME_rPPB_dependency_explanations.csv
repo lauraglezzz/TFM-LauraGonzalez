@@ -1,0 +1,220 @@
+endpoint,feature,prompt,explanation
+ADME_rPPB,MolLogP,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MolLogP
+
+Observed values (descriptor value -> contribution to prediction):
+
+-1.332 -> 0.260
+1.264 -> -0.098
+1.801 -> 0.027
+2.189 -> 0.483
+2.442 -> -0.042
+2.641 -> -0.194
+2.911 -> 0.450
+3.106 -> 0.015
+3.306 -> 0.015
+3.475 -> -0.023
+3.684 -> -0.359
+3.817 -> -0.148
+3.967 -> 0.290
+4.164 -> -0.107
+4.318 -> -0.202
+4.486 -> -0.210
+4.760 -> 0.302
+5.038 -> -0.117
+5.413 -> 0.155
+7.796 -> 0.039
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","MolLogP is a descriptor that quantifies the lipophilicity of a molecule, essentially reflecting its tendency to dissolve in fats versus water. This property often influences a drug’s absorption, distribution, metabolism, and overall bioavailability.
+
+From the data provided, the relationship between lipophilicity (MolLogP) and the predicted drug property is complex and non-linear:
+
+- At very low MolLogP values (around -1.3), there is a positive contribution (0.260), indicating that slightly hydrophilic molecules may favorably influence the drug property.
+- In the range of moderate lipophilicity (~1.2 to 2.6), contributions are mixed but generally close to zero or slightly negative, suggesting this lipophilicity range does not strongly promote or inhibit the property.
+- Around intermediate-high MolLogP values (~2.9 and ~4.0 to 4.8), there are positive contributions (up to 0.483 and 0.302), implying that moderate to moderately high lipophilicity may enhance the drug property. This could be due to better membrane permeability or target affinity of molecules in this lipophilicity window.
+- At higher MolLogP values (above 3.7 and especially above 4.3), the contribution becomes negative, indicating excessive lipophilicity might reduce the desired property, possibly because high lipophilicity can lead to poor solubility, off-target binding, or rapid metabolism.
+- Near the very high end (MolLogP ~7.8), the contribution is close to zero again, suggesting that extremely lipophilic molecules do not strongly influence the property either positively or negatively, potentially due to counteracting effects.
+
+In summary, the predicted drug property tends to be favored by molecules with moderate to moderately high lipophilicity, but overly lipophilic molecules tend to have a detrimental or neutral effect. This likely reflects the balance between sufficient membrane permeability and solubility/metabolic stability that is optimal for drug effectiveness."
+ADME_rPPB,SMR_VSA10,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: SMR_VSA10
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> 0.072
+5.907 -> 0.039
+5.969 -> 0.023
+11.146 -> -0.198
+11.762 -> 0.084
+15.807 -> 0.051
+16.982 -> -0.001
+17.508 -> 0.044
+17.846 -> 0.068
+21.748 -> 0.029
+22.408 -> 0.057
+22.936 -> 0.048
+23.338 -> -0.253
+27.461 -> 0.024
+28.576 -> 0.059
+29.185 -> -0.125
+33.872 -> 0.054
+35.051 -> 0.027
+40.645 -> -0.072
+59.153 -> -0.096
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","SMR_VSA10 is a molecular descriptor that represents the sum of the van der Waals surface areas (VSA) of atoms in a molecule whose contribution to the overall molecular refractivity (SMR) falls within a specific range. Essentially, it captures how much surface area is associated with certain polarizability characteristics in the molecule.
+
+From the data, the relationship between the SMR_VSA10 value and the predicted drug property shows a non-linear and non-monotonic trend:
+
+- At lower SMR_VSA10 values (close to 0 to about 6), the contribution to the predicted property is positive but generally diminishes as the value approaches ~6.
+- Between intermediate values (~11 to 23), there are fluctuations with both positive and notably negative contributions, indicating that molecules with certain intermediate refractive surface areas may reduce the favorable drug property.
+- Larger values beyond ~23 also vary, but heavily negative contributions occur again at 23.338 and 29.185, suggesting some threshold beyond which larger contributions of this descriptor are detrimental.
+- The extremes (very high SMR_VSA10 values >40) tend to show negative contributions as well, indicating that very large polarizable surface areas in this particular range may unfavorably affect the predicted property.
+
+Chemically, this suggests that the drug property benefits when the molecule has a moderate SMR_VSA10 — indicating an optimal balance of polarizable surface area contributed by certain groups. Too little or too much polarizability/surface area in these specific atomic contributions tends to reduce the drug property, possibly reflecting effects on solubility, binding affinity, or permeability influenced by molecular shape and electronic distribution.
+
+Biologically, the pattern may indicate that molecules with specific refractive surface areas corresponding to this descriptor range have an optimal interaction profile with the target or better pharmacokinetics, while departures in either direction diminish these interactions or properties."
+ADME_rPPB,SlogP_VSA2,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: SlogP_VSA2
+
+Observed values (descriptor value -> contribution to prediction):
+
+4.984 -> 0.126
+14.535 -> 0.010
+17.683 -> -0.093
+20.994 -> -0.107
+24.545 -> 0.023
+27.216 -> 0.017
+30.135 -> 0.005
+31.785 -> 0.007
+34.137 -> -0.006
+36.105 -> 0.002
+38.332 -> 0.224
+40.187 -> 0.002
+43.430 -> 0.027
+47.297 -> 0.023
+50.210 -> -0.005
+54.129 -> 0.107
+58.395 -> -0.019
+62.434 -> -0.121
+70.995 -> 0.018
+123.305 -> 0.143
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor SlogP_VSA2 likely relates to the surface area of a molecule associated with specific ranges of logP values, reflecting the hydrophobic or lipophilic character of particular molecular regions.
+
+From the data, it appears that moderate descriptor values around 4.984 and very high values such as 123.305 have strong positive contributions to the predicted drug property. This suggests that molecules with hydrophobic surface areas corresponding to these ranges tend to enhance the property (which might be, for example, membrane permeability, binding affinity, or oral bioavailability).
+
+Conversely, descriptor values in the mid-range (roughly 17.7 to 21.0 and around 62.4) are associated with negative contributions. This might indicate that certain intermediate hydrophobic surface areas reduce the desirable drug property, possibly because these molecular regions do not favor interactions necessary for the drug's efficacy or absorption.
+
+In summary, the drug property is positively influenced by molecular regions with either relatively low or very high hydrophobic surface area contributions, while intermediate hydrophobic surface areas tend to decrease the property. This pattern may reflect the importance of specific hydrophobic patches or the overall balance of hydrophobicity in affecting the biological behavior of the drug candidate."
+ADME_rPPB,MaxPartialCharge,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MaxPartialCharge
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.001 -> -0.027
+0.127 -> -0.014
+0.165 -> -0.040
+0.213 -> -0.071
+0.229 -> 0.140
+0.240 -> -0.061
+0.251 -> 0.060
+0.254 -> 0.042
+0.259 -> 0.071
+0.263 -> -0.088
+0.271 -> -0.036
+0.280 -> 0.037
+0.305 -> 0.015
+0.321 -> 0.062
+0.330 -> 0.028
+0.341 -> 0.005
+0.407 -> 0.058
+0.416 -> 0.050
+0.422 -> -0.018
+0.573 -> 0.023
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor MaxPartialCharge represents the highest positive partial charge on any atom within the molecule. This charge signifies regions of the molecule with relatively high electron deficiency, often corresponding to electrophilic sites or atoms that can interact strongly with negatively charged or electron-rich biological targets (e.g., nucleophilic residues in enzymes or receptors).
+
+From the data, the relationship between MaxPartialCharge and the predicted drug property appears non-linear and somewhat complex:
+
+- At very low MaxPartialCharge values (~0.001 to 0.165), the contribution to the predicted property is generally negative or near zero, indicating that molecules with very low maximum partial positive charge may be less favorable for the property of interest.
+- Around intermediate values (~0.229 to 0.259), there is a marked increase in positive contributions, suggesting that molecules with moderately high positive partial charge at some atomic sites tend to enhance the drug property. This could be due to stronger or more favorable interactions with biological targets through ionic or dipolar interactions.
+- At slightly higher MaxPartialCharge values (e.g., 0.263, 0.271), there is a drop to negative contributions again, implying that excessive positive charge localization may reduce the desired property—perhaps due to increased reactivity, instability, or unfavorable interactions such as off-target binding or reduced membrane permeability.
+- Beyond these fluctuations, for higher MaxPartialCharge values (e.g., 0.305 to 0.573), the contributions generally remain positive but with small magnitudes, indicating a mild favorable effect on the property, but less pronounced than at the intermediate peak region.
+
+Biologically or chemically, this suggests that an optimal range of maximum atomic partial positive charge exists within a molecule, where the electron-deficient sites are sufficiently pronounced to enhance interaction with biological targets related to the drug property, but not so extreme as to cause deleterious effects such as instability or toxicity. Thus, tuning the molecular structure to achieve a moderate MaxPartialCharge may be beneficial in optimizing the drug property."
+ADME_rPPB,BertzCT,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: BertzCT
+
+Observed values (descriptor value -> contribution to prediction):
+
+174.215 -> -0.024
+484.029 -> -0.027
+553.401 -> -0.026
+620.242 -> -0.021
+678.194 -> -0.011
+739.863 -> 0.057
+802.310 -> 0.137
+853.963 -> 0.084
+897.178 -> -0.017
+933.766 -> -0.037
+980.062 -> -0.011
+1014.014 -> 0.111
+1047.125 -> -0.024
+1082.850 -> -0.034
+1112.754 -> -0.022
+1168.340 -> -0.022
+1236.301 -> -0.029
+1303.250 -> -0.007
+1442.240 -> -0.003
+2448.207 -> -0.048
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor BertzCT is a measure of molecular complexity, often reflecting the size, branching, and overall structural intricacy of a molecule.
+
+From the observed data, there is a nonlinear relationship between BertzCT values and the predicted drug property:
+
+- At lower and moderate complexity values (around 174 to 620), the contribution to the predicted property is slightly negative, suggesting that simpler to moderately complex molecules tend to decrease the predicted property.
+- Around intermediate complexity values (approximately 680 to 850), contributions become positive, peaking near 802. This indicates that molecules with moderate-to-high complexity positively influence the predicted property, possibly due to increased functional group diversity or molecular features that enhance the property.
+- Beyond this intermediate range (around 897 and higher), the contribution again shifts negative or near zero, suggesting very high complexity may reduce or have minimal effect on the drug property.
+
+Biologically, this pattern may imply that there is an optimal molecular complexity range where the structural features of the molecule best support the desirable drug property—too simple molecules might lack necessary functional groups or interactions, while overly complex molecules could suffer from issues like reduced bioavailability or increased metabolic liability. Thus, moderate molecular complexity, as captured by intermediate BertzCT values, enhances the predicted drug property."

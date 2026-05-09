@@ -1,0 +1,932 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_rPPB,0,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'fr_urea', 'LabuteASA']","[0.22301932736921942, -0.11811575650292046, -0.06523552011464735]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.223
+- fr_urea: -0.118
+- LabuteASA: -0.065
+
+","The prediction is influenced by three features with the following contributions:
+
+1. **fr_Ndealkylation1: 0.223**  
+   This feature has a positive contribution of 0.223, meaning that the presence or higher value of the ""fr_Ndealkylation1"" feature increases the predicted value or likelihood of the target outcome. It is the strongest positive driver among the three features listed.
+
+2. **fr_urea: -0.118**  
+   This feature contributes negatively with -0.118, indicating that the presence or higher value of ""fr_urea"" decreases the predicted value or likelihood of the target outcome. It works against the effect of fr_Ndealkylation1.
+
+3. **LabuteASA: -0.065**  
+   This feature also has a negative contribution, though smaller in magnitude (-0.065), suggesting that a larger LabuteASA value reduces the predicted outcome slightly.
+
+**Summary:**  
+The prediction is primarily driven upward by the positive effect of ""fr_Ndealkylation1"". However, this increase is partially offset by the negative effects of ""fr_urea"" and ""LabuteASA"". Hence, while ""fr_Ndealkylation1"" pushes the prediction higher, the other two features push it lower, with ""fr_urea"" being the stronger negative factor compared to ""LabuteASA""."
+ADME_rPPB,1,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA13', 'Chi1v']","[0.4318982348492, 0.14115720287256578, -0.05857840554130578]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.432
+- PEOE_VSA13: 0.141
+- Chi1v: -0.059
+
+","The prediction is influenced by three features with the following contributions:
+
+1. **fr_Ndealkylation1 (0.432)**  
+   This feature has the largest positive contribution to the prediction (+0.432). It indicates that the presence (or higher value) of the ""N-dealkylation"" functional group or descriptor strongly pushes the prediction upwards. In other words, molecules with this characteristic are more likely to increase the predicted outcome (e.g., activity, property value).
+
+2. **PEOE_VSA13 (0.141)**  
+   This feature also positively contributes (+0.141), though to a lesser extent. PEOE_VSA13 typically represents a partial charge-related surface area descriptor, tied to the molecular electrostatic potential and surface characteristics. A higher value here moderately increases the prediction, suggesting that molecules with greater values of this descriptor trend towards a higher predicted target.
+
+3. **Chi1v (-0.059)**  
+   This feature has a small negative contribution (-0.059), slightly decreasing the prediction. Chi1v is a valence molecular connectivity index (first order), reflecting aspects of molecular branching or connectivity. A higher value of Chi1v lowers the prediction marginally.
+
+### Overall explanation:
+The prediction is primarily driven up by the presence of the N-dealkylation feature and secondarily by increased values in the PEOE_VSA13 descriptor, while molecular connectivity as captured by Chi1v slightly reduces the prediction. The net effect is a positive boost mainly from chemical features related to N-dealkylation and molecular surface charges."
+ADME_rPPB,2,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'fr_urea', 'fr_aldehyde']","[-0.2431502469009896, -0.12408885942474285, -0.06945298202420262]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.243
+- fr_urea: -0.124
+- fr_aldehyde: -0.069
+
+","The prediction is influenced by three features, each contributing a negative value to the final prediction score:
+
+- **fr_Ndealkylation1: -0.243**  
+  This feature has the largest negative contribution, indicating that the presence or higher value of the N-dealkylation feature strongly decreases the predicted outcome.
+
+- **fr_urea: -0.124**  
+  The presence or amount of the urea functional group also reduces the prediction, but to a lesser extent than fr_Ndealkylation1.
+
+- **fr_aldehyde: -0.069**  
+  Similarly, the aldehyde feature lowers the prediction value slightly.
+
+**Summary:**  
+All three features decrease the predicted value, with fr_Ndealkylation1 having the most significant negative impact, followed by fr_urea and fr_aldehyde. This suggests that molecules with strong N-dealkylation activity, urea groups, or aldehyde groups are less likely to have the property or class indicated by the prediction."
+ADME_rPPB,3,gpt-4.1-mini,basic,3,"['BCUT2D_MRLOW', 'HeavyAtomMolWt', 'PEOE_VSA10']","[-0.08468142502839607, 0.0702257766112892, 0.060359774527066985]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_MRLOW: -0.085
+- HeavyAtomMolWt: 0.070
+- PEOE_VSA10: 0.060
+
+","The prediction is influenced by three features with the following contributions:
+
+- **BCUT2D_MRLOW: -0.085**  
+  This feature has a negative contribution of -0.085, meaning that higher values of BCUT2D_MRLOW tend to decrease the predicted value. This feature could be capturing some property related to molecular topology or electronic attributes which, when higher, reduce the prediction score.
+
+- **HeavyAtomMolWt: 0.070**  
+  This feature contributes positively by 0.070. Heavier molecules with more heavy atoms tend to increase the prediction, indicating that molecular weight is positively correlated with the predicted outcome.
+
+- **PEOE_VSA10: 0.060**  
+  This also has a positive contribution of 0.060. PEOE_VSA10 is related to the partial charge surface area, so molecules with larger PEOE_VSA10 values increase the prediction.
+
+**Overall explanation:**  
+The model prediction results from balancing these contributions. The negative impact from BCUT2D_MRLOW slightly reduces the prediction, whereas the positive effects of HeavyAtomMolWt and PEOE_VSA10 push the prediction higher. The net effect depends on these combined contributions, but in this case, the positive contributions outweigh the negative, suggesting a moderately increased prediction value due to molecular size and partial charge surface area, somewhat countered by molecular electronic/topological features."
+ADME_rPPB,4,gpt-4.1-mini,basic,3,"['NumValenceElectrons', 'FpDensityMorgan2', 'fr_urea']","[0.09981914308886435, -0.05596173528980839, 0.046622591661756606]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.100
+- FpDensityMorgan2: -0.056
+- fr_urea: 0.047
+
+","The prediction is influenced by three features with their respective contributions:
+
+- **NumValenceElectrons: 0.100**  
+  This feature has the largest positive contribution, meaning that a higher number of valence electrons increases the predicted outcome. The model views this as a significant factor pushing the prediction upward.
+
+- **FpDensityMorgan2: -0.056**  
+  This feature contributes negatively, indicating that a higher fingerprint density (Morgan radius 2) decreases the predicted value. It has a moderate dampening effect on the prediction.
+
+- **fr_urea: 0.047**  
+  The presence of the urea functional group adds positively to the prediction, contributing to a moderate increase.
+
+### Summary:
+Overall, the prediction is increased primarily by the number of valence electrons and the presence of a urea group, while the molecular fingerprint density slightly reduces the final value. The strongest driver for the prediction is the valence electrons, supported by the urea group, with a small offset from fingerprint density."
+ADME_rPPB,5,gpt-4.1-mini,basic,3,"['BalabanJ', 'fr_urea', 'Chi1v']","[0.06329288498862501, 0.06040834630916381, -0.04827765225485742]","
+Explain the prediction using the following feature contributions.
+
+- BalabanJ: 0.063
+- fr_urea: 0.060
+- Chi1v: -0.048
+
+","The prediction is influenced by three features with the following contributions:
+
+- **BalabanJ (0.063):** This feature contributes positively to the prediction. A higher value of BalabanJ increases the predicted outcome by approximately 0.063 units.
+- **fr_urea (0.060):** This feature also contributes positively to the prediction. The presence or higher count of urea functional groups increases the predicted value by about 0.060 units.
+- **Chi1v (-0.048):** This feature contributes negatively. A higher value of Chi1v decreases the predicted outcome by roughly 0.048 units.
+
+**Summary:** Both the BalabanJ index and the presence of urea groups push the prediction higher, while the Chi1v molecular descriptor pulls the prediction down. The net effect on the prediction is the sum of these contributions."
+ADME_rPPB,6,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'fr_C_O', 'SlogP_VSA5']","[-0.2411379561727176, 0.12559129702877683, -0.07757808193703512]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.241
+- fr_C_O: 0.126
+- SlogP_VSA5: -0.078
+
+","The prediction is influenced by three features, each contributing either positively or negatively to the final output:
+
+1. **fr_Ndealkylation1 (-0.241)**  
+   This feature has a negative contribution to the prediction, with a value of -0.241. It means that the presence (or higher value) of this feature reduces the predicted outcome (for example, if the prediction is for activity or probability, it lowers it). The ""fr_Ndealkylation1"" likely corresponds to a specific chemical substructure or reaction-related count that affects the property being predicted negatively.
+
+2. **fr_C_O (0.126)**  
+   This feature contributes positively with a value of +0.126. The ""fr_C_O"" feature usually represents the count or presence of carbon-oxygen bonds (like in alcohols or ethers). A positive contribution suggests that these groups increase the predicted value, enhancing the property of interest.
+
+3. **SlogP_VSA5 (-0.078)**  
+   This feature also contributes negatively, but to a lesser extent (-0.078). SlogP_VSA5 is often related to the surface area of the molecule associated with atoms that have a particular partial charge or logP contribution. Here, its negative value indicates that molecules with higher values of SlogP_VSA5 reduce the predicted output.
+
+### Overall Interpretation:
+- The prediction is lowered mainly because of the negative impact from **fr_Ndealkylation1** and to a lesser degree from **SlogP_VSA5**.
+- The positive impact of **fr_C_O** raises the prediction but is not enough to overcome the negative contributions.
+
+Thus, the prediction reflects a balance where features related to N-dealkylation functionality and certain surface area properties push the prediction down, while carbon-oxygen bond presence supports it somewhat."
+ADME_rPPB,7,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'SlogP_VSA5', 'NumValenceElectrons']","[-0.29366502028725777, 0.13875267973960032, 0.09245743053952625]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.294
+- SlogP_VSA5: 0.139
+- NumValenceElectrons: 0.092
+
+","The prediction is influenced by three features with the following contributions:
+
+1. **fr_Ndealkylation1 (-0.294)**  
+   This feature has the largest negative contribution (-0.294), meaning that the presence (or higher value) of the ""fr_Ndealkylation1"" feature decreases the predicted outcome. This suggests that molecules with characteristics captured by this feature reduce the predicted value or likelihood.
+
+2. **SlogP_VSA5 (0.139)**  
+   This feature contributes positively (+0.139) to the prediction. ""SlogP_VSA5"" typically relates to the hydrophobic surface area of the molecule within a certain logP and surface area range. A higher value in this feature increases the prediction, indicating that hydrophobic surface areas captured here support or enhance the predicted outcome.
+
+3. **NumValenceElectrons (0.092)**  
+   This numeric feature also adds positively (+0.092) to the prediction. A higher number of valence electrons in the molecule slightly increases the predicted outcome, perhaps reflecting a structural or electronic property important to the model.
+
+**Summary:**  
+The overall prediction is a balance of these feature contributions. The ""fr_Ndealkylation1"" feature strongly decreases the prediction, while both ""SlogP_VSA5"" and ""NumValenceElectrons"" increase it but to a lesser extent. The negative effect dominates slightly here, so the combined effect would lean towards lowering the predicted value compared to a baseline without these features."
+ADME_rPPB,8,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA8', 'PEOE_VSA7']","[-0.24662740534741284, -0.09381413439992468, -0.08430506466482376]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.247
+- PEOE_VSA8: -0.094
+- PEOE_VSA7: -0.084
+
+","The prediction is influenced by the three features provided, each contributing negatively:
+
+- **fr_Ndealkylation1 (-0.247):** This feature has the largest negative contribution. It likely represents the presence or count of a specific chemical substructure or reaction feature related to N-dealkylation (removal of an alkyl group from a nitrogen atom). A negative value means that this feature decreases the predicted value, suggesting that the presence or higher count of this feature lowers the predicted outcome.
+
+- **PEOE_VSA8 (-0.094) and PEOE_VSA7 (-0.084):** These two are fragments of the PEOE_VSA descriptor family, which relate to the van der Waals surface area of atoms in specified partial charge ranges (calculated using the Partial Equalization of Orbital Electronegativities method). Both have negative contributions, meaning that higher surface areas in these partial charge ranges also reduce the predicted outcome.
+
+### Overall Interpretation:
+The model predicts a lower value for the target property (e.g., activity, toxicity, solubility, etc.) when the molecule has a higher presence of the N-dealkylation feature and larger surface areas corresponding to PEOE_VSA7 and PEOE_VSA8. These features are driving the prediction down relative to the baseline.
+
+If you provide the baseline prediction or more context about the target variable, I can help interpret the magnitude or whether this is beneficial or detrimental."
+ADME_rPPB,9,gpt-4.1-mini,basic,3,"['SlogP_VSA5', 'fr_urea', 'BalabanJ']","[0.10941009901960014, 0.08448122277453984, 0.0652327004426833]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: 0.109
+- fr_urea: 0.084
+- BalabanJ: 0.065
+
+","The provided feature contributions represent how much each feature has contributed to the prediction of a model, likely in a regression or classification context. Here's a breakdown of what these specific contributions mean:
+
+1. **SlogP_VSA5 (0.109)**  
+   - **What it is:** SlogP_VSA5 is a descriptor that combines LogP (octanol-water partition coefficient) values with van der Waals surface area (VSA) contributions of atoms in a molecule that fall within a certain LogP range. This descriptor helps capture how hydrophobic (lipophilic) specific parts of the molecule surface are.  
+   - **Contribution explanation:** A positive contribution of 0.109 means that the hydrophobic surface area associated with this descriptor increases the predicted value. For example, if the model predicts biological activity, toxicity, or solubility, this feature pushes the prediction higher or more positive.
+
+2. **fr_urea (0.084)**  
+   - **What it is:** This feature counts the presence or frequency of urea functional groups (-NH-CO-NH-) within the molecule. Urea groups are often involved in hydrogen bonding and influence molecular properties such as solubility, polarity, and biological activity.  
+   - **Contribution explanation:** The positive contribution (0.084) indicates that the presence of urea groups in the molecule tends to increase the predicted value. This might mean urea groups promote a favorable property or activity that the model is targeting.
+
+3. **BalabanJ (0.065)**  
+   - **What it is:** Balaban’s J index is a topological descriptor used to quantify the molecular structure complexity based on the connectivity of atoms. It provides information related to molecular branching and cyclicity.  
+   - **Contribution explanation:** A positive contribution of 0.065 suggests that molecules with greater or specific structural complexity as measured by BalabanJ tend to increase the predicted value.
+
+### Overall Interpretation
+
+All three features contribute positively to the prediction, meaning they all push the model output upwards. The largest contribution comes from the hydrophobic surface descriptor (SlogP_VSA5), followed by the presence of urea groups, then the molecular topology (BalabanJ). Depending on the context of the prediction task (e.g., predicting activity, toxicity, logP, solubility), these features highlight the importance of surface hydrophobicity, specific functional groups, and molecular structure in the resulting prediction."
+ADME_rPPB,10,gpt-4.1-mini,basic,3,"['MaxAbsPartialCharge', 'fr_unbrch_alkane', 'NumValenceElectrons']","[-0.17936437270011762, -0.14280823666201387, 0.13657625468822424]","
+Explain the prediction using the following feature contributions.
+
+- MaxAbsPartialCharge: -0.179
+- fr_unbrch_alkane: -0.143
+- NumValenceElectrons: 0.137
+
+","The prediction is influenced by three features with varying contributions, as follows:
+
+1. **MaxAbsPartialCharge (-0.179)**: This feature has a negative contribution, meaning that higher values of the maximum absolute partial charge tend to decrease the prediction score. Essentially, molecules with larger extreme partial charges are less likely to push the prediction in the positive direction.
+
+2. **fr_unbrch_alkane (-0.143)**: This represents the presence or frequency of unbranched alkane fragments in the molecule. Its negative contribution indicates that having more unbranched alkane structures lowers the predicted output, suggesting that such structures are associated with a reduced likelihood or lower predicted value.
+
+3. **NumValenceElectrons (0.137)**: This feature has a positive contribution, meaning that molecules with more valence electrons increase the prediction score. It suggests that a higher number of valence electrons is associated with a higher predicted value.
+
+**Summary**: The prediction decreases due to the presence of large partial charges and unbranched alkane fragments but is increased by having a greater number of valence electrons. The net prediction will depend on the magnitudes of these contributions combined."
+ADME_rPPB,11,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'SlogP_VSA5', 'PEOE_VSA10']","[0.5931219629321246, 0.1236658544362345, 0.09291228476363941]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.593
+- SlogP_VSA5: 0.124
+- PEOE_VSA10: 0.093
+
+","The prediction is influenced by the following feature contributions:
+
+- **fr_Ndealkylation1 (0.593):** This feature has the largest positive contribution to the prediction. It likely represents the presence or frequency of N-dealkylation metabolic sites or groups. A positive contribution of 0.593 suggests that the presence of such groups strongly pushes the prediction higher (e.g., towards a higher probability of a certain property or activity).
+
+- **SlogP_VSA5 (0.124):** This descriptor relates to the sum of van der Waals surface areas (VSA) of atoms within a certain SlogP range (logP is the partition coefficient reflecting hydrophobicity). A positive contribution of 0.124 indicates that regions of the molecule with moderate hydrophobicity positively influence the prediction, but less so than fr_Ndealkylation1.
+
+- **PEOE_VSA10 (0.093):** This feature measures the van der Waals surface area of atoms within a certain range of partial atomic charges calculated by the PEOE method. The modest positive contribution (0.093) suggests that the distribution of partial charges in that range slightly favors the predicted outcome.
+
+**In summary:** The prediction is primarily driven by the presence of N-dealkylation sites (strong positive effect), with additional, smaller positive influences from certain hydrophobic surface areas and charge distributions on the molecule. These combined contributions push the model output toward the predicted property or activity level."
+ADME_rPPB,12,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA13', 'AvgIpc']","[-0.3707031306911889, -0.18453922025040204, -0.0822521120969466]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.371
+- PEOE_VSA13: -0.185
+- AvgIpc: -0.082
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+- **fr_Ndealkylation1: -0.371**  
+  This feature has the largest negative contribution to the prediction. It indicates that the presence or higher value of the ""N-dealkylation1"" feature decreases the predicted output. In other words, this feature pushes the prediction downward significantly.
+
+- **PEOE_VSA13: -0.185**  
+  This feature also contributes negatively, though less strongly than fr_Ndealkylation1. The PEOE_VSA13 descriptor relates to the surface area of molecular regions with a particular partial charge range; its negative contribution suggests that certain electronic or surface area characteristics captured by this feature reduce the prediction.
+
+- **AvgIpc: -0.082**  
+  This feature has a smaller negative effect on the prediction. AvgIpc (average information content or a similar physicochemical descriptor) slightly lowers the prediction but to a lesser extent than the other two features.
+
+**Summary:**  
+All three features contribute negatively to the model’s prediction. The largest effect comes from fr_Ndealkylation1, followed by PEOE_VSA13 and AvgIpc. Together, they reduce the predicted value relative to some baseline, indicating that high values or presence of these features are associated with lower predicted outcomes in this model."
+ADME_rPPB,13,gpt-4.1-mini,basic,3,"['PEOE_VSA13', 'fr_urea', 'fr_Ndealkylation1']","[-0.16593420599294706, -0.10780990759482295, -0.10303798588256227]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA13: -0.166
+- fr_urea: -0.108
+- fr_Ndealkylation1: -0.103
+
+","The prediction is influenced by three features, each contributing negatively to the predicted value:
+
+1. **PEOE_VSA13 (-0.166)**: This feature represents a specific descriptor related to the partial charges and surface area of a molecule (commonly from the PEOE_VSA descriptor set). A contribution of -0.166 suggests that this molecular characteristic reduces the prediction outcome. This could mean that molecules with higher values of this descriptor are associated with a lower predicted value in the model context.
+
+2. **fr_urea (-0.108)**: This feature typically counts the frequency of urea functional groups in the molecule. A negative contribution of -0.108 implies that the presence of urea groups is associated with decreasing the prediction value.
+
+3. **fr_Ndealkylation1 (-0.103)**: This feature likely corresponds to the frequency of N-dealkylation sites or related structural motifs. Its negative contribution indicates that having such features tends to lower the predicted value.
+
+**Summary explanation**:  
+All three features contribute negative values to the model’s prediction, meaning that their presence or higher values lower the predicted outcome. Therefore, molecules characterized by these descriptors—higher PEOE_VSA13 values, more urea groups, or more N-dealkylation sites—are predicted to have a reduced target property or activity, according to the model."
+ADME_rPPB,14,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'BCUT2D_CHGLO', 'HeavyAtomMolWt']","[0.24549739568952528, 0.11744224173668026, 0.06015377442885355]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.245
+- BCUT2D_CHGLO: 0.117
+- HeavyAtomMolWt: 0.060
+
+","The prediction is explained by the contributions of the specified features to the overall model output:
+
+- **fr_Ndealkylation1 (0.245):** This feature has the largest positive contribution. It likely indicates the presence or frequency of a specific N-dealkylation functional group or reaction type in the molecule. A higher value here strongly pushes the prediction in a positive direction, suggesting that molecules with this characteristic are more likely to have the predicted outcome.
+
+- **BCUT2D_CHGLO (0.117):** This is a descriptor related to the molecule’s charge distribution, derived from 2D topological information. Its positive contribution means that higher or specific charge-related properties captured by BCUT2D_CHGLO favor the prediction, reinforcing the effect of fr_Ndealkylation1.
+
+- **HeavyAtomMolWt (0.060):** This feature measures the total molecular weight considering only heavy atoms (non-hydrogen atoms). Although its contribution is smaller, a higher heavy atom molecular weight slightly increases the likelihood of the predicted outcome.
+
+**Summary:** The prediction is primarily driven by the presence of the N-dealkylation feature, supported by the molecule’s charge distribution and, to a lesser extent, its size. These three features collectively increase the predicted value or probability, indicating their importance in the model’s decision-making process."
+ADME_rPPB,15,gpt-4.1-mini,basic,3,"['fr_unbrch_alkane', 'BalabanJ', 'PEOE_VSA13']","[-0.11013614611042159, -0.08693756631511954, -0.07966706865547768]","
+Explain the prediction using the following feature contributions.
+
+- fr_unbrch_alkane: -0.110
+- BalabanJ: -0.087
+- PEOE_VSA13: -0.080
+
+","The prediction is influenced by three features, each contributing negatively to the final output:
+
+1. **fr_unbrch_alkane: -0.110**  
+   This feature represents the presence of unbranched alkane fragments in the molecule. A negative contribution of -0.110 suggests that the presence (or higher count) of unbranched alkanes decreases the predicted value. This might mean that molecules with more unbranched alkane chains tend to have lower activity, property, or whatever is being predicted.
+
+2. **BalabanJ: -0.087**  
+   The BalabanJ index is a topological descriptor that encodes molecular connectivity. A negative contribution of -0.087 suggests that molecules with higher BalabanJ values (which might indicate more complex or branched connectivity) tend to lower the predicted value.
+
+3. **PEOE_VSA13: -0.080**  
+   This feature represents a partial charge descriptor combined with van der Waals surface area (VSA) for atoms within a certain charge range. A negative contribution of -0.080 indicates that the presence of atoms in this particular charge/size range decreases the prediction value.
+
+**Overall interpretation:**  
+All three features reduce the predicted outcome. This implies that molecules rich in unbranched alkanes, those with certain connectivity patterns (as captured by BalabanJ), and those with atoms having specific partial charge and surface area characteristics tend to have a lower predicted value for the property or activity being modeled."
+ADME_rPPB,16,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'FpDensityMorgan2', 'BalabanJ']","[-0.5089259619056233, -0.05708528439579876, -0.056087620922507096]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.509
+- FpDensityMorgan2: -0.057
+- BalabanJ: -0.056
+
+","The prediction is influenced by three features, each contributing to adjust the model output in a particular direction. Here's the explanation of their contributions:
+
+1. **fr_Ndealkylation1: -0.509**  
+   This feature has the largest negative contribution. It means that the presence or value of this feature strongly decreases the predicted outcome. In other words, ""fr_Ndealkylation1"" is a significant factor pushing the prediction towards a lower value (depending on your model context, this could mean less likelihood of a positive class, lower predicted probability, or lower output score).
+
+2. **FpDensityMorgan2: -0.057**  
+   This feature contributes a smaller negative effect on the prediction. It slightly adjusts the prediction downward but is much less influential than ""fr_Ndealkylation1."" This feature relates to the density of fingerprint bits derived from the Morgan algorithm at a radius of 2, which encodes molecular structural information.
+
+3. **BalabanJ: -0.056**  
+   Similar to ""FpDensityMorgan2,"" this feature has a minor negative effect on the prediction. Balaban's J is a molecular topological index that reflects the complexity of the molecular graph structure. It slightly reduces the predicted output.
+
+**Summary:**  
+All three features decrease the predicted output, with ""fr_Ndealkylation1"" having the dominant impact. The contributions suggest that the chemical characteristic related to the ""Ndealkylation1"" fragment strongly lowers the prediction, and molecular density and topology features also contribute modestly to this decrease. Understanding these contributions can help you interpret why the model made this decision based on the chemical structure or properties of the molecule under study."
+ADME_rPPB,17,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA10', 'VSA_EState3']","[0.3104151993079931, 0.08078089376398445, 0.05276864457318661]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.310
+- PEOE_VSA10: 0.081
+- VSA_EState3: 0.053
+
+","The prediction is influenced by the contributions of the three features as follows:
+
+- **fr_Ndealkylation1 (0.310):** This feature has the largest positive contribution to the prediction. It likely represents the presence or count of a specific chemical substructure or functional group associated with N-dealkylation. A higher value of this feature strongly pushes the prediction upward, indicating that the molecule's potential for N-dealkylation or related property increases the predicted outcome.
+
+- **PEOE_VSA10 (0.081):** This descriptor relates to the molecular surface area associated with partial charges (PEOE = Partial Equalization of Orbital Electronegativities) within a certain range. Its positive contribution indicates that the molecular regions captured by PEOE_VSA10 slightly increase the predicted value. This suggests that certain surface charge distributions contribute positively to the prediction.
+
+- **VSA_EState3 (0.053):** This feature combines van der Waals surface area with electrostatic state indices. It has the smallest positive contribution but still adds to increasing the predicted value. This implies that aspects of molecular topology and electronic environment represented by VSA_EState3 support the prediction.
+
+**Summary:**  
+All three features contribute positively to the prediction, with **fr_Ndealkylation1** having the most substantial effect. The combined effect indicates that specific structural motifs related to N-dealkylation and certain molecular surface charge and electronic properties are important drivers of the model's prediction."
+ADME_rPPB,18,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'EState_VSA10', 'FpDensityMorgan2']","[-0.2464224464188181, -0.08735669077209407, -0.07285791602148874]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.246
+- EState_VSA10: -0.087
+- FpDensityMorgan2: -0.073
+
+","The prediction explanation based on the provided feature contributions is as follows:
+
+- **fr_Ndealkylation1: -0.246**  
+  This feature has the largest negative contribution. It suggests that the presence (or higher value) of this feature strongly decreases the predicted value. In chemical or biological terms, this could mean that the occurrence of the N-dealkylation functional group is associated with a lower prediction output (e.g., lower activity, lower toxicity, etc., depending on the model target).
+
+- **EState_VSA10: -0.087**  
+  This electro-topological state descriptor combined with van der Waals surface area also negatively contributes, but to a lesser extent. This implies that molecular properties related to this EState_VSA10 descriptor slightly reduce the prediction score.
+
+- **FpDensityMorgan2: -0.073**  
+  This fingerprint density measure from Morgan fingerprints similarly lowers the prediction, though modestly. This could indicate that higher molecular fragment density of this type is associated with a decrease in the predicted property.
+
+### Summary
+All three features contribute negatively, with **fr_Ndealkylation1** having the most substantial impact. The presence or increase in these features leads to a lower predicted value by the model. If the prediction is for a property like bioactivity, toxicity, or solubility, these features are associated with reducing that property in the given context."
+ADME_rPPB,19,gpt-4.1-mini,basic,3,"['BCUT2D_CHGLO', 'EState_VSA1', 'MolMR']","[-0.11771922248438703, -0.10148838705345235, -0.08757745866455766]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_CHGLO: -0.118
+- EState_VSA1: -0.101
+- MolMR: -0.088
+
+","The prediction is influenced by the contributions of three features, each with a negative value:
+
+1. **BCUT2D_CHGLO: -0.118**  
+   This feature represents a 2D BCUT descriptor related to the distribution of atomic charges in the molecule. A negative contribution of -0.118 indicates that higher values or certain patterns captured by this descriptor decrease the predicted outcome.
+
+2. **EState_VSA1: -0.101**  
+   This feature is an Electrotopological State (E-State) descriptor combined with van der Waals surface area (VSA), reflecting the presence and accessibility of certain atomic environments. Its negative contribution means this characteristic also reduces the prediction score.
+
+3. **MolMR: -0.088**  
+   Molecular Refractivity (MolMR) is related to molecular size, polarizability, and electronic properties. The negative contribution here suggests that higher molecular refractivity values lower the predicted value.
+
+**Summary:**  
+All three features contribute negatively to the prediction, meaning that the molecular properties they represent—charge distribution, specific electronic topological environments, and molecular refractivity—have roles in decreasing the predicted outcome. This can be interpreted as these molecular characteristics being associated with lower levels or likelihoods of whatever the model is predicting (e.g., activity, property value)."
+ADME_rPPB,20,gpt-4.1-mini,basic,3,"['BCUT2D_LOGPLOW', 'HeavyAtomMolWt', 'BalabanJ']","[-0.08336314474442819, -0.07471344411983996, -0.07386439887456381]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_LOGPLOW: -0.083
+- HeavyAtomMolWt: -0.075
+- BalabanJ: -0.074
+
+","The prediction is influenced by three features, each contributing negatively to the overall outcome:
+
+- **BCUT2D_LOGPLOW (-0.083):** This feature measures a specific 2D molecular descriptor related to logP (partition coefficient) values, which generally reflect the molecule's hydrophobicity. A negative contribution of -0.083 suggests that lower values or the specific characteristic captured by BCUT2D_LOGPLOW decrease the predicted value, possibly indicating less favorable properties under the model’s criteria.
+
+- **HeavyAtomMolWt (-0.075):** This is the molecular weight calculated only from heavy atoms (non-hydrogen atoms). Its negative contribution means that heavier molecules reduce the prediction score, which might imply that larger molecules are less likely to exhibit the target property the model aims to predict.
+
+- **BalabanJ (-0.074):** Balaban’s J index is a topological descriptor representing molecular connectivity. A negative impact here means that molecules with higher BalabanJ values also decrease the predicted outcome, suggesting that certain topological complexities reduce the likelihood or degree of the predicted activity or property.
+
+**Overall:** Each of these features contributes negatively and nearly equally to the final prediction, indicating that molecules with lower BCUT2D_LOGPLOW values, lower molecular weight, and lower Balaban's J index would be predicted more favorably by this model. Conversely, higher values of these features lead to a decrease in the prediction score."
+ADME_rPPB,21,gpt-4.1-mini,basic,3,"['NumValenceElectrons', 'fr_Ndealkylation1', 'fr_urea']","[0.11606693427042579, -0.07807512894263799, 0.058718245683005287]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.116
+- fr_Ndealkylation1: -0.078
+- fr_urea: 0.059
+
+","The prediction is influenced by the following feature contributions:
+
+- **NumValenceElectrons (0.116):** This feature has a positive contribution to the prediction, meaning that a higher number of valence electrons increases the likelihood of the predicted outcome. The relatively larger positive value (0.116) suggests it is an important factor pushing the prediction upward.
+
+- **fr_Ndealkylation1 (-0.078):** This feature contributes negatively to the prediction. The presence or frequency of the structural fragment related to N-dealkylation reduces the predicted value. Its contribution (-0.078) somewhat counteracts the positive effect of the valence electrons.
+
+- **fr_urea (0.059):** This feature has a positive impact on the prediction, though smaller than NumValenceElectrons. The presence of the urea functional group increases the likelihood of the predicted outcome.
+
+**Summary:**  
+The prediction is primarily driven upward by the number of valence electrons and the presence of urea groups, while the presence of the N-dealkylation fragment decreases the predicted value. Overall, the positive contributions outweigh the negative, resulting in a net increase in the predicted outcome."
+ADME_rPPB,22,gpt-4.1-mini,basic,3,"['NumValenceElectrons', 'FpDensityMorgan2', 'HeavyAtomMolWt']","[0.13613034828027157, 0.05717305449362193, 0.054030029942355264]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.136
+- FpDensityMorgan2: 0.057
+- HeavyAtomMolWt: 0.054
+
+","The prediction of the model is influenced by the contributions of the three features as follows:
+
+1. **NumValenceElectrons (0.136)**:  
+   This feature has the largest positive contribution to the prediction. It indicates that the number of valence electrons in the molecule is an important factor. A higher number of valence electrons is likely driving the prediction upward (depending on the target variable, this could mean increased activity, higher probability of a class, etc.).
+
+2. **FpDensityMorgan2 (0.057)**:  
+   This is a measure related to the density of Morgan fingerprints (a type of molecular fingerprint) with radius 2. It also contributes positively but to a lesser extent than the number of valence electrons. This suggests that certain structural features captured by the Morgan fingerprints are moderately important in influencing the prediction.
+
+3. **HeavyAtomMolWt (0.054)**:  
+   The molecular weight derived from heavy atoms (non-hydrogen atoms) also positively influences the prediction slightly. This means that molecules with larger heavy atom molecular weights tend to increase the prediction outcome a bit.
+
+**Summary:**  
+All three features contribute positively to the prediction, with the number of valence electrons having the strongest effect, followed by the fingerprint density and heavy atom molecular weight. This suggests that the model prediction is primarily driven by electronic structure (valence electrons), with molecular structural features and size playing secondary roles."
+ADME_rPPB,23,gpt-4.1-mini,basic,3,"['BCUT2D_LOGPLOW', 'BCUT2D_CHGLO', 'Phi']","[-0.08531672146456586, 0.07217923281362179, 0.06005771041027986]","
+Explain the prediction using the following feature contributions.
+
+- BCUT2D_LOGPLOW: -0.085
+- BCUT2D_CHGLO: 0.072
+- Phi: 0.060
+
+","The prediction is influenced by three features: BCUT2D_LOGPLOW, BCUT2D_CHGLO, and Phi. Here's the interpretation based on their contributions:
+
+- **BCUT2D_LOGPLOW (-0.085):** This feature has a negative contribution to the prediction. It means that higher values of BCUT2D_LOGPLOW decrease the predicted output (e.g., reduce the likelihood of a positive class or lower the predicted value, depending on the model and task).
+
+- **BCUT2D_CHGLO (0.072):** This feature contributes positively to the prediction. Higher values of BCUT2D_CHGLO increase the prediction, nudging it upward.
+
+- **Phi (0.060):** Similarly, Phi has a positive contribution, increasing the predicted output as its value grows.
+
+### Overall explanation:
+The prediction is a balance of these effects. The negative effect of BCUT2D_LOGPLOW slightly lowers the prediction, but this is offset by the positive impacts of BCUT2D_CHGLO and Phi. Since the magnitudes are roughly similar (0.085 negative vs 0.072 + 0.060 positive), the final prediction is likely slightly positive or moderately increased relative to a baseline, mainly driven by the positive contributions of BCUT2D_CHGLO and Phi."
+ADME_rPPB,24,gpt-4.1-mini,basic,3,"['fr_urea', 'fr_Ndealkylation1', 'BCUT2D_CHGLO']","[-0.2335963768050373, -0.1849554509148609, -0.07381320607458548]","
+Explain the prediction using the following feature contributions.
+
+- fr_urea: -0.234
+- fr_Ndealkylation1: -0.185
+- BCUT2D_CHGLO: -0.074
+
+","The prediction is influenced negatively by all the given features, as indicated by their negative contributions:
+
+- **fr_urea (-0.234):** The presence or count of urea functional groups in the molecule reduces the predicted value. This suggests that compounds with urea groups are associated with a lower predicted outcome (for example, lower activity, lower toxicity, or whatever the target prediction represents).
+
+- **fr_Ndealkylation1 (-0.185):** This descriptor likely relates to the frequency or presence of a specific metabolic transformation (N-dealkylation). A negative contribution here means that molecules featuring this attribute also decrease the predicted value.
+
+- **BCUT2D_CHGLO (-0.074):** This is a 2D BCUT descriptor related to charge distribution (global charge). A negative contribution indicates that particular charge-related molecular properties reduce the prediction.
+
+**Summary:** Each of these features in the molecule is pushing the prediction downwards. The overall predicted value is lowered, primarily due to the impact of the urea group and the N-dealkylation descriptor, with a smaller effect from the charge-related BCUT descriptor."
+ADME_rPPB,25,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'FpDensityMorgan2', 'MaxAbsEStateIndex']","[-0.32686059639113063, -0.06853365540441593, -0.06811945288653733]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.327
+- FpDensityMorgan2: -0.069
+- MaxAbsEStateIndex: -0.068
+
+","The prediction can be interpreted by examining how each feature contributes to the final output. In this case, all three listed features have negative contributions:
+
+- **fr_Ndealkylation1: -0.327**  
+  This is the largest negative contribution, indicating that the presence or value of the ""fr_Ndealkylation1"" feature strongly decreases the prediction score. This feature likely corresponds to the count or presence of N-dealkylation sites in the molecule, and a higher count reduces the predicted property or probability.
+
+- **FpDensityMorgan2: -0.069**  
+  This feature measures the density of molecular substructures as encoded by the Morgan fingerprint with radius 2. A negative contribution here means that a higher density of these substructures tends to lower the prediction value.
+
+- **MaxAbsEStateIndex: -0.068**  
+  The Maximum Absolute Electrotopological State Index relates to the electronic environment around atoms in the molecule. A negative effect shows that larger values of this electronic descriptor push the prediction down.
+
+**Summary:**  
+All three features push the prediction towards lower values, with ""fr_Ndealkylation1"" having the strongest impact. This suggests that molecules with more N-dealkylation sites, higher fingerprint density, or higher maximum absolute E-State index tend to have lower predicted outcomes according to this model."
+ADME_rPPB,26,gpt-4.1-mini,basic,3,"['EState_VSA1', 'MolMR', 'BCUT2D_CHGLO']","[-0.12503617261997174, -0.06739869749420901, -0.06644806110012491]","
+Explain the prediction using the following feature contributions.
+
+- EState_VSA1: -0.125
+- MolMR: -0.067
+- BCUT2D_CHGLO: -0.066
+
+","The prediction is influenced by three features, each contributing negatively to the predicted value:
+
+1. **EState_VSA1 (-0.125):** This feature has the largest negative contribution. EState_VSA1 combines electronic state information with the van der Waals surface area, reflecting the distribution of electronic properties on the molecule's surface. A negative contribution here suggests that the specific electronic and surface area characteristics captured by this feature are associated with a decrease in the predicted target.
+
+2. **MolMR (-0.067):** This is the molar refractivity, which relates to the molecular volume and polarizability. A negative contribution indicates that higher molar refractivity values might be linked to lower predicted outcomes for the target property.
+
+3. **BCUT2D_CHGLO (-0.066):** This descriptor is a BCUT metric weighted by atomic charges, capturing aspects of molecular charge distribution. Its negative contribution means that certain patterns in charge distribution decrease the predicted value.
+
+**Overall interpretation:** All three features decrease the prediction value, with EState_VSA1 having the strongest effect. The model suggests that molecules with these electronic, steric, and charge distribution characteristics are predicted to have a lower value for the target property."
+ADME_rPPB,27,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'fr_urea', 'BCUT2D_MWHI']","[-0.3189472568517104, -0.23813885316108913, -0.05412554601539775]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.319
+- fr_urea: -0.238
+- BCUT2D_MWHI: -0.054
+
+","The given feature contributions explain how each feature influences the prediction:
+
+- **fr_Ndealkylation1: -0.319**  
+  This feature has a negative contribution of -0.319, indicating that the presence (or a higher value) of the N-dealkylation functional group decreases the prediction score. This suggests that compounds with this feature are less likely to have the outcome predicted (e.g., lower activity, lower probability, or negative class depending on the context).
+
+- **fr_urea: -0.238**  
+  Similarly, the presence of a urea group reduces the prediction by -0.238. This also negatively impacts the outcome, implying that the urea functional group contributes to a decreased predicted value.
+
+- **BCUT2D_MWHI: -0.054**  
+  This is a descriptor related to molecular weight/highest eigenvalue of the adjacency matrix weighted by atomic properties (a molecular descriptor). Its contribution is smaller but still negative (-0.054), slightly lowering the predicted score.
+
+### Summary:
+All three features contribute negatively to the prediction, with fr_Ndealkylation1 having the greatest negative influence, followed by fr_urea, and then BCUT2D_MWHI. As a result, the combined effect of these features is to reduce the predicted value from the base prediction."
+ADME_rPPB,28,gpt-4.1-mini,basic,3,"['SlogP_VSA5', 'NumValenceElectrons', 'fr_urea']","[0.14803379060082975, 0.07308857122459037, 0.057712915193190086]","
+Explain the prediction using the following feature contributions.
+
+- SlogP_VSA5: 0.148
+- NumValenceElectrons: 0.073
+- fr_urea: 0.058
+
+","The given feature contributions indicate how much each feature has influenced the model's prediction. Here's what the positive contributions from each feature tell us:
+
+- **SlogP_VSA5 (0.148):** This feature measures the sum of van der Waals surface areas of atoms with a certain range of SlogP values (related to hydrophobicity). A positive contribution of 0.148 indicates that the parts of the molecule with this property are increasing the predicted value. In other words, having more atoms with this hydrophobic surface area range pushes the prediction higher.
+
+- **NumValenceElectrons (0.073):** This is the number of valence electrons in the molecule. A positive contribution means that molecules with a higher number of valence electrons tend to increase the prediction. It suggests that the electronic structure related to valence electrons is a factor pushing the outcome upward.
+
+- **fr_urea (0.058):** This is a binary feature indicating the presence of a urea functional group. Its positive contribution means that the presence of a urea group in the molecule increases the predicted value.
+
+**Summary:** All three features positively contribute to the prediction, with the largest effect coming from SlogP_VSA5, followed by NumValenceElectrons and fr_urea. Thus, molecules with hydrophobic surface areas in the SlogP_VSA5 range, more valence electrons, and a urea group are predicted to have higher values (depending on what the prediction target is)."
+ADME_rPPB,29,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'SlogP_VSA5', 'PEOE_VSA10']","[0.6594096009312509, 0.13199598385416556, 0.11993092755592995]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.659
+- SlogP_VSA5: 0.132
+- PEOE_VSA10: 0.120
+
+","The prediction is influenced by three features, each contributing positively to the outcome:
+
+1. **fr_Ndealkylation1 (0.659)**: This feature has the largest contribution. It likely represents the presence or count of a specific chemical substructure or reaction site related to N-dealkylation (a metabolic process where an alkyl group is removed from a nitrogen atom). A high positive value indicates that molecules with this feature strongly increase the predicted value.
+
+2. **SlogP_VSA5 (0.132)**: This descriptor combines the hydrophobicity (logP) with Van der Waals surface area related to a particular atom or property bin. A positive contribution suggests that higher hydrophobic surface area in this category also raises the prediction.
+
+3. **PEOE_VSA10 (0.120)**: This feature reflects the partial charge distribution (PEOE: Partial Equalization of Orbital Electronegativities) combined with surface area in a given bin. Its positive value implies that the presence of atoms with certain charge characteristics in this surface area range further supports an increase in the predicted outcome.
+
+**Summary:** The prediction is primarily driven by the presence of the N-dealkylation-related feature, with additional moderate contributions from hydrophobic surface area and partial charge surface area descriptors. Together, these factors point to molecular properties favoring the predicted result."
+ADME_rPPB,30,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'MolMR', 'fr_urea']","[-0.13810470975824304, -0.09776976215909014, 0.08438885958317624]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.138
+- MolMR: -0.098
+- fr_urea: 0.084
+
+","The prediction is influenced by the three features as follows:
+
+- **fr_Ndealkylation1 (-0.138):** This feature has a negative contribution, meaning that the presence or higher value of the N-dealkylation functional group feature decreases the predicted value. It pushes the prediction lower by about 0.138 units.
+
+- **MolMR (-0.098):** MolMR typically refers to the molecular refractivity, a measure related to the molecule's polarizability and size. Its negative contribution indicates that higher molecular refractivity reduces the predicted value, decreasing the prediction by roughly 0.098 units.
+
+- **fr_urea (0.084):** This feature has a positive contribution, so the presence or higher value of the urea functional group feature increases the predicted value, pushing it up by about 0.084 units.
+
+**Summary:** Overall, the prediction is decreased mainly due to the negative effects of fr_Ndealkylation1 and MolMR, partially offset by the positive contribution from fr_urea. The final prediction reflects the net effect of these contributions."
+ADME_rPPB,31,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA13', 'MaxAbsPartialCharge']","[0.2123674828860358, 0.13437036585737996, -0.09222716752351853]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.212
+- PEOE_VSA13: 0.134
+- MaxAbsPartialCharge: -0.092
+
+","The prediction can be interpreted by looking at how each feature contributes to the final predicted value:
+
+- **fr_Ndealkylation1 (0.212):** This feature has a positive contribution of 0.212, meaning that the presence or higher value of this feature increases the predicted outcome. Since the feature name suggests it relates to the number of N-dealkylation sites (a metabolic transformation), a higher count or likelihood of N-dealkylation tends to raise the prediction score.
+
+- **PEOE_VSA13 (0.134):** This feature also contributes positively (+0.134). PEOE_VSA13 is a descriptor related to the van der Waals surface area of the molecule with a specific partial charge range (usually positive). A larger surface area corresponding to this charge environment pushes the prediction upwards.
+
+- **MaxAbsPartialCharge (-0.092):** This feature has a negative contribution (-0.092), so a higher maximum absolute partial charge lowers the prediction. This might suggest that molecules with very polarized atoms reduce the predicted value.
+
+**Summary:** The prediction is increased primarily by the presence or extent of N-dealkylation sites and the particular surface area characterized by PEOE_VSA13, while a high maximum absolute partial charge decreases the prediction. This means the model response is driven up by metabolic liability and certain charge surface properties, but moderated down by extreme partial charges."
+ADME_rPPB,32,gpt-4.1-mini,basic,3,"['BalabanJ', 'fr_Ndealkylation1', 'fr_urea']","[0.10040369826639901, 0.07175387868437098, 0.07153917796337718]","
+Explain the prediction using the following feature contributions.
+
+- BalabanJ: 0.100
+- fr_Ndealkylation1: 0.072
+- fr_urea: 0.072
+
+","The prediction is influenced by three key features, each contributing positively:
+
+1. **BalabanJ (0.100)**:  
+   This is a topological descriptor based on the connectivity and branching of the molecule's graph structure. A positive contribution of 0.100 suggests that the molecule's overall topology (such as branching or cyclic structure captured by the BalabanJ index) favors an increase in the predicted outcome. In other words, molecules with a higher BalabanJ index tend to push the prediction higher.
+
+2. **fr_Ndealkylation1 (0.072)**:  
+   This feature indicates the presence of a substructure or functional group associated with N-dealkylation, a metabolic reaction where an alkyl group is removed from a nitrogen atom. The positive contribution means that having this N-dealkylation site or motif in the molecule positively influences the prediction, implying such structures are associated with a higher predicted value in the model.
+
+3. **fr_urea (0.072)**:  
+   This feature flags the presence of a urea functional group within the molecule. The positive contribution similarly indicates that if the molecule contains a urea group, it tends to increase the predicted value.
+
+**Summary:**  
+The model predicts a higher value primarily because the molecule has a complex topology (BalabanJ) combined with certain metabolic-relevant substructures (N-dealkylation sites and urea groups). Each of these features contributes additively to push the prediction upward. Understanding these contributions can help interpret why the model favors certain molecular structures in its predictions."
+ADME_rPPB,33,gpt-4.1-mini,basic,3,"['BalabanJ', 'BCUT2D_MWHI', 'AvgIpc']","[0.10112289049774305, 0.06332712590536282, 0.04635085747510127]","
+Explain the prediction using the following feature contributions.
+
+- BalabanJ: 0.101
+- BCUT2D_MWHI: 0.063
+- AvgIpc: 0.046
+
+","The prediction is influenced by three key features with the following contributions:
+
+1. **BalabanJ (0.101)**: This feature has the largest positive contribution. BalabanJ is a topological descriptor that captures the molecular connectivity and complexity. A positive value here suggests that molecules with higher or favorable BalabanJ values increase the predicted property or likelihood.
+
+2. **BCUT2D_MWHI (0.063)**: This is a descriptor related to molecular weight and atomic properties, specifically a BCUT (Burden eigenvalue) descriptor weighted by atomic mass on the higher end. Its positive contribution indicates that molecules with certain patterns in atomic mass distribution positively influence the prediction.
+
+3. **AvgIpc (0.046)**: Average Information Content (structural information content) also positively contributes, implying that more structurally informative or diverse molecules are associated with a higher prediction score.
+
+**Summary:**  
+All three features contribute positively to the final prediction, with BalabanJ having the strongest effect. This suggests that molecular structure complexity and atomic properties measured by these descriptors are important factors driving the predicted outcome upward."
+ADME_rPPB,34,gpt-4.1-mini,basic,3,"['BalabanJ', 'fr_urea', 'EState_VSA10']","[0.0864728300565777, 0.07250339998697858, -0.05258381350881136]","
+Explain the prediction using the following feature contributions.
+
+- BalabanJ: 0.086
+- fr_urea: 0.073
+- EState_VSA10: -0.053
+
+","The prediction is influenced by the following features and their contributions:
+
+- **BalabanJ (0.086):** This feature positively contributes to the prediction. A higher BalabanJ index, which is a topological descriptor reflecting the molecule's connectivity, increases the predicted value by 0.086.
+
+- **fr_urea (0.073):** This is another positive contributor. The presence or frequency of urea functional groups in the molecule raises the prediction by 0.073.
+
+- **EState_VSA10 (-0.053):** This feature negatively impacts the prediction. EState_VSA10 is a descriptor combining electrotopological state indices and van der Waals surface area; a higher value here decreases the prediction by 0.053.
+
+**Summary:** The prediction is increased primarily due to the molecular topology (BalabanJ) and the presence of urea groups (fr_urea), but this increase is slightly offset by the electrotopological surface area-related feature (EState_VSA10). Overall, the positive contributions outweigh the negative, leading to a net positive influence on the predicted outcome."
+ADME_rPPB,35,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA13', 'BCUT2D_CHGLO']","[0.4037716048634525, 0.14490731543135907, 0.05698045834551152]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.404
+- PEOE_VSA13: 0.145
+- BCUT2D_CHGLO: 0.057
+
+","The prediction is influenced by three features, each contributing positively to the outcome:
+
+1. **fr_Ndealkylation1 (0.404)**: This feature likely indicates the presence or frequency of a specific N-dealkylation functional group or reaction site in the molecule. A relatively large positive contribution (0.404) suggests that this characteristic strongly increases the predicted value, possibly indicating a molecule prone to N-dealkylation or with related chemical properties.
+
+2. **PEOE_VSA13 (0.145)**: This descriptor is one of the PEOE_VSA (partial equalization of orbital electronegativities — van der Waals surface area) features which quantifies the van der Waals surface area of atoms in a certain range of partial charges. A positive contribution (0.145) means that higher surface area in this partial charge range slightly raises the prediction.
+
+3. **BCUT2D_CHGLO (0.057)**: This is a 2D BCUT descriptor related to global atomic charges, a molecular descriptor reflecting charge distribution within the molecule. A contribution of 0.057 suggests a moderate but positive influence on the predicted value.
+
+**Summary:**  
+The prediction increases most significantly due to the presence or extent of the N-dealkylation site. This is complemented by moderate positive contributions from molecular surface areas associated with specific partial charges (PEOE_VSA13) and global atomic charge distribution (BCUT2D_CHGLO). Together, these features suggest that molecules with certain N-dealkylation characteristics and specific charge-related properties are predicted to have a higher target value in the model."
+ADME_rPPB,36,gpt-4.1-mini,basic,3,"['NumValenceElectrons', 'Phi', 'fr_urea']","[0.09598607671919779, -0.07190973199776937, 0.06518472895986988]","
+Explain the prediction using the following feature contributions.
+
+- NumValenceElectrons: 0.096
+- Phi: -0.072
+- fr_urea: 0.065
+
+","The prediction is influenced by the three features as follows:
+
+- **NumValenceElectrons (0.096)**: This feature has a positive contribution to the prediction. A value of 0.096 means that the number of valence electrons increases the predicted output, pushing the prediction higher by roughly 0.096 units (relative to the baseline).
+
+- **Phi (-0.072)**: This feature has a negative contribution. A value of -0.072 indicates that the feature Phi decreases the predicted output, lowering it by approximately 0.072 units.
+
+- **fr_urea (0.065)**: This feature also positively contributes to the prediction. A contribution of 0.065 suggests that the presence or amount of urea-related structural fragments increases the prediction by about 0.065 units.
+
+### Summary:
+The prediction is the result of balancing these contributions: **NumValenceElectrons** and **fr_urea** push the prediction upward, while **Phi** pulls it downward. Overall, the positive influences slightly outweigh the negative influence, so the net effect is a small increase above the baseline prediction."
+ADME_rPPB,37,gpt-4.1-mini,basic,3,"['PEOE_VSA13', 'BalabanJ', 'VSA_EState5']","[-0.16069325140266186, -0.12219444978169203, -0.07356596909399682]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA13: -0.161
+- BalabanJ: -0.122
+- VSA_EState5: -0.074
+
+","The feature contributions you provided indicate how each feature influenced the prediction relative to a base value or average prediction in your model. Here's the explanation for each:
+
+- **PEOE_VSA13: -0.161**  
+  This feature contributed negatively to the prediction by 0.161 units. It suggests that whatever characteristic PEOE_VSA13 represents in the input data, it lowers the predicted value.
+
+- **BalabanJ: -0.122**  
+  Similar to PEOE_VSA13, the BalabanJ feature also has a negative contribution, decreasing the prediction by 0.122 units. This means this feature’s value is associated with pushing the prediction downward.
+
+- **VSA_EState5: -0.074**  
+  VSA_EState5 contributes a smaller but still negative effect (-0.074). This feature slightly lowers the prediction.
+
+### Overall Interpretation:
+All three features have negative contributions which means they are collectively pulling the prediction down compared to the baseline prediction. If the prediction is of a quantity or probability, these values imply that the particular values of PEOE_VSA13, BalabanJ, and VSA_EState5 lead the model to predict a lower output than it would otherwise. The strongest negative impact comes from PEOE_VSA13, followed by BalabanJ and then VSA_EState5."
+ADME_rPPB,38,gpt-4.1-mini,basic,3,"['MolMR', 'fr_urea', 'BCUT2D_MWHI']","[-0.10548492621577754, 0.07088083915097615, -0.0659912428964377]","
+Explain the prediction using the following feature contributions.
+
+- MolMR: -0.105
+- fr_urea: 0.071
+- BCUT2D_MWHI: -0.066
+
+","The prediction is influenced by three features with the following contributions:
+
+1. **MolMR: -0.105**  
+   This feature has a negative contribution to the prediction, decreasing the predicted value. MolMR (Molecular Refractivity) often relates to the molecule's polarizability and volume. A contribution of -0.105 suggests that higher or specific values of MolMR in this case are associated with lowering the predicted outcome.
+
+2. **fr_urea: 0.071**  
+   This feature has a positive contribution to the prediction, increasing the predicted value. The feature ""fr_urea"" likely represents the presence or count of urea functional groups in the molecule. Its positive contribution means that having urea groups tends to increase the predicted value.
+
+3. **BCUT2D_MWHI: -0.066**  
+   This feature also contributes negatively, decreasing the predicted value. BCUT2D_MWHI is a type of molecular descriptor derived from eigenvalues of modified adjacency matrices weighted by molecular weights, usually indicating molecular complexity or diversity. Here, it reduces the prediction by a modest amount.
+
+### Summary:
+- The overall prediction is decreased mainly by the effects of MolMR (-0.105) and BCUT2D_MWHI (-0.066).  
+- The presence or count of urea groups (fr_urea) raises the prediction (+0.071).  
+
+This suggests that molecules with higher MolMR and BCUT2D_MWHI values tend to lower the predicted property, but this is somewhat offset by the presence of urea groups which increase it."
+ADME_rPPB,39,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'BCUT2D_LOGPLOW', 'BCUT2D_MWHI']","[0.29160076645269967, -0.08378486706982693, -0.07344947632973313]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.292
+- BCUT2D_LOGPLOW: -0.084
+- BCUT2D_MWHI: -0.073
+
+","The prediction is explained by the combined influence of the feature contributions as follows:
+
+- **fr_Ndealkylation1 (0.292):** This feature has a positive contribution to the prediction, meaning that the presence or higher value of this descriptor (likely related to a specific molecular substructure or reaction site, N-dealkylation) increases the predicted value or likelihood of the outcome.
+
+- **BCUT2D_LOGPLOW (-0.084):** This feature contributes negatively, so lower values or presence of this descriptor decrease the prediction. BCUT2D_LOGPLOW generally relates to low values in the logarithm of partition coefficient (logP), which is a measure of hydrophobicity. A negative contribution from this feature suggests that lower hydrophobicity reduces the prediction.
+
+- **BCUT2D_MWHI (-0.073):** Similarly, this feature also has a small negative contribution. BCUT2D_MWHI typically relates to molecular weight or atomic mass characteristics of the molecule, suggesting that higher molecular weight or related properties reduce the predicted value.
+
+### Summary:
+The prediction is primarily driven upward by the **fr_Ndealkylation1** feature, which strongly pushes the prediction higher. At the same time, **BCUT2D_LOGPLOW** and **BCUT2D_MWHI** act to slightly pull the prediction downward. Overall, the positive impact of **fr_Ndealkylation1** dominates, resulting in an increased predicted value."
+ADME_rPPB,40,gpt-4.1-mini,basic,3,"['fr_urea', 'fr_Ndealkylation1', 'PEOE_VSA13']","[-0.22932298279361923, -0.21354198018575404, -0.15298096264620914]","
+Explain the prediction using the following feature contributions.
+
+- fr_urea: -0.229
+- fr_Ndealkylation1: -0.214
+- PEOE_VSA13: -0.153
+
+","The prediction is influenced by three features with the following contributions:
+
+- **fr_urea: -0.229**  
+  This feature represents the presence or count of the urea functional group in the molecule. A negative contribution of -0.229 means that having urea groups decreases the predicted value.
+
+- **fr_Ndealkylation1: -0.214**  
+  This feature likely corresponds to a specific molecular substructure related to N-dealkylation sites. Its negative contribution (-0.214) also reduces the predicted value.
+
+- **PEOE_VSA13: -0.153**  
+  This is a descriptor that combines partial charges (PEOE) and van der Waals surface areas (VSA) of certain atoms in the molecule. The negative value (-0.153) indicates that higher values of this descriptor contribute to lowering the prediction.
+
+### Summary
+
+All three features contribute negatively to the prediction, meaning that the presence of urea groups, specific N-dealkylation-related features, and certain charge/area characteristics reduce the predicted outcome. The strongest effect comes from the urea group, followed by N-dealkylation and then the electrostatic surface area descriptor."
+ADME_rPPB,41,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA7', 'MolMR']","[-0.07994665933229762, -0.0782102789938515, -0.07583017237424582]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.080
+- PEOE_VSA7: -0.078
+- MolMR: -0.076
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+- **fr_Ndealkylation1: -0.080**  
+  This feature contributes negatively to the prediction with a value of -0.080. It suggests that the presence or higher value of `fr_Ndealkylation1` reduces the predicted outcome (e.g., lowers the predicted activity, probability, or property value, depending on the model context).
+
+- **PEOE_VSA7: -0.078**  
+  Similarly, `PEOE_VSA7` also contributes negatively, with a slightly smaller magnitude of -0.078. This descriptor's higher values correspond to decreased prediction scores, indicating its inverse relationship with the predicted target.
+
+- **MolMR: -0.076**  
+  The molecular refractivity (MolMR) feature contributes negatively by -0.076. A higher MolMR value tends to lower the predictive score as well.
+
+In summary, all three features—`fr_Ndealkylation1`, `PEOE_VSA7`, and `MolMR`—each have a relatively similar magnitude of negative contribution. Their combined effect is to decrease the predicted value, meaning the model interprets higher values of these features as evidence against the positive prediction outcome.
+
+If you need a more detailed explanation, such as what these features represent chemically or physically, feel free to ask!"
+ADME_rPPB,42,gpt-4.1-mini,basic,3,"['fr_urea', 'NumValenceElectrons', 'HeavyAtomMolWt']","[0.09923343911028058, 0.09398937493980908, 0.0600780742623629]","
+Explain the prediction using the following feature contributions.
+
+- fr_urea: 0.099
+- NumValenceElectrons: 0.094
+- HeavyAtomMolWt: 0.060
+
+","The prediction is influenced by three key features with the following contributions:
+
+1. **fr_urea (0.099)**: This feature contributes positively and is the largest among the three. It suggests that the presence or frequency of the urea functional group in the molecule increases the predicted value.
+
+2. **NumValenceElectrons (0.094)**: The number of valence electrons also has a significant positive impact, indicating that molecules with more valence electrons tend to have higher predicted outcomes.
+
+3. **HeavyAtomMolWt (0.060)**: The molecular weight of heavy atoms (non-hydrogen atoms) contributes positively as well, though to a lesser extent than the other two features. Heavier molecules increase the prediction but not as strongly.
+
+### Overall explanation:
+All three features push the prediction upward, with the presence of urea and the number of valence electrons having the largest influence. Heavy atom molecular weight adds additional support to the predicted increase but to a smaller degree."
+ADME_rPPB,43,gpt-4.1-mini,basic,3,"['fr_urea', 'LabuteASA', 'MinAbsPartialCharge']","[-0.12140050333769542, -0.07046838034964475, -0.05535125713305527]","
+Explain the prediction using the following feature contributions.
+
+- fr_urea: -0.121
+- LabuteASA: -0.070
+- MinAbsPartialCharge: -0.055
+
+","The prediction is influenced by three features with their respective contributions indicating their impact on the model’s output:
+
+- **fr_urea: -0.121**  
+  This feature has a moderately negative contribution, meaning the presence or higher value of the urea functional group decreases the predicted value. It suggests that molecules with more urea groups are less likely to have the target characteristic or outcome.
+
+- **LabuteASA: -0.070**  
+  LabuteASA (a descriptor of the molecular surface area) negatively contributes to the prediction, but to a lesser extent than fr_urea. A larger molecular surface area, as described by this descriptor, slightly lowers the predicted value.
+
+- **MinAbsPartialCharge: -0.055**  
+  This feature captures the minimum absolute partial charge on the molecule; its negative contribution means that higher minimum absolute partial charges tend to reduce the prediction score.
+
+### Overall interpretation:
+All three features contribute to lowering the prediction score. The most influential factor in this set is the presence of a urea group, followed by the molecular surface area and then the minimum absolute partial charge. In summary, based on these feature contributions, molecules with urea groups, larger surface areas, and higher minimum absolute partial charges are predicted to have lower target values or probabilities in the model’s task."
+ADME_rPPB,44,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'SlogP_VSA5', 'BalabanJ']","[0.33435609180737186, 0.13657336812437085, -0.11074041908110871]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.334
+- SlogP_VSA5: 0.137
+- BalabanJ: -0.111
+
+","The prediction is influenced by the three features as follows:
+
+1. **fr_Ndealkylation1 (0.334)**:  
+   This feature has a positive contribution of +0.334 to the prediction. It suggests that the presence or higher value of the ""fr_Ndealkylation1"" feature strongly increases the predicted output. This feature might represent a chemical or structural property related to N-dealkylation (a metabolic reaction where alkyl groups are removed from nitrogen atoms), and its presence tends to push the prediction higher.
+
+2. **SlogP_VSA5 (0.137)**:  
+   This feature also adds positively (+0.137) to the prediction, though less strongly than fr_Ndealkylation1. SlogP_VSA5 is related to the logarithm of the octanol-water partition coefficient (logP) combined with a specific van der Waals surface area contribution. A higher value generally indicates increased lipophilicity or hydrophobic surface area, which contributes moderately to increasing the prediction.
+
+3. **BalabanJ (-0.111)**:  
+   This feature has a negative contribution (-0.111), indicating that a higher BalabanJ value decreases the prediction. BalabanJ is a molecular connectivity index—specifically a topological descriptor reflecting the branching and overall graph shape of the molecule. A higher BalabanJ may imply more complex or branched structures, which in this model tend to lower the predicted value.
+
+### Summary  
+The prediction is driven up primarily by the presence or increase of N-dealkylation related features and moderate lipophilicity, while molecular complexity or branching (as reflected by BalabanJ) slightly reduces the predicted outcome. Overall, the positive contributions outweigh the negative here, suggesting a net increase in the prediction compared to a baseline."
+ADME_rPPB,45,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA13', 'fr_urea']","[-0.31203849783478427, -0.18759164376834997, -0.187532842275956]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.312
+- PEOE_VSA13: -0.188
+- fr_urea: -0.188
+
+","The prediction is influenced by the contributions of the three features listed, each contributing negatively to the predicted value. Here's what each feature and its contribution imply:
+
+1. **fr_Ndealkylation1 (-0.312):**  
+   This feature likely represents the presence or frequency of a specific structural motif or reaction site related to N-dealkylation (removal of an alkyl group attached to a nitrogen atom). A negative contribution of -0.312 means that a higher value or presence of this feature decreases the predicted outcome. In other words, molecules with more N-dealkylation sites tend to lower the predicted property or class score.
+
+2. **PEOE_VSA13 (-0.188):**  
+   PEOE_VSA13 is a descriptor related to molecular surface area weighted by partial charges calculated via the Partial Equalization of Orbital Electronegativities (PEOE) method. Specifically, it measures the sum of van der Waals surface areas of atoms whose partial charge falls within a specific range (bin 13). The negative contribution (-0.188) suggests that molecules with a larger surface area of atoms in this charge range tend to decrease the predicted value.
+
+3. **fr_urea (-0.188):**  
+   This feature captures the presence or count of urea functional groups in the molecule. A negative contribution of -0.188 indicates that the presence of urea groups reduces the predicted property or likelihood of the predicted class.
+
+### Overall Explanation:
+All three features—N-dealkylation sites, PEOE_VSA13 surface area, and urea groups—contribute negatively to the prediction. This means that if a molecule has many N-dealkylation sites, significant surface area corresponding to PEOE_VSA13, or contains urea groups, the model predicts a lower value or lower probability for the positive class/target variable. Essentially, these features push the prediction downward."
+ADME_rPPB,46,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'EState_VSA5', 'fr_urea']","[0.24699726121233093, 0.07700601185538901, 0.065970924273354]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.247
+- EState_VSA5: 0.077
+- fr_urea: 0.066
+
+","The prediction is influenced by three features with positive contributions:
+
+1. **fr_Ndealkylation1 (0.247):**  
+   This feature has the largest positive contribution. It likely represents the presence or frequency of a chemical substructure associated with N-dealkylation, a metabolic process where an alkyl group is removed from a nitrogen atom. A higher value or presence of this feature strongly pushes the prediction higher (depending on the model's output, e.g., likelihood or score).
+
+2. **EState_VSA5 (0.077):**  
+   This is an electro-topological state descriptor combined with a van der Waals surface area bin (VSA5). Its positive contribution suggests that certain molecular properties related to the electronic environment and surface area associated with this descriptor increase the predicted value, but to a lesser extent than the first feature.
+
+3. **fr_urea (0.066):**  
+   This feature pertains to the presence or count of urea substructures in the molecule. Its positive contribution indicates that molecules containing urea groups slightly increase the prediction.
+
+### Overall Explanation:
+The prediction is primarily driven by the presence of an N-dealkylation-related substructure, significantly boosted by favorable electronic and surface area properties (EState_VSA5), and slightly enhanced by the presence of urea groups. These features collectively push the prediction in a positive direction."
+ADME_rPPB,47,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'SlogP_VSA5', 'NumValenceElectrons']","[0.49111782281861743, 0.1199466453730778, 0.08420556731205552]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.491
+- SlogP_VSA5: 0.120
+- NumValenceElectrons: 0.084
+
+","The prediction is influenced by the following features and their contributions:
+
+1. **fr_Ndealkylation1 (0.491)**: This feature has the largest positive contribution to the prediction. It likely represents the presence or extent of a specific chemical substructure or functional group involved in an N-dealkylation process. A higher value of this feature strongly pushes the prediction towards the positive class or higher predicted value, indicating that this chemical characteristic is a key driver in the model's decision.
+
+2. **SlogP_VSA5 (0.120)**: This feature contributes positively but less strongly than fr_Ndealkylation1. SlogP_VSA5 measures a property related to the molecule’s hydrophobicity and the surface area of atoms with certain partial charges (typically used to estimate lipophilicity). Its positive contribution suggests that molecules with greater values in this descriptor are more likely to be predicted as positive or have higher predicted outcomes.
+
+3. **NumValenceElectrons (0.084)**: This is the smallest positive contributor among the three. It represents the total number of valence electrons in the molecule, and its positive value indicates that molecules with more valence electrons are slightly more likely to be predicted positively in the model.
+
+**Summary:**  
+The prediction is mainly driven by the presence or magnitude of the N-dealkylation-related feature, supplemented by the molecule’s hydrophobic surface areas and valence electron count. All these features contribute positively, meaning the prediction increases as these feature values increase."
+ADME_rPPB,48,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'PEOE_VSA13', 'PEOE_VSA10']","[0.24331878726480408, 0.15401223549713028, 0.08195901876385353]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: 0.243
+- PEOE_VSA13: 0.154
+- PEOE_VSA10: 0.082
+
+","The prediction explanation is based on the contributions of three features, each adding a certain value toward the final prediction. Here's what each feature contribution means:
+
+1. **fr_Ndealkylation1: 0.243**  
+   This feature likely corresponds to the presence or frequency of a specific chemical fragment or functional group related to N-dealkylation (removal of an alkyl group attached to nitrogen). A positive contribution of 0.243 indicates that this feature strongly increases the predicted value. In other words, if the molecule has more of this fragment, the predicted outcome (e.g., activity, property score) is higher.
+
+2. **PEOE_VSA13: 0.154**  
+   PEOE_VSA descriptors combine Partial Equalization of Orbital Electronegativities (PEOE) partial charges with surface area (VSA = van der Waals surface area) bins. PEOE_VSA13 refers to a specific bin of surface area weighted by atoms with certain partial charges. A contribution of 0.154 means that the surface area corresponding to this charge bin positively influences the prediction, but less so than fr_Ndealkylation1.
+
+3. **PEOE_VSA10: 0.082**  
+   Similarly, PEOE_VSA10 is another charge-based surface area bin descriptor. Its positive contribution (0.082) shows it also supports increasing the prediction but is the smallest contributor among the three.
+
+---
+
+**Summary:**  
+The prediction is driven mostly by the presence of the N-dealkylation-related fragment, with additional positive effects from surface area regions carrying specific partial charges represented by PEOE_VSA13 and PEOE_VSA10. Together, these three features cumulatively increase the predicted value."
+ADME_rPPB,49,gpt-4.1-mini,basic,3,"['fr_Ndealkylation1', 'MaxAbsPartialCharge', 'fr_urea']","[-0.39580506504304436, -0.1254978300131244, -0.1118800779282492]","
+Explain the prediction using the following feature contributions.
+
+- fr_Ndealkylation1: -0.396
+- MaxAbsPartialCharge: -0.125
+- fr_urea: -0.112
+
+","The prediction is influenced by three features, each contributing a negative value to the final score. Here's the explanation of their contributions:
+
+1. **fr_Ndealkylation1: -0.396**  
+   This feature has the largest negative contribution. The presence or higher frequency of the N-dealkylation group (a metabolic reaction site) is strongly pushing the prediction downward, indicating that this chemical property or substructure reduces the predicted outcome (e.g., likelihood, activity, or property value).
+
+2. **MaxAbsPartialCharge: -0.125**  
+   The maximum absolute partial charge of the molecule also negatively impacts the prediction, though less strongly than the first feature. Higher values of this charge characteristic tend to decrease the predicted value in this context.
+
+3. **fr_urea: -0.112**  
+   The presence or frequency of a urea group similarly contributes negatively to the prediction. While its impact is smaller than fr_Ndealkylation1, it still lowers the final score.
+
+**Overall interpretation:**  
+All three features contribute to lowering the prediction, with the presence of N-dealkylation sites having the strongest decreasing effect, followed by molecular charge characteristics and urea groups. This means the model predicts a lower outcome or likelihood when these features are more prominent in the molecule."

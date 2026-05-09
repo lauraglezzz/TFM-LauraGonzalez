@@ -1,0 +1,230 @@
+endpoint,feature,prompt,explanation
+ADME_hPPB,MolLogP,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MolLogP
+
+Observed values (descriptor value -> contribution to prediction):
+
+-7.831 -> -0.296
+1.154 -> -0.137
+1.701 -> 0.429
+2.124 -> 0.631
+2.391 -> -0.098
+2.622 -> -0.546
+2.856 -> -0.719
+3.029 -> -0.479
+3.170 -> -0.215
+3.328 -> 0.105
+3.502 -> 0.026
+3.669 -> 0.260
+3.834 -> -0.334
+4.027 -> 0.115
+4.232 -> 0.612
+4.438 -> 0.315
+4.705 -> -0.103
+5.016 -> -0.282
+5.380 -> 0.014
+8.948 -> -0.911
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","MolLogP is a descriptor that measures the lipophilicity of a molecule, indicating its tendency to partition into lipid versus aqueous environments. Lipophilicity plays a crucial role in drug behavior, influencing membrane permeability, absorption, distribution, and even binding to target proteins or off-target sites.
+
+From the data provided, the contribution to the predicted drug property varies nonlinearly as MolLogP changes:
+
+- At very low MolLogP values (around -7.8), which would represent extremely hydrophilic molecules, the contribution is slightly negative (-0.296). This suggests that such highly hydrophilic compounds may have somewhat unfavorable properties for the drug outcome being predicted.
+  
+- In the moderate range (approximately 1.7 to 2.1), the contributions become strongly positive (0.429 to 0.631), indicating that molecules with moderate lipophilicity tend to favorably influence the predicted drug property. This moderate lipophilicity might balance water solubility and membrane permeability optimally.
+
+- Beyond this peak, as MolLogP increases further (around 2.4 to 3.8), contributions become negative again, with the lowest values around 2.9 to 2.85 (-0.7 range). This suggests that higher lipophilicity beyond moderate levels could reduce the predicted drug property, possibly due to poor aqueous solubility, nonspecific binding, or metabolic instability.
+
+- Interestingly, at even higher MolLogP values (>4), the contributions fluctuate, showing some positive values (e.g., 4.2: +0.61, 4.4: +0.31) but generally lower than in the moderate range, while extremely high lipophilicity (around 8.9) leads to a strong negative contribution (-0.911).
+
+In summary, the relationship indicates that moderate lipophilicity is optimal for the favorable drug property, while both very low and very high lipophilicity reduce the predicted outcome. This aligns with the known drug design principle that balanced lipophilicity helps achieve adequate solubility and permeability, while extremes can impair drug-like behavior due to solubility issues at the low end and potential toxicity or poor pharmacokinetics at the high end."
+ADME_hPPB,SMR_VSA10,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: SMR_VSA10
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> 0.077
+5.898 -> 0.053
+5.969 -> 0.114
+11.595 -> 0.033
+11.876 -> -0.064
+16.941 -> 0.017
+17.508 -> -0.042
+21.553 -> 0.030
+22.497 -> 0.020
+23.013 -> 0.046
+23.444 -> 0.021
+27.577 -> 0.089
+28.446 -> -0.075
+29.109 -> -0.044
+33.278 -> -0.110
+34.140 -> 0.121
+36.733 -> 0.126
+39.882 -> 0.035
+45.865 -> 0.065
+70.089 -> 0.047
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor SMR_VSA10 relates to the sum of the van der Waals surface areas of atoms in a molecule with a specific range of molar refractivity contributions. Molar refractivity is associated with the polarizability and electronic distribution of the molecule.
+
+From the data, it is apparent that the relationship between SMR_VSA10 and the drug property is non-linear and somewhat complex:
+
+- At very low values (close to 0), the descriptor contributes positively to the property, indicating that molecules with very little surface area in this particular molar refractivity range tend to increase the predicted property.
+- As SMR_VSA10 increases to intermediate values around 11-29, the contribution fluctuates between positive and negative, with some negative contributions emerging especially around values 11.9, 17.5, 28.4, and 33.3. This suggests that a moderate presence of these molecular features may reduce the property, possibly due to unfavorable electronic or steric effects.
+- At higher values (above 34), there is again a generally positive contribution, indicating that larger surface areas with this characteristic molar refractivity tend to favor an increase in the drug property, which might be related to enhanced interactions involving polarizable regions of the molecule.
+- Notably, some peaks (34.140, 36.733) show strong positive contributions, implying that specific ranges of polarizable surface area are particularly beneficial.
+
+Biologically or chemically, this pattern suggests that the drug property benefits from having molecular regions with high polarizability surface area, but only beyond a certain threshold. Intermediate amounts might cause electronic or steric hindrance that reduces the property, perhaps by affecting binding affinity, solubility, or membrane permeability.
+
+In summary, the predicted drug property is influenced by the polarized surface area of the molecule in a non-linear manner: low or very high polarizable surface areas (reflected by SMR_VSA10) tend to enhance the property, while moderate amounts can sometimes have a detrimental effect. This points to the importance of optimizing molecular electronic features linked to polarizability for favorable drug characteristics."
+ADME_hPPB,BCUT2D_CHGLO,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: BCUT2D_CHGLO
+
+Observed values (descriptor value -> contribution to prediction):
+
+-2.630 -> -0.050
+-2.434 -> -0.001
+-2.390 -> 0.061
+-2.361 -> -0.005
+-2.347 -> 0.001
+-2.331 -> 0.009
+-2.321 -> 0.010
+-2.302 -> 0.004
+-2.281 -> -0.009
+-2.263 -> 0.012
+-2.235 -> 0.000
+-2.205 -> 0.023
+-2.170 -> -0.066
+-2.150 -> -0.013
+-2.135 -> -0.074
+-2.119 -> -0.080
+-2.106 -> -0.086
+-2.087 -> 0.023
+-2.056 -> 0.032
+-1.852 -> 0.015
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor BCUT2D_CHGLO relates to the global charge distribution within a molecule, reflecting its overall electronic environment.
+
+From the observed data, when BCUT2D_CHGLO values are more negative (around -2.6 to -2.3), the contribution to the predicted drug property hovers near zero with slight positive or negative fluctuations. This suggests that in this range, changes in the charge environment have minimal impact on the property.
+
+As the values approach around -2.15 to -2.1, there is a clear negative contribution, indicating that molecules with BCUT2D_CHGLO values in this region contribute to a decrease in the drug property. This could imply that a particular electronic environment, possibly indicating higher electron density or specific charge distributions, negatively affects the drug property. 
+
+At values closer to -2.05 and higher (less negative), the contribution swings back to a small positive effect. This trend suggests a non-linear relationship, where moderately negative environments reduce the property, but further shifts can reverse this effect.
+
+Biologically or chemically, this pattern may reflect that certain electronic configurations, as captured by BCUT2D_CHGLO, influence molecular interactions with the biological target or affect physicochemical properties relevant for the drug property. Specifically, molecules with intermediate levels of this charge descriptor might have electronic features that diminish efficacy or binding affinity, while those at the extremes have a neutral or slightly positive impact."
+ADME_hPPB,PEOE_VSA6,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: PEOE_VSA6
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> 0.031
+0.000 -> 0.011
+0.000 -> 0.074
+6.066 -> 0.032
+6.421 -> -0.080
+11.762 -> -0.052
+12.133 -> -0.003
+17.667 -> 0.008
+18.199 -> -0.017
+19.262 -> -0.024
+23.734 -> 0.045
+24.265 -> 0.001
+29.268 -> 0.001
+30.332 -> 0.058
+35.335 -> -0.073
+37.256 -> 0.067
+42.465 -> -0.003
+48.531 -> 0.006
+56.312 -> -0.014
+121.327 -> -0.045
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","PEOE_VSA6 is a molecular descriptor related to the sum of the solvent-accessible surface area of atoms in a molecule that have a specific partial charge range, typically a moderately negative partial charge. This descriptor reflects how much of the molecular surface is associated with these negatively charged regions.
+
+From the data, molecules with low or zero values for PEOE_VSA6 tend to show small positive contributions to the predicted drug property, while intermediate values (around 6 to 19) generally correspond to negative or near-zero contributions. As the descriptor value increases further (above ~20), the contributions fluctuate but mostly remain small in magnitude, occasionally positive or negative.
+
+Chemically, this suggests that having a moderate extent of negatively charged surface area (as captured by PEOE_VSA6) may slightly decrease or not strongly influence the desired drug property, whereas very low or very high values might either slightly increase it or have minimal effect. The intermittent positive contributions at higher values could indicate that in some molecular contexts, extensive negatively charged surface area is beneficial, but generally, the relationship is weak and non-linear.
+
+Biologically, partial charges influence interactions such as hydrogen bonding, ionic interactions, and solvation. Therefore, the PEOE_VSA6 descriptor likely reflects how the distribution and extent of electronegative surface areas impact the drug's behavior, e.g., binding affinity or permeability, but the effect is subtle and context-dependent."
+ADME_hPPB,SlogP_VSA2,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: SlogP_VSA2
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> -0.016
+14.535 -> 0.011
+16.983 -> -0.035
+20.627 -> 0.040
+23.599 -> -0.031
+26.600 -> 0.011
+29.968 -> 0.021
+31.114 -> 0.009
+33.448 -> 0.011
+35.930 -> 0.038
+38.616 -> -0.052
+41.112 -> 0.009
+44.229 -> 0.085
+48.799 -> -0.091
+52.882 -> 0.014
+56.317 -> 0.021
+60.858 -> -0.078
+65.709 -> 0.046
+72.239 -> -0.000
+187.087 -> 0.121
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor SlogP_VSA2 represents the sum of the van der Waals surface areas of atoms in the molecule having an intermediate range of hydrophobicity, typically corresponding to atoms with moderately positive contributions to the octanol-water partition coefficient (logP). This descriptor captures how a molecule's surface area, specifically related to certain hydrophobic atoms, influences the drug property.
+
+Examining the pattern of contributions across the range of descriptor values:
+
+- At very low values of SlogP_VSA2 (close to zero), the contribution to the predicted property is slightly negative, indicating that molecules lacking this intermediate hydrophobic surface area tend to reduce the property.
+- As the descriptor increases into moderate ranges (~15 to 36), the contribution fluctuates somewhat around zero, with small positive and negative values. This suggests that moderate presence of these hydrophobic regions is only weakly associated with the property and may depend on additional molecular context.
+- At higher values (~44 to 65), there are some more pronounced positive contributions, indicating that molecules with substantial surface area from these moderately hydrophobic atoms tend to enhance the predicted property.
+- However, at very high values (> 48 and particularly 60–72), strong negative contributions are observed, suggesting that excessively large surface areas corresponding to this descriptor may negatively impact the drug property.
+- The highest value (187.087) shows a strong positive contribution, which may reflect rare, very large molecules or unusual features where this descriptor is highly influential in a positive way.
+
+In chemical or biological terms, this descriptor reflects how the extent of intermediate hydrophobic surface area in a molecule influences the drug property:
+
+- Moderate amounts of such hydrophobic surface area might favorably influence interactions like membrane permeability or binding affinity, enhancing the property.
+- Too little of this surface area might impair such interactions, leading to decreases in property.
+- Excessive intermediate hydrophobic surface area may negatively impact solubility, increase nonspecific binding, or reduce bioavailability, thus detracting from the desired property.
+- In certain large or unique molecules with very high values, this descriptor may reflect specialized structural features that positively contribute to the property.
+
+Overall, an optimal balance of intermediate hydrophobic surface area as captured by SlogP_VSA2 appears important for maximizing the predicted drug property, while deviations in either direction—too little or too much—can reduce its value."

@@ -1,0 +1,1260 @@
+endpoint,sample_id,model,strategy,top_k,features,shap_values,prompt,explanation
+ADME_hPPB,0,gpt-4.1-mini,basic,5,"['fr_COO', 'fr_para_hydroxylation', 'AvgIpc', 'Phi', 'HeavyAtomMolWt']","[0.23030167332376775, 0.09173439901369888, 0.08776491290549547, 0.07452608241971877, -0.06474879028152498]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.230
+- fr_para_hydroxylation: 0.092
+- AvgIpc: 0.088
+- Phi: 0.075
+- HeavyAtomMolWt: -0.065
+
+","The prediction explanation is based on the feature contributions listed, which represent how much each feature pushes the prediction higher or lower. Here's the interpretation:
+
+- **fr_COO (0.230)**: This feature has the largest positive contribution, increasing the prediction significantly. Presence or count of carboxyl groups (COO) strongly favors the predicted outcome.
+- **fr_para_hydroxylation (0.092)**: This feature also contributes positively, though less than fr_COO, indicating that the presence or frequency of para-hydroxylation groups adds to the predicted value.
+- **AvgIpc (0.088)**: The average information path complexity or a related descriptor adds a moderate positive effect on the prediction.
+- **Phi (0.075)**: This feature contributes positively, though relatively smaller, slightly pushing the prediction higher.
+- **HeavyAtomMolWt (-0.065)**: This feature has a negative contribution, meaning that higher molecular weight of heavy atoms decreases or reduces the predicted value somewhat.
+
+**Summary:** The prediction is mainly driven upward by the presence of carboxyl groups, para-hydroxylation, complexity measures, and the Phi descriptor, while being slightly pulled down by the heavy atom molecular weight. Overall, the prediction is positive due to the dominant positive feature contributions."
+ADME_hPPB,1,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'HallKierAlpha', 'SlogP_VSA6', 'NOCount']","[-0.09066957024896542, 0.05647438464739423, 0.056451441376551476, 0.05289779008691714, -0.04892863193966684]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.091
+- HeavyAtomMolWt: 0.056
+- HallKierAlpha: 0.056
+- SlogP_VSA6: 0.053
+- NOCount: -0.049
+
+","The prediction is influenced by several features with the following contributions:
+
+- **fr_COO: -0.091**  
+  This feature has the strongest negative contribution to the prediction. It indicates the presence or count of carboxyl (COO) functional groups. Its negative value means that having more carboxyl groups decreases the predicted value (e.g., lowers activity, affinity, or whichever property is being predicted).
+
+- **HeavyAtomMolWt: 0.056**  
+  The molecular weight considering only heavy atoms (non-hydrogen atoms) contributes positively. Higher heavy atom molecular weight increases the prediction.
+
+- **HallKierAlpha: 0.056**  
+  This descriptor is related to molecular flexibility or shape. Its positive contribution means that molecules with higher HallKierAlpha values tend to raise the predicted value.
+
+- **SlogP_VSA6: 0.053**  
+  This is a descriptor combining lipophilicity (logP) and van der Waals surface area in a specific bin (6). A positive contribution here suggests that regions of the molecule contributing to higher SlogP_VSA6 values increase the prediction.
+
+- **NOCount: -0.049**  
+  This counts the number of nitrogen and oxygen atoms. Its negative contribution means that more nitrogen/oxygen atoms tend to decrease the predicted value.
+
+---
+
+### Summary:
+- The prediction decreases most strongly with the presence of carboxyl groups (fr_COO) and nitrogen/oxygen atoms (NOCount).
+- It increases moderately with overall heavy atom molecular weight, molecular shape/flexibility (HallKierAlpha), and lipophilic surface area (SlogP_VSA6).
+
+These insights can help understand how molecular structure drives the prediction: molecules with fewer carboxyl groups and nitrogen/oxygen atoms but higher molecular weight, certain shape characteristics, and lipophilic surface areas are predicted to have higher values."
+ADME_hPPB,2,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'EState_VSA3', 'AvgIpc', 'PEOE_VSA2']","[0.21410272034319877, -0.08789373115731833, 0.06264410426729361, 0.06057282211971123, 0.054283753486192285]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.214
+- HeavyAtomMolWt: -0.088
+- EState_VSA3: 0.063
+- AvgIpc: 0.061
+- PEOE_VSA2: 0.054
+
+","The prediction is influenced by several features, each contributing positively or negatively to the output. Here's the explanation of the prediction based on the given feature contributions:
+
+- **fr_COO (0.214):** This feature has the largest positive contribution, suggesting that the presence or count of carboxyl groups (-COO) in the molecule significantly increases the predicted value. It plays a strong role in driving the prediction upward.
+
+- **HeavyAtomMolWt (-0.088):** This feature has a negative contribution, indicating that a higher heavy atom molecular weight (sum of the weights of non-hydrogen atoms) tends to decrease the predicted value. Larger or heavier molecules are thus associated with a lower prediction.
+
+- **EState_VSA3 (0.063):** This descriptor positively contributes to the prediction. EState_VSA3 usually relates to electronic state indices combined with van der Waals surface areas, suggesting that certain electronic environments increase the prediction moderately.
+
+- **AvgIpc (0.061):** The average information content on the molecular graph (AvgIpc) contributes positively. This implies that molecules with greater structural complexity or certain topological features raise the prediction slightly.
+
+- **PEOE_VSA2 (0.054):** This feature also positively influences the prediction. It represents partial charges combined with van der Waals surface areas, indicating that the presence of specific electronic charge distributions on the molecule surface slightly increases the prediction.
+
+### Summary:
+The prediction is increased primarily by the presence of carboxyl groups (fr_COO) and moderately enhanced by some electronic and topological features (EState_VSA3, AvgIpc, PEOE_VSA2). At the same time, the overall molecular size or weight (HeavyAtomMolWt) reduces the predicted value. Together, these contributions explain why the prediction is at a certain level based on the molecule's structure and properties."
+ADME_hPPB,3,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'fr_C_O', 'SMR_VSA3', 'PEOE_VSA1']","[-0.07941055982920611, -0.036676242675749135, 0.034697503994073946, 0.033301049602411495, -0.0330308197432013]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.079
+- HeavyAtomMolWt: -0.037
+- fr_C_O: 0.035
+- SMR_VSA3: 0.033
+- PEOE_VSA1: -0.033
+
+","The prediction is derived from the combined effects of the listed feature contributions on the model output. Here's an explanation of each feature's contribution and the overall prediction:
+
+- **fr_COO: -0.079**
+  This feature indicates the presence or frequency of carboxyl groups (-COO) in the molecule. A negative contribution (-0.079) means that having more carboxyl groups tends to decrease the predicted value.
+
+- **HeavyAtomMolWt: -0.037**
+  This feature represents the molecular weight considering only heavy atoms (non-hydrogen atoms). Its negative contribution suggests that heavier molecules slightly reduce the predicted outcome.
+
+- **fr_C_O: 0.035**
+  This corresponds to the presence or count of carbon-oxygen single bonds (C-O) in the molecule. A positive contribution (+0.035) means that these bonds increase the predicted value.
+
+- **SMR_VSA3: 0.033**
+  This descriptor combines the molecular refractivity (SMR) and the van der Waals surface area within a certain range. A positive contribution here indicates that certain electronic or steric properties related to this descriptor positively influence the prediction.
+
+- **PEOE_VSA1: -0.033**
+  PEOE_VSA1 is a descriptor related to partial charges on the molecular surface area. A negative contribution suggests that the specific distribution of partial charges associated with this descriptor lowers the predicted value.
+
+### Overall Interpretation:
+The prediction results from both positive and negative contributions of molecular features:
+
+- Features related to the molecular composition and electronic environment (fr_C_O and SMR_VSA3) push the predicted value upward.
+- In contrast, features associated with molecular size/weight and certain functional groups with specific electronic properties (fr_COO, HeavyAtomMolWt, PEOE_VSA1) reduce the predicted value.
+
+The largest negative impact comes from the presence of carboxyl groups, indicating that these groups are strongly associated with lower prediction outputs in this context. The slight positive influences from carbon-oxygen bonds and related surface area descriptors partially counterbalance these negative effects.
+
+Thus, the net prediction is a balance of these opposing influences, weighted by how strongly each feature correlates with the target property in the training data."
+ADME_hPPB,4,gpt-4.1-mini,basic,5,"['Chi0n', 'PEOE_VSA1', 'HeavyAtomMolWt', 'fr_COO', 'NumSaturatedHeterocycles']","[-0.11669207127936318, 0.0823257502401111, 0.07957564252908186, 0.07034551175873537, -0.060103216569827214]","
+Explain the prediction using the following feature contributions.
+
+- Chi0n: -0.117
+- PEOE_VSA1: 0.082
+- HeavyAtomMolWt: 0.080
+- fr_COO: 0.070
+- NumSaturatedHeterocycles: -0.060
+
+","The prediction is being influenced by various features with both positive and negative contributions. Here's what each feature's contribution suggests:
+
+- **Chi0n: -0.117**  
+  This feature has a negative contribution, decreasing the predicted value. Chi0n is a topological descriptor related to molecular connectivity. A negative value here indicates that higher values of Chi0n are associated with a lower predicted outcome.
+
+- **PEOE_VSA1: 0.082**  
+  This feature positively contributes to the prediction. PEOE_VSA1 measures the sum of van der Waals surface areas of atoms with a particular partial charge range. A positive contribution means that molecules with larger PEOE_VSA1 values increase the predicted value.
+
+- **HeavyAtomMolWt: 0.080**  
+  The heavy atom molecular weight also contributes positively. This means that heavier molecules (in terms of non-hydrogen atoms) tend to increase the prediction.
+
+- **fr_COO: 0.070**  
+  This is a fragment count feature indicating the presence of carboxylic acid groups (-COO). Its positive contribution suggests that molecules containing carboxylic acid groups increase the predicted value.
+
+- **NumSaturatedHeterocycles: -0.060**  
+  The number of saturated heterocycles contributes negatively, meaning molecules with more saturated heterocyclic rings tend to lower the prediction.
+
+### Overall Interpretation:
+The prediction increases with higher partial charge surface area (PEOE_VSA1), heavier molecules, and the presence of carboxylic acid groups, while it decreases with more complex molecular connectivity (Chi0n) and a higher number of saturated heterocycles. The largest negative effect is seen for Chi0n, and the largest positive effect is the PEOE_VSA1 feature. This balance shapes the final predicted value."
+ADME_hPPB,5,gpt-4.1-mini,basic,5,"['fr_COO', 'Chi2n', 'PEOE_VSA6', 'Chi0n', 'Phi']","[0.671899759352337, 0.06830291145927844, -0.05654044626110822, 0.056444117994264395, 0.04587657399820636]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.672
+- Chi2n: 0.068
+- PEOE_VSA6: -0.057
+- Chi0n: 0.056
+- Phi: 0.046
+
+","The prediction is explained by the combined contributions of these features, which indicate how each one pushes the prediction higher or lower relative to the baseline:
+
+- **fr_COO (0.672):** This has the largest positive contribution, strongly pushing the prediction upward. It suggests the presence of COO functional groups (carboxyl groups) significantly increases the predicted outcome.
+- **Chi2n (0.068):** This also adds positively but more modestly, indicating that the molecular connectivity or shape measure captured by Chi2n slightly raises the prediction.
+- **PEOE_VSA6 (-0.057):** This feature contributes negatively, slightly lowering the prediction. It might indicate that certain partial charge-surface area characteristics detract from the predicted value.
+- **Chi0n (0.056):** A small positive effect, showing a minor increase in prediction associated with this zero-order connectivity index.
+- **Phi (0.046):** Also a small positive contributor, indicating some influence from torsional angles or related molecular geometry.
+
+**Summary:** The prediction is mostly driven upward by the presence of COO groups and connectivity features (fr_COO and Chi2n), slightly offset by the negative contribution of PEOE_VSA6. The other features (Chi0n and Phi) provide minor positive adjustments."
+ADME_hPPB,6,gpt-4.1-mini,basic,5,"['fr_ketone', 'HeavyAtomMolWt', 'PEOE_VSA14', 'Kappa2', 'EState_VSA3']","[0.09213258011619159, -0.0678695845211875, -0.05898779363623399, -0.05615296694928487, -0.05302782191965067]","
+Explain the prediction using the following feature contributions.
+
+- fr_ketone: 0.092
+- HeavyAtomMolWt: -0.068
+- PEOE_VSA14: -0.059
+- Kappa2: -0.056
+- EState_VSA3: -0.053
+
+","The prediction is explained by the combined effects of several features, each contributing either positively or negatively to the predicted value. Here's a breakdown of the feature contributions you provided:
+
+- **fr_ketone: +0.092**  
+  This feature has a positive contribution, increasing the predicted value. It suggests that the presence or higher count of ketone functional groups in the molecule tends to raise the prediction.
+
+- **HeavyAtomMolWt: -0.068**  
+  This feature has a negative contribution, decreasing the predicted value. It indicates that molecules with higher heavy atom molecular weight tend to lower the prediction.
+
+- **PEOE_VSA14: -0.059**  
+  Also a negative contribution, meaning that higher values for this descriptor are associated with a decrease in the predicted value. PEOE_VSA14 relates to the partial equalization of orbital electronegativity (PEOE) and surface area, so higher values here might reflect molecular surface properties that reduce the prediction.
+
+- **Kappa2: -0.056**  
+  Another negative contributor. Kappa2 is a shape descriptor that often relates to molecular flexibility or branching. Higher Kappa2 values reduce the prediction.
+
+- **EState_VSA3: -0.053**  
+  This feature contributes negatively as well. EState_VSA descriptors combine electronic state indices and molecular surface area; higher values for VSA3 typically decrease the predicted outcome.
+
+### Summary
+The prediction is increased primarily due to the presence of ketone groups (fr_ketone). However, it is counterbalanced by the other features – heavier molecules (HeavyAtomMolWt), certain surface area and electronic properties (PEOE_VSA14, EState_VSA3), and molecular shape characteristics (Kappa2) – all pushing the prediction downward. The net effect will be the sum of these contributions, and the positive impact of ketones may be slightly offset by the negative impacts of the other features."
+ADME_hPPB,7,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'PEOE_VSA1', 'Kappa2', 'SlogP_VSA6']","[0.13489737593521717, -0.10046860935451038, 0.08911939643095157, -0.03954911727905714, 0.036189943167825415]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.135
+- HeavyAtomMolWt: -0.100
+- PEOE_VSA1: 0.089
+- Kappa2: -0.040
+- SlogP_VSA6: 0.036
+
+","The prediction is influenced by multiple features, each contributing positively or negatively. Here's a detailed explanation based on the given feature contributions:
+
+1. **fr_COO (0.135)**  
+   This feature has the largest positive contribution. It likely represents the presence or count of carboxylic acid groups (-COO) in the molecule. A positive contribution of 0.135 indicates that having carboxylic acid groups increases the predicted value. This might be because carboxylic acids affect properties like solubility, acidity, or biological activity relevant to the prediction.
+
+2. **HeavyAtomMolWt (-0.100)**  
+   Heavy atom molecular weight contributes negatively (-0.100). This means that as the molecular weight of heavy (non-hydrogen) atoms increases, the predicted value decreases. Larger, heavier molecules might reduce a specific activity or property being predicted.
+
+3. **PEOE_VSA1 (0.089)**  
+   This feature adds a positive contribution. PEOE_VSA descriptors capture the van der Waals surface area of atoms with certain partial charge ranges. A positive contribution suggests that higher PEOE_VSA1 values—indicating more surface area with specific charge characteristics—raise the predicted value.
+
+4. **Kappa2 (-0.040)**  
+   Kappa2 is a molecular shape descriptor related to the molecule’s flexibility or branching. A negative contribution means that an increase in this feature reduces the predicted value, possibly because more branched or flexible molecules are less favored in the prediction context.
+
+5. **SlogP_VSA6 (0.036)**  
+   SlogP_VSA6 relates to the surface area of atoms within a particular logP (hydrophobicity) range. A positive contribution suggests that greater surface area corresponding to this hydrophobicity range increases the prediction.
+
+**Summary:**  
+The prediction is driven upward mainly by the presence of carboxylic acid groups and specific charged surface areas, while it is pulled downward by increased molecular weight and higher molecular shape descriptor values. The hydrophobic surface also adds a smaller positive influence. Overall, molecules with carboxylic acids, specific charged surface area characteristics, and moderate hydrophobicity but lower molecular weight and simpler shape tend to have higher predicted values."
+ADME_hPPB,8,gpt-4.1-mini,basic,5,"['fr_COO', 'Phi', 'ExactMolWt', 'Kappa2', 'HeavyAtomMolWt']","[0.1141172624089847, 0.08616550763236536, 0.07881938810849363, 0.06313728582013703, -0.056418236964659266]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.114
+- Phi: 0.086
+- ExactMolWt: 0.079
+- Kappa2: 0.063
+- HeavyAtomMolWt: -0.056
+
+","The prediction is influenced by the contributions of several features, each adding either positively or negatively to the final output. Here’s the explanation based on the given feature contributions:
+
+- **fr_COO: 0.114**  
+  This feature (likely representing the presence or count of COO groups, such as carboxyl groups) has the largest positive contribution. It strongly increases the prediction, indicating that molecules with COO groups are associated with a higher predicted value.
+
+- **Phi: 0.086**  
+  Phi might represent a dihedral angle or a molecular property related to spatial conformation. Its positive contribution suggests that higher or specific values of Phi favor an increase in the prediction.
+
+- **ExactMolWt: 0.079**  
+  The exact molecular weight contributes positively, indicating that heavier molecules (considering exact isotopic masses) tend to have a higher predicted value.
+
+- **Kappa2: 0.063**  
+  Kappa2 is a molecular shape index describing molecular complexity or branching. The positive contribution means that molecules with higher Kappa2 values (more complex shape/branching) tend to increase the prediction.
+
+- **HeavyAtomMolWt: -0.056**  
+  This feature refers to the molecular weight considering only heavy atoms (non-hydrogen atoms). Its negative contribution means that as HeavyAtomMolWt increases, the prediction tends to decrease slightly.
+
+### Summary:
+The prediction is mainly driven up by the presence of carboxyl groups, specific molecular conformations (Phi), overall molecular weight, and molecular shape complexity. Only the heavy atom molecular weight counteracts this effect slightly, reducing the predicted value as it increases. This mixed influence suggests a nuanced relationship where certain structural and compositional features enhance the predicted outcome, while increased heavy atom mass slightly diminishes it."
+ADME_hPPB,9,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState4', 'VSA_EState3', 'Chi2n', 'PEOE_VSA2']","[0.4660350543987155, 0.06998149123792072, 0.057304458739837034, 0.05618924252662828, 0.04777316571335379]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.466
+- VSA_EState4: 0.070
+- VSA_EState3: 0.057
+- Chi2n: 0.056
+- PEOE_VSA2: 0.048
+
+","The prediction is explained by the individual contributions of the features listed, which indicate how much each feature pushed the prediction in a particular direction (usually towards a higher or lower predicted value depending on the model).
+
+Here’s what the feature contributions suggest:
+
+- **fr_COO: 0.466**  
+  This is the largest positive contribution, meaning the presence or value of this feature (likely related to a functional group containing a COO, such as a carboxyl group) strongly increases the predicted output. This suggests that molecules with this feature tend to have higher predicted values according to the model.
+
+- **VSA_EState4: 0.070**  
+  This contributes moderately and positively. VSA_EState descriptors generally combine information about the van der Waals surface area and electronic state indices for atoms, so this indicates a certain molecular environment or atomic state that slightly elevates the prediction.
+
+- **VSA_EState3: 0.057**  
+  Similar to VSA_EState4 but slightly less influential, this also nudges the prediction higher based on molecular surface and electronic properties at another atomic environment or shell.
+
+- **Chi2n: 0.056**  
+  This is a topological descriptor related to molecular connectivity (specifically the normalized second-order chi index), reflecting how certain structural aspects of the molecule affect its predicted property, again pushing the prediction upward.
+
+- **PEOE_VSA2: 0.048**  
+  This descriptor captures the sum of van der Waals surface areas of atoms in a certain partial charge range derived by PEOE (Partial Equalization of Orbital Electronegativities). It slightly increases the prediction, indicating that partial atomic charges in this range contribute positively.
+
+**Summary:**  
+The prediction is primarily driven upward by the presence of a COO functional group (fr_COO), with additional but smaller positive influences from molecular surface and electronic-related features (VSA_EState descriptors), molecular topology (Chi2n), and partial charge surface area (PEOE_VSA2). Overall, these features cumulatively suggest the model expects the target property (e.g., activity, solubility, or another molecular property) to be higher when these characteristics are present or pronounced."
+ADME_hPPB,10,gpt-4.1-mini,basic,5,"['fr_COO', 'fr_ketone', 'EState_VSA9', 'Phi', 'ExactMolWt']","[0.23201331387892193, 0.06441642838872992, -0.03633415771955667, 0.03577383611471957, -0.035748961090559944]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.232
+- fr_ketone: 0.064
+- EState_VSA9: -0.036
+- Phi: 0.036
+- ExactMolWt: -0.036
+
+","The feature contributions you provided indicate how each feature influences the final prediction. Here's the interpretation of each contribution:
+
+- **fr_COO: 0.232**  
+  This feature has the largest positive contribution. The presence or higher value of ""fr_COO"" significantly increases the predicted value.
+
+- **fr_ketone: 0.064**  
+  This feature also positively impacts the prediction, but to a smaller extent than ""fr_COO.""
+
+- **EState_VSA9: -0.036**  
+  This feature has a small negative contribution, slightly lowering the predicted value.
+
+- **Phi: 0.036**  
+  This feature contributes positively but with a relatively minor effect.
+
+- **ExactMolWt: -0.036**  
+  This feature slightly reduces the prediction.
+
+### Summary:
+The overall prediction is driven upward mainly by ""fr_COO"" and ""fr_ketone,"" while ""EState_VSA9"" and ""ExactMolWt"" provide slight downward adjustments. ""Phi"" also adds a small positive effect. Combining these contributions results in the final predicted value, with the strongest influence coming from ""fr_COO."""
+ADME_hPPB,11,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState8', 'VSA_EState4', 'Chi2v', 'HeavyAtomMolWt']","[-0.6924093339782766, 0.07126712930884477, -0.058448230719866275, -0.052476905362589386, 0.04472504884836756]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.692
+- VSA_EState8: 0.071
+- VSA_EState4: -0.058
+- Chi2v: -0.052
+- HeavyAtomMolWt: 0.045
+
+","The prediction is explained by the combined effects of the feature contributions listed. Each feature contributes either positively or negatively to the predicted output. Here's a breakdown:
+
+- **fr_COO: -0.692**  
+  This feature has a strong negative contribution, meaning the presence or higher value of fr_COO significantly decreases the prediction score. It is the largest magnitude contributor here.
+
+- **VSA_EState8: 0.071**  
+  This feature contributes positively, slightly increasing the prediction. Its positive but small value indicates a modest upward influence.
+
+- **VSA_EState4: -0.058**  
+  This feature negatively impacts the prediction, but only slightly, reducing the prediction output by a small amount.
+
+- **Chi2v: -0.052**  
+  Similar to VSA_EState4, this feature exerts a small negative effect on the prediction.
+
+- **HeavyAtomMolWt: 0.045**  
+  This feature contributes a small positive amount, mildly increasing the prediction.
+
+### Summary:
+The largest effect comes from **fr_COO**, which strongly suppresses the prediction. The other features mostly have minor effects, with two adding a small positive increase and two giving minor negative reductions. Overall, the prediction is mainly driven down by the presence or influence of fr_COO, with slight adjustments from the other features."
+ADME_hPPB,12,gpt-4.1-mini,basic,5,"['HeavyAtomMolWt', 'fr_COO', 'PEOE_VSA1', 'SlogP_VSA6', 'EState_VSA6']","[0.10329290196699509, 0.09176128219994943, 0.08390663050484298, 0.05199666528966454, 0.05085214195750705]","
+Explain the prediction using the following feature contributions.
+
+- HeavyAtomMolWt: 0.103
+- fr_COO: 0.092
+- PEOE_VSA1: 0.084
+- SlogP_VSA6: 0.052
+- EState_VSA6: 0.051
+
+","The prediction explanation based on the given feature contributions can be interpreted as follows:
+
+- **HeavyAtomMolWt (0.103):** This feature represents the molecular weight considering only heavy (non-hydrogen) atoms. A positive contribution of 0.103 indicates that molecules with higher heavy atom molecular weight tend to increase the predicted value. In other words, larger or heavier molecules contribute positively to the prediction.
+
+- **fr_COO (0.092):** This is a fragment count for the carboxyl group (-COO). A positive contribution of 0.092 means the presence of carboxyl groups increases the predicted value. Molecules that contain this functional group push the prediction higher.
+
+- **PEOE_VSA1 (0.084):** This descriptor represents the sum of van der Waals surface areas of atoms with partial charges in a specific range (typically low partial charge atoms). The positive contribution implies that molecules having more surface area associated with these slightly charged atoms lead to a higher prediction.
+
+- **SlogP_VSA6 (0.052):** This is the sum of van der Waals surface area of atoms in a certain logP-related partial charge range. A positive contribution of 0.052 suggests that parts of the molecule that contribute to moderate lipophilicity positively influence the prediction.
+
+- **EState_VSA6 (0.051):** This corresponds to surface area weighted by electrotopological state indices for atoms in a certain range. A positive contribution here shows that atoms with particular electronic and topological properties are associated with increasing the predicted value.
+
+### Overall Explanation:
+The prediction is increased primarily due to molecular size (HeavyAtomMolWt), presence of carboxyl groups (fr_COO), and certain surface areas related to charge distribution and lipophilicity (PEOE_VSA1, SlogP_VSA6, EState_VSA6). These features collectively suggest that molecules that are relatively larger, contain carboxyl functional groups, and have specific electronic and lipophilic surface characteristics push the prediction higher."
+ADME_hPPB,13,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'BalabanJ', 'SlogP_VSA6', 'NumAromaticCarbocycles']","[-0.05648788350153549, 0.05363327848729964, -0.03621439703177483, 0.031259443392125635, -0.03083564449281011]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.056
+- HeavyAtomMolWt: 0.054
+- BalabanJ: -0.036
+- SlogP_VSA6: 0.031
+- NumAromaticCarbocycles: -0.031
+
+","The prediction is explained by the sum of the contributions from the various features, each either increasing or decreasing the predicted value.
+
+Here's a breakdown of the contributions:
+
+- **fr_COO: -0.056**  
+  The presence of the COO functional group decreases the prediction by 0.056 units. This suggests that having this group is associated with a lower predicted outcome.
+
+- **HeavyAtomMolWt: 0.054**  
+  A higher heavy atom molecular weight contributes positively, increasing the prediction by 0.054 units. This indicates that larger molecules with more heavy atoms are linked to a higher predicted value.
+
+- **BalabanJ: -0.036**  
+  The Balaban J index, a topological descriptor, reduces the prediction by 0.036 units. This implies that the molecular topology characterized by this index is associated with a lower prediction.
+
+- **SlogP_VSA6: 0.031**  
+  This feature, related to hydrophobicity and surface area, increases the prediction by 0.031 units. It suggests that molecules with higher values of this descriptor tend to have higher predicted values.
+
+- **NumAromaticCarbocycles: -0.031**  
+  The number of aromatic carbocycles negatively impacts the prediction, decreasing it by 0.031 units. More aromatic carbocycles correspond to a lower predicted value.
+
+### Overall Interpretation:
+The prediction is influenced by a balance of positive and negative factors. The molecular weight and hydrophobicity-related features push the prediction higher, while certain structural and functional group descriptors (COO group, topology, and aromatic rings) push the prediction lower. The net effect depends on the sum of these contributions."
+ADME_hPPB,14,gpt-4.1-mini,basic,5,"['fr_COO', 'fr_ketone', 'fr_para_hydroxylation', 'AvgIpc', 'HeavyAtomMolWt']","[0.5704528397652694, 0.06836895475537104, 0.05640116934964586, 0.042093371802324614, 0.040835674850467706]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.570
+- fr_ketone: 0.068
+- fr_para_hydroxylation: 0.056
+- AvgIpc: 0.042
+- HeavyAtomMolWt: 0.041
+
+","The prediction is influenced by the following features and their contributions:
+
+- **fr_COO (0.570):** This feature has the largest positive contribution, indicating that the presence of a carboxylic acid group (COO) strongly increases the predicted value. It is the most significant driver of the prediction.
+
+- **fr_ketone (0.068):** The presence of a ketone functional group also contributes positively, though to a lesser extent, nudging the prediction upward.
+
+- **fr_para_hydroxylation (0.056):** This feature, representing para-position hydroxylation, adds a moderate positive effect on the prediction.
+
+- **AvgIpc (0.042):** The average information content (or a related physicochemical property) contributes slightly, improving the prediction marginally.
+
+- **HeavyAtomMolWt (0.041):** The molecular weight from heavy atoms (non-hydrogen atoms) has a small positive effect on the prediction.
+
+### Summary:
+The prediction is largely driven by the presence of a carboxylic acid group, supported by additional contributions from ketone groups, para-hydroxylation, and molecular properties related to average information content and molecular weight. These combined positive contributions push the predicted value higher."
+ADME_hPPB,15,gpt-4.1-mini,basic,5,"['AvgIpc', 'fr_para_hydroxylation', 'fr_COO', 'HeavyAtomMolWt', 'SlogP_VSA4']","[0.09671728735014064, 0.09133884498835236, -0.07322228318065295, -0.053801765690297085, -0.04798805767969367]","
+Explain the prediction using the following feature contributions.
+
+- AvgIpc: 0.097
+- fr_para_hydroxylation: 0.091
+- fr_COO: -0.073
+- HeavyAtomMolWt: -0.054
+- SlogP_VSA4: -0.048
+
+","Let's analyze the prediction based on the provided feature contributions:
+
+- **AvgIpc: 0.097**  
+  This feature has a positive contribution of +0.097, which means that a higher value of AvgIpc pushes the prediction towards the positive class or outcome. AvgIpc might relate to some average intrinsic property of the molecule, and its increase positively influences the prediction.
+
+- **fr_para_hydroxylation: 0.091**  
+  With a positive contribution of +0.091, the presence or higher frequency of para-hydroxylation groups supports the positive prediction. This suggests that compounds featuring this functional group are more likely to be classified as positive under the model.
+
+- **fr_COO: -0.073**  
+  This feature contributes negatively (-0.073), meaning that the presence or higher frequency of carboxyl (COO) groups decreases the likelihood of the positive class according to the model.
+
+- **HeavyAtomMolWt: -0.054**  
+  A negative contribution here (-0.054) indicates that a higher heavy atom molecular weight reduces the positive prediction probability. Larger molecules, in terms of heavy atom mass, tend to push the prediction towards the negative class.
+
+- **SlogP_VSA4: -0.048**  
+  This property, related to the LogP partition coefficient or solvent-accessible surface area (depending on the exact definition), has a modest negative impact (-0.048). Higher values of this feature slightly decrease the prediction score.
+
+### Summary:
+The prediction is influenced positively mainly by AvgIpc and the presence of para-hydroxylation (fr_para_hydroxylation), which drive the model towards a positive outcome. Conversely, features related to carboxyl groups (fr_COO), molecular weight (HeavyAtomMolWt), and the SlogP_VSA4 descriptor push the prediction negatively. The net prediction will depend on the sum of these contributions; if the positives outweigh the negatives, the model will lean towards a positive classification, and vice versa."
+ADME_hPPB,16,gpt-4.1-mini,basic,5,"['fr_lactam', 'NumAromaticCarbocycles', 'AvgIpc', 'SlogP_VSA10', 'SlogP_VSA6']","[0.08175047560165764, 0.08019525158837393, 0.07307065787156841, 0.07234723139836047, 0.06091468458836322]","
+Explain the prediction using the following feature contributions.
+
+- fr_lactam: 0.082
+- NumAromaticCarbocycles: 0.080
+- AvgIpc: 0.073
+- SlogP_VSA10: 0.072
+- SlogP_VSA6: 0.061
+
+","The prediction is influenced by the following feature contributions, which indicate how each feature affects the model's output (likely a probability or score):
+
+- **fr_lactam (0.082):** The presence of a lactam functional group contributes positively to the prediction, adding 0.082 to the overall score. This suggests that molecules containing lactam groups are more likely associated with the target outcome.
+
+- **NumAromaticCarbocycles (0.080):** The number of aromatic carbocyclic rings also positively impacts the prediction, contributing 0.080. This means that a higher count of these aromatic rings tends to increase the likelihood of the predicted class.
+
+- **AvgIpc (0.073):** The average information content per component (AvgIpc) adds 0.073 to the prediction. This feature may relate to molecular complexity or diversity, indicating that higher values slightly favor the predicted outcome.
+
+- **SlogP_VSA10 (0.072):** This descriptor combines lipophilicity (logP) and van der Waals surface area (VSA) for atoms in a specific range. Its positive contribution of 0.072 means that molecules with higher values in this descriptor tend to be more aligned with the positive prediction.
+
+- **SlogP_VSA6 (0.061):** Similarly, this descriptor also merges logP with VSA but over a different atom set or range, contributing 0.061. It supports the prediction to a lesser extent but still positively.
+
+**Overall explanation:** All these features contribute positively and roughly equally to increase the prediction score. The presence of lactam rings and aromatic carbocycles are important structural factors, while molecular properties related to lipophilicity and molecular complexity (as captured by AvgIpc and SlogP_VSA descriptors) also favor the predicted outcome."
+ADME_hPPB,17,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState3', 'Phi', 'HeavyAtomMolWt', 'PEOE_VSA1']","[0.17649785070845542, -0.09227044022638244, 0.07531143550959007, 0.06755338947164018, 0.0397713931592266]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.176
+- VSA_EState3: -0.092
+- Phi: 0.075
+- HeavyAtomMolWt: 0.068
+- PEOE_VSA1: 0.040
+
+","The prediction is influenced by the contributions of several features, each adding or subtracting from the overall predicted value. Here's the explanation based on the provided feature contributions:
+
+- **fr_COO (0.176)**: This is the largest positive contributor. Typically, fr_COO refers to the count or presence of carboxylic acid groups (-COOH) in the molecule. A positive contribution of 0.176 means that having more carboxylic acid groups increases the predicted value significantly.
+
+- **VSA_EState3 (-0.092)**: This feature has a negative contribution. VSA_EState3 is a descriptor combining van der Waals surface area and electrotopological state indices, often related to the molecule's electronic environment and shape. A contribution of -0.092 indicates that higher values of this descriptor reduce the predicted value.
+
+- **Phi (0.075)**: Phi could refer to a torsion angle-related descriptor or a specific molecular property score. Its positive contribution (0.075) suggests that higher Phi values contribute to increasing the prediction.
+
+- **HeavyAtomMolWt (0.068)**: This is the molecular weight considering only heavy atoms (non-hydrogen). A positive contribution of 0.068 means that heavier molecules tend to increase the predicted value.
+
+- **PEOE_VSA1 (0.040)**: This descriptor combines partial equalization of orbital electronegativity (PEOE) with van der Waals surface area. A small positive contribution indicates that certain electronic surface area characteristics slightly raise the prediction.
+
+### Summary:
+The presence of carboxylic acid groups is the strongest factor increasing the predicted outcome, followed by molecular weight and some electronic/structural features. One feature (VSA_EState3) slightly decreases the prediction, likely due to its association with molecular electronic or spatial properties that counteract the others. Overall, the prediction is driven by chemical groups and molecular properties that reflect both size and electronic environment."
+ADME_hPPB,18,gpt-4.1-mini,basic,5,"['fr_COO', 'SMR_VSA6', 'HeavyAtomMolWt', 'fr_ketone', 'EState_VSA3']","[-0.47552652329425077, -0.1401437973543603, -0.06158045312051016, 0.05690843830303793, -0.05127782918772751]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.476
+- SMR_VSA6: -0.140
+- HeavyAtomMolWt: -0.062
+- fr_ketone: 0.057
+- EState_VSA3: -0.051
+
+","The prediction is influenced by the individual contributions of each feature to the model’s output. Here’s the explanation based on the given feature contributions:
+
+- **fr_COO (-0.476):** The presence or higher count of the ""fr_COO"" feature (likely representing carboxylic acid groups) strongly decreases the predicted value. This is the largest negative contributor among the features listed, indicating that the model considers this feature to negatively impact the prediction.
+
+- **SMR_VSA6 (-0.140):** This descriptor also negatively impacts the prediction, though to a lesser extent. It likely relates to the surface area of the molecule in a specific property range, and its value is associated with lowering the predicted outcome.
+
+- **HeavyAtomMolWt (-0.062):** The molecular weight of heavy atoms has a small negative contribution, suggesting that heavier molecules slightly reduce the prediction score.
+
+- **fr_ketone (0.057):** The presence or count of ketone groups positively influences the prediction, although the effect is relatively minor compared to the negative features.
+
+- **EState_VSA3 (-0.051):** Another descriptor based on electronic state or surface area, contributing a small negative effect on the prediction.
+
+### Overall Interpretation:
+The prediction is being driven downward primarily by the strong negative contribution of the ""fr_COO"" feature, supported by other negatively contributing features like SMR_VSA6 and HeavyAtomMolWt. The positive contribution from ""fr_ketone"" slightly offsets this effect but not enough to overcome the overall negative influence. Thus, the model predicts a lower output value based on the specific combination of molecular features."
+ADME_hPPB,19,gpt-4.1-mini,basic,5,"['Chi0n', 'Kappa2', 'HallKierAlpha', 'HeavyAtomMolWt', 'BCUT2D_LOGPHI']","[0.07274975401143807, 0.05731062043537562, 0.053281827433969677, 0.04824883447874256, 0.046608009240914086]","
+Explain the prediction using the following feature contributions.
+
+- Chi0n: 0.073
+- Kappa2: 0.057
+- HallKierAlpha: 0.053
+- HeavyAtomMolWt: 0.048
+- BCUT2D_LOGPHI: 0.047
+
+","The prediction explanation based on the given feature contributions can be summarized as follows:
+
+- **Chi0n (0.073)**: This feature has the highest positive contribution, indicating that the molecular connectivity (zero-order chi index) strongly supports the prediction. Higher Chi0n values suggest more complex or connected molecular structures, which influence the predicted outcome positively.
+
+- **Kappa2 (0.057)**: This feature reflects molecular shape and flexibility (second kappa shape index). Its positive contribution means that molecular shape characteristics associated with this index favor the predicted class or value.
+
+- **HallKierAlpha (0.053)**: This descriptor measures molecular branching and cyclicity. A positive contribution here indicates that the degree of branching or ring structures is positively correlated with the prediction.
+
+- **HeavyAtomMolWt (0.048)**: The molecular weight based only on heavy atoms (non-hydrogen atoms) also positively influences the prediction, implying that larger or heavier molecules of this type tend to increase the predicted outcome.
+
+- **BCUT2D_LOGPHI (0.047)**: This 2D BCUT descriptor relates to electronic properties of the molecule. Its positive contribution indicates that electronic characteristics captured by this descriptor contribute positively to the prediction.
+
+**Overall explanation:**  
+All five features contribute positively to the prediction, with Chi0n having the strongest effect. The model’s prediction is driven by molecular connectivity, shape, branching, size, and electronic properties, all supporting the predicted result. This suggests that molecules with higher complexity, certain shapes, heavier mass, and particular electronic features are more likely to yield the predicted property or classification."
+ADME_hPPB,20,gpt-4.1-mini,basic,5,"['fr_COO', 'SMR_VSA6', 'EState_VSA3', 'BalabanJ', 'SMR_VSA3']","[-0.2561860846366209, -0.15076422946183524, -0.08937276507156378, -0.0652306516858285, -0.05845490367543279]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.256
+- SMR_VSA6: -0.151
+- EState_VSA3: -0.089
+- BalabanJ: -0.065
+- SMR_VSA3: -0.058
+
+","The prediction explanation based on the given feature contributions is as follows:
+
+Each feature contributes a certain amount to the final prediction score. Negative contributions indicate that the feature is pushing the prediction lower (toward a negative class or lower regression output), while positive contributions would push the prediction higher.
+
+Here's the breakdown:
+
+- **fr_COO: -0.256**  
+  This feature has the largest negative impact on the prediction, reducing the predicted value significantly. It suggests that the presence or value of ""fr_COO"" strongly decreases the prediction score.
+
+- **SMR_VSA6: -0.151**  
+  This feature also negatively influences the prediction, though less strongly than fr_COO.
+
+- **EState_VSA3: -0.089**  
+  Contributes to lowering the prediction, but its impact is more moderate.
+
+- **BalabanJ: -0.065**  
+  This topological index also pushes the prediction down, though to a lesser extent.
+
+- **SMR_VSA3: -0.058**  
+  Again, a small but negative contribution.
+
+**Summary:**  
+All listed features contribute negatively, lowering the predicted outcome. The feature fr_COO has the strongest effect, followed by SMR_VSA6 and the others. This pattern indicates that when these features are present or have certain values, the model predicts a lower output value for the target variable."
+ADME_hPPB,21,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'SlogP_VSA6', 'SMR_VSA3', 'fr_ketone']","[-0.5258083724859114, -0.09461140181177966, 0.054770261118923635, 0.040455019220588445, 0.036384308873044356]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.526
+- HeavyAtomMolWt: -0.095
+- SlogP_VSA6: 0.055
+- SMR_VSA3: 0.040
+- fr_ketone: 0.036
+
+","The prediction is influenced by the following feature contributions, where positive values increase the prediction score and negative values decrease it:
+
+- **fr_COO (-0.526):** This is the largest negative contributor, indicating that the presence (or count) of carboxyl groups (COO) strongly lowers the predicted value.
+- **HeavyAtomMolWt (-0.095):** The molecular weight of heavy atoms slightly decreases the prediction, suggesting heavier molecules of this type reduce the score somewhat.
+- **SlogP_VSA6 (0.055):** This is a positive contribution, meaning the surface area associated with a certain logP range (hydrophobicity measure) slightly increases the prediction.
+- **SMR_VSA3 (0.040):** Another positive factor related to the surface area with certain molar refractivity values, modestly raising the prediction.
+- **fr_ketone (0.036):** The presence of ketone groups slightly increases the predicted value.
+
+**Summary:**  
+The prediction is mostly lowered by the presence of carboxyl groups and to a lesser extent by the size (heavy atom weight), while certain hydrophobic and refractivity-related surface areas, as well as ketone groups, provide small positive contributions. Overall, the presence of carboxyl groups is the dominant factor pushing the prediction down."
+ADME_hPPB,22,gpt-4.1-mini,basic,5,"['PEOE_VSA1', 'HeavyAtomMolWt', 'ExactMolWt', 'fr_COO', 'Phi']","[0.08877750781621638, -0.07431886473544108, 0.05992418816279728, -0.04897648885115171, -0.04072623123736523]","
+Explain the prediction using the following feature contributions.
+
+- PEOE_VSA1: 0.089
+- HeavyAtomMolWt: -0.074
+- ExactMolWt: 0.060
+- fr_COO: -0.049
+- Phi: -0.041
+
+","The prediction explanation using the given feature contributions can be understood as follows:
+
+- **PEOE_VSA1 (0.089)**: This feature has a positive contribution to the prediction. PEOE_VSA1 typically relates to the van der Waals surface area of atoms with a specific partial charge range (using Partial Equalization of Orbital Electronegativities). A positive value means that higher values of this feature increase the predicted outcome.
+
+- **HeavyAtomMolWt (-0.074)**: This feature has a negative contribution. It represents the molecular weight excluding hydrogen atoms. A negative contribution indicates that as the heavy atom molecular weight increases, the predicted value decreases.
+
+- **ExactMolWt (0.060)**: This is the exact molecular weight including isotopes, contributing positively to the prediction. Increasing exact molecular weight slightly increases the predicted value.
+
+- **fr_COO (-0.049)**: This denotes the presence (or count) of carboxyl functional groups (-COO). A negative contribution means that more carboxyl groups reduce the predicted value.
+
+- **Phi (-0.041)**: Phi usually represents a torsion angle descriptor. The negative contribution implies that higher (or more positive) values of this angle decrease the predicted value.
+
+### Summary
+The model's prediction is influenced both positively and negatively by the features:
+
+- Features related to partial charge surface area (PEOE_VSA1) and molecular weight (ExactMolWt) push the prediction higher.
+- Features related to molecular structure and functional groups (HeavyAtomMolWt, fr_COO, and Phi angle) reduce the prediction.
+
+In simple terms: The molecule’s partial charges and exact mass increase the predicted value, while its size, presence of carboxyl groups, and specific torsional angle lower the predicted outcome."
+ADME_hPPB,23,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'SMR_VSA4', 'Chi1n', 'NHOHCount']","[-0.17924993004410167, 0.06811917206491082, 0.04344205479516056, 0.04270812635005476, 0.04113913274588228]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.179
+- HeavyAtomMolWt: 0.068
+- SMR_VSA4: 0.043
+- Chi1n: 0.043
+- NHOHCount: 0.041
+
+","The prediction is influenced by the following features and their contributions, which indicate how each feature pushes the prediction either higher (positive value) or lower (negative value):
+
+- **fr_COO: -0.179**  
+  This feature has the largest magnitude and a negative contribution. It likely represents the presence or count of carboxyl groups (-COO) in the molecule. Its negative contribution means that having carboxyl groups reduces the predicted value.
+
+- **HeavyAtomMolWt: 0.068**  
+  This feature refers to the molecular weight considering only heavy atoms (non-hydrogen atoms). A positive contribution means that heavier molecules increase the predicted value.
+
+- **SMR_VSA4: 0.043**  
+  This is a descriptor related to the sum of the Van der Waals surface areas of atoms with specific contributions to the molecular refractivity (usually related to polarizability). A positive contribution suggests that higher values increase the prediction.
+
+- **Chi1n: 0.043**  
+  This is a molecular connectivity index (first-order chi index for atoms with single bonds). A positive contribution means that more complex or branched connectivity increases the predicted outcome.
+
+- **NHOHCount: 0.041**  
+  This counts the number of NH or OH groups in the molecule. A positive contribution means the presence of these groups tends to increase the predicted value.
+
+### Summary:
+The prediction is primarily decreased by the presence of carboxyl groups (fr_COO), while it is increased by heavier molecular weight, specific surface area contributions (SMR_VSA4), connectivity complexity (Chi1n), and the count of NH or OH groups (NHOHCount). Overall, the molecular features related to size, connectivity, and certain functional groups push the prediction up, but carboxyl groups have a strong downward effect."
+ADME_hPPB,24,gpt-4.1-mini,basic,5,"['fr_COO', 'SMR_VSA6', 'HeavyAtomMolWt', 'MaxPartialCharge', 'NumSaturatedHeterocycles']","[-0.26573371163352055, -0.08025752941001019, -0.07843123173099636, -0.0751158353467701, -0.06635324352517895]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.266
+- SMR_VSA6: -0.080
+- HeavyAtomMolWt: -0.078
+- MaxPartialCharge: -0.075
+- NumSaturatedHeterocycles: -0.066
+
+","The prediction is influenced by several features, each contributing negatively to the final output. Here's what these feature contributions indicate:
+
+- **fr_COO (-0.266):** This feature corresponds to the presence of a carboxyl group (COO) in the molecule. Its strong negative contribution suggests that the presence of this group significantly decreases the predicted value.
+
+- **SMR_VSA6 (-0.080):** This molecular descriptor relates to the surface area of the molecule where the van der Waals surface area (VSA) falls in the sixth bin of the SMR (molar refractivity) partition. A negative contribution here means that the specific surface area characteristics represented by this descriptor reduce the prediction.
+
+- **HeavyAtomMolWt (-0.078):** This is the molecular weight counting only heavy atoms (non-hydrogen atoms). A negative value implies that heavier molecules tend to lower the predicted outcome.
+
+- **MaxPartialCharge (-0.075):** This feature measures the maximum partial charge on any atom in the molecule. A negative contribution indicates that higher maximum partial charges tend to reduce the predicted value.
+
+- **NumSaturatedHeterocycles (-0.066):** This counts the number of saturated heterocyclic rings present. Its negative contribution shows that more saturated heterocycles tend to lower the prediction.
+
+**Summary:**  
+All the listed features are pushing the prediction downward, with the presence of a carboxyl group (fr_COO) having the most substantial negative impact. Molecular weight and electronic/molecular surface properties also contribute to decreasing the predicted value. Overall, molecules with these characteristics are associated with lower predicted responses in the model."
+ADME_hPPB,25,gpt-4.1-mini,basic,5,"['ExactMolWt', 'VSA_EState3', 'PEOE_VSA1', 'HallKierAlpha', 'Kappa2']","[-0.073227944800371, -0.05291920231278154, -0.04948448826158724, -0.038867814772098726, -0.036967989758716464]","
+Explain the prediction using the following feature contributions.
+
+- ExactMolWt: -0.073
+- VSA_EState3: -0.053
+- PEOE_VSA1: -0.049
+- HallKierAlpha: -0.039
+- Kappa2: -0.037
+
+","The prediction is influenced by several features, each contributing negatively to the final output. Here’s what these feature contributions imply:
+
+- **ExactMolWt (-0.073):** The exact molecular weight of the compound reduces the predicted value by 0.073 units. This suggests that higher molecular weight in this context tends to decrease the predicted property or likelihood.
+
+- **VSA_EState3 (-0.053):** This feature relates to the van der Waals surface area combined with electronic state indices. A negative contribution here means that the specific surface electronic environment characterized by VSA_EState3 decreases the prediction.
+
+- **PEOE_VSA1 (-0.049):** PEOE_VSA1 represents the van der Waals surface area where partial charges lie within a particular range (first bin). Its negative effect indicates that molecules exhibiting certain partial charge distributions lower the predicted outcome.
+
+- **HallKierAlpha (-0.039):** Hall-Kier alpha is a shape or flexibility descriptor. A negative value here implies that molecular flexibility or shape features associated with this descriptor reduce the predicted value.
+
+- **Kappa2 (-0.037):** Kappa2 is a molecular shape index related to the molecule’s branching and cyclicity. A negative contribution means that as this shape index increases, the predicted property decreases.
+
+**Summary:** All the listed features contribute negatively, which collectively suggests that molecules with higher molecular weight, specific electronic surface characteristics, certain partial charge distributions, and particular shape/flexibility properties result in a lower predicted value. Understanding these contributions helps in discerning which molecular attributes are most influential and in what direction they affect the model’s output."
+ADME_hPPB,26,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'SMR_VSA6', 'Chi0n', 'Kappa3']","[-0.26156878859813093, -0.07301115166507138, -0.05320728537548584, 0.04790675345546463, -0.03969095352029778]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.262
+- HeavyAtomMolWt: -0.073
+- SMR_VSA6: -0.053
+- Chi0n: 0.048
+- Kappa3: -0.040
+
+","The prediction is influenced by the combined effect of the listed feature contributions. Here's what the values indicate:
+
+- **fr_COO (-0.262):** This feature has the largest negative contribution. The presence or count of the COO (carboxyl) functional group decreases the predicted value substantially.
+- **HeavyAtomMolWt (-0.073):** Higher heavy atom molecular weight slightly reduces the prediction.
+- **SMR_VSA6 (-0.053):** This descriptor, related to van der Waals surface area weighted by molar refractivity in a certain range, also negatively impacts the prediction.
+- **Chi0n (0.048):** This is the only positive contribution among these features. Chi0n, a molecular connectivity index, slightly increases the predicted value.
+- **Kappa3 (-0.040):** A shape index descriptor, this feature negatively influences the prediction but to a small extent.
+
+**In summary:** The overall prediction is pushed downward primarily due to the presence of the COO group and to a lesser extent by molecular weight and shape-related descriptors, while molecular connectivity (Chi0n) provides a modest positive effect."
+ADME_hPPB,27,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'fr_ether', 'Kappa2', 'SMR_VSA6']","[-0.1274923620838642, 0.075310793491549, 0.04180465738880848, 0.039609635645033316, 0.037734165862622945]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.127
+- HeavyAtomMolWt: 0.075
+- fr_ether: 0.042
+- Kappa2: 0.040
+- SMR_VSA6: 0.038
+
+","The prediction is influenced by the following features and their contributions to the final output:
+
+- **fr_COO: -0.127**  
+  The presence (or amount) of the COO functional group contributes negatively to the prediction. It reduces the predicted value by 0.127 units, indicating that this feature is unfavorable or associated with a lower predicted target.
+
+- **HeavyAtomMolWt: 0.075**  
+  A higher heavy atom molecular weight positively influences the prediction, increasing the predicted value by 0.075 units. This suggests that molecules with heavier atoms tend to have higher predicted values.
+
+- **fr_ether: 0.042**  
+  The presence (or frequency) of ether groups contributes positively, adding 0.042 to the prediction. Ether functional groups are associated with an increase in the target prediction.
+
+- **Kappa2: 0.040**  
+  The Kappa2 shape index contributes positively by 0.040 units, suggesting that molecular shape or branching as captured by this descriptor favors a higher prediction.
+
+- **SMR_VSA6: 0.038**  
+  This descriptor, related to the surface area of atoms with certain electronic properties (e.g., molecular refractivity surface area), adds 0.038 to the prediction, indicating a positive influence.
+
+### Summary:
+The prediction is a combination of positive and negative contributions from molecular features. The negative effect of the COO group is the largest single effect, pulling the prediction down, while the other features (HeavyAtomMolWt, ether groups, shape descriptor Kappa2, and electronic surface area SMR_VSA6) all contribute smaller positive increases. Overall, the model finds the presence of COO groups to be unfavorable, but this is partially offset by molecular weight, ether groups, and shape/electronic properties."
+ADME_hPPB,28,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState3', 'HeavyAtomMolWt', 'Chi2n', 'SMR_VSA4']","[-0.16481841609785058, 0.05825330001933454, -0.036525165976976436, 0.036029326229381244, 0.03461029303923059]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.165
+- VSA_EState3: 0.058
+- HeavyAtomMolWt: -0.037
+- Chi2n: 0.036
+- SMR_VSA4: 0.035
+
+","The prediction is explained by the combined effects of the listed features and their contributions to the model's output. Here's a breakdown:
+
+- **fr_COO: -0.165**  
+  This feature has the largest magnitude contribution and is negative, meaning that the presence or increase of this feature strongly decreases the predicted value. ""fr_COO"" typically refers to the count or frequency of carboxylic acid groups (-COOH) in the molecule, so more of this group pushes the prediction down.
+
+- **VSA_EState3: 0.058**  
+  This feature contributes positively but modestly. It represents a hybrid descriptor combining van der Waals surface area with electrotopological state indices for certain atom types, indicating that higher values of this property slightly increase the prediction.
+
+- **HeavyAtomMolWt: -0.037**  
+  The molecular weight derived from heavy atoms (non-hydrogen atoms) contributes negatively but with a smaller magnitude compared to fr_COO. Heavier molecules tend to reduce the predicted output a bit.
+
+- **Chi2n: 0.036**  
+  This is a molecular connectivity descriptor (second-order chi index, normalized), which often relates to molecular branching and complexity. Here, it has a small positive effect, slightly increasing the prediction.
+
+- **SMR_VSA4: 0.035**  
+  Another hybrid descriptor linking the molecular surface area to the molar refractivity in a particular bin. It also slightly raises the prediction.
+
+### Summary:
+The prediction is primarily driven down by the presence of carboxylic acid groups (fr_COO), moderately reduced by heavier molecules, but somewhat offset by slightly positive contributions from molecular surface area, topology/branching, and electronic environment descriptors. The overall predicted value reflects the balance of these factors."
+ADME_hPPB,29,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState4', 'Kappa2', 'Chi0n', 'HeavyAtomMolWt']","[0.6001558987840071, 0.08512303771389867, -0.0721320527062139, 0.054354906973466774, 0.05344100941106185]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.600
+- VSA_EState4: 0.085
+- Kappa2: -0.072
+- Chi0n: 0.054
+- HeavyAtomMolWt: 0.053
+
+","The feature contributions represent how much each feature pushes the prediction away from the baseline (expected value) toward the final predicted value.
+
+Here's the explanation based on the provided contributions:
+
+- **fr_COO: 0.600**  
+  This feature contributes strongly and positively to the prediction. The presence or value of fr_COO significantly increases the predicted output by 0.600 units. It is the most influential feature among those listed.
+
+- **VSA_EState4: 0.085**  
+  This feature also pushes the prediction up, but to a much smaller extent than fr_COO, increasing it by 0.085 units.
+
+- **Kappa2: -0.072**  
+  This feature drives the prediction down by 0.072 units, having a small negative influence on the final prediction.
+
+- **Chi0n: 0.054**  
+  Chi0n slightly increases the prediction by 0.054 units, contributing positively but with a minor effect.
+
+- **HeavyAtomMolWt: 0.053**  
+  Similarly, this feature has a small positive contribution, adding 0.053 units to the prediction.
+
+**Summary:**  
+The overall prediction is increased primarily by fr_COO, supported by smaller positive contributions from VSA_EState4, Chi0n, and HeavyAtomMolWt. Kappa2 slightly reduces the prediction. Together, these contributions combine to make the predicted value higher than the baseline."
+ADME_hPPB,30,gpt-4.1-mini,basic,5,"['Kappa2', 'VSA_EState3', 'PEOE_VSA1', 'SlogP_VSA6', 'fr_COO']","[-0.09399886699904136, -0.07275630009258682, -0.062019607018264006, 0.05797584182586185, -0.04279794702128075]","
+Explain the prediction using the following feature contributions.
+
+- Kappa2: -0.094
+- VSA_EState3: -0.073
+- PEOE_VSA1: -0.062
+- SlogP_VSA6: 0.058
+- fr_COO: -0.043
+
+","The prediction is influenced by the combination of positive and negative contributions from the listed features. Here's what each contribution indicates:
+
+- **Kappa2 (-0.094):** This feature has a negative contribution, meaning that higher values of Kappa2 are associated with a decrease in the predicted value. Kappa2 is a molecular shape descriptor, so certain molecular shapes might reduce the prediction.
+
+- **VSA_EState3 (-0.073):** Also contributing negatively, this feature involves electrotopological state indices combined with van der Waals surface area, suggesting that molecules with higher VSA_EState3 values tend to lower the prediction.
+
+- **PEOE_VSA1 (-0.062):** Another negative contributor; PEOE_VSA1 combines partial charges with surface area. A higher presence of surface area corresponding to certain charge environments decreases the predicted outcome.
+
+- **SlogP_VSA6 (0.058):** This feature has a positive contribution, indicating that molecules with higher values in this bin (which relates to hydrophobic surface area within a certain logP range) increase the predicted value.
+
+- **fr_COO (-0.043):** This fragment count feature measures the presence of carboxyl groups (-COO-). Its negative contribution implies that more carboxyl groups reduce the prediction.
+
+**Summary:**
+
+The prediction is pushed down primarily by molecular shape (Kappa2), certain electrotopological states (VSA_EState3), partial charge-related surface areas (PEOE_VSA1), and the presence of carboxyl groups (fr_COO). However, hydrophobic surface area in the SlogP_VSA6 range slightly counteracts this effect, increasing the prediction. Overall, the negative contributions outweigh the positive, likely decreasing the final prediction value."
+ADME_hPPB,31,gpt-4.1-mini,basic,5,"['HeavyAtomMolWt', 'fr_COO', 'VSA_EState4', 'SMR_VSA3', 'NumAliphaticHeterocycles']","[-0.08646777980282389, -0.06570102851622062, 0.0431844193628244, -0.03333568082146172, 0.03320372968276204]","
+Explain the prediction using the following feature contributions.
+
+- HeavyAtomMolWt: -0.086
+- fr_COO: -0.066
+- VSA_EState4: 0.043
+- SMR_VSA3: -0.033
+- NumAliphaticHeterocycles: 0.033
+
+","The prediction is explained by the combined effect of the individual feature contributions, where positive values push the prediction higher and negative values push it lower.
+
+Here's a breakdown of the feature contributions:
+
+- **HeavyAtomMolWt (-0.086)**: This feature has a negative contribution, meaning a higher heavy atom molecular weight tends to decrease the prediction.
+- **fr_COO (-0.066)**: The presence of the COOH (carboxylic acid) functional group negatively impacts the prediction, decreasing its value.
+- **VSA_EState4 (0.043)**: This feature adds a positive contribution, indicating that larger values increase the prediction.
+- **SMR_VSA3 (-0.033)**: This feature slightly decreases the prediction with its negative contribution.
+- **NumAliphaticHeterocycles (0.033)**: The number of aliphatic heterocycles positively influences the prediction, increasing the predicted value.
+
+**Summary:** The prediction is primarily decreased by the heavy atom molecular weight and the presence of carboxylic acid groups, while it is partially offset by the positive effects of certain electronic state and structural features like VSA_EState4 and the count of aliphatic heterocycles. Overall, the negative contributions dominate slightly, pushing the prediction lower."
+ADME_hPPB,32,gpt-4.1-mini,basic,5,"['fr_COO', 'Kappa3', 'SlogP_VSA6', 'Ipc', 'fr_ketone']","[-0.23397678820114612, -0.08097550307897823, 0.059884841459342246, -0.03967135064187749, 0.037699901453496006]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.234
+- Kappa3: -0.081
+- SlogP_VSA6: 0.060
+- Ipc: -0.040
+- fr_ketone: 0.038
+
+","The prediction is influenced by the contributions of various features as follows:
+
+- **fr_COO (-0.234)**: This feature has the largest negative contribution, indicating that the presence or higher value of the ""fr_COO"" feature decreases the predicted value significantly. It strongly pulls the prediction down.
+
+- **Kappa3 (-0.081)**: This also contributes negatively, though less strongly than fr_COO. Its effect reduces the prediction moderately.
+
+- **SlogP_VSA6 (0.060)**: This feature has a positive contribution, meaning it pushes the prediction upwards, counteracting some of the negative effects of the above features.
+
+- **Ipc (-0.040)**: A small negative contribution, slightly lowering the overall prediction.
+
+- **fr_ketone (0.038)**: A small positive contribution, slightly increasing the prediction.
+
+### Summary:
+Overall, the prediction is being pulled down mainly due to the strong negative impact of fr_COO and Kappa3, with small positive effects from SlogP_VSA6 and fr_ketone partially offsetting that. The net result is likely a prediction that is lower than it would be without the large negative features."
+ADME_hPPB,33,gpt-4.1-mini,basic,5,"['fr_COO', 'PEOE_VSA1', 'fr_ether', 'EState_VSA4', 'HeavyAtomMolWt']","[0.08959984029505264, -0.04580611320380841, -0.04018009212585334, 0.02991957064816253, 0.02891770548574516]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.090
+- PEOE_VSA1: -0.046
+- fr_ether: -0.040
+- EState_VSA4: 0.030
+- HeavyAtomMolWt: 0.029
+
+","The prediction explanation based on the feature contributions is as follows:
+
+1. **fr_COO (0.090)**: This feature represents the presence of carboxylic acid groups (-COO). A positive contribution (0.090) indicates that having carboxylic acid groups in the molecule strongly increases the predicted outcome (e.g., activity, property, or class).
+
+2. **PEOE_VSA1 (-0.046)**: This descriptor is related to the sum of van der Waals surface areas with a specific partial charge range calculated via Partial Equalization of Orbital Electronegativities (PEOE). The negative contribution (-0.046) means that higher values of this feature decrease the prediction score.
+
+3. **fr_ether (-0.040)**: This counts the number of ether functional groups. The negative contribution suggests that the presence of ether groups lowers the predicted value.
+
+4. **EState_VSA4 (0.030)**: This represents the sum of van der Waals surface areas corresponding to atoms with a specific range of electrotopological state indices. Its positive contribution (+0.030) indicates it slightly increases the predicted value.
+
+5. **HeavyAtomMolWt (0.029)**: The heavy atom molecular weight refers to the mass of all atoms in the molecule except hydrogens. The positive score (0.029) means heavier molecules tend to increase the predicted value marginally.
+
+---
+
+### Overall Interpretation:
+The main driver pushing the prediction higher is the presence of carboxylic acid groups. This is partially offset by ether groups and molecular surface area features associated with certain charge distributions reducing the prediction. The molecular weight and some electrotopological surface area features provide modest positive contributions. Together, these features suggest that the prediction favors molecules with carboxylic acid groups and higher molecular weight but disfavors ethers and certain charge surface characteristics."
+ADME_hPPB,34,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'EState_VSA3', 'NumAliphaticHeterocycles', 'VSA_EState3']","[-0.4219542214465735, -0.07261358508667336, -0.07017242754017838, 0.048684727811486965, 0.04270260371290835]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.422
+- HeavyAtomMolWt: -0.073
+- EState_VSA3: -0.070
+- NumAliphaticHeterocycles: 0.049
+- VSA_EState3: 0.043
+
+","The prediction is explained by the combined effect of the given feature contributions, which represent how much each feature moves the prediction away from some baseline (e.g., the average prediction).
+
+Here's the interpretation of each contribution:
+
+- **fr_COO: -0.422**  
+  This feature has the largest negative impact on the prediction, decreasing it significantly. It suggests that the presence or count of the ""fr_COO"" feature strongly lowers the predicted value.
+
+- **HeavyAtomMolWt: -0.073**  
+  The molecular weight of heavy atoms also decreases the prediction, but to a smaller extent than fr_COO. Heavier molecules might be associated with a lower predicted response in this model.
+
+- **EState_VSA3: -0.070**  
+  This electronic state-related feature also contributes negatively, lowering the prediction slightly.
+
+- **NumAliphaticHeterocycles: 0.049**  
+  The number of aliphatic heterocycles contributes positively, increasing the predicted value modestly.
+
+- **VSA_EState3: 0.043**  
+  This feature also slightly increases the prediction.
+
+### Summary:
+Most of the feature contributions (fr_COO, HeavyAtomMolWt, EState_VSA3) are pulling the prediction downward, while a smaller set (NumAliphaticHeterocycles, VSA_EState3) push it upward. Overall, since the large negative contribution from fr_COO dominates, the final prediction is likely to be reduced compared to the baseline."
+ADME_hPPB,35,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState4', 'HeavyAtomMolWt', 'VSA_EState3', 'SMR_VSA6']","[0.6764397665078442, 0.07251317771438194, 0.04790867069458139, 0.04107213091051038, 0.04061610609140744]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.676
+- VSA_EState4: 0.073
+- HeavyAtomMolWt: 0.048
+- VSA_EState3: 0.041
+- SMR_VSA6: 0.041
+
+","The prediction is largely influenced by the feature **fr_COO** with a contribution of 0.676, which indicates this feature has a strong positive impact on the predicted outcome. The rest of the features (VSA_EState4, HeavyAtomMolWt, VSA_EState3, SMR_VSA6) have much smaller positive contributions ranging from 0.041 to 0.073, meaning they provide minor supporting influence.
+
+### Detailed Explanation:
+- **fr_COO (0.676):** This feature likely represents the presence or count of carboxyl groups (COO) in the molecule. A high positive contribution suggests that the presence of carboxyl groups significantly increases the predicted value. This could imply that the target variable is positively associated with molecules containing such groups.
+
+- **VSA_EState4 (0.073):** This is a descriptor combining van der Waals surface area (VSA) with electrotopological state indices. Its positive contribution indicates that molecular regions characterized by this descriptor slightly increase the predicted outcome.
+
+- **HeavyAtomMolWt (0.048):** The molecular weight based on heavy atoms (non-hydrogen atoms). A small positive contribution suggests that a higher heavy atom molecular weight slightly raises the prediction.
+
+- **VSA_EState3 (0.041):** Similar to VSA_EState4, this descriptor also accounts for molecule surface area with electro-topological information but corresponds to a different atomic environment. It slightly increases the prediction.
+
+- **SMR_VSA6 (0.041):** Another VSA descriptor linked with molecular refractivity (SMR), indicating that certain surface area characteristics related to polarizability/refractivity contribute modestly to increasing the prediction.
+
+### In summary:
+The prediction is driven mostly by the presence of carboxyl functional groups (fr_COO), with minor additional positive influences from several molecular descriptors related to molecular surface areas and molecular weight. This suggests that the target is highly sensitive to the carboxyl group and somewhat to the molecular size and electronic environment."
+ADME_hPPB,36,gpt-4.1-mini,basic,5,"['NumAromaticCarbocycles', 'HeavyAtomMolWt', 'fr_COO', 'Kappa3', 'NHOHCount']","[0.07199252330881509, 0.06771069614603203, -0.06510660062782841, -0.058417945167550604, 0.0437195637415657]","
+Explain the prediction using the following feature contributions.
+
+- NumAromaticCarbocycles: 0.072
+- HeavyAtomMolWt: 0.068
+- fr_COO: -0.065
+- Kappa3: -0.058
+- NHOHCount: 0.044
+
+","The prediction is influenced by several molecular features, each contributing positively or negatively to the final outcome. Here's what these feature contributions indicate:
+
+- **NumAromaticCarbocycles (0.072)**: The presence of aromatic carbocycles (ring structures made up of carbon atoms with alternating double bonds) contributes positively to the prediction. A higher count of such rings tends to increase the predicted value.
+
+- **HeavyAtomMolWt (0.068)**: The molecular weight of all heavy atoms (non-hydrogen atoms) also positively influences the prediction. Heavier molecules, with more or larger heavy atoms, push the prediction upwards.
+
+- **fr_COO (-0.065)**: This is a feature counting the presence of carboxylic acid groups (-COO). Its negative contribution means that molecules containing carboxylic acid groups reduce the predicted value.
+
+- **Kappa3 (-0.058)**: Kappa3 is a shape descriptor related to molecular flexibility/complexity. Its negative contribution suggests that molecules with higher Kappa3 values (more complex shape) lower the prediction.
+
+- **NHOHCount (0.044)**: This counts the number of hydroxyl or amine groups (NHOH). A positive contribution here indicates that the presence of these functional groups tends to increase the predicted value.
+
+### Summary:
+The prediction increases with more aromatic rings, higher molecular weight, and more hydroxyl/amine groups. Conversely, it decreases if the molecule contains carboxylic acid groups or has a more complex shape indicated by Kappa3. Thus, the model places positive emphasis on certain structural features while penalizing others to arrive at its prediction."
+ADME_hPPB,37,gpt-4.1-mini,basic,5,"['fr_COO', 'Phi', 'HeavyAtomMolWt', 'BCUT2D_LOGPLOW', 'SMR_VSA6']","[-0.12787226785454903, -0.04913731088520995, 0.03327457142736972, -0.03232941683479011, 0.029597256606096203]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.128
+- Phi: -0.049
+- HeavyAtomMolWt: 0.033
+- BCUT2D_LOGPLOW: -0.032
+- SMR_VSA6: 0.030
+
+","The prediction is influenced by five features, each contributing either positively or negatively to the overall score:
+
+- **fr_COO (-0.128):** This feature has the largest negative impact on the prediction. The presence or higher value of the carboxylic acid group (fr_COO) decreases the predicted value significantly.
+  
+- **Phi (-0.049):** This feature also negatively affects the prediction but to a lesser extent than fr_COO. The value of Phi reduces the prediction moderately.
+  
+- **HeavyAtomMolWt (0.033):** This feature contributes positively, indicating that heavier molecules (with more heavy atoms) increase the predicted value slightly.
+  
+- **BCUT2D_LOGPLOW (-0.032):** This feature has a small negative contribution, suggesting that certain aspects of molecular lipophilicity captured by BCUT2D_LOGPLOW lower the prediction a bit.
+  
+- **SMR_VSA6 (0.030):** This feature has a slight positive effect on the prediction, perhaps related to specific surface area or electronic properties contributing positively.
+
+**Summary:**
+The overall prediction is mostly lowered by the presence of carboxylic acid groups and Phi values, with minor dampening effects from BCUT2D_LOGPLOW. Conversely, greater molecular weight and the SMR_VSA6 feature push the prediction upwards a bit. The net effect depends on the balance of these contributions."
+ADME_hPPB,38,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState4', 'NumRotatableBonds', 'SMR_VSA6', 'Kappa2']","[0.4426604457844035, 0.0639775499087337, -0.0506718269726604, 0.04098575080499629, -0.04063592218306495]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.443
+- VSA_EState4: 0.064
+- NumRotatableBonds: -0.051
+- SMR_VSA6: 0.041
+- Kappa2: -0.041
+
+","Certainly! The prediction is explained by the contribution of each feature as follows:
+
+- **fr_COO (0.443):** This feature has the largest positive contribution to the prediction. It suggests that the presence or frequency of the COO group (likely a carboxyl group) strongly increases the predicted value.
+
+- **VSA_EState4 (0.064):** This feature also positively contributes, but to a much lesser extent. It represents some aspect of the molecular surface area combined with electronic state information, and its presence slightly increases the prediction.
+
+- **NumRotatableBonds (-0.051):** This feature has a negative contribution, implying that molecules with more rotatable bonds slightly decrease the predicted value.
+
+- **SMR_VSA6 (0.041):** This is another positive contributor, related to the surface area of atoms with specific properties correlated with molecular refractivity, providing a moderate increase.
+
+- **Kappa2 (-0.041):** This molecular shape descriptor negatively influences the prediction, suggesting certain shape characteristics reduce the predicted value.
+
+**Overall interpretation:** The prediction is driven primarily by the presence of the COO group, with secondary contributions from molecular surface properties and shape descriptors. The prediction increases with more COO groups and certain surface features, but decreases with higher molecular flexibility (more rotatable bonds) and specific shape factors."
+ADME_hPPB,39,gpt-4.1-mini,basic,5,"['Phi', 'BalabanJ', 'BCUT2D_LOGPHI', 'EState_VSA4', 'Kappa2']","[0.04351910333405565, -0.042005582314561626, 0.041205653253329484, 0.041060984046083444, -0.03622508918412542]","
+Explain the prediction using the following feature contributions.
+
+- Phi: 0.044
+- BalabanJ: -0.042
+- BCUT2D_LOGPHI: 0.041
+- EState_VSA4: 0.041
+- Kappa2: -0.036
+
+","The prediction is explained by the combined effect of the individual feature contributions, which indicate how each feature pushes the prediction higher or lower.
+
+Here's the breakdown:
+
+- **Phi (0.044):** This feature contributes positively to the prediction, increasing the output by 0.044 units.
+- **BalabanJ (-0.042):** This feature has a negative contribution, decreasing the prediction by 0.042 units.
+- **BCUT2D_LOGPHI (0.041):** This feature also contributes positively, raising the prediction by 0.041 units.
+- **EState_VSA4 (0.041):** Another positive contributor, increasing the prediction by 0.041 units.
+- **Kappa2 (-0.036):** This feature lowers the prediction by 0.036 units.
+
+### Overall Interpretation:
+The positive contributions from Phi, BCUT2D_LOGPHI, and EState_VSA4 tend to increase the predicted value. In contrast, BalabanJ and Kappa2 pull the prediction down. Since the magnitudes of the positive contributions roughly balance the negative contributions, the final prediction depends on their net sum. The net positive sum (0.044 + 0.041 + 0.041) minus the negative sum (0.042 + 0.036) suggests a slightly positive overall effect on the prediction.
+
+In short, the model's output is a result of a subtle balance between features that promote a higher prediction and features that suppress it."
+ADME_hPPB,40,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'HallKierAlpha', 'Phi', 'PEOE_VSA1']","[0.09851364156040887, -0.09011808203079769, -0.07671624034513568, -0.06356149785521481, -0.057877008414865524]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.099
+- HeavyAtomMolWt: -0.090
+- HallKierAlpha: -0.077
+- Phi: -0.064
+- PEOE_VSA1: -0.058
+
+","The prediction is influenced by the following features and their contributions to the model's output:
+
+- **fr_COO (Contribution: +0.099):** This feature positively contributes to the prediction. The presence or count of the COO group (carboxyl group) in the molecule increases the predicted value.
+
+- **HeavyAtomMolWt (Contribution: -0.090):** This feature negatively affects the prediction. A higher heavy atom molecular weight (the sum of the atomic weights of all non-hydrogen atoms) decreases the predicted value.
+
+- **HallKierAlpha (Contribution: -0.077):** This topological descriptor, related to the molecular shape and connectivity, negatively impacts the prediction, meaning higher values are associated with lower prediction scores.
+
+- **Phi (Contribution: -0.064):** The Phi descriptor, often related to molecular flexibility or shape, has a negative contribution, reducing the prediction as it increases.
+
+- **PEOE_VSA1 (Contribution: -0.058):** This is a descriptor combining partial charges (PEOE) and van der Waals surface area, representing certain electrostatic surface properties. Its increase leads to a decrease in the prediction.
+
+### Summary:
+The presence of carboxyl groups (fr_COO) tends to increase the predicted outcome, while larger molecules with higher heavy atom weights, certain topological characteristics (HallKierAlpha), shape/flexibility metrics (Phi), and certain electrostatic surface properties (PEOE_VSA1) tend to reduce the predicted value. Overall, the prediction balances these factors, where the positive contribution from the COO groups is somewhat offset by the negative impacts of molecular size, shape, and charge distributions."
+ADME_hPPB,41,gpt-4.1-mini,basic,5,"['fr_COO', 'VSA_EState3', 'SMR_VSA6', 'fr_lactam', 'Chi2n']","[-0.23443027210439787, -0.11097678291541709, -0.10057436844790324, 0.0968913204973025, 0.0952305467199068]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.234
+- VSA_EState3: -0.111
+- SMR_VSA6: -0.101
+- fr_lactam: 0.097
+- Chi2n: 0.095
+
+","The prediction explanation based on the feature contributions is as follows:
+
+- **fr_COO (-0.234):** This feature has the largest negative contribution, decreasing the prediction score. It indicates that the presence or higher value of the COO functional group (carboxylate) is associated with a lower predicted outcome.
+
+- **VSA_EState3 (-0.111):** This feature also negatively influences the prediction, suggesting that the molecular surface area and electronic state captured by VSA_EState3 is linked to a decrease in the predicted value.
+
+- **SMR_VSA6 (-0.101):** Similarly, this descriptor contributes negatively, reflecting that specific molecular surface area characteristics correlated with SMR_VSA6 reduce the prediction score.
+
+- **fr_lactam (0.097):** In contrast to the above, the presence of the lactam group positively impacts the prediction, increasing the score.
+
+- **Chi2n (0.095):** This molecular connectivity index contributes positively as well, indicating that certain topological features represented by Chi2n lead to higher predicted values.
+
+**Summary:** Features related to carboxylate groups and certain surface area descriptors lower the prediction, while features indicating the presence of lactam groups and molecular connectivity increase it. The overall prediction is a balance of these positive and negative influences."
+ADME_hPPB,42,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'HallKierAlpha', 'Chi0n', 'EState_VSA3']","[0.4190580547084548, 0.17801278732851597, 0.11188003712754943, 0.09987802842589182, -0.07656275179523922]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.419
+- HeavyAtomMolWt: 0.178
+- HallKierAlpha: 0.112
+- Chi0n: 0.100
+- EState_VSA3: -0.077
+
+","The prediction is explained by the contributions of various molecular features to the model output. Here’s the interpretation of each feature contribution you provided:
+
+- **fr_COO: 0.419**  
+  This feature represents the presence or count of carboxylic acid groups (-COO) in the molecule. A positive contribution of 0.419 means that having carboxylic acid groups strongly increases the predicted value. This is the largest positive contributor among the features listed.
+
+- **HeavyAtomMolWt: 0.178**  
+  This is the molecular weight considering only heavy atoms (non-hydrogen atoms). A positive contribution of 0.178 suggests that heavier molecules (with more or heavier atoms) tend to increase the prediction.
+
+- **HallKierAlpha: 0.112**  
+  Hall-Kier alpha is a molecular descriptor related to molecular shape and flexibility. A positive contribution (0.112) means that some aspect of molecular shape or branching positively influences the prediction.
+
+- **Chi0n: 0.100**  
+  Chi0n is a zero-order molecular connectivity index that captures features related to the molecule’s topology. A positive contribution (0.100) indicates the molecule's connectivity pattern is favorable for increasing the prediction.
+
+- **EState_VSA3: -0.077**  
+  EState_VSA3 is a descriptor combining electronic state and van der Waals surface area. A negative contribution (-0.077) means that this electronic/steric aspect decreases the predicted value slightly.
+
+---
+
+### Overall explanation:
+The prediction is primarily driven upward by the presence of carboxylic acid groups (fr_COO) and further supported by molecular weight, shape, and connectivity descriptors. A minor negative effect comes from certain electronic/steric properties (EState_VSA3). This indicates that molecules with more carboxylic acid groups, heavier atoms, and particular molecular topologies are predicted to have a higher value in whatever property/model output is being predicted."
+ADME_hPPB,43,gpt-4.1-mini,basic,5,"['fr_COO', 'HeavyAtomMolWt', 'fr_sulfone', 'PEOE_VSA4', 'VSA_EState4']","[0.3275752581687039, -0.06603879664273464, -0.040180861286987474, -0.03945880820891706, -0.03635889076608202]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: 0.328
+- HeavyAtomMolWt: -0.066
+- fr_sulfone: -0.040
+- PEOE_VSA4: -0.039
+- VSA_EState4: -0.036
+
+","The prediction is explained by the combined effect of several molecular features, each contributing either positively or negatively to the final result:
+
+- **fr_COO (0.328)**: This feature has the largest positive contribution. It indicates the presence of a carboxyl group (–COO) in the molecule, which strongly increases the predicted value. This suggests that molecules containing carboxyl groups are associated with higher predictions in your model.
+
+- **HeavyAtomMolWt (-0.066)**: The heavy atom molecular weight contributes negatively. A higher molecular weight generally decreases the prediction slightly, indicating that larger molecules may be less favored by the model.
+
+- **fr_sulfone (-0.040)**: The presence of a sulfone group (–SO2–) also reduces the prediction. Molecules with this group are predicted to have somewhat lower values.
+
+- **PEOE_VSA4 (-0.039)**: This is a descriptor related to the partial charge and surface area of the molecule. A higher PEOE_VSA4 value is associated with a modest decrease in the prediction, which may relate to electronic or steric effects.
+
+- **VSA_EState4 (-0.036)**: This descriptor combines surface area (VSA) and electrotopological state information. Its negative contribution suggests that certain electronic and spatial configurations of the molecule lower the predicted value.
+
+**Summary:**  
+The positive effect of having a carboxyl group dominates the prediction, increasing the output. In contrast, heavier molecules, and those featuring sulfone groups or specific charge/surface characteristics, tend to lower the prediction. The net prediction reflects the balance of these feature contributions."
+ADME_hPPB,44,gpt-4.1-mini,basic,5,"['ExactMolWt', 'fr_COO', 'PEOE_VSA1', 'VSA_EState3', 'HallKierAlpha']","[-0.0801186268384817, -0.0566876442974273, -0.05408357810521985, -0.05408124967258257, -0.04961972180348027]","
+Explain the prediction using the following feature contributions.
+
+- ExactMolWt: -0.080
+- fr_COO: -0.057
+- PEOE_VSA1: -0.054
+- VSA_EState3: -0.054
+- HallKierAlpha: -0.050
+
+","The feature contributions you've provided explain how each feature impacts the prediction made by the model. Here's the interpretation of each contribution:
+
+- **ExactMolWt: -0.080**  
+  This feature represents the exact molecular weight of the compound. A contribution of -0.080 means that a higher molecular weight is decreasing the predicted value. In other words, larger molecules are pushing the prediction down.
+
+- **fr_COO: -0.057**  
+  This feature likely indicates the presence or count of carboxylic acid groups (–COOH) in the molecule. Its negative contribution suggests that having carboxylic acid groups lowers the predicted value.
+
+- **PEOE_VSA1: -0.054**  
+  PEOE_VSA1 is a descriptor related to the partial charges (PEOE) on surface area regions of the molecule (VSA: van der Waals surface area). A negative contribution means that certain charge distributions or surface areas in this region decrease the prediction.
+
+- **VSA_EState3: -0.054**  
+  This descriptor combines surface area (VSA) with Electrotopological State indices, which capture electronic and topological environment information of atoms. A negative contribution indicates that features with specific electronic/topological environments captured by this descriptor reduce the prediction.
+
+- **HallKierAlpha: -0.050**  
+  Hall-Kier Alpha relates to molecular shape or flexibility, often indicating how linear or branched the molecule is. The negative impact here shows that molecular shapes or flexibilities corresponding to lower Hall-Kier Alpha values reduce the predicted value.
+
+---
+
+### Summary:
+All the features listed have negative contributions, meaning each one decreases the prediction to some extent. The largest effect comes from molecular weight, followed by structural features like carboxylic acid groups, charge distributions, electronic environment descriptors, and molecular shape/flexibility. Collectively, these features pull the model’s output lower, indicating that the predicted property or outcome is inversely related to these molecular characteristics in the sample you provided."
+ADME_hPPB,45,gpt-4.1-mini,basic,5,"['fr_COO', 'SMR_VSA6', 'Kappa3', 'Chi0n', 'HeavyAtomMolWt']","[-0.27447990333258815, -0.0852070403313365, -0.08501818404875956, 0.06347048176388914, 0.046986994161085226]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.274
+- SMR_VSA6: -0.085
+- Kappa3: -0.085
+- Chi0n: 0.063
+- HeavyAtomMolWt: 0.047
+
+","The prediction explanation using the provided feature contributions can be summarized as follows:
+
+- **fr_COO: -0.274**  
+  This feature has the largest negative contribution, meaning that the presence or higher value of this feature strongly decreases the prediction score. In a chemical context, fr_COO likely refers to the presence of a carboxylic acid functional group, which is reducing the predicted property or class.
+
+- **SMR_VSA6: -0.085**  
+  This feature also contributes negatively to the prediction, though less strongly than fr_COO. SMR_VSA6 is a descriptor related to the van der Waals surface area of atoms with a specific range of partial molar refractivity, so this suggests that larger or particular surface areas with these optical properties lower the prediction.
+
+- **Kappa3: -0.085**  
+  Kappa shape indices relate to molecular shape and complexity. A negative contribution here indicates that molecular shape complexity or arrangement as captured by the Kappa3 descriptor leads to a decrease in the predicted value.
+
+- **Chi0n: 0.063**  
+  This topological descriptor (Chi0n) contributes positively, slightly increasing the prediction. It represents the connectivity of the molecule based on atom neighborhood, so some structural features increasing this descriptor push the prediction up.
+
+- **HeavyAtomMolWt: 0.047**  
+  The molecular weight of heavy atoms (non-hydrogen atoms) has a small positive contribution, meaning larger molecules tend to slightly increase the prediction.
+
+### Overall interpretation:
+The prediction is primarily lowered by the presence of the *fr_COO* feature (carboxylic acid group) and certain molecular shape and surface area characteristics. Conversely, molecular connectivity and higher molecular weight slightly increase the prediction. The net effect depends on the sum of all contributions, but here the negative contributions dominate, indicating the prediction is likely decreased relative to a baseline expectation."
+ADME_hPPB,46,gpt-4.1-mini,basic,5,"['HeavyAtomMolWt', 'HallKierAlpha', 'fr_COO', 'PEOE_VSA1', 'EState_VSA3']","[-0.11972319761069228, -0.11744203029335752, -0.1046517930350762, -0.10426793363891242, -0.09824724648530583]","
+Explain the prediction using the following feature contributions.
+
+- HeavyAtomMolWt: -0.120
+- HallKierAlpha: -0.117
+- fr_COO: -0.105
+- PEOE_VSA1: -0.104
+- EState_VSA3: -0.098
+
+","The prediction is influenced by the following feature contributions, all of which have negative values:
+
+- **HeavyAtomMolWt (-0.120):** The molecular weight of heavy atoms in the molecule slightly decreases the predicted outcome. A higher or specific range of heavy atom molecular weight might be associated with a lower predicted value.
+  
+- **HallKierAlpha (-0.117):** This descriptor relates to molecular flexibility or shape. Its negative contribution suggests that certain molecular conformations or flexibility reduce the predicted output.
+
+- **fr_COO (-0.105):** This feature counts the presence of -COO (carboxyl) functional groups. The negative impact means molecules with carboxyl groups tend to lower the prediction.
+
+- **PEOE_VSA1 (-0.104):** A descriptor related to partial atomic charges (PEOE) and surface area (VSA). Its negative contribution indicates that certain charge distributions or surface areas are associated with a decreased prediction.
+
+- **EState_VSA3 (-0.098):** This combines electrotopological state indices with surface area components. A negative effect suggests that specific electronic environments or surface properties reduce the predicted value.
+
+**Overall Explanation:**
+
+All these features contribute negatively, meaning each of them pushes the prediction downward. The model likely predicts a property or outcome that decreases with increasing molecular weight, presence of carboxyl groups, specific charge distributions, and particular molecular shapes or flexibility. The combined negative contributions indicate that the molecule's structure and electronic characteristics as described by these features suggest a lower predicted value for the target property."
+ADME_hPPB,47,gpt-4.1-mini,basic,5,"['HeavyAtomMolWt', 'HallKierAlpha', 'Phi', 'Chi0n', 'Kappa2']","[-0.05423831330912234, 0.03320100211543249, 0.030555640881566263, 0.03005435795602032, -0.029823971979112126]","
+Explain the prediction using the following feature contributions.
+
+- HeavyAtomMolWt: -0.054
+- HallKierAlpha: 0.033
+- Phi: 0.031
+- Chi0n: 0.030
+- Kappa2: -0.030
+
+","The prediction is influenced by the following feature contributions, where positive values increase the predicted value and negative values decrease it:
+
+- **HeavyAtomMolWt (-0.054):** This feature has the largest negative contribution, indicating that a higher heavy atom molecular weight tends to lower the predicted value.
+- **HallKierAlpha (0.033):** This feature contributes positively, suggesting that an increase in Hall-Kier Alpha index raises the prediction.
+- **Phi (0.031):** Similarly, the Phi descriptor positively influences the prediction.
+- **Chi0n (0.030):** This feature also contributes positively, further increasing the predicted value.
+- **Kappa2 (-0.030):** This descriptor negatively impacts the prediction, decreasing the predicted value.
+
+**Overall:** The prediction is a balance between features that increase the value (HallKierAlpha, Phi, Chi0n) and those that decrease it (HeavyAtomMolWt, Kappa2). The strongest negative effect comes from HeavyAtomMolWt, while the positive contributions from HallKierAlpha, Phi, and Chi0n collectively offset some of the negative impact."
+ADME_hPPB,48,gpt-4.1-mini,basic,5,"['fr_COO', 'fr_ketone', 'HeavyAtomMolWt', 'Phi', 'SMR_VSA6']","[-0.1867373201689503, 0.06971473723088815, 0.04984951723802789, -0.0401324337741873, 0.03457048255238418]","
+Explain the prediction using the following feature contributions.
+
+- fr_COO: -0.187
+- fr_ketone: 0.070
+- HeavyAtomMolWt: 0.050
+- Phi: -0.040
+- SMR_VSA6: 0.035
+
+","The prediction is explained by the combined effect of these feature contributions on the output. Here's the breakdown:
+
+- **fr_COO (-0.187):** This feature has a relatively large negative contribution, meaning the presence (or higher value) of the ""fr_COO"" feature decreases the predicted value significantly.
+
+- **fr_ketone (0.070):** This contributes positively, increasing the prediction moderately.
+
+- **HeavyAtomMolWt (0.050):** This feature also contributes positively, slightly increasing the prediction.
+
+- **Phi (-0.040):** This leads to a moderate decrease in the predicted value.
+
+- **SMR_VSA6 (0.035):** This has a small positive effect on the prediction.
+
+### Overall interpretation:
+The negative contribution from **fr_COO** is the strongest single factor decreasing the prediction. This is somewhat offset by positive contributions from **fr_ketone**, **HeavyAtomMolWt**, and **SMR_VSA6**, which pull the prediction upward. The **Phi** feature adds a small further decrease.
+
+**In summary:** The model's prediction is lowered primarily due to the presence/amount of carboxylic acid groups (fr_COO), but partially offset by ketone groups, molecular weight of heavy atoms, and some molecular surface area related features, resulting in a final value reflecting this balance."
+ADME_hPPB,49,gpt-4.1-mini,basic,5,"['HeavyAtomMolWt', 'PEOE_VSA1', 'VSA_EState3', 'EState_VSA6', 'fr_COO']","[0.17674537318385725, 0.08240135313710552, -0.06994197964114217, 0.05373677231755489, 0.049295196860376575]","
+Explain the prediction using the following feature contributions.
+
+- HeavyAtomMolWt: 0.177
+- PEOE_VSA1: 0.082
+- VSA_EState3: -0.070
+- EState_VSA6: 0.054
+- fr_COO: 0.049
+
+","The prediction is influenced by several molecular features, each contributing either positively or negatively to the final outcome. Here's an explanation of the feature contributions you provided:
+
+- **HeavyAtomMolWt (0.177)**: This feature represents the molecular weight considering only heavy atoms (non-hydrogen atoms). A positive contribution of 0.177 indicates that larger molecules with heavier atoms tend to increase the predicted value.
+
+- **PEOE_VSA1 (0.082)**: This descriptor relates to the partial charges on atoms in specific van der Waals surface area bins. A positive contribution here suggests that the presence of certain charged surface areas positively influences the prediction.
+
+- **VSA_EState3 (-0.070)**: This feature combines van der Waals surface area with electrotopological state indices. The negative contribution indicates that atoms with certain electronic environments and surface areas decrease the predicted value.
+
+- **EState_VSA6 (0.054)**: Similar to VSA_EState3 but for a different bin, this feature positively contributes, meaning that particular electronic and surface characteristics of atoms in this category increase the prediction.
+
+- **fr_COO (0.049)**: This is a fragment count feature for carboxyl groups (COO). A positive value suggests that the presence of carboxyl functional groups slightly increases the predicted outcome.
+
+**Summary:**  
+The prediction is mainly driven upward by the molecular weight and certain charged or electronic surface area properties, along with the presence of carboxyl groups. In contrast, specific electronic environments represented by VSA_EState3 reduce the prediction. Overall, larger molecules with particular charged regions and carboxyl groups are predicted to have higher values in this model."

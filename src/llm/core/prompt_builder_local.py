@@ -1,137 +1,164 @@
-# =========================================================
-# LOCAL PROMPT BUILDER (FINAL VERSION)
-# =========================================================
-
-# =========================================================
-# REAL SCALE UNITS
-# =========================================================
-ENDPOINT_UNITS = {
-    "ADME_HLM": "mL/min/kg",
-    "ADME_RLM": "mL/min/kg",
-    "ADME_hPPB": "% unbound",
-    "ADME_rPPB": "% unbound",
-    "ADME_MDR1_ER": "efflux ratio",
-    "ADME_Sol": "µg/mL"
-}
+# src/llm/core/prompt_builder_local.py
 
 
-# =========================================================
-# DISCRETIZATION (CLINICAL CONTEXT)
-# =========================================================
-def discretize_endpoint(endpoint, value):
+# ==============================
+# ENDPOINT CONTEXT
+# ==============================
+def get_endpoint_context(endpoint):
+
+    if endpoint in ["ADME_HLM", "ADME_RLM"]:
+        return "hepatic metabolic clearance (intrinsic clearance in liver microsomes)", "mL/min/kg"
+
+    if endpoint in ["ADME_hPPB", "ADME_rPPB"]:
+        return "plasma protein binding (fraction unbound)", "%"
+
+    if endpoint == "ADME_MDR1_ER":
+        return "efflux ratio mediated by transporters such as P-glycoprotein", ""
+
+    if endpoint == "ADME_Sol":
+        return "aqueous solubility at physiological pH", "µg/mL"
+
+    return "biological property", ""
+
+
+# ==============================
+# DISCRETIZATION (THRESHOLDS)
+# ==============================
+def discretize(endpoint, value):
 
     if endpoint in ["ADME_HLM", "ADME_RLM"]:
         if value <= 10:
-            return "Low"
+            return "low"
         elif value <= 40:
-            return "Moderate"
+            return "moderate"
         else:
-            return "High"
+            return "high"
 
-    elif endpoint in ["ADME_hPPB", "ADME_rPPB"]:
+    if endpoint in ["ADME_hPPB", "ADME_rPPB"]:
         if value <= 0.5:
-            return "Very high binding"
+            return "very high binding"
         elif value <= 5:
-            return "Intermediate binding"
+            return "intermediate binding"
         else:
-            return "Low binding"
+            return "low binding"
 
-    elif endpoint == "ADME_MDR1_ER":
+    if endpoint == "ADME_MDR1_ER":
         if value <= 2:
-            return "Non-substrate"
+            return "non-substrate"
         elif value <= 5:
-            return "Moderate efflux"
+            return "moderate efflux"
         else:
-            return "Strong efflux"
+            return "strong efflux"
 
-    elif endpoint == "ADME_Sol":
+    if endpoint == "ADME_Sol":
         if value < 10:
-            return "Poor solubility"
+            return "poor solubility"
         elif value < 100:
-            return "Moderate solubility"
+            return "moderate solubility"
         else:
-            return "High solubility"
+            return "high solubility"
 
-    return ""
+    return "unknown"
 
 
-# =========================================================
+# ==============================
 # PROMPT BUILDER
-# =========================================================
+# ==============================
 def build_prompt_local(
     features,
     shap_values,
     endpoint,
     prediction,
-    strategy="biomedical"
+    base_value,
 ):
 
-    unit = ENDPOINT_UNITS.get(endpoint, "")
-    category = discretize_endpoint(endpoint, prediction)
+    property_desc, unit = get_endpoint_context(endpoint)
+    category = discretize(endpoint, prediction)
 
     # =========================
-    # Feature formatting
+    # GLOBAL DIRECTION (CLAVE)
     # =========================
+    if prediction > base_value:
+        direction = "higher"
+    else:
+        direction = "lower"
+
+    # =========================
+    # TOP 3 FEATURES
+    # =========================
+    features = features[:3]
+    shap_values = shap_values[:3]
+
     feature_lines = []
-    for i, (feat, val) in enumerate(zip(features, shap_values), start=1):
-        sign = "+" if val > 0 else ""
-        feature_lines.append(f"{i}. {feat} ({sign}{round(val, 3)})")
+    for i, (f, v) in enumerate(zip(features, shap_values), 1):
+        sign = "+" if v > 0 else ""
+        feature_lines.append(f"{i}. {f} ({sign}{round(v, 2)})")
 
     feature_text = "\n".join(feature_lines)
 
     # =========================
-    # BIOMEDICAL PROMPT
+    # PROMPT
     # =========================
-    if strategy == "biomedical":
+    prompt = f"""
+You are a biomedical and pharmacokinetics expert.
 
-        prompt = f"""
-You are a biomedical expert in pharmacokinetics and drug metabolism.
+The model predicts {property_desc} ({endpoint}).
 
-A drug property has been predicted for {endpoint}.
+Baseline: {round(base_value, 2)} {unit}
+Prediction: {round(prediction, 2)} {unit}
+Category: {category}
 
-Predicted value:
-{round(prediction, 3)} {unit} → {category}
+The final prediction is {direction} than the baseline.
 
-The most influential molecular descriptors are:
-
+Top contributing features:
 {feature_text}
 
-INSTRUCTIONS:
+Write a clear scientific explanation with this structure:
 
-- For EACH descriptor, explicitly interpret the SIGN:
-    - (+) increases the predicted property
-    - (-) decreases the predicted property
+1. First paragraph:
+- One sentence stating prediction, category and pharmacological meaning
 
-- For each descriptor you MUST:
-    1. Explain its chemical meaning
-    2. Explain whether it increases or decreases the property
-    3. Connect it to pharmacokinetics (metabolism, binding, permeability, etc.)
+2. Second paragraph:
+- Explain the baseline as an average value
+- Clearly state that the prediction is {direction} than the baseline
+- Explain the biological implication
 
-- The final prediction results from the combination of many molecular features.
-- If the listed descriptors do not fully explain the final value, acknowledge that additional molecular features not shown also influence the outcome.
+3. Feature section:
+- Write EXACTLY 3 numbered bullet points
+- Each bullet must follow this format:
 
-- Keep explanations mechanistic and biomedical:
-  (enzyme interactions, polarity, lipophilicity, steric effects, etc.)
+1. FeatureName (+/-value): explanation in ONE paragraph
 
-- Do NOT mention SHAP, models, or machine learning.
+- Explain:
+  • what the feature represents  
+  • why it increases/decreases the property  
+  • pharmacokinetic interpretation  
 
-- Structure:
-    - Start with 1–2 sentences interpreting the predicted value and category
-    - Then explain each descriptor in order (1, 2, 3)
+IMPORTANT (CRITICAL LOGIC RULES):
+- The overall prediction is {direction} than the baseline
+- A positive value increases the prediction
+- A negative value decreases the prediction
+- If all listed features are positive but the prediction is lower:
+  → they partially counteract the decrease
+- If all listed features are negative but the prediction is higher:
+  → they partially counteract the increase
+- DO NOT claim that positive features explain a decrease
+- DO NOT contradict the global direction
 
-- Be precise and avoid generic statements.
+4. Final sentence:
+- Explain whether these features reinforce or counteract the overall prediction
+- Mention that other features (not shown) may dominate if needed
 
-Start directly with the explanation.
-"""
+STRICT RULES:
+- ALWAYS include numeric SHAP values (e.g., +16.73)
+- ALWAYS use numbered bullet points (1, 2, 3)
+- NO sub-bullets
+- Each feature = ONE paragraph
+- DO NOT repeat the baseline explanation
+- DO NOT mention SHAP or machine learning
+- Use confident scientific language
 
-    else:
-        prompt = f"""
-Predicted: {round(prediction, 3)} {unit} ({category})
-
-Top features:
-{feature_text}
-
-Explain how each feature increases or decreases the prediction.
+Start directly.
 """
 
     return prompt

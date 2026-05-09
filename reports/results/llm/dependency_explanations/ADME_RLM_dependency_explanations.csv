@@ -1,0 +1,224 @@
+endpoint,feature,prompt,explanation
+ADME_RLM,MolLogP,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MolLogP
+
+Observed values (descriptor value -> contribution to prediction):
+
+-1.542 -> 0.193
+1.011 -> -0.042
+1.375 -> 0.202
+1.682 -> -0.502
+1.903 -> 0.027
+2.074 -> 0.263
+2.248 -> 0.062
+2.408 -> -0.050
+2.551 -> -0.075
+2.701 -> -0.582
+2.835 -> 0.172
+2.984 -> 0.286
+3.136 -> 0.128
+3.302 -> 0.046
+3.445 -> 0.178
+3.639 -> 0.071
+3.844 -> 0.225
+4.068 -> 0.191
+4.577 -> 0.033
+9.014 -> 0.109
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","MolLogP is a measure of a molecule's lipophilicity, indicating how well it partitions between aqueous and lipid environments. This property influences a drug's absorption, distribution, membrane permeability, and overall bioavailability.
+
+From the data, the contribution of MolLogP to the predicted drug property does not follow a simple linear trend. At very low MolLogP values (around -1.5), the contribution is positive, suggesting that molecules that are more hydrophilic than hydrophobic may favorably influence the drug property. As MolLogP increases to about 1.0–1.4, the contributions fluctuate but remain close to zero or moderately positive, indicating a balanced lipophilicity may still be beneficial.
+
+However, at intermediate MolLogP values near 1.7 and around 2.7, there are notable drops in contribution (negative values), indicating that moderate lipophilicity in these ranges may reduce the predicted drug property. This could reflect suboptimal balance for this molecular characteristic, possibly due to increased nonspecific binding or reduced solubility.
+
+At higher MolLogP values above 2.8, contributions generally become positive again, suggesting that significant lipophilicity might enhance the drug property. This might be because higher lipophilicity increases the ability of the molecule to cross lipid membranes, improving target engagement or bioavailability, although extremely high values (as seen at 9.0) show only modest positive contribution, indicating potential saturation or counteracting factors such as poor solubility or metabolic instability.
+
+Overall, the data suggest a complex relationship where both very low and relatively high lipophilicity values are favorable, while certain intermediate lipophilicity ranges might impair the drug’s predicted property. This emphasizes the importance of balancing hydrophilic and lipophilic properties to optimize the drug profile relevant to the predicted outcome."
+ADME_RLM,PEOE_VSA6,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: PEOE_VSA6
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> -0.009
+0.000 -> -0.125
+0.000 -> 0.121
+0.000 -> -0.043
+6.066 -> -0.018
+6.066 -> -0.057
+11.601 -> -0.030
+12.133 -> -0.045
+12.133 -> -0.036
+13.847 -> -0.098
+18.199 -> -0.025
+18.199 -> -0.016
+19.765 -> -0.005
+24.265 -> -0.039
+25.329 -> -0.050
+30.332 -> -0.079
+31.544 -> -0.180
+36.418 -> -0.142
+47.621 -> 0.016
+83.488 -> 0.020
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","PEOE_VSA6 is a molecular descriptor related to the partial charge distribution on a molecule's surface area, specifically representing the sum of van der Waals surface areas for atoms whose partial charges fall within a defined range (typically moderately negative partial charges).
+
+From the data provided, when PEOE_VSA6 equals zero, the contributions to the predicted drug property vary both positively and negatively, indicating that the absence of this feature can have mixed effects depending on other molecular characteristics. However, as the value of PEOE_VSA6 increases, the contribution to the predicted property mostly becomes negative or neutral, with a few small positive contributions at the highest values.
+
+This suggests that molecules with larger surface areas of atoms having moderately negative partial charges tend to reduce or slightly lower the predicted drug property value in most cases. It may indicate that increased electron density in these regions correlates with decreased activity or property of interest. Conversely, very low or zero PEOE_VSA6 values can sometimes be associated with either positive or negative effects, implying that the absence of this particular charged surface area is not strongly determinant on its own.
+
+In summary, the extent of molecular surface area associated with moderately negative partial charges, as captured by PEOE_VSA6, generally has a dampening effect on the predicted drug property, potentially reflecting chemical interactions such as decreased binding affinity or altered solubility mediated by these electron-rich surface regions."
+ADME_RLM,TPSA,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: TPSA
+
+Observed values (descriptor value -> contribution to prediction):
+
+3.240 -> 0.112
+38.130 -> -0.088
+41.990 -> 0.162
+43.850 -> -0.054
+46.840 -> -0.051
+48.990 -> -0.088
+50.940 -> 0.120
+53.080 -> 0.087
+55.630 -> -0.063
+58.120 -> -0.077
+59.810 -> -0.080
+62.110 -> -0.048
+64.850 -> 0.138
+68.010 -> -0.077
+71.260 -> 0.019
+75.190 -> -0.044
+79.310 -> -0.072
+85.860 -> 0.075
+99.150 -> 0.037
+175.840 -> 0.038
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","TPSA (Topological Polar Surface Area) is a measure of the surface area of a molecule that is polar, typically related to the presence of oxygen and nitrogen atoms and their attached hydrogen atoms. It reflects the molecule’s ability to interact with polar solvents such as water, and often correlates with properties like absorption, permeability, and bioavailability.
+
+From the data provided, there is no simple linear trend between TPSA values and the predicted drug property, as the contribution fluctuates between positive and negative across different TPSA values. However, some general observations can be made:
+
+- Lower TPSA values (e.g., around 3.240) seem to have a positive contribution to the predicted property. This suggests that very low polarity or fewer polar groups favor the property being predicted, potentially indicating better membrane permeability or bioavailability in such cases.
+- Moderate TPSA values (around 38–62) frequently show negative contributions, implying that increasing polarity in this range may reduce the property, potentially diminishing permeability or interaction with lipophilic targets.
+- Some higher TPSA values (around 64.85 and 85.86) return positive contributions, suggesting that beyond a certain point, specific polar groups or conformations might enhance the predicted property, possibly by improving solubility or target binding.
+- Very high TPSA (e.g., 175.840) has a slightly positive contribution, which might indicate that compounds with very high polarity can still favor the predicted property, perhaps due to specific mechanisms such as active transport or strong hydrogen bonding interactions.
+
+In summary, the predicted drug property appears to be sensitive to the polar surface area but in a non-linear way. Both very low and some higher levels of TPSA contribute positively, whereas moderate levels often have a negative effect. This pattern might reflect a balance between solubility, permeability, and target interaction that depends intricately on how polar groups are arranged in the molecule and how they modulate drug behavior in a biological environment."
+ADME_RLM,SMR_VSA3,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: SMR_VSA3
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> -0.104
+4.900 -> -0.051
+4.984 -> -0.015
+5.317 -> 0.048
+9.780 -> 0.057
+9.884 -> -0.038
+9.968 -> -0.048
+10.141 -> 0.033
+10.301 -> -0.037
+14.451 -> -0.008
+14.764 -> -0.001
+14.868 -> 0.040
+14.994 -> -0.064
+15.201 -> 0.048
+19.435 -> 0.082
+19.748 -> -0.043
+20.081 -> -0.039
+23.708 -> -0.030
+25.065 -> 0.002
+44.940 -> 0.050
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor SMR_VSA3 relates to the sum of van der Waals surface areas of atoms in a molecule that have a specific range of molar refractivity contributions. Molar refractivity (SMR) reflects polarizability — how easily the electron cloud of an atom or group can be distorted by an electric field, which is influenced by electronic properties and atomic size.
+
+Interpreting the relationship between SMR_VSA3 values and the predicted drug property:
+
+- At low SMR_VSA3 values near zero, the contribution to the property is strongly negative. This suggests that molecules with very small surface areas of atoms having the specific polarizability range measured by SMR_VSA3 tend to decrease the property value.
+  
+- As SMR_VSA3 increases from about 5 to 10, the contribution transitions from mildly negative to mildly positive, indicating that an intermediate presence of such polarizable surface area atoms enhances the property somewhat.
+
+- Around values 14 to 20, the contribution peaks positively, reaching the highest positive contribution near 19.4, indicating that molecules with a moderate to moderately high van der Waals surface area of these moderately polarizable atoms tend to favorably impact the property.
+
+- Beyond this range (above ~20), the contribution again becomes negative or slightly positive but generally lower in magnitude, suggesting that very high SMR_VSA3 values (large surface areas of these atoms) do not enhance the property and might even reduce it.
+
+**Chemical/Biological interpretation:**
+
+This pattern implies that the predicted property benefits from an optimal balance of polarizable atomic surface area—likely related to the molecule’s ability to interact through induced dipoles or other electronic effects. Molecules with too little of this polarizable van der Waals surface area may lack key electronic features necessary for activity, while those with too much may have unfavorable steric or electronic effects that diminish the property. The optimal moderate range of SMR_VSA3 could reflect ideal molecular size and electronic distribution for target binding, membrane permeability, or other pharmacokinetic or pharmacodynamic features influenced by polarizability."
+ADME_RLM,MolMR,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MolMR
+
+Observed values (descriptor value -> contribution to prediction):
+
+46.427 -> -0.107
+61.291 -> -0.036
+66.384 -> -0.042
+69.846 -> -0.134
+72.325 -> -0.091
+74.933 -> 0.020
+77.455 -> -0.025
+80.285 -> 0.062
+82.565 -> -0.126
+85.029 -> 0.027
+87.442 -> -0.143
+89.972 -> 0.007
+92.908 -> -0.161
+95.455 -> 0.039
+98.775 -> -0.111
+102.903 -> 0.037
+108.085 -> -0.116
+114.887 -> 0.049
+124.014 -> 0.029
+188.642 -> 0.044
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The molecular descriptor MolMR likely corresponds to the molar refractivity, which is a measure related to the volume occupied by electrons in a molecule and reflects molecular size, polarizability, and electron cloud deformability.
+
+From the data, we observe a complex, non-linear relationship between MolMR values and their contributions to the predicted drug property:
+
+- At lower MolMR values (~46–72), most contributions are negative, indicating that smaller and less polarizable molecules tend to decrease the predicted property value.
+- As MolMR increases toward the mid-range (~74–102), there are fluctuating positive and negative contributions, suggesting that moderate increases in molecular size or polarizability can slightly enhance or diminish the property. This may reflect an optimal window where molecular size and electronic characteristics balance to affect the property variably.
+- At higher MolMR values (~108–124), the contributions are generally slightly positive, implying that larger or more polarizable molecules tend to favorably influence the property.
+- Interestingly, the highest MolMR value (188.642) still shows a small positive contribution, indicating that even very large or highly polarizable molecules can positively impact the property, though the effect is modest.
+
+Biologically, this suggests that the predicted drug property is sensitive to molecular volume and electron cloud characteristics. Molecules that are too small or with low polarizability tend to reduce the property, possibly due to insufficient interaction potential with biological targets or membranes. Conversely, molecules with too high MolMR do not drastically enhance the property, possibly due to steric hindrance or reduced bioavailability, but within the studied range, moderate to large molecules likely have optimal interaction profiles.
+
+In summary, the descriptor MolMR indicates that an intermediate to moderately high molecular size/polarizability tends to favorably influence the drug property, reflecting the balance between molecular size and electronic factors in drug behavior."

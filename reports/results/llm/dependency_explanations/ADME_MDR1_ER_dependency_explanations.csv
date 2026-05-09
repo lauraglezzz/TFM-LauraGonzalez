@@ -1,0 +1,226 @@
+endpoint,feature,prompt,explanation
+ADME_MDR1_ER,TPSA,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: TPSA
+
+Observed values (descriptor value -> contribution to prediction):
+
+3.240 -> -0.071
+38.250 -> -0.102
+41.990 -> -0.084
+44.100 -> 0.254
+46.840 -> 0.018
+48.530 -> -0.178
+50.720 -> -0.059
+52.830 -> 0.225
+55.300 -> -0.089
+58.120 -> 0.088
+59.810 -> 0.213
+62.130 -> 0.019
+64.860 -> -0.066
+68.020 -> -0.121
+71.470 -> 0.013
+75.270 -> 0.111
+79.700 -> 0.161
+86.900 -> 0.084
+100.640 -> -0.021
+175.840 -> -0.041
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor TPSA, or Topological Polar Surface Area, reflects the surface area of a molecule occupied by polar atoms, typically oxygen and nitrogen, including their attached hydrogens. This property is often correlated with a compound’s ability to interact with biological membranes and its capacity for hydrogen bonding, which can influence absorption, distribution, and bioavailability.
+
+From the data, we see that very low TPSA values (around 3 to 40) mostly correspond to negative or slightly negative contributions to the predicted drug property. This suggests that compounds with minimal polar surface area may have limited interaction or suboptimal properties relevant to the predicted activity.
+
+As TPSA rises into the mid-range (approximately 44 to 60), the contributions shift more positively, indicating an improvement in the predicted property. This could be due to an optimal balance: sufficient polar surface area to enable favorable interactions with biological targets or transport mechanisms while maintaining membrane permeability.
+
+However, beyond a certain point (above roughly 60), contributions again tend to decrease or fluctuate around neutral to negative values at very high TPSA (above 100). This trend suggests that excessively polar molecules might face challenges such as poor membrane permeability or increased polarity-related limitations, reducing the predicted beneficial property.
+
+In summary, the relationship implies that drugs with moderate polar surface areas tend to have a more favorable predicted property, likely reflecting a balance between solubility, permeability, and target interaction, whereas very low or very high TPSA values can detract from the desired profile."
+ADME_MDR1_ER,SMR_VSA3,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: SMR_VSA3
+
+Observed values (descriptor value -> contribution to prediction):
+
+0.000 -> -0.042
+4.900 -> -0.084
+4.984 -> -0.011
+5.317 -> -0.027
+9.780 -> 0.032
+9.884 -> -0.108
+9.968 -> -0.099
+10.197 -> -0.043
+10.301 -> -0.004
+14.535 -> 0.113
+14.764 -> 0.164
+14.868 -> 0.001
+15.097 -> -0.096
+15.285 -> 0.045
+19.519 -> 0.082
+19.768 -> 0.162
+20.081 -> -0.066
+24.231 -> 0.108
+25.065 -> 0.127
+44.940 -> -0.094
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor SMR_VSA3 represents the sum of van der Waals surface areas for atoms in a molecule whose contribution to the molar refractivity (a measure related to polarizability) falls within a certain range. Essentially, it captures the size and electronic polarizability characteristics of specific atom groups within the molecule.
+
+From the data provided, the relationship between SMR_VSA3 values and the predicted drug property is non-linear and exhibits distinct regions:
+
+- **Low values (~0 to 5):** The contribution to the predicted property is generally negative, indicating that molecules with very small or negligible SMR_VSA3 contributions slightly reduce the predicted property. This suggests that lacking sizable polarizable surface areas within this category may be unfavorable for the property.
+  
+- **Intermediate values (~9.7 to 10.3):** There is variability with mostly negative contributions except at 9.780 which has a small positive contribution. This indicates that small changes in this range of polarizable surface area influence the property modestly, but generally in a decreasing manner.
+  
+- **Moderate-high values (~14.5 to 19.8):** Here, contributions are mostly positive and relatively larger, especially around 14.7 and 19.7. This suggests that molecules with moderately large polarizable surface areas corresponding to SMR_VSA3 enhance the predicted property, reflecting the importance of certain atom groups' size and polarizability in improving drug characteristics.
+  
+- **High values (>20 to 25):** Contributions remain positive but somewhat variable, indicating that very high surface areas within this category still favor the predicted property but perhaps less consistently.
+  
+- **Very high value (~44.9):** Strongly negative contribution, implying that excessively large polarizable surface areas captured by SMR_VSA3 may be detrimental, possibly due to increased molecular size, decreased solubility, or unfavorable interactions.
+
+**Biological/chemical interpretation:**  
+SMR_VSA3 reflects certain polarizable, van der Waals surface areas linked to molecular electronic properties. Moderate amounts of these surface areas tend to improve the predicted property, which might relate to enhanced binding affinity, membrane permeability, or electronic interactions with biological targets. However, too little or too much of this polarizable surface area is unfavorable, possibly due to inadequate interaction sites or excessive molecular bulk and decreased bioavailability. The relationship indicates an optimal window of molecular electronic size and polarizability that is beneficial for the drug property being predicted."
+ADME_MDR1_ER,Kappa1,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: Kappa1
+
+Observed values (descriptor value -> contribution to prediction):
+
+8.338 -> 0.007
+10.612 -> 0.065
+11.535 -> -0.047
+12.141 -> 0.078
+12.682 -> 0.077
+13.119 -> -0.069
+13.510 -> 0.032
+13.950 -> -0.009
+14.387 -> -0.055
+14.841 -> -0.059
+15.282 -> -0.044
+15.831 -> -0.080
+16.269 -> 0.101
+16.718 -> -0.087
+17.279 -> -0.027
+18.170 -> -0.050
+19.141 -> -0.039
+20.577 -> 0.080
+22.087 -> -0.048
+36.352 -> -0.043
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","Kappa1 is a molecular shape descriptor that reflects the degree of molecular branching and overall shape complexity. It is related to the flexibility and compactness of the molecule. Lower Kappa1 values generally indicate simpler or less branched structures, while higher values are associated with more branching or more complex molecular shapes.
+
+From the data, the contribution to the predicted drug property fluctuates with changes in the Kappa1 value, showing no strictly linear trend but rather a nuanced pattern:
+
+- At intermediate Kappa1 values around 8 to 12.7, the contribution is mostly positive, suggesting that molecules with moderate complexity or branching positively influence the predicted drug property.
+- Between approximately 13 and 15.8, the contributions tend to be negative, indicating that increased branching or shape complexity in this range may reduce the desired drug property.
+- At higher values (around 16.3 and again 20.6), the contribution swings back to a positive influence, suggesting that certain highly branched or complex shapes could enhance the drug property, potentially due to improved interactions with the biological target or better pharmacokinetic characteristics.
+- In contrast, the highest Kappa1 value (36.35) has a negative contribution, which may reflect that extremely complex or bulky molecules could hinder the drug property, possibly due to poor solubility or unfavorable binding.
+
+In summary, the relationship indicates that moderate molecular branching and shape complexity as captured by Kappa1 can beneficially influence the predicted drug property, likely through optimal molecular interactions or pharmacodynamics. However, both insufficient and excessive complexity may negatively impact the property, reflecting an optimal balance in molecular shape for maximizing the desired biological effect."
+ADME_MDR1_ER,Chi0n,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: Chi0n
+
+Observed values (descriptor value -> contribution to prediction):
+
+6.956 -> -0.024
+9.150 -> 0.034
+9.896 -> -0.040
+10.435 -> 0.076
+10.867 -> -0.049
+11.244 -> -0.033
+11.593 -> 0.081
+12.007 -> -0.056
+12.407 -> -0.026
+12.780 -> 0.028
+13.139 -> -0.035
+13.527 -> -0.039
+13.864 -> 0.006
+14.313 -> 0.104
+14.799 -> -0.051
+15.374 -> -0.028
+16.151 -> -0.041
+17.135 -> -0.037
+18.510 -> -0.029
+28.647 -> 0.100
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","The descriptor Chi0n reflects a type of molecular connectivity index that encodes structural features related to the molecular graph, such as branching and the presence of heteroatoms, at a certain level of detail.
+
+In the provided data, the relationship between Chi0n and the predicted drug property shows a non-linear pattern with both positive and negative contributions at different values:
+
+- At lower Chi0n values (~7 to 10), the contribution fluctuates around zero, sometimes positive and sometimes negative, without a clear trend. This suggests that molecules with simpler or less branched structures have a minimal or variable effect on the drug property.
+  
+- As the Chi0n values increase from around 10 to 14, certain values show more pronounced positive contributions (e.g., 10.435, 11.593, 14.313), indicating that molecules with moderate connectivity complexity or specific branching patterns at this level tend to enhance the property being predicted.
+  
+- Conversely, some values in this range and above (e.g., 10.867, 12.007, 14.799) have negative contributions, pointing to the idea that subtle differences in branching or atomic connectivity can reduce the desired property.
+
+- At very high Chi0n values (e.g., 28.647), a strong positive contribution is observed again, which might correspond to molecules that are highly branched or possess large, complex ring systems or multiple heteroatoms. Such structures could be associated with enhanced interaction with the biological target or improved pharmacokinetics relevant to the drug property.
+
+Overall, the relationship suggests that the drug property is sensitive to molecular branching and complexity at the atomic connectivity level. Moderate to highly branched or complex molecules, as captured by higher Chi0n values, tend to positively influence the property, possibly due to increased binding affinity, improved stability, or more favorable molecular interactions. Simple or less branched molecules show a more mixed or negligible impact. This underscores the importance of molecular topology and branching in modulating the drug characteristic under study."
+ADME_MDR1_ER,MolLogP,"
+You are a biomedical scientist interpreting machine learning explanations.
+
+Below is the relationship between a molecular descriptor and the predicted drug property.
+
+Descriptor: MolLogP
+
+Observed values (descriptor value -> contribution to prediction):
+
+-1.542 -> -0.046
+1.067 -> 0.003
+1.392 -> -0.021
+1.700 -> 0.045
+1.914 -> -0.080
+2.075 -> -0.084
+2.256 -> 0.002
+2.410 -> -0.045
+2.556 -> -0.056
+2.708 -> 0.121
+2.836 -> -0.081
+2.981 -> 0.020
+3.136 -> -0.038
+3.308 -> 0.006
+3.445 -> 0.073
+3.640 -> 0.033
+3.846 -> -0.083
+4.073 -> -0.062
+4.574 -> -0.061
+9.014 -> -0.070
+
+Explain the relationship between this descriptor and the predicted drug property.
+
+Focus on chemical or biological interpretation.
+Do not mention SHAP or machine learning.
+","MolLogP is a descriptor that estimates the lipophilicity of a molecule, which reflects its tendency to partition into lipid versus aqueous phases. Lipophilicity profoundly influences a drug's absorption, distribution, metabolism, excretion, and toxicity (ADMET) properties.
+
+From the data, contributions to the predicted drug property fluctuate as MolLogP increases, showing no straightforward linear trend. At low MolLogP values (around -1.5 to 1.7), contributions range from slightly negative to weakly positive, suggesting minimal or mixed effects on the drug property. As MolLogP increases beyond approximately 2.7, the contribution also shows variable behavior: some values contribute positively (e.g., at 2.708 and 3.445), while others contribute negatively or negligibly at similar lipophilicity levels.
+
+This pattern suggests that moderate lipophilicity may sometimes favor the desired drug property, possibly by enhancing membrane permeability or target binding, but excessive lipophilicity (e.g., above 4.0) appears to be detrimental, as reflected by negative contributions observed at higher MolLogP values (around 3.8, 4.0, 4.5, and even at 9.0). Excess lipophilicity can reduce solubility, increase nonspecific binding, or promote metabolic instability, ultimately reducing favorable drug characteristics.
+
+In summary, the relationship indicates an optimal intermediate range of lipophilicity where the drug property may be enhanced, while both very low and very high MolLogP values tend to reduce the predicted beneficial property. Balancing MolLogP is therefore critical in optimizing drug-like attributes."

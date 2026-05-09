@@ -20,18 +20,21 @@ from src.data.sanity import run_all_sanity_checks
 from src.analysis.reproduce_table1 import reproduce_table1
 from src.analysis.shap_postprocessing import run_full_analysis
 
-from src.modeling.train_lightgbm import train_and_evaluate          # baseline (log)
-from src.modeling.train_lightgbm_log import train_and_evaluate_log  # real scale
+from src.modeling.train_lightgbm import train_and_evaluate
+from src.modeling.train_lightgbm_log import train_and_evaluate_log
 
 from src.modeling.shap_analysis import run_all_shap
 from src.analysis.shap_local_explanations import run_all_local_shap
+
+from src.modeling.train_lightgbm_classifier import run_all_classifiers
+from src.analysis.shap_local_classifier import run_all_local_shap_classifier  # 👈 NUEVO
 
 # ==============================
 # LLM
 # ==============================
 
-from llm.core.explanation_generator import run_llm_explanations        # baseline
-from src.analysis.generate_local_llm_explanations import run_local_llm # local (real)
+from llm.core.explanation_generator import run_llm_explanations
+from src.analysis.generate_local_llm_explanations import run_local_llm
 
 # ==============================
 # LLM EXPERIMENTS (BASELINE)
@@ -84,7 +87,7 @@ def run_training_pipeline():
     df = pd.DataFrame(results)
     df.to_csv("reports/results/final_results_log.csv", index=False)
 
-    print("\nSaved baseline results to reports/results/final_results_log.csv")
+    print("\nSaved baseline results")
 
 
 # =====================================
@@ -101,7 +104,7 @@ def run_training_pipeline_real():
 
     for csv_file in ENDPOINTS:
         print(f"\nTraining {csv_file}...")
-        res = train_and_evaluate_log(csv_file)   # 👈 FIX AQUÍ
+        res = train_and_evaluate_log(csv_file)
         results.append(res)
 
     import pandas as pd
@@ -110,11 +113,26 @@ def run_training_pipeline_real():
     df = pd.DataFrame(results)
     df.to_csv("reports/results/final_results_real.csv", index=False)
 
-    print("\nSaved real-scale results to reports/results/final_results_real.csv")
+    print("\nSaved real-scale results")
 
 
 # =====================================
-# FULL PIPELINE BASELINE (PAPER)
+# TRAINING CLASIFICACIÓN
+# =====================================
+
+def run_training_pipeline_classifier():
+
+    print("\n==============================")
+    print("Training CLASSIFICATION models")
+    print("==============================")
+
+    run_all_classifiers()
+
+    print("\nSaved classification results")
+
+
+# =====================================
+# FULL PIPELINE BASELINE
 # =====================================
 
 def run_full_pipeline_baseline():
@@ -129,7 +147,6 @@ def run_full_pipeline_baseline():
     run_all_shap()
     run_full_analysis()
 
-    # LLM experiments (baseline only)
     run_llm_explanations()
     run_prompt_experiments()
     run_model_comparison()
@@ -141,7 +158,7 @@ def run_full_pipeline_baseline():
 
 
 # =====================================
-# FULL PIPELINE REAL (INTERPRETABILITY)
+# FULL PIPELINE REAL
 # =====================================
 
 def run_full_pipeline_real():
@@ -152,11 +169,15 @@ def run_full_pipeline_real():
     run_all_sanity_checks()
 
     run_training_pipeline_real()
-    run_all_shap()
-    run_all_local_shap()
+    run_training_pipeline_classifier()
+
+    run_all_shap()                   # global regresión
+    run_all_local_shap()             # local regresión
+    run_all_local_shap_classifier()  # 👈 NUEVO (clasificación)
+
     run_full_analysis()
 
-    run_local_llm()   # 👈 LLM LOCAL
+    run_local_llm()
 
     print("\n========== REAL PIPELINE COMPLETE ==========\n")
 
@@ -172,12 +193,14 @@ def main():
     # Core
     parser.add_argument("--train", action="store_true")
     parser.add_argument("--train_real", action="store_true")
+    parser.add_argument("--train_clf", action="store_true")
     parser.add_argument("--shap", action="store_true")
     parser.add_argument("--shap_local", action="store_true")
+    parser.add_argument("--shap_local_clf", action="store_true")  # 👈 NUEVO
 
     # LLM
-    parser.add_argument("--llm_gen", action="store_true")   # baseline
-    parser.add_argument("--llm_local", action="store_true") # real
+    parser.add_argument("--llm_gen", action="store_true")
+    parser.add_argument("--llm_local", action="store_true")
 
     # Full pipelines
     parser.add_argument("--all_baseline", action="store_true")
@@ -203,11 +226,17 @@ def main():
     if args.train_real:
         run_training_pipeline_real()
 
+    if args.train_clf:
+        run_training_pipeline_classifier()
+
     if args.shap:
         run_all_shap()
 
     if args.shap_local:
         run_all_local_shap()
+
+    if args.shap_local_clf:
+        run_all_local_shap_classifier()
 
     # -------------------------
     # LLM

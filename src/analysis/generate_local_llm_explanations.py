@@ -1,164 +1,173 @@
-import os
-import sys
-from pathlib import Path
+# src/analysis/generate_local_llm_explanations.py
+
 import json
 import pandas as pd
-
-# =========================================================
-# PATH 
-# =========================================================
-SRC_PATH = Path(__file__).resolve().parents[1]
-sys.path.append(str(SRC_PATH))
+from pathlib import Path
 
 from llm.core.llm_client import query_llm
 from llm.core.prompt_builder_local import build_prompt_local
 
 
-# =========================================================
-# CONFIG
-# =========================================================
-MODEL = "gpt-4.1-mini"
-STRATEGY = "biomedical"
-TOP_K = 3
-
-BASE_PATH = Path("reports/shap_local")
-OUTPUT_PATH = Path("reports/llm_local")
+# ==============================
+# PATHS
+# ==============================
+BASE_PATH = Path("reports/shap_local_v2")
+OUTPUT_PATH = Path("reports/llm_local_v2")
 OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
+MODEL = "gpt-4.1-mini"
 
-# =========================================================
-# CLEAN OUTPUT
-# =========================================================
-def clean_explanation(text: str) -> str:
+
+# ==============================
+# CLEAN TEXT
+# ==============================
+def clean_explanation(text):
     if not isinstance(text, str):
         return text
 
-    prefixes = [
-        "Certainly!",
-        "Sure!",
-        "Here is the explanation:",
-        "Here’s the explanation:",
-        "Here's an explanation:",
-    ]
+    prefixes = ["Certainly!", "Sure!", "Here is", "Here's"]
 
     for p in prefixes:
         if text.strip().startswith(p):
-            text = text.strip()[len(p):].strip()
+            text = text[len(p):].strip()
 
     return text
 
 
-# =========================================================
+# ==============================
+# UNITS
+# ==============================
+ENDPOINT_UNITS = {
+    "ADME_HLM": "mL/min/kg",
+    "ADME_RLM": "mL/min/kg",
+    "ADME_hPPB": "%",
+    "ADME_rPPB": "%",
+    "ADME_MDR1_ER": "",
+    "ADME_Sol": "µg/mL",
+}
+
+
+# ==============================
+# CATEGORIZATION
+# ==============================
+def categorize_endpoint(endpoint, value):
+
+    if endpoint in ["ADME_HLM", "ADME_RLM"]:
+        if value <= 10:
+            return "low"
+        elif value <= 40:
+            return "moderate"
+        else:
+            return "high"
+
+    elif endpoint in ["ADME_hPPB", "ADME_rPPB"]:
+        if value <= 0.5:
+            return "very high binding"
+        elif value <= 5:
+            return "intermediate binding"
+        else:
+            return "low binding"
+
+    elif endpoint == "ADME_MDR1_ER":
+        if value <= 2:
+            return "non-substrate"
+        elif value <= 5:
+            return "moderate efflux"
+        else:
+            return "strong efflux"
+
+    elif endpoint == "ADME_Sol":
+        if value < 10:
+            return "poor solubility"
+        elif value < 100:
+            return "moderate solubility"
+        else:
+            return "high solubility"
+
+    return "unknown"
+
+
+# ==============================
 # MAIN
-# =========================================================
-def run_local_llm():
+# ==============================
+def run_local_llm(force=True):
 
     print("\n==============================")
-    print("Running LOCAL LLM explanations")
+    print("Running LOCAL LLM (v2)")
     print("==============================")
 
-    if not BASE_PATH.exists():
-        print(f"ERROR: {BASE_PATH} does not exist")
-        return
-
-    # =====================================================
-    # 1. GENERATE (ONLY MISSING)
-    # =====================================================
+    # =========================
+    # GENERATE TXT FILES
+    # =========================
     for endpoint_dir in BASE_PATH.iterdir():
 
         if not endpoint_dir.is_dir():
             continue
 
         endpoint = endpoint_dir.name
-        print(f"\nProcessing endpoint: {endpoint}")
+        unit = ENDPOINT_UNITS.get(endpoint, "")
+
+        print(f"\nProcessing {endpoint}")
 
         for sample_dir in endpoint_dir.iterdir():
 
             if not sample_dir.is_dir():
                 continue
 
-            sample_name = sample_dir.name
-
-            top_features_file = sample_dir / "top_features.json"
-            pred_file = sample_dir / "prediction.json"
             explanation_file = sample_dir / "explanation.txt"
 
-            # -------------------------
-            # SKIP if already done
-            # -------------------------
-            if explanation_file.exists():
-                try:
-                    with open(explanation_file, "r", encoding="utf-8") as f:
-                        content = f.read().strip()
-
-                    if content != "" and content != "ERROR":
-                        print(f"Skipping {sample_name} (already done)")
-                        continue
-                except:
-                    pass
-
-            # -------------------------
-            # Checks
-            # -------------------------
-            if not top_features_file.exists():
+            # Skip si ya existe (opcional)
+            if explanation_file.exists() and not force:
                 continue
 
-            if not pred_file.exists():
+            pred_file = sample_dir / "prediction.json"
+            feat_file = sample_dir / "top_features.json"
+
+            if not pred_file.exists() or not feat_file.exists():
                 continue
 
-            # -------------------------
-            # Load data
-            # -------------------------
+            # LOAD DATA
+            with open(pred_file) as f:
+                pred_data = json.load(f)
+
+            with open(feat_file) as f:
+                features_data = json.load(f)
+
+            prediction = pred_data["prediction"]
+            base_value = pred_data["base_value"]
+
+            features = [f["feature"] for f in features_data]
+            shap_vals = [float(f["impact"]) for f in features_data]
+
+            category = categorize_endpoint(endpoint, prediction)
+
+            # BUILD PROMPT
+            prompt = build_prompt_local(
+                features,
+                shap_vals,
+                endpoint,
+                pred_data["prediction"],
+                pred_data["base_value"]
+            )
+
+            # CALL LLM
             try:
-                with open(top_features_file, "r") as f:
-                    top_features = json.load(f)
-
-                with open(pred_file, "r") as f:
-                    pred_value = json.load(f)["prediction"]
-
-            except:
-                continue
-
-            if len(top_features) == 0:
-                continue
-
-            features = [f["feature"] for f in top_features][:TOP_K]
-            shap_vals = [float(f["impact"]) for f in top_features][:TOP_K]
-
-            # -------------------------
-            # Prompt + LLM
-            # -------------------------
-            try:
-                prompt = build_prompt_local(
-                    features=features,
-                    shap_values=shap_vals,
-                    endpoint=endpoint,
-                    prediction=pred_value,
-                    strategy=STRATEGY
-                )
-
                 explanation = query_llm(prompt, model=MODEL)
                 explanation = clean_explanation(explanation)
-
             except Exception as e:
-                print(f"LLM error in {sample_name}: {e}")
+                print(f"LLM error: {e}")
                 explanation = "ERROR"
 
-            # -------------------------
-            # Save
-            # -------------------------
-            try:
-                with open(explanation_file, "w", encoding="utf-8") as f:
-                    f.write(explanation)
-            except:
-                pass
+            # SAVE TXT
+            with open(explanation_file, "w", encoding="utf-8") as f:
+                f.write(explanation)
 
-            print(f"Done: {sample_name}")
+            print("Done", sample_dir.name)
 
-    # =====================================================
-    # 2. REBUILD FULL CSV (SOURCE OF TRUTH)
-    # =====================================================
-    print("\nRebuilding CSV from disk...")
+    # =========================
+    # REBUILD CSV
+    # =========================
+    print("\nRebuilding CSV...")
 
     all_results = []
 
@@ -171,74 +180,59 @@ def run_local_llm():
 
         for sample_dir in endpoint_dir.iterdir():
 
-            if not sample_dir.is_dir():
-                continue
-
-            sample_name = sample_dir.name
-
             explanation_file = sample_dir / "explanation.txt"
-            top_features_file = sample_dir / "top_features.json"
             pred_file = sample_dir / "prediction.json"
-
-            molecule_img = sample_dir / "molecule.png"
-            shap_img = sample_dir / "waterfall.png"
+            feat_file = sample_dir / "top_features.json"
 
             if not explanation_file.exists():
                 continue
 
             try:
-                with open(explanation_file, "r", encoding="utf-8") as f:
+                with open(explanation_file) as f:
                     explanation = f.read().strip()
 
                 if explanation == "" or explanation == "ERROR":
                     continue
+
+                with open(pred_file) as f:
+                    pred_data = json.load(f)
+
+                with open(feat_file) as f:
+                    features_data = json.load(f)
+
             except:
                 continue
 
-            try:
-                with open(top_features_file, "r") as f:
-                    top_features = json.load(f)
+            prediction = pred_data["prediction"]
+            base_value = pred_data["base_value"]
 
-                features = [f["feature"] for f in top_features][:TOP_K]
-                shap_vals = [float(f["impact"]) for f in top_features][:TOP_K]
-            except:
-                features, shap_vals = [], []
+            category = categorize_endpoint(endpoint, prediction)
 
-            try:
-                with open(pred_file, "r") as f:
-                    pred_value = json.load(f)["prediction"]
-            except:
-                pred_value = None
+            features = [f["feature"] for f in features_data]
+            shap_vals = [float(f["impact"]) for f in features_data]
 
             all_results.append({
                 "endpoint": endpoint,
-                "sample": sample_name,
-                "model": MODEL,
-                "strategy": STRATEGY,
-                "top_k": TOP_K,
-                "prediction": pred_value,
-                "features": str(features),
-                "shap_values": str(shap_vals),
-                "molecule_img": str(molecule_img) if molecule_img.exists() else "",
-                "shap_img": str(shap_img) if shap_img.exists() else "",
+                "sample": sample_dir.name,
+                "prediction": prediction,
+                "base_value": base_value,
+                "category": category,
+                "features": str(features[:3]),
+                "shap_values": str(shap_vals[:3]),
                 "explanation": explanation
             })
 
-    if len(all_results) == 0:
-        print("No valid explanations found.")
-        return
-
     df = pd.DataFrame(all_results)
 
-    output_csv = OUTPUT_PATH / "local_llm_explanations.csv"
+    output_csv = OUTPUT_PATH / "local_llm_explanations_v2.csv"
     df.to_csv(output_csv, index=False)
 
-    print("\nSaved FULL dataset:")
+    print("\nSaved CSV:")
     print(output_csv)
 
 
-# =========================================================
-# MAIN
-# =========================================================
+# ==============================
+# RUN
+# ==============================
 if __name__ == "__main__":
     run_local_llm()
