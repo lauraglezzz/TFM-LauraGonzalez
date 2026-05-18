@@ -11,9 +11,14 @@ from llm.core.prompt_builder_local import build_prompt_local
 # ==============================
 # PATHS
 # ==============================
-BASE_PATH = Path("reports/shap_local_v2")
-OUTPUT_PATH = Path("reports/llm_local_v2")
-OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
+BASE_PATH = Path("reports/shap_local")
+
+OUTPUT_PATH = Path("reports/llm_local")
+
+OUTPUT_PATH.mkdir(
+    parents=True,
+    exist_ok=True
+)
 
 MODEL = "gpt-4.1-mini"
 
@@ -22,12 +27,19 @@ MODEL = "gpt-4.1-mini"
 # CLEAN TEXT
 # ==============================
 def clean_explanation(text):
+
     if not isinstance(text, str):
         return text
 
-    prefixes = ["Certainly!", "Sure!", "Here is", "Here's"]
+    prefixes = [
+        "Certainly!",
+        "Sure!",
+        "Here is",
+        "Here's"
+    ]
 
     for p in prefixes:
+
         if text.strip().startswith(p):
             text = text[len(p):].strip()
 
@@ -53,34 +65,46 @@ ENDPOINT_UNITS = {
 def categorize_endpoint(endpoint, value):
 
     if endpoint in ["ADME_HLM", "ADME_RLM"]:
+
         if value <= 10:
             return "low"
+
         elif value <= 40:
             return "moderate"
+
         else:
             return "high"
 
     elif endpoint in ["ADME_hPPB", "ADME_rPPB"]:
+
         if value <= 0.5:
             return "very high binding"
+
         elif value <= 5:
             return "intermediate binding"
+
         else:
             return "low binding"
 
     elif endpoint == "ADME_MDR1_ER":
+
         if value <= 2:
             return "non-substrate"
+
         elif value <= 5:
             return "moderate efflux"
+
         else:
             return "strong efflux"
 
     elif endpoint == "ADME_Sol":
+
         if value < 10:
             return "poor solubility"
+
         elif value < 100:
             return "moderate solubility"
+
         else:
             return "high solubility"
 
@@ -90,10 +114,10 @@ def categorize_endpoint(endpoint, value):
 # ==============================
 # MAIN
 # ==============================
-def run_local_llm(force=True):
+def run_local_llm():
 
     print("\n==============================")
-    print("Running LOCAL LLM (v2)")
+    print("Running LOCAL LLM")
     print("==============================")
 
     # =========================
@@ -105,7 +129,6 @@ def run_local_llm(force=True):
             continue
 
         endpoint = endpoint_dir.name
-        unit = ENDPOINT_UNITS.get(endpoint, "")
 
         print(f"\nProcessing {endpoint}")
 
@@ -114,19 +137,30 @@ def run_local_llm(force=True):
             if not sample_dir.is_dir():
                 continue
 
-            explanation_file = sample_dir / "explanation.txt"
+            explanation_file = (
+                sample_dir /
+                "explanation.txt"
+            )
 
-            # Skip si ya existe (opcional)
-            if explanation_file.exists() and not force:
+            pred_file = (
+                sample_dir /
+                "prediction.json"
+            )
+
+            feat_file = (
+                sample_dir /
+                "top_features.json"
+            )
+
+            if not pred_file.exists():
                 continue
 
-            pred_file = sample_dir / "prediction.json"
-            feat_file = sample_dir / "top_features.json"
-
-            if not pred_file.exists() or not feat_file.exists():
+            if not feat_file.exists():
                 continue
 
+            # -------------------------
             # LOAD DATA
+            # -------------------------
             with open(pred_file) as f:
                 pred_data = json.load(f)
 
@@ -134,32 +168,61 @@ def run_local_llm(force=True):
                 features_data = json.load(f)
 
             prediction = pred_data["prediction"]
-            base_value = pred_data["base_value"]
 
-            features = [f["feature"] for f in features_data]
-            shap_vals = [float(f["impact"]) for f in features_data]
+            base_value = pred_data[
+                "base_value"
+            ]
 
-            category = categorize_endpoint(endpoint, prediction)
+            features = [
+                f["feature"]
+                for f in features_data
+            ]
 
+            shap_vals = [
+                float(f["impact"])
+                for f in features_data
+            ]
+
+            # -------------------------
             # BUILD PROMPT
+            # -------------------------
             prompt = build_prompt_local(
                 features,
                 shap_vals,
                 endpoint,
-                pred_data["prediction"],
-                pred_data["base_value"]
+                prediction,
+                base_value
             )
 
+            # -------------------------
             # CALL LLM
+            # -------------------------
             try:
-                explanation = query_llm(prompt, model=MODEL)
-                explanation = clean_explanation(explanation)
+
+                explanation = query_llm(
+                    prompt,
+                    model=MODEL
+                )
+
+                explanation = clean_explanation(
+                    explanation
+                )
+
             except Exception as e:
+
                 print(f"LLM error: {e}")
+
                 explanation = "ERROR"
 
+            # -------------------------
             # SAVE TXT
-            with open(explanation_file, "w", encoding="utf-8") as f:
+            # -------------------------
+            with open(
+                explanation_file,
+                "w",
+                encoding="utf-8"
+            ) as f:
+
                 f.write(explanation)
 
             print("Done", sample_dir.name)
@@ -180,18 +243,42 @@ def run_local_llm(force=True):
 
         for sample_dir in endpoint_dir.iterdir():
 
-            explanation_file = sample_dir / "explanation.txt"
-            pred_file = sample_dir / "prediction.json"
-            feat_file = sample_dir / "top_features.json"
+            if not sample_dir.is_dir():
+                continue
+
+            explanation_file = (
+                sample_dir /
+                "explanation.txt"
+            )
+
+            pred_file = (
+                sample_dir /
+                "prediction.json"
+            )
+
+            feat_file = (
+                sample_dir /
+                "top_features.json"
+            )
 
             if not explanation_file.exists():
                 continue
 
             try:
-                with open(explanation_file) as f:
-                    explanation = f.read().strip()
 
-                if explanation == "" or explanation == "ERROR":
+                with open(
+                    explanation_file,
+                    encoding="utf-8"
+                ) as f:
+
+                    explanation = (
+                        f.read().strip()
+                    )
+
+                if explanation == "":
+                    continue
+
+                if explanation == "ERROR":
                     continue
 
                 with open(pred_file) as f:
@@ -203,29 +290,63 @@ def run_local_llm(force=True):
             except:
                 continue
 
-            prediction = pred_data["prediction"]
-            base_value = pred_data["base_value"]
+            prediction = pred_data[
+                "prediction"
+            ]
 
-            category = categorize_endpoint(endpoint, prediction)
+            base_value = pred_data[
+                "base_value"
+            ]
 
-            features = [f["feature"] for f in features_data]
-            shap_vals = [float(f["impact"]) for f in features_data]
+            category = categorize_endpoint(
+                endpoint,
+                prediction
+            )
+
+            features = [
+                f["feature"]
+                for f in features_data
+            ]
+
+            shap_vals = [
+                float(f["impact"])
+                for f in features_data
+            ]
 
             all_results.append({
+
                 "endpoint": endpoint,
+
                 "sample": sample_dir.name,
+
                 "prediction": prediction,
+
                 "base_value": base_value,
+
                 "category": category,
-                "features": str(features[:3]),
-                "shap_values": str(shap_vals[:3]),
+
+                "features": str(
+                    features[:3]
+                ),
+
+                "shap_values": str(
+                    shap_vals[:3]
+                ),
+
                 "explanation": explanation
             })
 
     df = pd.DataFrame(all_results)
 
-    output_csv = OUTPUT_PATH / "local_llm_explanations_v2.csv"
-    df.to_csv(output_csv, index=False)
+    output_csv = (
+        OUTPUT_PATH /
+        "local_llm_explanations.csv"
+    )
+
+    df.to_csv(
+        output_csv,
+        index=False
+    )
 
     print("\nSaved CSV:")
     print(output_csv)
@@ -235,4 +356,5 @@ def run_local_llm(force=True):
 # RUN
 # ==============================
 if __name__ == "__main__":
+
     run_local_llm()

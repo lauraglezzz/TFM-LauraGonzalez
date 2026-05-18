@@ -1,0 +1,11 @@
+The model predicts a plasma protein binding fraction unbound of 17.15%, categorizing the compound as having low protein binding, which implies a higher proportion of free drug available for pharmacological activity and clearance. 
+
+The baseline value of 13.05% represents the average fraction unbound observed in the training data, serving as a reference point. Since the prediction exceeds this baseline, it indicates that more of the compound remains unbound in plasma compared to the average, potentially enhancing its distribution, receptor interaction, and elimination rate. 
+
+1. SMR_VSA10 (+7.16): This descriptor quantifies the sum of van der Waals surface areas for atoms within a specific range of the atomic refractivity, reflecting molecular size and polarizability in defined regions. A higher SMR_VSA10 value increases the predicted fraction unbound because molecules with such characteristics tend to have reduced affinity for plasma proteins, leading to more free drug available in circulation. Pharmacokinetically, this suggests enhanced free drug exposure and possibly faster systemic clearance.
+
+2. BCUT2D_MRHI (+6.19): BCUT2D_MRHI represents a weighted eigenvalue calculated from molecular graph theory incorporating atomic polarizability and ionization potential. A higher value generally correlates with decreased plasma protein affinity due to altered electronic distribution and steric hindrance. Consequently, this feature elevates the fraction unbound by favoring reduced nonspecific binding, which may increase the drug’s volume of distribution and bioavailability.
+
+3. MolLogP (-3.38): MolLogP estimates the molecule’s hydrophobicity based on octanol-water partition coefficient. A negative contribution here signifies that higher lipophilicity decreases the fraction unbound by promoting stronger interactions with hydrophobic sites on plasma proteins such as albumin. This effect reduces free drug concentration, slowing distribution and clearance.
+
+These features collectively reinforce the overall prediction of an increased unbound fraction, with the positive effects of SMR_VSA10 and BCUT2D_MRHI outweighing the negative influence of MolLogP; however, additional molecular properties not presented here might also significantly influence the final binding prediction.
