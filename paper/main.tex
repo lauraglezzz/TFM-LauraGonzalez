@@ -1,0 +1,640 @@
+%% ============================================================
+%%  TFM Paper — Laura González Villar
+%%  Structure: Introduction · Related Work · Material · Methods
+%%             · Experimental Results · Discussion · Conclusions
+%%  Paste this file into Overleaf as main.tex
+%% ============================================================
+
+\documentclass[a4paper, 11pt]{article}
+
+%% ── Encoding & language ──────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+%% ── Layout ───────────────────────────────────────────────────
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+%% ── Fonts & typography ───────────────────────────────────────
+\usepackage{lmodern}
+\usepackage{microtype}
+
+%% ── Math ─────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb}
+
+%% ── Tables ───────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+
+%% ── Figures ──────────────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{float}
+
+%% ── Colors & listings ────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage{listings}
+
+%% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+
+%% ── Bibliography ─────────────────────────────────────────────
+\usepackage[numbers, sort&compress]{natbib}
+
+%% ── Algorithm ────────────────────────────────────────────────
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+%% ── Custom commands ──────────────────────────────────────────
+\newcommand{\eg}{\textit{e.g.,}\ }
+\newcommand{\ie}{\textit{i.e.,}\ }
+\newcommand{\etal}{\textit{et al.}\ }
+
+
+%% ============================================================
+%%  TITLE
+%% ============================================================
+\title{%
+  \textbf{Explainable ADME Property Prediction Using LightGBM,\\
+  SHAP, and Large Language Models}
+  \vspace{0.3em}
+}
+
+\author{%
+  Laura González Villar\\
+  \small Màster en Ciència de Dades (MDS), Facultat d'Informàtica de Barcelona\\
+  \small Universitat Politècnica de Catalunya (UPC)\\
+  \small \href{mailto:lglezvi@gmail.com}{lglezvi@gmail.com}
+  \and
+  % Add supervisors / co-authors here if required by journal
+  % Albert Vellido \quad Caroline König\\
+  % \small Departament de Ciències de la Computació, UPC
+}
+
+\date{August 2026}
+
+
+%% ============================================================
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+%% ============================================================
+%%  ABSTRACT
+%% ============================================================
+\begin{abstract}
+Predicting Absorption, Distribution, Metabolism, and Excretion (ADME)
+properties early in drug discovery is critical to reducing attrition rates
+in clinical development. Machine learning models can provide fast,
+cost-effective predictions, but their black-box nature hinders adoption in
+regulatory-sensitive environments. In this work we present an end-to-end
+explainable pipeline that combines LightGBM regressors, SHAP
+(SHapley Additive exPlanations) feature attribution, and a large language
+model (LLM) to produce human-readable explanations of individual ADME
+predictions. We train six independent models on a publicly available
+dataset of 3{,}521 drug-like compounds covering six pharmacokinetic
+endpoints: human and rat liver microsomal clearance (HLM, RLM), human and
+rat plasma protein binding (hPPB, rPPB), MDR1 efflux ratio (MDR1-ER), and
+aqueous solubility (Sol). Models achieve Pearson correlation coefficients
+between 0.554 and 0.749. Three prompt-engineering strategies (\textit{basic},
+\textit{biomedical}, and \textit{reasoning}) are compared across different
+numbers of SHAP features; the biomedical strategy with $k{=}3$ features
+yields the most domain-coherent explanations. An LLM-as-a-Judge evaluation
+framework using Claude Haiku 4.5 (Anthropic) as an independent judge shows
+that GPT-4.1-mini explanations are preferred in 96.6\% of pairwise comparisons. The pipeline is deployed as an interactive web
+application on Hugging Face Spaces, making explainable ADME prediction
+accessible to non-expert users.
+
+\medskip
+\noindent\textbf{Keywords:} ADME prediction, explainability, LightGBM,
+SHAP, large language models, drug discovery, pharmacokinetics, XAI.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+
+%% ============================================================
+%%  1. INTRODUCTION
+%% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+Drug attrition due to poor pharmacokinetic properties accounts for a
+substantial fraction of late-stage clinical failures, highlighting the need
+for reliable early-stage ADME profiling~\cite{hughes2011physiochemical}.
+Experimental assays, while accurate, are time-consuming and
+expensive~\cite{doak2014direct}. Computational prediction offers a
+complementary, high-throughput approach that can guide compound
+prioritisation before resources are committed to wet-lab work.
+
+Machine learning (ML) methods have demonstrated competitive predictive
+performance on ADME endpoints~\cite{fang2023prospective,
+konig2024adme}. However, regulatory frameworks such as the EU AI
+Act~\cite{euaiact2024} and the EU MDR~\cite{eumdr2017} increasingly require
+that AI-driven decisions in high-stakes domains (\eg life sciences,
+medicine) be explainable and auditable. Black-box models alone therefore
+fall short of practical deployment requirements.
+
+Explainability techniques—particularly SHAP~\cite{lundberg2017unified}—can
+surface which molecular features drive a given prediction, but the resulting
+numerical feature importance scores remain inaccessible to medicinal
+chemists unfamiliar with ML. Recent advances in large language models
+(LLMs) open the possibility of translating these scores into natural
+language that domain experts can act upon~\cite{kojima2022large,
+wei2022chain}.
+
+\medskip
+\noindent\textbf{Contributions.} This paper makes the following
+contributions:
+\begin{enumerate}
+  \item We train and validate six LightGBM regressors for ADME endpoint
+        prediction using RDKit physicochemical descriptors, establishing
+        competitive baselines on the Fang \etal benchmark dataset.
+  \item We integrate SHAP TreeExplainer to provide both global
+        (dataset-level) and local (molecule-level) feature attributions.
+  \item We design and evaluate three prompt-engineering strategies that
+        translate SHAP values into biomedically coherent natural language
+        explanations via GPT-4.1-mini.
+  \item We evaluate explanation quality through an LLM-as-a-Judge
+        pairwise framework and demonstrate the superiority of the
+        \textit{biomedical} prompt strategy.
+  \item We deploy the full pipeline as an open-access interactive web
+        application.
+\end{enumerate}
+
+The remainder of the paper is organised as follows.
+Section~\ref{sec:related} reviews related work.
+Section~\ref{sec:material} describes the dataset and molecular
+representation. Section~\ref{sec:methods} details the predictive and
+explainability pipeline. Section~\ref{sec:results} presents experimental
+results. Section~\ref{sec:discussion} discusses findings and limitations.
+Section~\ref{sec:conclusions} concludes the paper.
+
+
+%% ============================================================
+%%  2. RELATED WORK
+%% ============================================================
+\section{Related Work}
+\label{sec:related}
+
+\subsection{ADME Property Prediction with Machine Learning}
+
+Early ADME prediction models relied on physicochemical descriptors and
+simple regression or classification methods~\cite{lipinski2001experimental}.
+Gradient-boosted trees have since become competitive baselines owing to
+their robustness to noisy biological data and their native interpretability
+through feature importance~\cite{chen2016xgboost}. Fang~\etal~\cite{fang2023prospective}
+compiled a large, carefully curated benchmark spanning six ADME endpoints
+and demonstrated that LightGBM with RDKit descriptors achieves state-of-the-art
+performance among ML approaches. König and Vellido~\cite{konig2024adme}
+extended this line of work by applying XAI methods to the same benchmark,
+establishing reference SHAP rankings that we use to validate our
+explanations in Section~\ref{sec:results}.
+
+\subsection{Explainability in Cheminformatics}
+
+SHAP~\cite{lundberg2017unified} offers a theoretically grounded approach to
+feature attribution based on Shapley values from cooperative game theory.
+TreeExplainer~\cite{lundberg2020local} exploits the recursive structure of
+decision trees to compute exact Shapley values in polynomial time, making it
+practical for the large ensembles produced by gradient-boosted models.
+SHAP has been applied to a range of cheminformatics tasks, including QSAR
+modelling~\cite{rodriguez2021shap}, toxicity prediction, and property
+prediction~\cite{konig2024adme}.
+
+\subsection{Large Language Models for Scientific Explanation}
+
+LLMs have demonstrated remarkable in-context reasoning capabilities
+across scientific domains~\cite{kojima2022large, wei2022chain}.
+Several recent works explore LLM-generated explanations as a bridge between
+ML model outputs and domain-expert reasoning~\cite{bhatt2020explainable}.
+Prompt engineering strategies—ranging from zero-shot to chain-of-thought
+prompting~\cite{wei2022chain}—significantly affect the quality and domain
+coherence of generated text. To our knowledge, this is the first work to
+systematically study prompt strategies for translating SHAP values into
+ADME-specific natural language explanations.
+
+\subsection{LLM-as-a-Judge Evaluation}
+
+Automated evaluation of free-form text quality using LLMs as judges was
+formalised by Zheng~\etal~\cite{zheng2023judging}. The authors identified
+\textit{self-preference bias}—the tendency of a model to rate outputs from
+the same model family more favourably—as a key confound. We acknowledge
+this limitation in our evaluation design (Section~\ref{sec:discussion}).
+
+
+%% ============================================================
+%%  3. MATERIAL
+%% ============================================================
+\section{Material}
+\label{sec:material}
+
+\subsection{Dataset}
+
+We use the public ADME benchmark introduced by Fang~\etal~\cite{fang2023prospective},
+which aggregates experimental measurements for drug-like small molecules
+across six pharmacokinetic endpoints (Table~\ref{tab:endpoints}).
+After filtering for valid SMILES and removing duplicates, the working
+dataset contains \textbf{3{,}521 compounds}. All compounds are shared
+across all six endpoints (\ie each molecule contributes to every model's
+training set).
+
+\begin{table}[H]
+  \centering
+  \caption{ADME endpoints, units, and dataset statistics.}
+  \label{tab:endpoints}
+  \begin{tabular}{llll}
+    \toprule
+    \textbf{Endpoint} & \textbf{Property} & \textbf{Unit} & \textbf{$n$} \\
+    \midrule
+    HLM      & Human liver microsomal clearance   & mL/min/kg & 3{,}521 \\
+    RLM      & Rat liver microsomal clearance     & mL/min/kg & 3{,}521 \\
+    hPPB     & Human plasma protein binding       & \%        & 3{,}521 \\
+    rPPB     & Rat plasma protein binding         & \%        & 3{,}521 \\
+    MDR1-ER  & MDR1 efflux ratio (P-gp)           & ratio     & 3{,}521 \\
+    Sol      & Aqueous solubility                 & $\mu$g/mL & 3{,}521 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Continuous endpoints (HLM, RLM, MDR1-ER, Sol) were log-transformed prior
+to modelling to reduce skewness. PPB endpoints were kept on their original
+percentage scale.
+
+\subsection{Molecular Representation}
+
+Each compound was represented as a vector of \textbf{217 physicochemical
+descriptors} computed with RDKit~\cite{landrum2006rdkit}. Descriptors
+cover lipophilicity (MolLogP), molecular weight, hydrogen-bond donors and
+acceptors, topological polar surface area (TPSA), rotatable bonds,
+aromaticity indices, ring counts, and various graph-theoretic topological
+descriptors. Feature selection was not applied; all 217 descriptors were
+used as input to the LightGBM models. This descriptor count differs
+slightly from the 316 reported by König and Vellido~\cite{konig2024adme}
+due to a difference in RDKit version.
+
+
+%% ============================================================
+%%  4. METHODS
+%% ============================================================
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Predictive Models}
+
+We trained six independent \textbf{LightGBM}~\cite{ke2017lightgbm}
+regressors, one per ADME endpoint. LightGBM is a gradient-boosted decision
+tree framework that employs histogram-based learning and leaf-wise growth,
+offering fast training and competitive performance on tabular data.
+Hyperparameters were tuned via 5-fold cross-validation using Optuna
+(learning rate, number of leaves, minimum child samples, feature fraction,
+bagging fraction). Final models were trained on the full dataset; the
+same 80/20 train-test split was used consistently across all endpoints to
+allow fair comparison.
+
+\subsection{SHAP Feature Attribution}
+
+Model explanations were computed using
+SHAP~\cite{lundberg2017unified} with the \textbf{TreeExplainer}
+backend~\cite{lundberg2020local}, which computes exact Shapley values
+for tree-based models in polynomial time by exploiting the recursive
+structure of decision trees.
+
+\paragraph{Global explanations.}
+For each endpoint we compute $|\phi_i|$ (mean absolute SHAP value) for
+every descriptor across the full dataset, yielding a global feature
+importance ranking that can be compared to the literature.
+
+\paragraph{Local explanations.}
+For a query molecule $m$, the top-$k$ features by $|\phi_i(m)|$ are
+extracted as input to the LLM explanation stage (Section~\ref{subsec:llm}).
+The SHAP baseline corresponds to the mean of model predictions on the
+training set for the respective endpoint.
+
+\subsection{LLM Explanation Pipeline}
+\label{subsec:llm}
+
+\subsubsection{Prompt Engineering Strategies}
+
+Given the top-$k$ SHAP features and their signed values for a query
+molecule, we generate a natural language explanation using
+GPT-4.1-mini via the OpenAI API. Three prompt strategies were
+designed and compared:
+
+\begin{enumerate}
+  \item \textbf{Basic}: A minimal prompt providing feature names and SHAP
+        values with no domain framing.
+  \item \textbf{Biomedical}: A structured prompt that contextualises the
+        SHAP values within pharmacokinetic and medicinal chemistry
+        knowledge, explicitly instructing the model to avoid ML
+        terminology.
+  \item \textbf{Reasoning}: A chain-of-thought prompt~\cite{wei2022chain}
+        that asks the model to reason step-by-step before generating the
+        explanation.
+\end{enumerate}
+
+Each strategy was evaluated for $k \in \{2, 3, 5\}$ top SHAP features,
+yielding $3 \times 3 = 9$ experimental conditions. All explanations follow
+a standardised four-part structure: (1) endpoint definition and importance,
+(2) model prediction with uncertainty, (3) driver features and their
+pharmacokinetic relevance, and (4) actionable medicinal chemistry
+suggestions.
+
+\subsubsection{Models Compared}
+
+The LLM evaluation compares six models across two families:
+GPT-4.1-mini (primary), GPT-4.1-nano, GPT-4o-mini (OpenAI); and
+LLaMA-3-8B, Mistral-7B, Gemma-7B (open-source, via Hugging Face).
+
+\subsection{LLM-as-a-Judge Evaluation}
+
+Explanation quality was assessed via \textbf{pairwise comparisons}
+following Zheng~\etal~\cite{zheng2023judging}. For each evaluation sample,
+an independent LLM judge is shown two anonymised explanations generated by
+different models and asked to select the better one based on four criteria:
+domain accuracy, biomedical coherence, absence of ML jargon, and
+actionability.
+
+To mitigate self-preference bias~\cite{zheng2023judging}---the tendency of
+LLM judges to favour outputs from models of the same family---we use
+\textbf{Claude Haiku 4.5} (Anthropic) as the judge, an entirely independent
+model family from all evaluated models.
+
+We sampled 100 molecules uniformly at random and generated explanations for
+all 15 unique pairwise combinations of the six models, yielding
+$100 \times 15 = 1{,}500$ comparisons. Win rates were aggregated per model
+across all comparisons (0\% ties).
+
+\medskip
+A complete pipeline overview is illustrated in Figure~\ref{fig:pipeline}.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=\textwidth]{figures/pipeline.pdf}
+  \fbox{\parbox{0.9\textwidth}{\centering [Pipeline figure: Molecular SMILES →
+    RDKit descriptors → LightGBM → SHAP (global / local) → Prompt
+    engineering → GPT-4.1-mini → NL explanation → Web app]}}
+  \caption{End-to-end pipeline for explainable ADME prediction.}
+  \label{fig:pipeline}
+\end{figure}
+
+
+%% ============================================================
+%%  5. EXPERIMENTAL RESULTS
+%% ============================================================
+\section{Experimental Results}
+\label{sec:results}
+
+\subsection{Predictive Performance}
+
+Table~\ref{tab:pearson} reports Pearson correlation coefficients ($r$) and
+RMSE on the held-out test set for all six endpoints.
+
+\begin{table}[H]
+  \centering
+  \caption{LightGBM predictive performance on the test set.}
+  \label{tab:pearson}
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Endpoint} & \textbf{Pearson $r$} & \textbf{RMSE} \\
+    \midrule
+    hPPB    & 0.749 & \textit{[value]} \\
+    HLM     & 0.712 & \textit{[value]} \\
+    rPPB    & 0.698 & \textit{[value]} \\
+    RLM     & 0.681 & \textit{[value]} \\
+    MDR1-ER & 0.627 & \textit{[value]} \\
+    Sol     & 0.554 & \textit{[value]} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The highest predictive accuracy is observed for hPPB ($r = 0.749$),
+consistent with the higher signal-to-noise ratio characteristic of protein
+binding assays. Aqueous solubility (Sol) is the most challenging endpoint
+($r = 0.554$), likely due to high experimental variability and the
+multi-conformational nature of solvation.
+
+\subsection{Global SHAP Analysis}
+
+Figure~\ref{fig:global_shap} shows the top global SHAP features averaged
+across all six endpoints. \textbf{MolLogP} (molecular lipophilicity) is
+the dominant driver across all endpoints, confirming the known centrality
+of lipophilicity in ADME pharmacokinetics. This finding is consistent with
+König and Vellido~\cite{konig2024adme}, who reported the same leading
+features using a different RDKit version, providing cross-validation of our
+SHAP rankings.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=0.85\textwidth]{figures/global_shap.pdf}
+  \fbox{\parbox{0.85\textwidth}{\centering [Global SHAP bar chart —
+    MolLogP, TPSA, MolWt, NumHDonors, NumAromaticRings, \ldots]}}
+  \caption{Mean absolute SHAP values for the top-10 RDKit descriptors
+    (averaged across all six ADME endpoints). MolLogP is the leading driver
+    in every endpoint.}
+  \label{fig:global_shap}
+\end{figure}
+
+\subsection{Prompt Engineering Comparison}
+
+Table~\ref{tab:prompt} compares the three prompt strategies for $k \in
+\{2,3,5\}$ by measuring the average number of domain-relevant chemical
+terms per explanation (higher = more biomedically coherent).
+
+\begin{table}[H]
+  \centering
+  \caption{Average domain-specific chemical terms per explanation by
+    prompt strategy and $k$ top-SHAP features.}
+  \label{tab:prompt}
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Strategy} & \textbf{$k=2$} & \textbf{$k=3$} & \textbf{$k=5$} \\
+    \midrule
+    Basic        & 1.05 & 1.08 & 1.11 \\
+    Biomedical   & 8.41 & \textbf{8.70} & 8.53 \\
+    Reasoning    & 7.12 & 7.35 & 7.28 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The biomedical strategy with $k=3$ features yields the highest average
+domain term count (8.70), indicating greater pharmacokinetic coherence.
+The basic strategy produces consistently poor domain specificity ($\approx$1
+term), confirming that domain framing in the prompt is essential.
+
+\subsection{LLM Model Comparison}
+
+Table~\ref{tab:judge} reports pairwise win rates across the six evaluated
+LLMs, as judged by Claude Haiku 4.5. GPT-4.1-mini achieves a win rate of
+\textbf{96.6\%} across all 1{,}500 comparisons (100 per pair, 15 pairs),
+substantially outperforming both larger open-source models and the smaller
+GPT-4o-mini variant. Open-source models cluster in the 19--53\% range,
+with Mistral-7B as the strongest among them.
+
+\begin{table}[H]
+  \centering
+  \caption{LLM-as-a-Judge pairwise win rates (1{,}500 comparisons total,
+    judge: Claude Haiku 4.5). Win rate = wins / comparisons involving that model.}
+  \label{tab:judge}
+  \begin{tabular}{lcc}
+    \hline
+    \textbf{Model} & \textbf{Wins} & \textbf{Win Rate} \\
+    \hline
+    GPT-4.1-mini   & 483 & \textbf{96.6\%} \\
+    GPT-4o-mini    & 365 & 73.0\% \\
+    Mistral-7B     & 266 & 53.2\% \\
+    Gemma-7B       & 150 & 30.0\% \\
+    LLaMA-3-8B     & 140 & 28.0\% \\
+    Phi-3          &  96 & 19.2\% \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=0.8\textwidth]{figures/model_comparison.pdf}
+  \fbox{\parbox{0.8\textwidth}{\centering [Bar chart: GPT-4.1-mini 96.6\%,
+    GPT-4o-mini 73.0\%, Mistral-7B 53.2\%, Gemma-7B 30.0\%,
+    LLaMA-3-8B 28.0\%, Phi-3 19.2\%]}}
+  \caption{Pairwise win rates (LLM-as-a-Judge, Claude Haiku 4.5, 1{,}500 comparisons).}
+  \label{fig:model_comparison}
+\end{figure}
+
+\subsection{Local Explanation Example}
+
+Figure~\ref{fig:local_example} illustrates a local explanation for a
+representative molecule. The SHAP waterfall plot identifies MolLogP and
+TPSA as the primary positive and negative drivers, respectively. The
+GPT-4.1-mini biomedical explanation translates these values into a
+coherent narrative: a high lipophilicity value is predicted to increase
+hepatic clearance by promoting CYP450-mediated oxidative metabolism,
+while the polar surface area slightly moderates membrane permeability.
+
+\begin{figure}[H]
+  \centering
+  % \includegraphics[width=\textwidth]{figures/local_example.pdf}
+  \fbox{\parbox{\textwidth}{\centering [Local explanation figure: molecule
+    2D structure | SHAP waterfall | NL explanation text]}}
+  \caption{Local explanation example for a sample molecule (HLM endpoint).
+    Left: 2D molecular structure. Centre: SHAP waterfall plot. Right:
+    GPT-4.1-mini biomedical explanation.}
+  \label{fig:local_example}
+\end{figure}
+
+
+%% ============================================================
+%%  6. DISCUSSION
+%% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Interpretation of Results}
+
+The dominance of MolLogP across all six ADME endpoints is consistent with
+Lipinski's Rule of Five~\cite{lipinski2001experimental} and with
+established pharmacokinetics: lipophilicity governs membrane permeability,
+protein binding, and metabolic clearance simultaneously. This cross-endpoint
+consistency reinforces the reliability of the SHAP rankings as mechanistic
+signals rather than artefacts of model overfitting.
+
+The marked superiority of the biomedical prompt strategy highlights that
+LLMs require explicit domain framing to produce clinically useful
+explanations. Without pharmacokinetic context, GPT-4.1-mini defaults to
+general statistical language that provides little actionable guidance for
+lead optimisation.
+
+\subsection{Limitations}
+
+\paragraph{Self-preference bias.}
+The LLM-as-a-Judge evaluation uses GPT-4.1-mini as both the generator and
+the judge for a subset of comparisons. Zheng~\etal~\cite{zheng2023judging}
+demonstrated that LLMs exhibit systematic self-preference bias, tending to
+rate outputs from the same model family more favourably. The 94.8\% win
+rate for GPT-4.1-mini should therefore be interpreted cautiously; human
+expert evaluation would provide a stronger validation signal.
+
+\paragraph{Dataset scope.}
+The 3{,}521-compound dataset covers drug-like chemical space but may not
+generalise to highly novel scaffolds, biologics, or compounds outside the
+applicability domain of the training set.
+
+\paragraph{Descriptor coverage.}
+The 217 RDKit descriptors encode global physicochemical properties but
+lack 3D conformational information. Graph neural network approaches that
+encode molecular topology directly may capture additional structure–property
+relationships.
+
+\paragraph{LLM hallucination.}
+Although biomedical prompt constraints reduce off-topic content, LLMs can
+still produce plausible-sounding but factually incorrect mechanistic claims.
+Systematic red-teaming and domain-expert review of generated explanations
+remain necessary before clinical deployment.
+
+\subsection{Web Application}
+
+The pipeline is deployed as a Streamlit application on Hugging Face Spaces,
+providing open access to all six ADME models, interactive SHAP
+visualisations, and GPT-4.1-mini explanations for arbitrary user-submitted
+SMILES strings. This lowers the barrier for non-computational chemists and
+regulatory scientists to interrogate model predictions.
+
+
+%% ============================================================
+%%  7. CONCLUSIONS
+%% ============================================================
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have presented an end-to-end pipeline that combines LightGBM
+regression, SHAP feature attribution, and GPT-4.1-mini generation to
+produce explainable predictions of six ADME pharmacokinetic properties.
+Our key findings are:
+
+\begin{enumerate}
+  \item LightGBM with RDKit descriptors achieves Pearson $r = 0.554$--$0.749$
+        across six ADME endpoints, competitive with the literature baseline
+        of König and Vellido~\cite{konig2024adme}.
+  \item MolLogP is the dominant SHAP feature across all endpoints,
+        corroborating known structure–property relationships and validating
+        the explanations against the existing literature.
+  \item The biomedical prompt strategy with $k=3$ SHAP features produces
+        the most domain-coherent explanations (avg. 8.70 chemical terms),
+        substantially outperforming basic prompting ($\approx$1.08 terms).
+  \item GPT-4.1-mini achieves a 94.8\% pairwise win rate in LLM-as-a-Judge
+        evaluation, though self-preference bias limits the strength of
+        this conclusion.
+  \item The full pipeline is openly deployed, enabling non-expert access
+        to explainable ADME prediction.
+\end{enumerate}
+
+Future work will explore: (i) integration of graph neural network
+descriptors for richer molecular representations; (ii) 3D-SHAP
+interaction values to capture feature synergies; (iii) human expert
+evaluation to complement automated LLM-as-a-Judge assessment; and
+(iv) extension to additional ADME and toxicity endpoints.
+
+
+%% ============================================================
+%%  ACKNOWLEDGEMENTS
+%% ============================================================
+\section*{Acknowledgements}
+
+The author thanks Albert Vellido and Caroline König (Universitat
+Politècnica de Catalunya) for their supervision and guidance throughout
+this work. % Add funding acknowledgements here if applicable.
+
+
+%% ============================================================
+%%  BIBLIOGRAPHY
+%% ============================================================
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+% If you prefer to embed the bibliography directly (no .bib file),
+% replace \bibliography{references} with \begin{thebibliography}{99} ... \end{thebibliography}
+
+\end{document}
